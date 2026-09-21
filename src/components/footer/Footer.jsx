@@ -25,7 +25,7 @@ import {
 } from "lucide-react";
 import { NavLink } from "react-router-dom";
 import FooterBrandLogo from "../../assets/Logo.png";
-import FooterLogoText from "../../assets/LogoText.png";
+import FooterLogoText from "../../assets/logoText.png";
 /* =========================================================
    FOOTER DATA
 ========================================================= */
