@@ -1,3 +1,5 @@
+// FAQ.jsx
+
 import {
     ArrowRight,
     ChevronDown,
@@ -9,7 +11,7 @@ import {
     useState,
 } from "react";
 
-import PremiumButton from "../../../components/UI/PremiumButton";
+import PremiumButton from "../UI/PremiumButton";
 
 /* =========================================================
    CONTENT
@@ -134,9 +136,7 @@ const FAQItem = ({
                 ].join(" ")}
             />
 
-            {/* =================================================
-                QUESTION BAR
-            ================================================= */}
+            {/* QUESTION BAR */}
 
             <div className="relative border-b border-white/[0.075]">
                 {/* Active Top Line */}
@@ -197,9 +197,7 @@ const FAQItem = ({
                     />
                 </div>
 
-                {/* =================================================
-                    EXPANDED CONTENT
-                ================================================= */}
+                {/* EXPANDED CONTENT */}
 
                 <div
                     className={[
@@ -225,9 +223,7 @@ const FAQItem = ({
                     </div>
                 </div>
 
-                {/* =================================================
-                    ONE-TIME ACTIVE PROGRESS BAR
-                ================================================= */}
+                {/* ONE-TIME PROGRESS BAR */}
 
                 {isOpen && (
                     <span className="faq-progress absolute bottom-0 left-0 h-[2px] rounded-r-full bg-gradient-to-r from-cyan-300 via-blue-400 to-violet-400" />
@@ -241,7 +237,7 @@ const FAQItem = ({
    FAQ COMPONENT
 ========================================================= */
 
-const AboutFaq = () => {
+const FAQ = () => {
     const [ActiveIndex, SetActiveIndex] =
         useState(0);
 
@@ -251,10 +247,8 @@ const AboutFaq = () => {
     /* =====================================================
        AUTOMATIC FAQ FLOW
 
-       One FAQ:
-       10.4s active
-       0s gap
-       Then immediately next FAQ
+       Active: 10.4 seconds
+       Next FAQ starts immediately
     ===================================================== */
 
     useEffect(() => {
@@ -313,9 +307,7 @@ const AboutFaq = () => {
             id="faq"
             className="relative w-full overflow-hidden bg-[#061633] text-white"
         >
-            {/* =================================================
-                BACKGROUND ATMOSPHERE
-            ================================================= */}
+            {/* BACKGROUND ATMOSPHERE */}
 
             <div className="pointer-events-none absolute inset-0">
                 <div className="absolute left-[-10%] top-[10%] h-[300px] w-[300px] rounded-full bg-cyan-400/[0.018] blur-[120px]" />
@@ -325,17 +317,14 @@ const AboutFaq = () => {
                 <div className="absolute left-[35%] top-[40%] h-[250px] w-[250px] rounded-full bg-blue-500/[0.012] blur-[120px]" />
             </div>
 
-            {/* =================================================
-                MAIN VIEWPORT
-            ================================================= */}
+            {/* MAIN VIEWPORT */}
 
             <div className="relative z-20 mx-auto flex min-h-[calc(100svh-92px)] w-full max-w-[1400px] flex-col justify-center px-6 py-10 lg:px-8 lg:py-12">
-                {/* =================================================
-                    HEADER
-                ================================================= */}
+                {/* HEADER */}
 
                 <div className="grid items-end gap-7 lg:grid-cols-[0.8fr_1.2fr]">
                     {/* LEFT */}
+
                     <div className="max-w-[470px]">
                         <div className="inline-flex items-center gap-3">
                             <span className="font-mono text-[11px] font-medium tracking-[0.12em] text-cyan-300">
@@ -358,6 +347,7 @@ const AboutFaq = () => {
                     </div>
 
                     {/* RIGHT */}
+
                     <div className="flex flex-col items-start lg:items-end lg:text-right">
                         <p className="max-w-[590px] text-[9px] leading-[1.8] text-blue-100/40 sm:text-[10px]">
                             {FAQContent.description}
@@ -375,15 +365,11 @@ const AboutFaq = () => {
                     </div>
                 </div>
 
-                {/* =================================================
-                    TOP SEPARATOR
-                ================================================= */}
+                {/* TOP SEPARATOR */}
 
                 <div className="mt-7 h-px bg-gradient-to-r from-white/[0.11] via-white/[0.07] to-transparent" />
 
-                {/* =================================================
-                    FAQ LIST
-                ================================================= */}
+                {/* FAQ LIST */}
 
                 <div className="mt-0">
                     {FAQItems.map(
@@ -400,9 +386,7 @@ const AboutFaq = () => {
                     )}
                 </div>
 
-                {/* =================================================
-                    FOOTER
-                ================================================= */}
+                {/* FOOTER */}
 
                 <div className="mt-4 flex items-center justify-between border-t border-white/[0.05] pt-3">
                     <span className="text-[5px] font-semibold uppercase tracking-[0.18em] text-white/18">
@@ -415,9 +399,7 @@ const AboutFaq = () => {
                 </div>
             </div>
 
-            {/* =================================================
-                ONE-TIME PROGRESS ANIMATION
-            ================================================= */}
+            {/* ONE-TIME PROGRESS ANIMATION */}
 
             <style>{`
                 .faq-progress {
@@ -446,4 +428,4 @@ const AboutFaq = () => {
     );
 };
 
-export default AboutFaq;
+export default FAQ;

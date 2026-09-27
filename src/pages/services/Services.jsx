@@ -1,10 +1,17 @@
-import React from 'react'
+import CTASection from '../../components/commonSection/CTASection'
+import FAQ from '../../components/commonSection/FAQ'
+import WhyChooseUs from '../../components/commonSection/WhyChooseUs'
+import ServicesHero from './section/ServicesHero'
+import ServicesPortfolio from './section/ServicesPortfolio'
 
 const Services = () => {
     return (
         <div>
-            <h1>Our Services</h1>
-            <p>Here are the services we offer:</p>
+            <ServicesHero />
+            <ServicesPortfolio />
+            <WhyChooseUs />
+            <FAQ/>
+            <CTASection />
         </div>
     )
 }

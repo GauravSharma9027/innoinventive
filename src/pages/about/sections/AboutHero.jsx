@@ -467,13 +467,13 @@ const AboutHero = () => {
                 MASTER CONTAINER
             ================================================= */}
 
-            <div className="relative z-20 mx-auto flex h-[75vh] w-full max-w-[1400px] items-center px-6 lg:px-8">
+            <div className="relative z-20 mx-auto flex h-[85vh] w-full max-w-[1400px] items-center px-6 lg:px-8">
                 <div className="grid w-full min-w-0  gap-5 lg:grid-cols-[0.9fr_1.1fr] xl:gap-8">
                     {/* =================================================
                         LEFT
                     ================================================= */}
 
-                    <div className="min-w-0 max-w-[610px]">
+                    <div className="min-w-0 max-w-[610px] pt-5">
                         <div className="inline-flex items-center gap-3">
                             <span className="text-[10px] font-semibold uppercase tracking-[0.18em] text-cyan-300 sm:text-[11px] lg:text-[12px]">
                                 {AboutHeroContent.badge}

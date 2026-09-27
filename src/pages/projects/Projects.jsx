@@ -1,10 +1,14 @@
 import React from 'react'
+import ProjectsHero from './section/ProjectsHero'
+import ProjectsSection from './section/ProjectsSection'
+import CTASection from '../../components/commonSection/CTASection'
 
 const Projects = () => {
     return (
         <div>
-            <h1>Our Projects</h1>
-            <p>Here are some of the projects we've worked on:</p>
+            <ProjectsHero />
+            <ProjectsSection />
+            <CTASection />
         </div>
     )
 }

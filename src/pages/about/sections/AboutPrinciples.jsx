@@ -1,4 +1,3 @@
-
 // AboutPrinciples.jsx
 // InnoInventive About Page - Principles Section
 //
@@ -387,6 +386,7 @@ const AboutPrinciples = () => {
                                     strokeWidth={1.7}
                                     className="text-cyan-300/40"
                                 />
+
                                 Continuous principle flow
                             </span>
 
@@ -394,35 +394,162 @@ const AboutPrinciples = () => {
                         </div>
                     </div>
                 </div>
-
             </div>
 
             {/* =================================================
-    ANIMATIONS
-================================================= */}
+                ANIMATIONS
+            ================================================= */}
 
             <style>{`
-    .principle-card-wave-0 {
-        animation:
-            principleCardWave
-            6.2s
-            ease-in-out
-            infinite;
-        animation-delay:
-            -1.8s;
-    }
+                /* =================================
+                   PRINCIPLE CARD WAVE
+                ================================= */
 
-    /* row 1 animation keyframes */
+                .principle-card-wave-0 {
+                    animation:
+                        principleCardWave
+                        6.2s
+                        ease-in-out
+                        infinite;
+                    animation-delay:
+                        -1.8s;
+                }
 
-    @media (prefers-reduced-motion: reduce) {
-        .principle-card-wave-0,
-        .principle-card-wave-1,
-        .principle-card-wave-2 {
-            animation: none !important;
-        }
-    }
-`}</style>
+                /* =================================
+                   HORIZONTAL SIGNAL DOT
+                ================================= */
 
+                .principle-automation-connector {
+                    perspective: 800px;
+                    transform-style: preserve-3d;
+                }
+
+                .principle-signal-dot {
+                    top: 50%;
+
+                    z-index: 20;
+
+                    opacity: 0;
+
+                    transform:
+                        translate3d(-2px, -50%, 0)
+                        scale(0.45);
+
+                    transform-origin: center;
+
+                    box-shadow:
+                        0 0 6px
+                        rgba(25,211,255,0.65);
+
+                    animation:
+                        principleSignalFlow
+                        3.4s
+                        cubic-bezier(0.55,0,0.2,1)
+                        infinite;
+
+                    will-change:
+                        left,
+                        transform,
+                        opacity,
+                        box-shadow;
+                }
+
+                .principle-signal-dot-0 {
+                    animation-delay:
+                        0s;
+                }
+
+                .principle-signal-dot-1 {
+                    animation-delay:
+                        1.7s;
+                }
+
+                @keyframes principleSignalFlow {
+                    0% {
+                        left: -2px;
+
+                        opacity: 0;
+
+                        transform:
+                            translate3d(-2px,-50%,0)
+                            scale(0.45);
+
+                        box-shadow:
+                            0 0 5px
+                            rgba(25,211,255,0.35);
+                    }
+
+                    8% {
+                        opacity: 1;
+
+                        transform:
+                            translate3d(0,-50%,0)
+                            scale(0.8);
+
+                        box-shadow:
+                            0 0 8px
+                            rgba(25,211,255,0.65);
+                    }
+
+                    50% {
+                        opacity: 1;
+
+                        transform:
+                            translate3d(0,-50%,0)
+                            scale(1);
+
+                        box-shadow:
+                            0 0 11px
+                            rgba(25,211,255,0.95),
+                            0 0 18px
+                            rgba(25,211,255,0.30);
+                    }
+
+                    88% {
+                        opacity: 1;
+
+                        transform:
+                            translate3d(0,-50%,0)
+                            scale(0.8);
+
+                        box-shadow:
+                            0 0 8px
+                            rgba(25,211,255,0.65);
+                    }
+
+                    100% {
+                        left:
+                            calc(100% - 2px);
+
+                        opacity: 0;
+
+                        transform:
+                            translate3d(0,-50%,0)
+                            scale(0.45);
+
+                        box-shadow:
+                            0 0 4px
+                            rgba(25,211,255,0.25);
+                    }
+                }
+
+                /* =================================
+                   ROW 1 ANIMATION KEYFRAMES
+                ================================= */
+
+                @media (prefers-reduced-motion: reduce) {
+                    .principle-card-wave-0,
+                    .principle-card-wave-1,
+                    .principle-card-wave-2,
+                    .principle-signal-dot {
+                        animation: none !important;
+                    }
+
+                    .principle-signal-dot {
+                        opacity: 0.5;
+                    }
+                }
+            `}</style>
         </section>
     );
 };

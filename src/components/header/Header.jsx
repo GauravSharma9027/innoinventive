@@ -79,7 +79,7 @@ const Header = () => {
                         icon={ArrowRight}
                     />
 
-                    <button
+                    {/* <button
                         type="button"
                         onClick={HandleThemeToggle}
                         aria-label="Toggle theme"
@@ -88,7 +88,7 @@ const Header = () => {
                         <Sun size={14} className={IsDarkModeEnabled ? "text-blue-100" : "text-cyan-300"} />
                         <Moon size={14} className={IsDarkModeEnabled ? "text-violet-300" : "text-blue-100"} />
                         <span className={`absolute top-1 h-7 w-7 rounded-full bg-white/[0.06] transition-all duration-300 ${IsDarkModeEnabled ? "left-1" : "left-[27px]"}`} />
-                    </button>
+                    </button> */}
                     
                 </div>
 

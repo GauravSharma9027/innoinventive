@@ -172,7 +172,7 @@ const HeroVisual = () => {
 
 const Hero = () => {
     return (
-        <section className="relative px-10 m-0 h-[70vh] max-h-[70vh] overflow-hidden bg-[#061633] p-0 text-white">
+        <section className="relative px-10 m-0 h-[80vh] max-h-[80vh] overflow-hidden bg-[#061633] p-0 text-white">
 
             {/* Hero Background */}
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_45%,rgba(22,119,255,0.12),transparent_32%),radial-gradient(circle_at_90%_20%,rgba(124,60,255,0.10),transparent_24%)]" />
