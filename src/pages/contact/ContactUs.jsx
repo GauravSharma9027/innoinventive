@@ -1,10 +1,16 @@
 import React from 'react'
+import ContactHero from './section/ContactHero'
+import ContactFormSection from './section/ContactFormSection'
+import ContactAvailability from './section/ContactAvailability'
+// import ContactMapSection from './section/ContactMapSection'
 
 const ContactUs = () => {
     return (
         <div>
-            <h1>Contact Us</h1>
-            <p>Get in touch with us!</p>
+            <ContactHero/>
+            <ContactFormSection/>
+            {/* <ContactMapSection/> */}
+            <ContactAvailability/>
         </div>
     )
 }
