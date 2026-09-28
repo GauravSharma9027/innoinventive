@@ -14,7 +14,7 @@ import {
 
 import HeroActionButton from "../../../components/UI/HeroActionButton";
 import PremiumIconBadge from "../../../components/UI/PremiumIconBadge";
-import ContactHeroBackground from "../../../assets/Contact/HeroBG.png";
+import ContactHeroBackground from "../../../assets/contact/HeroBG.png";
 
 /* =========================================================
    CONTENT
