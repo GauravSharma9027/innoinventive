@@ -102,7 +102,8 @@ const ServicesData = [
     {
         id: "ai-automation",
         title: "AI & Automation",
-        description: "Save time with intelligent workflows and AI agents.",
+        description:
+            "Save time with intelligent workflows and AI agents.",
         status: "Auto Running",
         icon: Bot,
         iconTheme: "cyan",
@@ -159,25 +160,29 @@ const ServiceIconTheme = {
 
 const ServiceStatusTheme = {
     green: {
-        wrapper: "border-emerald-300/15 bg-emerald-400/[0.08]",
+        wrapper:
+            "border-emerald-300/15 bg-emerald-400/[0.08]",
         dot: "bg-emerald-300",
         text: "text-emerald-100",
     },
 
     cyan: {
-        wrapper: "border-cyan-300/15 bg-cyan-400/[0.08]",
+        wrapper:
+            "border-cyan-300/15 bg-cyan-400/[0.08]",
         dot: "bg-cyan-300",
         text: "text-cyan-100",
     },
 
     violet: {
-        wrapper: "border-violet-300/15 bg-violet-400/[0.08]",
+        wrapper:
+            "border-violet-300/15 bg-violet-400/[0.08]",
         dot: "bg-violet-300",
         text: "text-violet-100",
     },
 
     amber: {
-        wrapper: "border-amber-200/15 bg-amber-300/[0.08]",
+        wrapper:
+            "border-amber-200/15 bg-amber-300/[0.08]",
         dot: "bg-amber-200",
         text: "text-amber-100",
     },
@@ -187,12 +192,18 @@ const ServiceStatusTheme = {
    PROCESS ITEM
 ========================================================= */
 
-const ProcessItem = ({ item, index, isActive }) => {
+const ProcessItem = ({
+    item,
+    index,
+    isActive,
+}) => {
     const Icon = item.icon;
 
     return (
         <div
-            className={`process-item group relative z-20 flex flex-col items-center text-center ${isActive ? "process-item-active" : ""
+            className={`process-item group relative z-20 flex flex-col items-center text-center ${isActive
+                    ? "process-item-active"
+                    : ""
                 }`}
         >
             {/* =====================================================
@@ -227,16 +238,16 @@ const ProcessItem = ({ item, index, isActive }) => {
             ===================================================== */}
 
             <div className="mt-2.5 max-w-[95px]">
-                <p className="text-[8.5px] font-semibold leading-[1.15] text-white/90">
+                <p className=" text-[10px] lg:text-[8.5px] font-semibold leading-[1.15] text-white/90">
                     {item.title}
                 </p>
 
-                <p className="mt-[2px] text-[7.5px] font-medium leading-[1.2] text-blue-100/65">
+                <p className="process-item-subtext mt-[2px] text-[7.5px] font-medium leading-[1.2] text-blue-100/65">
                     {item.lineOne}
                 </p>
 
                 {item.lineTwo && (
-                    <p className="text-[7.5px] font-medium leading-[1.2] text-blue-100/65">
+                    <p className="process-item-subtext text-[7.5px] font-medium leading-[1.2] text-blue-100/65">
                         {item.lineTwo}
                     </p>
                 )}
@@ -261,11 +272,14 @@ const ServiceCard = ({ service }) => {
     const Icon = service.icon;
 
     const IconTheme =
-        ServiceIconTheme[service.iconTheme] || ServiceIconTheme.blue;
+        ServiceIconTheme[
+        service.iconTheme
+        ] || ServiceIconTheme.blue;
 
     const StatusTheme =
-        ServiceStatusTheme[service.statusTheme] ||
-        ServiceStatusTheme.cyan;
+        ServiceStatusTheme[
+        service.statusTheme
+        ] || ServiceStatusTheme.cyan;
 
     return (
         <article className="service-card group relative h-[110px] w-full">
@@ -315,11 +329,11 @@ const ServiceCard = ({ service }) => {
 
                     {/* Title + Description */}
                     <div className="min-w-0 flex-1">
-                        <h3 className="truncate text-[11.5px] font-semibold leading-[1.1] tracking-tight text-white">
+                        <h3 className="service-card-title truncate text-[11.5px] font-semibold leading-[1.1] tracking-tight text-white">
                             {service.title}
                         </h3>
 
-                        <p className="mt-[5px] line-clamp-2 max-w-[245px] text-[8.5px] font-medium leading-[1.45] text-blue-100/58">
+                        <p className="service-card-description mt-[5px] line-clamp-2 max-w-[245px] text-[8.5px] font-medium leading-[1.45] text-blue-100/58">
                             {service.description}
                         </p>
                     </div>
@@ -340,7 +354,7 @@ const ServiceCard = ({ service }) => {
 
                 {/* =================================================
                     STATUS / TAG ROW
-                    ================================================= */}
+                ================================================= */}
 
                 <div className="mt-[3px] flex items-center">
                     <div
@@ -373,20 +387,30 @@ const ServiceCard = ({ service }) => {
 ========================================================= */
 
 const Services = () => {
-    const [ActiveProcess, SetActiveProcess] = useState(0);
+    const [ActiveProcess, SetActiveProcess] =
+        useState(0);
 
     /* =========================================================
        AUTOMATIC PROCESS CYCLE
     ========================================================= */
 
     useEffect(() => {
-        const Interval = window.setInterval(() => {
-            SetActiveProcess((Current) => {
-                return (Current + 1) % ProcessData.length;
-            });
-        }, 2200);
+        const Interval =
+            window.setInterval(() => {
+                SetActiveProcess(
+                    (Current) => {
+                        return (
+                            (Current + 1) %
+                            ProcessData.length
+                        );
+                    },
+                );
+            }, 2200);
 
-        return () => window.clearInterval(Interval);
+        return () =>
+            window.clearInterval(
+                Interval,
+            );
     }, []);
 
     /* =========================================================
@@ -394,7 +418,10 @@ const Services = () => {
     ========================================================= */
 
     const HandleServicesNavigation = () => {
-        const ServicesElement = document.getElementById("services");
+        const ServicesElement =
+            document.getElementById(
+                "services",
+            );
 
         if (ServicesElement) {
             ServicesElement.scrollIntoView({
@@ -405,7 +432,8 @@ const Services = () => {
             return;
         }
 
-        window.location.href = "/services";
+        window.location.href =
+            "/services";
     };
 
     return (
@@ -450,7 +478,7 @@ const Services = () => {
                         LEFT CONTENT
                     ================================================= */}
 
-                    <div className="flex flex-col justify-center pt-1 lg:min-h-[315px]">
+                    <div className="flex w-full flex-col justify-center pt-1 lg:min-h-[315px] lg:w-auto">
                         {/* Label */}
                         <div className="inline-flex w-fit items-center gap-2 rounded-full border border-cyan-300/15 bg-cyan-300/[0.035] px-2.5 py-[5px] shadow-[inset_0_1px_0_rgba(255,255,255,0.06)]">
                             <span className="h-[5px] w-[5px] rounded-full bg-cyan-300 shadow-[0_0_7px_rgba(25,211,255,0.7)]" />
@@ -461,15 +489,16 @@ const Services = () => {
                         </div>
 
                         {/* Heading */}
-                        <h2 className="mt-3 max-w-[290px] text-[29px] font-semibold leading-[1.02] tracking-[-0.04em] text-white sm:text-[32px]">
+                        <h2 className="mt-3 w-full max-w-none text-[34px] font-semibold leading-[1.02] tracking-[-0.04em] text-white sm:text-[42px] lg:max-w-[290px] lg:text-[29px]">
                             End-to-End Tech Solutions
-                            <span className="block bg-gradient-to-r from-cyan-300 via-blue-400 to-violet-400 bg-clip-text text-transparent">
+                            <br className="lg:hidden" />
+                            <span className="bg-gradient-to-r from-cyan-300 via-blue-400 to-violet-400 bg-clip-text text-transparent">
                                 with Intelligent Automation.
                             </span>
                         </h2>
 
                         {/* Description */}
-                        <p className="mt-4 max-w-[275px] text-[12px] font-medium leading-[1.7] text-blue-100/55">
+                        <p className="mt-4 w-full max-w-none text-[13px] font-medium leading-[1.7] text-blue-100/55 lg:max-w-[275px] lg:text-[12px]">
                             We don&apos;t just build websites. We build
                             systems that think, connect and grow — so you can
                             focus on what matters.
@@ -482,14 +511,12 @@ const Services = () => {
                         <div className="mt-5">
                             <PremiumButton
                                 type="button"
-                                onClick={HandleServicesNavigation}
+                                onClick={
+                                    HandleServicesNavigation
+                                }
                                 label="View All Services"
                                 icon={ArrowUpRight}
                             />
-                                
-
-        
-                        
                         </div>
                     </div>
 
@@ -620,16 +647,28 @@ const Services = () => {
 
                             {/* Process Items */}
                             <div className="relative grid h-full grid-cols-5 gap-2">
-                                {ProcessData.map((Process, Index) => (
-                                    <ProcessItem
-                                        key={Process.id}
-                                        item={Process}
-                                        index={Index}
-                                        isActive={
-                                            ActiveProcess === Index
-                                        }
-                                    />
-                                ))}
+                                {ProcessData.map(
+                                    (
+                                        Process,
+                                        Index,
+                                    ) => (
+                                        <ProcessItem
+                                            key={
+                                                Process.id
+                                            }
+                                            item={
+                                                Process
+                                            }
+                                            index={
+                                                Index
+                                            }
+                                            isActive={
+                                                ActiveProcess ===
+                                                Index
+                                            }
+                                        />
+                                    ),
+                                )}
                             </div>
                         </div>
 
@@ -637,13 +676,19 @@ const Services = () => {
                             SERVICE CARDS
                         ================================================= */}
 
-                        <div className="grid grid-cols-1 gap-2.5 sm:grid-cols-2 lg:grid-cols-3">
-                            {ServicesData.map((Service) => (
-                                <ServiceCard
-                                    key={Service.id}
-                                    service={Service}
-                                />
-                            ))}
+                        <div className="mt-5 grid grid-cols-1 gap-2.5 sm:grid-cols-2 lg:mt-0 lg:grid-cols-3">
+                            {ServicesData.map(
+                                (Service) => (
+                                    <ServiceCard
+                                        key={
+                                            Service.id
+                                        }
+                                        service={
+                                            Service
+                                        }
+                                    />
+                                ),
+                            )}
                         </div>
                     </div>
                 </div>
@@ -655,11 +700,19 @@ const Services = () => {
 
             <style>{`
                 .services-route-flow {
-                    animation: servicesRouteFlow 3.2s linear infinite;
+                    animation:
+                        servicesRouteFlow
+                        3.2s
+                        linear
+                        infinite;
                 }
 
                 .services-ambient-sweep {
-                    animation: servicesAmbientSweep 8s ease-in-out infinite;
+                    animation:
+                        servicesAmbientSweep
+                        8s
+                        ease-in-out
+                        infinite;
                 }
 
                 .service-card-main {
@@ -681,15 +734,28 @@ const Services = () => {
                  * 3. pauses
                  * 4. drops back into place
                  */
-                .process-item:hover .process-icon-shell {
-                    animation: processIconFlipDrop 900ms cubic-bezier(0.16, 1, 0.3, 1);
+                .process-item:hover
+                .process-icon-shell {
+                    animation:
+                        processIconFlipDrop
+                        900ms
+                        cubic-bezier(
+                            0.16,
+                            1,
+                            0.3,
+                            1
+                        );
                 }
 
-                .process-item-active .process-icon-shell {
+                .process-item-active
+                .process-icon-shell {
                     box-shadow:
-                        0 10px 22px rgba(0,0,0,0.35),
-                        0 0 26px rgba(25,211,255,0.14),
-                        inset 0 1px 0 rgba(255,255,255,0.15);
+                        0 10px 22px
+                            rgba(0,0,0,0.35),
+                        0 0 26px
+                            rgba(25,211,255,0.14),
+                        inset 0 1px 0
+                            rgba(255,255,255,0.15);
                 }
 
                 @keyframes processIconFlipDrop {
@@ -771,7 +837,8 @@ const Services = () => {
                 @keyframes servicesAmbientSweep {
                     0%,
                     100% {
-                        transform: translate3d(0, 0, 0);
+                        transform:
+                            translate3d(0, 0, 0);
                         opacity: 0;
                     }
 
@@ -780,7 +847,8 @@ const Services = () => {
                     }
 
                     50% {
-                        transform: translate3d(430%, 8px, 0);
+                        transform:
+                            translate3d(430%, 8px, 0);
                         opacity: 0.65;
                     }
 
@@ -796,19 +864,50 @@ const Services = () => {
                 }
 
                 @media (max-width: 767px) {
+                    /*
+                     * Keep the route animation visible on phone.
+                     * It was previously hidden here.
+                     */
                     .services-route-flow {
-                        display: none;
+                        display: block;
+                        animation:
+                            servicesRouteFlow
+                            4s
+                            linear
+                            infinite;
                     }
 
                     .services-ambient-sweep {
                         display: none;
+                    }
+
+                    /*
+                     * Hide only the supporting text below
+                     * Requirement / Technology / Development /
+                     * Testing / Live on phone.
+                     */
+                    .process-item-subtext {
+                        display: none;
+                    }
+
+                    /*
+                     * Larger service-card typography on phone.
+                     */
+                    .service-card-title {
+                        font-size: 15px;
+                    }
+
+                    .service-card-description {
+                        font-size: 11px;
+                        line-height: 1.45;
                     }
                 }
 
                 @media (prefers-reduced-motion: reduce) {
                     .services-route-flow,
                     .services-ambient-sweep,
-                    .process-item:hover .process-icon-shell {
+                    .process-item:hover
+                    .process-icon-shell {
                         animation: none !important;
                     }
                 }

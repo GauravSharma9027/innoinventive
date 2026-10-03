@@ -65,9 +65,7 @@ const ProcessNode = ({ item, isActive }) => {
     const Icon = item.icon;
 
     return (
-        <div
-            className="process-node relative isolate flex h-[50px] w-[50px] items-center justify-center [perspective:1100px] [transform-style:preserve-3d]"
-        >
+        <div className="process-node relative isolate flex h-[50px] w-[50px] items-center justify-center [perspective:1100px] [transform-style:preserve-3d]">
             {/* =====================================================
                 AMBIENT GLOW
             ===================================================== */}
@@ -106,7 +104,9 @@ const ProcessNode = ({ item, isActive }) => {
             ===================================================== */}
 
             <div
-                className={`process-node-badge relative z-10 ${isActive ? "process-node-active" : ""
+                className={`process-node-badge relative z-10 ${isActive
+                        ? "process-node-active"
+                        : ""
                     }`}
             >
                 <PremiumIconBadge
@@ -155,15 +155,35 @@ const ProcessItem = ({
 }) => {
     return (
         <div
-            className={`how-it-works-item group relative min-w-0 text-center ${isActive ? "how-it-works-item-active" : ""
+            className={`how-it-works-item how-it-works-step-${index} group relative min-w-0 text-center ${isActive
+                    ? "how-it-works-item-active"
+                    : ""
                 }`}
         >
+            {/* =====================================================
+                START CONNECTOR
+                Phone only
+            ===================================================== */}
+
+            {index === 0 && (
+                <div
+                    className="process-start-connector pointer-events-none absolute"
+                    aria-hidden="true"
+                >
+                    <div className="process-start-route absolute left-0 right-0 top-1/2 h-px -translate-y-1/2 rounded-full bg-gradient-to-r from-cyan-300/35 via-blue-400/40 to-blue-400/10" />
+
+                    <span className="process-start-flow absolute left-0 top-1/2 h-[3px] w-[18px] -translate-y-1/2 rounded-full bg-cyan-100 shadow-[0_0_10px_rgba(25,211,255,0.85)]" />
+
+                    <span className="process-start-arrow absolute right-0 top-1/2 h-[6px] w-[6px] -translate-y-1/2 rotate-45 border-r border-t border-cyan-200" />
+                </div>
+            )}
+
             {/* =====================================================
                 CONNECTOR
             ===================================================== */}
 
             {index < ProcessData.length - 1 && (
-                <div className="pointer-events-none absolute left-[calc(50%+33px)] right-[-10px] top-[25px] h-[14px]">
+                <div className="how-it-works-connector pointer-events-none absolute left-[calc(50%+33px)] right-[-10px] top-[25px] h-[14px]">
                     {/* Main route */}
                     <div
                         className={`absolute left-0 right-0 top-1/2 h-px -translate-y-1/2 rounded-full transition-all duration-700 ${isActive
@@ -193,11 +213,30 @@ const ProcessItem = ({
 
                     {/* Arrow */}
                     <span
-                        className={`absolute right-[8%] top-1/2 h-[6px] w-[6px] -translate-y-1/2 rotate-45 border-r border-t ${isActive
+                        className={`process-route-arrow absolute right-[8%] top-1/2 h-[6px] w-[6px] -translate-y-1/2 rotate-45 border-r border-t ${isActive
                                 ? "border-cyan-200"
                                 : "border-blue-300/28"
                             }`}
                     />
+                </div>
+            )}
+
+            {/* =====================================================
+                LAST CONNECTOR
+                05 -> Arrow button
+                Phone only
+            ===================================================== */}
+
+            {index === ProcessData.length - 1 && (
+                <div
+                    className="process-last-connector pointer-events-none absolute"
+                    aria-hidden="true"
+                >
+                    <div className="absolute left-0 right-0 top-1/2 h-px -translate-y-1/2 rounded-full bg-gradient-to-r from-blue-400/10 via-blue-400/35 to-cyan-300/45" />
+
+                    <span className="process-last-flow absolute left-0 top-1/2 h-[3px] w-[18px] -translate-y-1/2 rounded-full bg-cyan-100 shadow-[0_0_10px_rgba(25,211,255,0.85)]" />
+
+                    <span className="process-last-arrow absolute left-0 top-1/2 h-[6px] w-[6px] -translate-y-1/2 -rotate-[135deg] border-r border-t border-cyan-200" />
                 </div>
             )}
 
@@ -226,7 +265,7 @@ const ProcessItem = ({
                     </h3>
 
                     <p
-                        className={`mt-[4px] text-[7px] font-medium leading-[1.35] transition-all duration-700 ${isActive
+                        className={`process-item-description mt-[4px] text-[7px] font-medium leading-[1.35] transition-all duration-700 ${isActive
                                 ? "text-cyan-100/62"
                                 : "text-blue-100/38"
                             }`}
@@ -235,7 +274,7 @@ const ProcessItem = ({
                     </p>
 
                     {/* Automation detail */}
-                    <div className="mt-[4px] flex items-center justify-center gap-[4px]">
+                    <div className="process-item-detail mt-[4px] flex items-center justify-center gap-[4px]">
                         <span
                             className={`h-[3px] w-[3px] rounded-full ${isActive
                                     ? "bg-cyan-300 shadow-[0_0_6px_rgba(25,211,255,0.9)]"
@@ -271,20 +310,27 @@ const ProcessItem = ({
 ========================================================= */
 
 const HowItWorks = () => {
-    const [ActiveStep, SetActiveStep] = useState(0);
+    const [ActiveStep, SetActiveStep] =
+        useState(0);
 
     /* =====================================================
        AUTOMATIC PROCESS
     ===================================================== */
 
     useEffect(() => {
-        const Interval = window.setInterval(() => {
-            SetActiveStep((CurrentStep) => {
-                return (CurrentStep + 1) % ProcessData.length;
-            });
-        }, 2200);
+        const Interval =
+            window.setInterval(() => {
+                SetActiveStep(
+                    (CurrentStep) =>
+                        (CurrentStep + 1) %
+                        ProcessData.length,
+                );
+            }, 2200);
 
-        return () => window.clearInterval(Interval);
+        return () =>
+            window.clearInterval(
+                Interval,
+            );
     }, []);
 
     /* =====================================================
@@ -292,15 +338,17 @@ const HowItWorks = () => {
     ===================================================== */
 
     const HandleNextStep = () => {
-        SetActiveStep((CurrentStep) => {
-            return (CurrentStep + 1) % ProcessData.length;
-        });
+        SetActiveStep(
+            (CurrentStep) =>
+                (CurrentStep + 1) %
+                ProcessData.length,
+        );
     };
 
     return (
         <section
             id="process"
-            className="relative w-full overflow-hidden bg-[#061633] text-white pt-6"
+            className="relative w-full overflow-hidden bg-[#061633] pt-6 text-white"
         >
             {/* =====================================================
                 BACKGROUND
@@ -334,17 +382,17 @@ const HowItWorks = () => {
             ===================================================== */}
 
             <div className="relative mx-auto max-w-[1400px] px-6 py-7 lg:px-8">
-                <div className="grid grid-cols-[235px_minmax(0,1fr)] items-start gap-8 xl:grid-cols-[250px_minmax(0,1fr)] xl:gap-10">
+                <div className="how-it-works-layout grid grid-cols-1 items-start gap-8 lg:grid-cols-[235px_minmax(0,1fr)] xl:grid-cols-[250px_minmax(0,1fr)] xl:gap-10">
                     {/* =================================================
                         LEFT INTRO
                     ================================================= */}
 
-                    <div className="relative z-20 self-start">
-                        <h2 className="text-[32px] font-semibold leading-[1.04] tracking-[-0.035em] text-white">
+                    <div className="relative z-20 w-full self-start lg:w-auto">
+                        <h2 className="text-[34px] font-semibold leading-[1.04] tracking-[-0.035em] text-white md:text-[42px] lg:text-[32px]">
                             How It Works
                         </h2>
 
-                        <p className="mt-1.5 max-w-[215px] text-[12px] font-medium leading-[1.45] text-blue-100/58">
+                        <p className="mt-1.5 w-full max-w-none text-[13px] font-medium leading-[1.55] text-blue-100/58 md:max-w-[720px] md:text-[14px] lg:max-w-[215px] lg:text-[12px] lg:leading-[1.45]">
                             From idea to automation — in just a few steps.
                         </p>
 
@@ -352,7 +400,7 @@ const HowItWorks = () => {
                             LEFT CURVED ROUTE
                         ================================================= */}
 
-                        <div className="pointer-events-none absolute left-[-2px] top-[70px] h-[72px] w-[218px]">
+                        <div className="pointer-events-none absolute left-[-2px] top-[70px] hidden h-[72px] w-[218px] lg:block">
                             <svg
                                 className="absolute inset-0 h-full w-full overflow-visible"
                                 viewBox="0 0 218 72"
@@ -468,18 +516,30 @@ const HowItWorks = () => {
                         PROCESS
                     ================================================= */}
 
-                    <div className="relative min-w-0">
-                        <div className="grid grid-cols-[repeat(5,minmax(0,1fr))_52px] items-start gap-4 xl:gap-5">
-                            {ProcessData.map((Process, Index) => (
-                                <ProcessItem
-                                    key={Process.id}
-                                    item={Process}
-                                    index={Index}
-                                    isActive={
-                                        ActiveStep === Index
-                                    }
-                                />
-                            ))}
+                    <div className="relative min-w-0 w-full">
+                        <div className="how-it-works-process-grid grid grid-cols-[repeat(5,minmax(0,1fr))_52px] items-start gap-4 xl:gap-5">
+                            {ProcessData.map(
+                                (
+                                    Process,
+                                    Index,
+                                ) => (
+                                    <ProcessItem
+                                        key={
+                                            Process.id
+                                        }
+                                        item={
+                                            Process
+                                        }
+                                        index={
+                                            Index
+                                        }
+                                        isActive={
+                                            ActiveStep ===
+                                            Index
+                                        }
+                                    />
+                                ),
+                            )}
 
                             {/* =================================================
                                 RIGHT PREMIUM ARROW
@@ -487,9 +547,11 @@ const HowItWorks = () => {
 
                             <button
                                 type="button"
-                                onClick={HandleNextStep}
+                                onClick={
+                                    HandleNextStep
+                                }
                                 aria-label="Next process step"
-                                className="group relative mt-[1px] flex h-[52px] w-[52px] items-center justify-center rounded-full border border-cyan-300/20 bg-[radial-gradient(circle_at_34%_28%,rgba(39,146,255,0.30),rgba(8,31,70,0.95)_55%,rgba(3,13,31,0.98))] shadow-[0_12px_28px_rgba(0,0,0,0.40),0_0_28px_rgba(22,119,255,0.11),inset_0_1px_0_rgba(255,255,255,0.15)] transition-all duration-500 hover:-translate-y-1 hover:border-cyan-200/45 hover:shadow-[0_16px_35px_rgba(0,0,0,0.46),0_0_35px_rgba(25,211,255,0.18),inset_0_1px_0_rgba(255,255,255,0.20)]"
+                                className="how-it-works-next-button ml-8 sm:ml-0 group relative mt-[1px] flex h-[52px] w-[52px] items-center justify-center rounded-full border border-cyan-300/20 bg-[radial-gradient(circle_at_34%_28%,rgba(39,146,255,0.30),rgba(8,31,70,0.95)_55%,rgba(3,13,31,0.98))] shadow-[0_12px_28px_rgba(0,0,0,0.40),0_0_28px_rgba(22,119,255,0.11),inset_0_1px_0_rgba(255,255,255,0.15)] transition-all duration-500 hover:-translate-y-1 hover:border-cyan-200/45 hover:shadow-[0_16px_35px_rgba(0,0,0,0.46),0_0_35px_rgba(25,211,255,0.18),inset_0_1px_0_rgba(255,255,255,0.20)]"
                             >
                                 {/* Rear depth */}
                                 <span className="absolute inset-[4px] translate-y-[5px] rounded-full bg-[#020B20]/90" />
@@ -666,6 +728,11 @@ const HowItWorks = () => {
                         infinite;
                 }
 
+                .process-start-connector,
+                .process-last-connector {
+                    display: none;
+                }
+
                 @keyframes processNodeFlipDrop {
                     0% {
                         transform:
@@ -825,18 +892,20 @@ const HowItWorks = () => {
                     0%,
                     100% {
                         opacity: 0.35;
-                        filter: drop-shadow(
-                            0 0 2px
-                            rgba(25,211,255,0.25)
-                        );
+                        filter:
+                            drop-shadow(
+                                0 0 2px
+                                rgba(25,211,255,0.25)
+                            );
                     }
 
                     50% {
                         opacity: 1;
-                        filter: drop-shadow(
-                            0 0 9px
-                            rgba(25,211,255,0.85)
-                        );
+                        filter:
+                            drop-shadow(
+                                0 0 9px
+                                rgba(25,211,255,0.85)
+                            );
                     }
                 }
 
@@ -857,17 +926,336 @@ const HowItWorks = () => {
                     }
                 }
 
+                /*
+                 * =================================================
+                 * PHONE ONLY
+                 * Laptop + Tablet remain untouched.
+                 * =================================================
+                 */
+
                 @media (max-width: 767px) {
-                    .process-route-flow,
+                    /*
+                     * Intro -> process gap.
+                     */
+                    .how-it-works-layout {
+                        row-gap: 37px;
+                    }
+
+                    /*
+                     * Phone process grid:
+                     *
+                     * Row 1:
+                     * 01 -> 02 -> 03
+                     *
+                     * Row 2:
+                     * Arrow <- 05 <- 04
+                     */
+                    .how-it-works-process-grid {
+                        grid-template-columns:
+                            repeat(
+                                3,
+                                minmax(0, 1fr)
+                            );
+
+                        column-gap: 10px;
+                        row-gap: 28px;
+                    }
+
+                    /*
+                     * Visual order.
+                     */
+                    .how-it-works-step-0 {
+                        order: 1;
+                    }
+
+                    .how-it-works-step-1 {
+                        order: 2;
+                    }
+
+                    .how-it-works-step-2 {
+                        order: 3;
+                    }
+
+                    .how-it-works-next-button {
+                        order: 4;
+                    }
+
+                    .how-it-works-step-4 {
+                        order: 5;
+                    }
+
+                    .how-it-works-step-3 {
+                        order: 6;
+                    }
+
+                    /*
+                     * Hide descriptions/detail only on phone.
+                     */
+                    .process-item-description,
+                    .process-item-detail {
+                        display: none;
+                    }
+
+                    /*
+                     * Compact process items.
+                     */
+                    .how-it-works-item {
+                        min-height: 86px;
+                    }
+
+                    /*
+                     * Keep final button in row 2 / col 1.
+                     */
+                    .how-it-works-next-button {
+                        justify-self: stretch;
+                        align-self: start;
+                        margin-top: 0;
+                        width: 52px;
+                        height: 52px;
+                    }
+
+                    /*
+                     * =================================================
+                     * START -> 01
+                     * Same visual language as normal connectors.
+                     * =================================================
+                     */
+
+                    .process-start-connector {
+                        display: block;
+                        left: -24px;
+                        top: 25px;
+                        width: 24px;
+                        height: 14px;
+                    }
+
+                    .process-start-flow {
+                        animation:
+                            processStartFlow
+                            2.4s
+                            linear
+                            infinite;
+                    }
+
+                    /*
+                     * =================================================
+                     * 03 -> 04
+                     * Vertical turn + DOWN arrow.
+                     * =================================================
+                     */
+
+                    .how-it-works-step-2
+                        .how-it-works-connector {
+                        left: 50%;
+                        right: auto;
+                        top: 47px;
+                        width: 22px;
+                        height: 68px;
+                        transform:
+                            translateX(-50%);
+                    }
+
+                    /*
+                     * Main vertical route.
+                     */
+                    .how-it-works-step-2
+                        .how-it-works-connector
+                        > div:nth-child(1) {
+                        left: 50%;
+                        right: auto;
+                        top: 0;
+                        width: 1px;
+                        height: 58px;
+                        background:
+                            linear-gradient(
+                                to bottom,
+                                rgba(25,211,255,0.78),
+                                rgba(22,119,255,0.24)
+                            ) !important;
+                        box-shadow:
+                            0 0 8px
+                            rgba(25,211,255,0.14) !important;
+                        border-radius:
+                            999px;
+                        transform:
+                            translateX(-50%);
+                    }
+
+                    /*
+                     * Secondary route hidden.
+                     */
+                    .how-it-works-step-2
+                        .how-it-works-connector
+                        > div:nth-child(2) {
+                        display: none;
+                    }
+
+                    /*
+                     * Moving highlight DOWN.
+                     */
+                    .how-it-works-step-2
+                        .how-it-works-connector
+                        .process-route-flow {
+                        display: block;
+                        left: 50%;
+                        right: auto;
+                        top: 0;
+                        width: 3px;
+                        height: 18px;
+                        transform:
+                            translateX(-50%);
+                        animation:
+                            processRouteTurnFlow
+                            2.4s
+                            linear
+                            infinite;
+                    }
+
+                    /*
+                     * Down-facing arrow.
+                     */
+                    .how-it-works-step-2
+                        .how-it-works-connector
+                        .process-route-arrow {
+                        display: block;
+                        left: 50%;
+                        right: auto;
+                        top: auto;
+                        bottom: 0;
+                        width: 7px;
+                        height: 7px;
+                        border-right:
+                            1px solid
+                            #C8F8FF;
+                        border-top:
+                            1px solid
+                            #C8F8FF;
+                        transform:
+                            translateX(-50%)
+                            rotate(135deg);
+                    }
+
+                    /*
+                     * =================================================
+                     * 04 -> 05
+                     * RIGHT -> LEFT
+                     * =================================================
+                     */
+
+                    .how-it-works-step-3
+                        .how-it-works-connector {
+                        left: -31px;
+                        right: auto;
+                        top: 25px;
+                        width: 52px;
+                        height: 14px;
+                        transform: none;
+                    }
+
+                    /*
+                     * Keep the normal straight route,
+                     * but mirror its visual gradient direction.
+                     */
+                    .how-it-works-step-3
+                        .how-it-works-connector
+                        > div:nth-child(1) {
+                        left: 0;
+                        right: 0;
+                        transform:
+                            scaleX(-1);
+                    }
+
+                    .how-it-works-step-3
+                        .how-it-works-connector
+                        > div:nth-child(2) {
+                        left: 0;
+                        right: 0;
+                        transform:
+                            scaleX(-1);
+                    }
+
+                    /*
+                     * Moving highlight travels
+                     * from right to left.
+                     */
+                    .how-it-works-step-3
+                        .how-it-works-connector
+                        .process-route-flow {
+                        left: auto;
+                        right: 0;
+                        animation:
+                            processRouteFlowReverse
+                            2.4s
+                            linear
+                            infinite;
+                    }
+
+                    /*
+                     * LEFT-facing arrowhead.
+                     */
+                    .how-it-works-step-3
+                        .how-it-works-connector
+                        .process-route-arrow {
+                        display: block;
+                        left: 0;
+                        right: auto;
+                        top: 50%;
+                        width: 7px;
+                        height: 7px;
+                        transform:
+                            translateY(-50%)
+                            rotate(-135deg);
+                    }
+
+                    /*
+                     * =================================================
+                     * 05 -> FINAL ARROW BUTTON
+                     * RIGHT -> LEFT
+                     * =================================================
+                     */
+
+                    .process-last-connector {
+                        display: block;
+                        left: -31px;
+                        top: 25px;
+                        width: 52px;
+                        height: 14px;
+                    }
+
+                    .process-last-flow {
+                        left: auto;
+                        right: 0;
+                        animation:
+                            processLastFlowReverse
+                            2.4s
+                            linear
+                            infinite;
+                    }
+
+                    /*
+                     * LEFT-facing arrowhead close to the
+                     * final Arrow button.
+                     */
+                    .process-last-arrow {
+                        left: 0;
+                        right: auto;
+                        transform:
+                            translateY(-50%)
+                            rotate(-135deg);
+                    }
+
+                    /*
+                     * Phone only:
+                     * hide old intro route animations.
+                     */
                     .how-it-works-intro-dot,
                     .how-it-works-end-glow {
                         display: none;
                     }
 
-                    .how-it-works-item {
-                        min-height: 118px;
-                    }
-
+                    /*
+                     * Active state.
+                     */
                     .how-it-works-item-active {
                         transform:
                             translateY(-2px)
@@ -883,6 +1271,108 @@ const HowItWorks = () => {
                     }
                 }
 
+                /*
+                 * =================================================
+                 * PHONE CONNECTOR ANIMATIONS
+                 * =================================================
+                 */
+
+                @keyframes processStartFlow {
+                    0% {
+                        transform:
+                            translateX(-8px);
+                        opacity: 0;
+                    }
+
+                    15% {
+                        opacity: 1;
+                    }
+
+                    80% {
+                        opacity: 1;
+                    }
+
+                    100% {
+                        transform:
+                            translateX(22px);
+                        opacity: 0;
+                    }
+                }
+
+                @keyframes processRouteTurnFlow {
+                    0% {
+                        transform:
+                            translate3d(
+                                -50%,
+                                -8px,
+                                0
+                            );
+                        opacity: 0;
+                    }
+
+                    15% {
+                        opacity: 1;
+                    }
+
+                    80% {
+                        opacity: 1;
+                    }
+
+                    100% {
+                        transform:
+                            translate3d(
+                                -50%,
+                                48px,
+                                0
+                            );
+                        opacity: 0;
+                    }
+                }
+
+                @keyframes processRouteFlowReverse {
+                    0% {
+                        transform:
+                            translateX(24px);
+                        opacity: 0;
+                    }
+
+                    15% {
+                        opacity: 1;
+                    }
+
+                    80% {
+                        opacity: 1;
+                    }
+
+                    100% {
+                        transform:
+                            translateX(-8px);
+                        opacity: 0;
+                    }
+                }
+
+                @keyframes processLastFlowReverse {
+                    0% {
+                        transform:
+                            translateX(24px);
+                        opacity: 0;
+                    }
+
+                    15% {
+                        opacity: 1;
+                    }
+
+                    80% {
+                        opacity: 1;
+                    }
+
+                    100% {
+                        transform:
+                            translateX(-8px);
+                        opacity: 0;
+                    }
+                }
+
                 @media (prefers-reduced-motion: reduce) {
                     .process-node:hover
                         .process-node-badge,
@@ -890,6 +1380,8 @@ const HowItWorks = () => {
                         .process-number-chip,
                     .process-route-flow,
                     .process-node-signal,
+                    .process-start-flow,
+                    .process-last-flow,
                     .how-it-works-intro-dot,
                     .how-it-works-end-glow {
                         animation: none !important;

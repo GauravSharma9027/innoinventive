@@ -1,6 +1,7 @@
 import CTASection from '../../components/commonSection/CTASection'
 import Stats from '../../components/commonSection/Stats'
 import AutomationExperience from './sections/AutomationExperience'
+
 import FeaturedWork from './sections/FeaturedWork'
 import Hero from './sections/Hero'
 import HowItWorks from './sections/HowItWorks'

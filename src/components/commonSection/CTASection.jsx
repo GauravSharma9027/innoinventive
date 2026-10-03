@@ -202,7 +202,7 @@ const CtaVisual = () => {
             </div>
 
             {/* Center Logo */}
-            <div className="absolute left-[51%] top-[58%] z-10 -translate-x-1/2 -translate-y-1/2">
+            <div className="absolute left-[51%] top-[58%] z-10 -translate-x-1/2 -translate-y-1/2 hidden sm:block">
                 <div className="cta-logo-float relative flex h-[150px] w-[150px] items-center justify-center rounded-full border border-white/15 bg-[#061633]/25 shadow-[0_20px_55px_rgba(0,0,0,0.22),inset_0_1px_0_rgba(255,255,255,0.12)] backdrop-blur-md">
                     <div className="absolute inset-3 rounded-full border border-white/10" />
 

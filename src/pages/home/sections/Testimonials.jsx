@@ -1,17 +1,21 @@
 import {
+    Activity,
     ArrowLeft,
     ArrowRight,
+    ArrowUpRight,
     BrainCircuit,
     CheckCircle2,
+    Clock3,
     MessageSquareQuote,
     Quote,
+    ShieldCheck,
     Sparkles,
-    Stars,
     TrendingUp,
     Workflow,
     Zap,
 } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
+import { motion } from "framer-motion";
 
 import PremiumIconBadge from "../../../components/UI/PremiumIconBadge";
 
@@ -33,6 +37,7 @@ const TestimonialsData = [
         resultLabel: "Less manual work",
         activity: "Workflow optimized",
         status: "Automation active",
+        responseTime: "2.4× faster",
         theme: "cyan",
     },
     {
@@ -48,6 +53,7 @@ const TestimonialsData = [
         resultLabel: "Faster processing",
         activity: "Systems synchronized",
         status: "AI workflows running",
+        responseTime: "94% synced",
         theme: "violet",
     },
     {
@@ -63,27 +69,9 @@ const TestimonialsData = [
         resultLabel: "Higher productivity",
         activity: "AI automation running",
         status: "Growth engine online",
+        responseTime: "24/7 active",
         theme: "blue",
     },
-];
-
-/* =========================================================
-   CAROUSEL CONFIG
-========================================================= */
-
-const CARD_WIDTH = 570;
-const CARD_GAP = 28;
-const CARD_STEP = CARD_WIDTH + CARD_GAP;
-const CARD_HALF = CARD_WIDTH / 2;
-
-/*
- * 3 copies allow the carousel to move continuously and
- * then silently reset to the middle copy after animation.
- */
-const CarouselItems = [
-    ...TestimonialsData,
-    ...TestimonialsData,
-    ...TestimonialsData,
 ];
 
 /* =========================================================
@@ -92,129 +80,249 @@ const CarouselItems = [
 
 const TestimonialThemes = {
     cyan: {
-        border: "border-cyan-300/25",
-        softBorder: "border-cyan-300/15",
-        glow: "bg-cyan-400/[0.10]",
+        border: "border-cyan-300/20",
+        strongBorder: "border-cyan-300/35",
+        glow: "bg-cyan-400/[0.12]",
+        softGlow: "bg-cyan-400/[0.06]",
         icon: "text-cyan-200",
         accent: "bg-cyan-300",
         accentText: "text-cyan-200",
-        accentBackground: "bg-cyan-300/[0.055]",
+        accentBackground: "bg-cyan-300/[0.06]",
+        accentGradient:
+            "from-cyan-300 via-sky-400 to-blue-500",
     },
 
     violet: {
-        border: "border-violet-300/25",
-        softBorder: "border-violet-300/15",
-        glow: "bg-violet-400/[0.10]",
+        border: "border-violet-300/20",
+        strongBorder: "border-violet-300/35",
+        glow: "bg-violet-400/[0.12]",
+        softGlow: "bg-violet-400/[0.06]",
         icon: "text-violet-200",
         accent: "bg-violet-300",
         accentText: "text-violet-200",
-        accentBackground: "bg-violet-300/[0.055]",
+        accentBackground: "bg-violet-300/[0.06]",
+        accentGradient:
+            "from-violet-300 via-fuchsia-400 to-blue-500",
     },
 
     blue: {
-        border: "border-blue-300/25",
-        softBorder: "border-blue-300/15",
-        glow: "bg-blue-400/[0.10]",
+        border: "border-blue-300/20",
+        strongBorder: "border-blue-300/35",
+        glow: "bg-blue-400/[0.12]",
+        softGlow: "bg-blue-400/[0.06]",
         icon: "text-blue-100",
         accent: "bg-blue-300",
         accentText: "text-blue-100",
-        accentBackground: "bg-blue-300/[0.055]",
+        accentBackground: "bg-blue-300/[0.06]",
+        accentGradient:
+            "from-blue-300 via-cyan-400 to-violet-400",
     },
 };
 
 /* =========================================================
-   HOLOGRAPHIC IDENTITY
+   HELPER
 ========================================================= */
 
-const HolographicIdentity = ({
+const GetTheme = (ThemeName) => {
+    return (
+        TestimonialThemes[ThemeName] ||
+        TestimonialThemes.cyan
+    );
+};
+
+/* =========================================================
+   IDENTITY POD
+========================================================= */
+
+const TestimonialIdentity = ({
     testimonial,
     theme,
     compact = false,
 }) => {
-    const SizeClasses = compact
-        ? {
-            wrapper: "h-[46px] w-[46px]",
-            outer: "h-[42px] w-[42px]",
-            inner: "h-[33px] w-[33px]",
-            core: "h-[32px] w-[32px]",
-            text: "text-[8px]",
-        }
-        : {
-            wrapper: "h-[62px] w-[62px]",
-            outer: "h-[58px] w-[58px]",
-            inner: "h-[45px] w-[45px]",
-            core: "h-[42px] w-[42px]",
-            text: "text-[11px]",
-        };
-
     return (
         <div
             className={[
-                "relative flex items-center justify-center [perspective:900px]",
-                SizeClasses.wrapper,
+                "relative flex shrink-0 items-center justify-center [perspective:1000px]",
+                compact
+                    ? "h-[62px] w-[62px]"
+                    : "h-[72px] w-[72px] sm:h-[78px] sm:w-[78px]",
             ].join(" ")}
         >
-            {/* Glow */}
-            <span
+            {/* Outer aura */}
+            <motion.span
                 className={[
-                    "pointer-events-none absolute -inset-3 rounded-full blur-xl",
+                    "pointer-events-none absolute rounded-full blur-2xl",
+                    compact ? "-inset-7" : "-inset-10",
                     theme.glow,
                 ].join(" ")}
+                animate={{
+                    scale: [0.92, 1.08, 0.92],
+                    opacity: [0.35, 0.62, 0.35],
+                }}
+                transition={{
+                    duration: 4.5,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                }}
             />
 
-            {/* Outer orbit */}
-            <span
-                className={[
-                    "testimonial-orbit absolute rounded-full border border-cyan-300/10",
-                    SizeClasses.outer,
-                ].join(" ")}
+            {/* Orbit ring */}
+            <motion.span
+                className="absolute inset-0 rounded-full border border-cyan-200/10"
+                animate={{
+                    rotate: 360,
+                }}
+                transition={{
+                    duration: 8,
+                    repeat: Infinity,
+                    ease: "linear",
+                }}
             />
 
-            {/* Inner orbit */}
-            <span
-                className={[
-                    "testimonial-orbit-reverse absolute rounded-full border border-violet-300/10",
-                    SizeClasses.inner,
-                ].join(" ")}
+            {/* Reverse ring */}
+            <motion.span
+                className="absolute rounded-full border border-violet-200/10"
+                style={{
+                    inset: compact ? 6 : 7,
+                }}
+                animate={{
+                    rotate: -360,
+                }}
+                transition={{
+                    duration: 6,
+                    repeat: Infinity,
+                    ease: "linear",
+                }}
             />
 
             {/* Core */}
             <div
                 className={[
                     "relative z-10 flex items-center justify-center rounded-full border",
-                    theme.border,
-                    SizeClasses.core,
-                    "bg-[radial-gradient(circle_at_35%_30%,rgba(255,255,255,0.14),rgba(8,26,55,0.96)_52%,rgba(2,10,25,1))]",
-                    "shadow-[0_10px_22px_rgba(0,0,0,0.42),0_0_24px_rgba(25,211,255,0.08),inset_0_1px_0_rgba(255,255,255,0.16)]",
+                    theme.strongBorder,
+                    compact
+                        ? "h-[45px] w-[45px]"
+                        : "h-[54px] w-[54px] sm:h-[58px] sm:w-[58px]",
+                    "bg-[radial-gradient(circle_at_32%_28%,rgba(255,255,255,0.17),rgba(8,28,62,0.98)_48%,rgba(2,10,25,1))]",
+                    "shadow-[0_18px_35px_rgba(0,0,0,0.42),inset_0_1px_0_rgba(255,255,255,0.16)]",
                 ].join(" ")}
             >
-                <span
-                    className={[
-                        "absolute inset-[4px] rounded-full border opacity-50",
-                        theme.softBorder,
-                    ].join(" ")}
-                />
+                <span className="absolute inset-[5px] rounded-full border border-white/[0.055]" />
 
                 <span
                     className={[
-                        "relative z-10 font-semibold tracking-[0.08em] text-white",
-                        SizeClasses.text,
+                        "relative z-10 font-semibold tracking-[0.1em] text-white",
+                        compact
+                            ? "text-[9px]"
+                            : "text-[11px] sm:text-[12px]",
                     ].join(" ")}
                 >
                     {testimonial.initials}
                 </span>
 
-                <span className="testimonial-identity-scan pointer-events-none absolute inset-0 rounded-full bg-gradient-to-b from-transparent via-cyan-300/[0.14] to-transparent" />
+                <motion.span
+                    className="absolute inset-0 rounded-full bg-gradient-to-b from-transparent via-cyan-200/[0.12] to-transparent"
+                    animate={{
+                        y: ["-120%", "120%"],
+                    }}
+                    transition={{
+                        duration: 2.8,
+                        repeat: Infinity,
+                        ease: "easeInOut",
+                    }}
+                />
             </div>
 
-            {/* Live signal */}
+            {/* Live dot */}
             <span
                 className={[
-                    "absolute right-[3px] top-[4px] z-20 rounded-full shadow-[0_0_9px_rgba(25,211,255,0.7)]",
+                    "absolute right-[4px] top-[7px] z-20 h-[7px] w-[7px] rounded-full shadow-[0_0_10px_rgba(25,211,255,0.75)]",
                     theme.accent,
-                    compact ? "h-[5px] w-[5px]" : "h-[6px] w-[6px]",
                 ].join(" ")}
             />
+        </div>
+    );
+};
+
+/* =========================================================
+   AUTOMATION NODE
+========================================================= */
+
+const AutomationNode = ({
+    icon: Icon,
+    label,
+    active,
+    theme,
+    compact = false,
+}) => {
+    return (
+        <div className="relative min-w-0 flex-1">
+            <div
+                className={[
+                    "relative flex flex-col items-center justify-center rounded-[13px] border px-2",
+                    compact
+                        ? "min-h-[48px]"
+                        : "min-h-[58px]",
+                    active
+                        ? theme.border
+                        : "border-white/[0.05]",
+                    active
+                        ? theme.accentBackground
+                        : "bg-white/[0.015]",
+                ].join(" ")}
+            >
+                {active && (
+                    <motion.span
+                        className={[
+                            "pointer-events-none absolute inset-0 rounded-[13px] opacity-50 blur-lg",
+                            theme.softGlow,
+                        ].join(" ")}
+                        animate={{
+                            opacity: [0.2, 0.45, 0.2],
+                        }}
+                        transition={{
+                            duration: 2.4,
+                            repeat: Infinity,
+                            ease: "easeInOut",
+                        }}
+                    />
+                )}
+
+                <div
+                    className={[
+                        "relative z-10 flex items-center justify-center rounded-lg border",
+                        compact
+                            ? "h-6 w-6"
+                            : "h-7 w-7",
+                        active
+                            ? theme.border
+                            : "border-white/[0.05]",
+                        active
+                            ? theme.accentBackground
+                            : "bg-white/[0.02]",
+                    ].join(" ")}
+                >
+                    <Icon
+                        size={compact ? 10 : 12}
+                        className={
+                            active
+                                ? theme.icon
+                                : "text-blue-100/35"
+                        }
+                    />
+                </div>
+
+                <span
+                    className={[
+                        "relative z-10 line-clamp-1 text-center font-medium uppercase tracking-[0.05em] text-blue-100/40",
+                        compact
+                            ? "mt-1 text-[5px]"
+                            : "mt-1.5 text-[6px] sm:text-[7px]",
+                    ].join(" ")}
+                >
+                    {label}
+                </span>
+            </div>
         </div>
     );
 };
@@ -225,11 +333,12 @@ const HolographicIdentity = ({
 
 const TestimonialAutomationFlow = ({
     theme,
+    desktopCompact = false,
 }) => {
     const FlowData = [
         {
             id: "feedback",
-            label: "Feedback Captured",
+            label: "Feedback",
             icon: MessageSquareQuote,
         },
         {
@@ -238,13 +347,13 @@ const TestimonialAutomationFlow = ({
             icon: BrainCircuit,
         },
         {
-            id: "followup",
-            label: "Follow-up Triggered",
+            id: "workflow",
+            label: "Workflow",
             icon: Workflow,
         },
         {
             id: "result",
-            label: "Result Measured",
+            label: "Measured",
             icon: TrendingUp,
         },
     ];
@@ -252,23 +361,35 @@ const TestimonialAutomationFlow = ({
     return (
         <div
             className={[
-                "mt-5 rounded-[15px] border p-3.5",
-                theme.softBorder,
+                "rounded-[17px] border",
+                desktopCompact
+                    ? "mt-3 p-2.5"
+                    : "mt-5 p-3 sm:p-3.5",
+                theme.border,
                 theme.accentBackground,
             ].join(" ")}
         >
-            <div className="flex items-center justify-between gap-3">
-                <div>
-                    <p className="text-[8px] font-semibold uppercase tracking-[0.16em] text-cyan-100/42">
-                        Client Automation
-                    </p>
+            {/* Header */}
+            <div className="flex items-center justify-between gap-4">
+                <div className="flex min-w-0 items-center gap-2">
+                    <Activity
+                        size={desktopCompact ? 10 : 11}
+                        className={theme.icon}
+                    />
 
-                    <p className="mt-1 text-[7px] text-blue-100/28">
-                        Feedback becomes an actionable workflow.
+                    <p
+                        className={[
+                            "truncate font-medium text-blue-100/32",
+                            desktopCompact
+                                ? "text-[6px]"
+                                : "text-[7px]",
+                        ].join(" ")}
+                    >
+                        Feedback becomes an automated growth loop.
                     </p>
                 </div>
 
-                <div className="flex shrink-0 items-center gap-1.5 rounded-full border border-emerald-300/10 bg-emerald-300/[0.04] px-2 py-1">
+                <div className="flex shrink-0 items-center gap-1.5 rounded-full border border-emerald-300/10 bg-emerald-300/[0.035] px-2 py-1.5">
                     <span className="relative flex h-[5px] w-[5px]">
                         <span className="absolute inset-0 animate-ping rounded-full bg-emerald-300 opacity-30" />
 
@@ -281,44 +402,62 @@ const TestimonialAutomationFlow = ({
                 </div>
             </div>
 
-            <div className="mt-3 grid grid-cols-4 gap-1.5">
+            {/* Nodes */}
+            <div
+                className={[
+                    "flex items-center",
+                    desktopCompact
+                        ? "mt-2 gap-1"
+                        : "mt-3 gap-1.5",
+                ].join(" ")}
+            >
                 {FlowData.map((Item, Index) => {
                     const Icon = Item.icon;
 
                     return (
                         <div
                             key={Item.id}
-                            className="relative min-w-0"
+                            className="flex min-w-0 flex-1 items-center gap-1"
                         >
-                            <div className="flex h-[56px] flex-col items-center justify-center rounded-xl border border-blue-300/10 bg-[#061A37]/65 px-1.5">
-                                <div
-                                    className={[
-                                        "flex h-7 w-7 items-center justify-center rounded-lg border",
-                                        theme.softBorder,
-                                        theme.accentBackground,
-                                    ].join(" ")}
-                                >
-                                    <Icon
-                                        size={11}
-                                        className={theme.icon}
-                                    />
-                                </div>
-
-                                <span className="mt-1.5 line-clamp-1 text-center text-[6px] font-medium text-blue-100/38">
-                                    {Item.label}
-                                </span>
-                            </div>
+                            <AutomationNode
+                                icon={Icon}
+                                label={Item.label}
+                                active
+                                theme={theme}
+                                compact={
+                                    desktopCompact
+                                }
+                            />
 
                             {Index <
                                 FlowData.length - 1 && (
-                                    <span className="testimonial-connector absolute -right-[7px] top-1/2 z-20 h-px w-[12px] -translate-y-1/2 bg-blue-300/12">
-                                        <span
+                                    <div className="relative h-px w-2 shrink-0 bg-white/[0.07] sm:w-3">
+                                        <motion.span
                                             className={[
-                                                "testimonial-connector-dot absolute left-[-10px] top-1/2 h-[3px] w-[10px] -translate-y-1/2 rounded-full",
+                                                "absolute left-0 top-1/2 -translate-y-1/2 rounded-full",
+                                                desktopCompact
+                                                    ? "h-[2px] w-[7px]"
+                                                    : "h-[3px] w-[10px]",
                                                 theme.accent,
                                             ].join(" ")}
+                                            animate={{
+                                                x: [0, 8],
+                                                opacity: [
+                                                    0,
+                                                    1,
+                                                    0,
+                                                ],
+                                            }}
+                                            transition={{
+                                                duration: 1.8,
+                                                repeat: Infinity,
+                                                ease: "linear",
+                                                delay:
+                                                    Index *
+                                                    0.3,
+                                            }}
                                         />
-                                    </span>
+                                    </div>
                                 )}
                         </div>
                     );
@@ -335,70 +474,153 @@ const TestimonialAutomationFlow = ({
 const TestimonialResultPanel = ({
     testimonial,
     theme,
+    desktopCompact = false,
 }) => {
     return (
-        <div className="mt-4 grid grid-cols-[1fr_auto] gap-2.5">
-            {/* Automation status */}
-            <div className="rounded-[14px] border border-blue-300/10 bg-[#061A37]/60 p-3">
-                <div className="flex items-center gap-2">
+        <div
+            className={[
+                "grid",
+                desktopCompact
+                    ? "mt-0 grid-cols-[minmax(0,1fr)_auto] gap-x-[10px] gap-y-[10px]"
+                    : "mt-4 grid-cols-1 gap-3 sm:grid-cols-[1fr_auto]",
+            ].join(" ")}
+        >
+            {/* Status */}
+            <div
+                className={[
+                    "rounded-[16px] border border-white/[0.06] bg-white/[0.018]",
+                    desktopCompact
+                        ? "p-2.5"
+                        : "p-3.5",
+                ].join(" ")}
+            >
+                <div className="flex items-center gap-2.5">
                     <div
                         className={[
-                            "flex h-7 w-7 items-center justify-center rounded-lg border",
-                            theme.softBorder,
+                            "flex shrink-0 items-center justify-center rounded-lg border",
+                            desktopCompact
+                                ? "h-6 w-6"
+                                : "h-8 w-8 rounded-xl",
+                            theme.border,
                             theme.accentBackground,
                         ].join(" ")}
                     >
                         <CheckCircle2
-                            size={12}
+                            size={desktopCompact ? 11 : 13}
                             className="text-emerald-300"
                         />
                     </div>
 
                     <div className="min-w-0">
-                        <p className="truncate text-[8px] font-semibold text-white/70">
-                            {testimonial.status}
-                        </p>
+                        <div className="flex items-center gap-2">
+                            <p
+                                className={[
+                                    "truncate font-semibold text-white/75",
+                                    desktopCompact
+                                        ? "text-[7px]"
+                                        : "text-[8px]",
+                                ].join(" ")}
+                            >
+                                {testimonial.status}
+                            </p>
 
-                        <p className="mt-0.5 text-[7px] leading-[1.35] text-blue-100/28">
-                            Follow-up and engagement actions are handled automatically.
+                            <span className="hidden rounded-full border border-emerald-300/10 bg-emerald-300/[0.035] px-1.5 py-0.5 text-[5px] font-semibold uppercase tracking-[0.1em] text-emerald-100/45 sm:inline-block">
+                                Running
+                            </span>
+                        </div>
+
+                        <p
+                            className={[
+                                "text-blue-100/30",
+                                desktopCompact
+                                    ? "mt-0.5 text-[6px] leading-[1.25]"
+                                    : "mt-1 text-[7px] leading-[1.4]",
+                            ].join(" ")}
+                        >
+                            Follow-up and engagement actions handled automatically.
                         </p>
                     </div>
                 </div>
 
-                <div className="mt-3 flex items-center gap-2">
+                <div
+                    className={[
+                        "flex items-center gap-2",
+                        desktopCompact
+                            ? "mt-2"
+                            : "mt-3",
+                    ].join(" ")}
+                >
                     <div className="relative h-[4px] flex-1 overflow-hidden rounded-full bg-white/[0.05]">
-                        <span
+                        <motion.span
                             className={[
-                                "testimonial-progress absolute inset-y-0 left-0 rounded-full",
-                                theme.accent,
+                                "absolute inset-y-0 left-0 rounded-full bg-gradient-to-r",
+                                theme.accentGradient,
                             ].join(" ")}
+                            animate={{
+                                width: [
+                                    "18%",
+                                    "82%",
+                                    "68%",
+                                    "94%",
+                                ],
+                            }}
+                            transition={{
+                                duration: 3.8,
+                                repeat: Infinity,
+                                ease: "easeInOut",
+                            }}
                         />
                     </div>
 
-                    <span className="text-[6px] font-semibold uppercase tracking-[0.12em] text-emerald-100/35">
+                    <span className="text-[5px] font-semibold uppercase tracking-[0.11em] text-emerald-100/35">
                         Active
                     </span>
                 </div>
             </div>
 
             {/* Result */}
-            <div className="min-w-[106px] rounded-[14px] border border-blue-300/10 bg-[#061A37]/60 p-3 text-right">
-                <div className="flex items-center justify-end gap-1.5">
-                    <TrendingUp
-                        size={10}
+            <div
+                className={[
+                    "rounded-[16px] border",
+                    desktopCompact
+                        ? "min-w-[84px] p-2.5"
+                        : "p-3.5 sm:min-w-[128px]",
+                    theme.border,
+                    theme.accentBackground,
+                ].join(" ")}
+            >
+                <div className="flex items-center justify-between gap-2">
+                    <span className="text-[6px] font-semibold uppercase tracking-[0.13em] text-blue-100/30">
+                        Impact
+                    </span>
+
+                    <ArrowUpRight
+                        size={desktopCompact ? 9 : 11}
                         className={theme.icon}
                     />
+                </div>
 
-                    <span className="text-[6px] font-semibold uppercase tracking-[0.12em] text-blue-100/28">
-                        Result
+                <div className="mt-1 flex items-end gap-1.5">
+                    <span
+                        className={[
+                            "font-semibold leading-none tracking-[-0.06em] text-white",
+                            desktopCompact
+                                ? "text-[23px]"
+                                : "text-[26px]",
+                        ].join(" ")}
+                    >
+                        {testimonial.result}
                     </span>
                 </div>
 
-                <p className="mt-1.5 text-[21px] font-semibold leading-none text-white">
-                    {testimonial.result}
-                </p>
-
-                <p className="mt-1 text-[6px] text-cyan-100/40">
+                <p
+                    className={[
+                        "font-medium text-cyan-100/42",
+                        desktopCompact
+                            ? "mt-1 text-[5.5px]"
+                            : "mt-1 text-[6px]",
+                    ].join(" ")}
+                >
                     {testimonial.resultLabel}
                 </p>
             </div>
@@ -413,92 +635,146 @@ const TestimonialResultPanel = ({
 const TestimonialCard = ({
     testimonial,
     isCenter = false,
+    desktopCompact = false,
 }) => {
-    const theme =
-        TestimonialThemes[testimonial.theme] ||
-        TestimonialThemes.cyan;
+    const theme = GetTheme(testimonial.theme);
 
     return (
-        <div
-            className={[
-                "relative h-[350px] w-[570px] shrink-0 [perspective:1600px]",
-                isCenter
-                    ? "testimonial-center-card"
-                    : "testimonial-side-card-inner",
-            ].join(" ")}
+        <motion.article
+            className="group relative h-full w-full [perspective:1800px]"
+            whileHover={{
+                y: -6,
+            }}
+            transition={{
+                duration: 0.4,
+                ease: [0.16, 1, 0.3, 1],
+            }}
         >
-            {/* Rear depth */}
+            {/* Deep shadow layer */}
             <div
                 className={[
-                    "absolute inset-x-5 bottom-[-8px] top-[8px] rounded-[21px] border bg-[#020B20]/90",
-                    theme.softBorder,
+                    "pointer-events-none absolute rounded-[28px] border bg-[#020814]/75",
+                    desktopCompact
+                        ? "inset-x-3 bottom-[-11px] top-[11px]"
+                        : "inset-x-4 bottom-[-14px] top-[15px]",
+                    theme.border,
                 ].join(" ")}
             />
 
-            <div className="absolute inset-x-10 bottom-[-13px] top-[13px] rounded-[18px] border border-blue-500/[0.07] bg-[#020817]/80" />
-
-            {/* Glow */}
+            {/* Lower depth layer */}
             <div
                 className={[
-                    "pointer-events-none absolute -inset-4 rounded-[28px] blur-3xl",
-                    isCenter
-                        ? "opacity-65"
-                        : "opacity-25",
+                    "pointer-events-none absolute rounded-[25px] border border-blue-300/[0.05] bg-[#020713]/70",
+                    desktopCompact
+                        ? "inset-x-6 bottom-[-15px] top-[17px]"
+                        : "inset-x-8 bottom-[-20px] top-[22px]",
+                ].join(" ")}
+            />
+
+            {/* Main atmosphere */}
+            <motion.div
+                className={[
+                    "pointer-events-none absolute rounded-[35px] blur-3xl",
+                    desktopCompact
+                        ? "-inset-5"
+                        : "-inset-7",
                     theme.glow,
                 ].join(" ")}
+                animate={{
+                    scale: [0.95, 1.05, 0.95],
+                    opacity: isCenter
+                        ? [0.28, 0.5, 0.28]
+                        : [0.12, 0.22, 0.12],
+                }}
+                transition={{
+                    duration: 5.5,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                }}
             />
 
             {/* Main shell */}
             <div
                 className={[
-                    "relative h-full overflow-hidden rounded-[21px] border bg-[linear-gradient(145deg,rgba(9,36,77,0.98),rgba(3,15,35,0.99))]",
+                    "relative h-full overflow-hidden rounded-[27px] border",
                     theme.border,
-                    isCenter
-                        ? "shadow-[0_25px_55px_rgba(0,0,0,0.46),0_0_35px_rgba(22,119,255,0.09),inset_0_1px_0_rgba(255,255,255,0.11)]"
-                        : "shadow-[0_15px_32px_rgba(0,0,0,0.35),inset_0_1px_0_rgba(255,255,255,0.07)]",
+                    "bg-[linear-gradient(145deg,rgba(7,31,67,0.98),rgba(2,12,29,0.985))]",
+                    "shadow-[0_28px_80px_rgba(0,0,0,0.42),inset_0_1px_0_rgba(255,255,255,0.10)]",
                 ].join(" ")}
             >
-                {/* Top highlight */}
-                <span className="pointer-events-none absolute inset-x-8 top-0 h-px bg-gradient-to-r from-transparent via-white/45 to-transparent" />
+                {/* Glass highlight */}
+                <span className="pointer-events-none absolute inset-x-10 top-0 h-px bg-gradient-to-r from-transparent via-white/45 to-transparent" />
 
-                {/* Scan */}
-                <span className="testimonial-card-scan pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-cyan-100/55 to-transparent" />
+                {/* Moving scan */}
+                <motion.span
+                    className="pointer-events-none absolute left-[-20%] top-0 h-full w-[22%] rotate-[12deg] bg-gradient-to-r from-transparent via-cyan-200/[0.055] to-transparent blur-xl"
+                    animate={{
+                        x: ["0%", "620%"],
+                    }}
+                    transition={{
+                        duration: 5.5,
+                        repeat: Infinity,
+                        ease: "easeInOut",
+                        repeatDelay: 1.2,
+                    }}
+                />
 
                 {/* Grid */}
-                <div className="pointer-events-none absolute inset-0 opacity-[0.025] [background-image:linear-gradient(rgba(255,255,255,0.08)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.08)_1px,transparent_1px)] [background-size:32px_32px]" />
+                <div className="pointer-events-none absolute inset-0 opacity-[0.025] [background-image:linear-gradient(rgba(255,255,255,0.08)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.08)_1px,transparent_1px)] [background-size:36px_36px]" />
 
-                {/* Atmosphere */}
+                {/* Top atmosphere */}
                 <div
                     className={[
-                        "pointer-events-none absolute -right-[18%] -top-[34%] h-[250px] w-[250px] rounded-full blur-[90px]",
-                        theme.glow,
+                        "pointer-events-none absolute rounded-full blur-[100px]",
+                        desktopCompact
+                            ? "-right-[17%] -top-[34%] h-[220px] w-[220px]"
+                            : "-right-[15%] -top-[28%] h-[280px] w-[280px]",
+                        theme.softGlow,
                     ].join(" ")}
                 />
 
-                {/* Corners */}
-                <span className="pointer-events-none absolute left-4 top-4 h-5 w-5 border-l border-t border-cyan-300/10" />
-                <span className="pointer-events-none absolute right-4 top-4 h-5 w-5 border-r border-t border-cyan-300/10" />
-                <span className="pointer-events-none absolute bottom-4 left-4 h-5 w-5 border-b border-l border-cyan-300/[0.07]" />
-                <span className="pointer-events-none absolute bottom-4 right-4 h-5 w-5 border-b border-r border-cyan-300/[0.07]" />
+                {/* Bottom atmosphere */}
+                <div className="pointer-events-none absolute bottom-[-18%] left-[20%] h-[180px] w-[320px] rounded-full bg-blue-500/[0.045] blur-[90px]" />
 
-                {/* =================================================
-                    CONTENT
-                ================================================= */}
+                {/* Corner details */}
+                <span className="pointer-events-none absolute left-5 top-5 h-6 w-6 border-l border-t border-cyan-200/10" />
+                <span className="pointer-events-none absolute right-5 top-5 h-6 w-6 border-r border-t border-cyan-200/10" />
+                <span className="pointer-events-none absolute bottom-5 left-5 h-6 w-6 border-b border-l border-blue-300/[0.07]" />
+                <span className="pointer-events-none absolute bottom-5 right-5 h-6 w-6 border-b border-r border-blue-300/[0.07]" />
 
-                <div className="relative h-full p-5">
-                    {/* Header */}
-                    <div className="flex items-center justify-between">
-                        <div className="flex items-center gap-3">
-                            <HolographicIdentity
-                                testimonial={testimonial}
+                {/* Content */}
+                <div
+                    className={[
+                        "relative z-10 flex h-full flex-col",
+                        desktopCompact
+                            ? "p-5"
+                            : "p-5 sm:p-6 lg:p-7",
+                    ].join(" ")}
+                >
+                    {/* =============================================
+                        HEADER
+                    ============================================= */}
+
+                    <div className="flex items-start justify-between gap-3">
+                        <div className="flex min-w-0 items-center gap-3">
+                            <TestimonialIdentity
+                                testimonial={
+                                    testimonial
+                                }
                                 theme={theme}
+                                compact={
+                                    desktopCompact
+                                }
                             />
 
-                            <div>
-                                <div className="flex items-center gap-2">
+                            <div className="min-w-0">
+                                <div className="flex flex-wrap items-center gap-1.5">
                                     <span
                                         className={[
-                                            "rounded-full border px-2 py-1 text-[6px] font-semibold uppercase tracking-[0.15em]",
+                                            "rounded-full border px-2 py-1 font-semibold uppercase tracking-[0.15em]",
+                                            desktopCompact
+                                                ? "text-[5px]"
+                                                : "text-[5.5px]",
                                             theme.border,
                                             theme.accentBackground,
                                             theme.accentText,
@@ -507,363 +783,597 @@ const TestimonialCard = ({
                                         Client Signal
                                     </span>
 
-                                    <span className="flex items-center gap-1 text-[6px] font-medium uppercase tracking-[0.1em] text-emerald-100/45">
-                                        <span className="h-1.5 w-1.5 rounded-full bg-emerald-300 shadow-[0_0_6px_rgba(52,211,153,0.72)]" />
+                                    <span className="flex items-center gap-1 text-[6px] font-semibold uppercase tracking-[0.11em] text-emerald-100/45">
+                                        <ShieldCheck
+                                            size={9}
+                                            className="text-emerald-300"
+                                        />
+
                                         Verified
                                     </span>
                                 </div>
 
-                                <h3 className="mt-1.5 text-[16px] font-semibold tracking-tight text-white">
+                                <h3
+                                    className={[
+                                        "truncate font-semibold tracking-[-0.025em] text-white",
+                                        desktopCompact
+                                            ? "mt-1.5 text-[14px]"
+                                            : "mt-2 text-[17px] sm:text-[18px]",
+                                    ].join(" ")}
+                                >
                                     {testimonial.name}
                                 </h3>
 
-                                <p className="mt-0.5 text-[8px] font-medium text-blue-100/38">
-                                    {testimonial.role}
-                                </p>
+                                <div className="mt-1 flex flex-wrap items-center gap-x-2 gap-y-1">
+                                    <p
+                                        className={[
+                                            "font-medium text-blue-100/40",
+                                            desktopCompact
+                                                ? "text-[7px]"
+                                                : "text-[8px]",
+                                        ].join(" ")}
+                                    >
+                                        {testimonial.role}
+                                    </p>
+
+                                    <span className="h-[3px] w-[3px] rounded-full bg-cyan-300/30" />
+
+                                    <p
+                                        className={[
+                                            "font-medium text-cyan-100/35",
+                                            desktopCompact
+                                                ? "text-[7px]"
+                                                : "text-[8px]",
+                                        ].join(" ")}
+                                    >
+                                        {testimonial.company}
+                                    </p>
+                                </div>
                             </div>
                         </div>
 
-                        <div className="flex h-8 min-w-[32px] items-center justify-center rounded-full border border-blue-300/10 bg-blue-300/[0.025] px-2">
-                            <span className="text-[6px] font-semibold uppercase tracking-[0.16em] text-cyan-100/28">
-                                {testimonial.number}
-                            </span>
+                        {/* Number + signal */}
+                        <div className="flex shrink-0 items-center gap-2">
+                            <div className="hidden items-center gap-1.5 rounded-full border border-blue-300/10 bg-blue-300/[0.02] px-2.5 py-1.5 lg:flex">
+                                <Clock3
+                                    size={9}
+                                    className="text-cyan-300/65"
+                                />
+
+                                <span className="text-[6px] font-semibold uppercase tracking-[0.11em] text-blue-100/30">
+                                    {
+                                        testimonial.responseTime
+                                    }
+                                </span>
+                            </div>
+
+                            <div className="flex h-8 min-w-[34px] items-center justify-center rounded-full border border-blue-300/10 bg-blue-300/[0.02] px-2">
+                                <span className="text-[6px] font-semibold uppercase tracking-[0.15em] text-cyan-100/30">
+                                    {
+                                        testimonial.number
+                                    }
+                                </span>
+                            </div>
                         </div>
                     </div>
 
-                    {/* Quote */}
-                    <div className="relative mt-4">
-                        <Quote
-                            size={27}
-                            className="absolute -left-1 -top-2 text-cyan-300/10"
-                            fill="currentColor"
-                        />
+                    {/* =============================================
+                        MAIN BODY
+                    ============================================= */}
 
-                        <p className="relative max-w-[600px] pl-4 text-[12px] font-medium leading-[1.62] text-blue-50/78">
-                            {testimonial.quote}
-                        </p>
-                    </div>
+                    <div
+                        className={[
+                            "grid min-h-0 flex-1",
+                            desktopCompact
+                                ? "mt-3.5 grid-cols-[minmax(0,1fr)_205px] gap-4"
+                                : "mt-5 grid-cols-1 gap-5 lg:grid-cols-[minmax(0,1.3fr)_230px] lg:gap-7",
+                        ].join(" ")}
+                    >
+                        {/* LEFT */}
+                        <div className="flex min-w-0 flex-col">
+                            {/* Quote */}
+                            <div className="relative">
+                                <Quote
+                                    size={
+                                        desktopCompact
+                                            ? 28
+                                            : 36
+                                    }
+                                    fill="currentColor"
+                                    className="absolute -left-1 -top-2 text-cyan-300/[0.08]"
+                                />
 
-                    {/* Rating */}
-                    <div className="mt-4 flex items-center gap-3">
-                        <div className="flex items-center gap-1">
-                            {Array.from({ length: 5 }).map(
-                                (_, Index) => (
-                                    <Stars
-                                        key={Index}
-                                        size={10}
-                                        fill="currentColor"
-                                        className="text-amber-300 drop-shadow-[0_0_5px_rgba(251,191,36,0.32)]"
+                                <p
+                                    className={[
+                                        "relative pl-6 font-medium text-blue-50/76",
+                                        desktopCompact
+                                            ? "max-w-[430px] text-[10px] leading-[1.46]"
+                                            : "max-w-[700px] text-[12px] leading-[1.68] sm:text-[13px] lg:text-[14px]",
+                                    ].join(" ")}
+                                >
+                                    {
+                                        testimonial.quote
+                                    }
+                                </p>
+                            </div>
+
+                            {/* Clean verification row */}
+                            <div
+                                className={[
+                                    "flex items-center gap-2.5",
+                                    desktopCompact
+                                        ? "mt-2.5"
+                                        : "mt-4",
+                                ].join(" ")}
+                            >
+                                <div
+                                    className={[
+                                        "flex items-center gap-1.5 rounded-full border",
+                                        desktopCompact
+                                            ? "px-2 py-1"
+                                            : "px-2.5 py-1.5",
+                                        theme.border,
+                                        theme.accentBackground,
+                                    ].join(" ")}
+                                >
+                                    <ShieldCheck
+                                        size={
+                                            desktopCompact
+                                                ? 8
+                                                : 9
+                                        }
+                                        className="text-emerald-300"
                                     />
-                                ),
-                            )}
+
+                                    <span
+                                        className={[
+                                            "font-semibold uppercase tracking-[0.12em] text-cyan-100/42",
+                                            desktopCompact
+                                                ? "text-[5px]"
+                                                : "text-[6px]",
+                                        ].join(" ")}
+                                    >
+                                        Client feedback verified
+                                    </span>
+                                </div>
+                            </div>
+
+                            {/* Automation */}
+                            <div
+                                className={
+                                    desktopCompact
+                                        ? "mt-auto mb-[10px]"
+                                        : "mt-auto"
+                                }
+                            >
+                                <TestimonialAutomationFlow
+                                    theme={theme}
+                                    desktopCompact={
+                                        desktopCompact
+                                    }
+                                />
+                            </div>
                         </div>
 
-                        <span className="text-[6px] font-semibold uppercase tracking-[0.14em] text-blue-100/25">
-                            Client feedback verified
-                        </span>
+                        {/* RIGHT IMPACT MODULE */}
+                        <div className="flex min-w-0 flex-col">
+                            <div
+                                className={[
+                                    "relative flex-1 overflow-hidden rounded-[20px] border",
+                                    desktopCompact
+                                        ? "p-3"
+                                        : "p-4",
+                                    theme.border,
+                                    theme.accentBackground,
+                                ].join(" ")}
+                            >
+                                {/* Accent orbit */}
+                                <motion.div
+                                    className={[
+                                        "pointer-events-none absolute rounded-full border",
+                                        desktopCompact
+                                            ? "-right-6 -top-6 h-24 w-24"
+                                            : "-right-8 -top-8 h-28 w-28",
+                                        theme.border,
+                                    ].join(" ")}
+                                    animate={{
+                                        rotate: 360,
+                                    }}
+                                    transition={{
+                                        duration: 9,
+                                        repeat: Infinity,
+                                        ease: "linear",
+                                    }}
+                                />
+
+                                <div className="relative z-10">
+                                    <div className="flex items-center justify-between gap-2">
+                                        <div className="flex items-center gap-2">
+                                            <div
+                                                className={[
+                                                    "flex items-center justify-center rounded-lg border",
+                                                    desktopCompact
+                                                        ? "h-6 w-6"
+                                                        : "h-7 w-7",
+                                                    theme.border,
+                                                ].join(" ")}
+                                            >
+                                                <TrendingUp
+                                                    size={
+                                                        desktopCompact
+                                                            ? 10
+                                                            : 12
+                                                    }
+                                                    className={
+                                                        theme.icon
+                                                    }
+                                                />
+                                            </div>
+
+                                            <span
+                                                className={[
+                                                    "font-semibold uppercase tracking-[0.15em] text-blue-100/35",
+                                                    desktopCompact
+                                                        ? "text-[5px]"
+                                                        : "text-[7px]",
+                                                ].join(" ")}
+                                            >
+                                                Business Impact
+                                            </span>
+                                        </div>
+
+                                        <Sparkles
+                                            size={
+                                                desktopCompact
+                                                    ? 9
+                                                    : 11
+                                            }
+                                            className={
+                                                theme.icon
+                                            }
+                                        />
+                                    </div>
+
+                                    <p
+                                        className={[
+                                            "font-semibold uppercase tracking-[0.14em] text-blue-100/28",
+                                            desktopCompact
+                                                ? "mt-4 text-[5px]"
+                                                : "mt-6 text-[8px]",
+                                        ].join(" ")}
+                                    >
+                                        Reported Result
+                                    </p>
+
+                                    <div
+                                        className={[
+                                            "flex items-end gap-22",
+                                            desktopCompact
+                                                ? "mt-1.5"
+                                                : "mt-2",
+                                        ].join(" ")}
+                                    >
+                                        <span
+                                            className={[
+                                                "font-semibold leading-none tracking-[-0.06em] text-white",
+                                                desktopCompact
+                                                    ? "text-[34px]"
+                                                    : "text-[39px]",
+                                            ].join(" ")}
+                                        >
+                                            {
+                                                testimonial.result
+                                            }
+                                        </span>
+
+                                        <ArrowUpRight
+                                            size={
+                                                desktopCompact
+                                                    ? 12
+                                                    : 15
+                                            }
+                                            className={[
+                                                "mb-1.5",
+                                                theme.icon,
+                                            ].join(
+                                                " ",
+                                            )}
+                                        />
+                                    </div>
+
+                                    <p
+                                        className={[
+                                            "max-w-[160px] leading-[1.45] text-cyan-100/40",
+                                            desktopCompact
+                                                ? "mt-1 text-[6px]"
+                                                : "mt-2 text-[8px]",
+                                        ].join(" ")}
+                                    >
+                                        {
+                                            testimonial.resultLabel
+                                        }
+                                    </p>
+
+                                    <div
+                                        className={[
+                                            "rounded-[14px] border border-white/[0.06] bg-black/10",
+                                            desktopCompact
+                                                ? "mt-3 p-2"
+                                                : "mt-5 p-3",
+                                        ].join(" ")}
+                                    >
+                                        <div className="flex items-center justify-between gap-2">
+                                            <span className="text-[6px] font-semibold uppercase tracking-[0.13em] text-blue-100/28">
+                                                System Activity
+                                            </span>
+
+                                            <span className="flex items-center gap-1 text-[6px] font-semibold uppercase tracking-[0.1em] text-emerald-100/45">
+                                                <span className="h-1.5 w-1.5 rounded-full bg-emerald-300 shadow-[0_0_7px_rgba(52,211,153,0.72)]" />
+
+                                                Live
+                                            </span>
+                                        </div>
+
+                                        <p
+                                            className={[
+                                                "font-semibold text-white/70",
+                                                desktopCompact
+                                                    ? "mt-1.5 text-[7px]"
+                                                    : "mt-2 text-[9px]",
+                                            ].join(" ")}
+                                        >
+                                            {
+                                                testimonial.activity
+                                            }
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
-                    {/* Automation */}
-                    <TestimonialAutomationFlow
-                        theme={theme}
-                    />
+                    {/* =============================================
+                        RESULT / STATUS
+                    ============================================= */}
 
-                    {/* Result */}
                     <TestimonialResultPanel
-                        testimonial={testimonial}
+                        testimonial={
+                            testimonial
+                        }
                         theme={theme}
+                        desktopCompact={
+                            desktopCompact
+                        }
                     />
                 </div>
             </div>
-        </div>
+        </motion.article>
     );
 };
 
 /* =========================================================
-   POSITION STYLES
+   DESKTOP POSITION
 ========================================================= */
 
-const GetCardTransform = (Position) => {
-    if (Position === "center") {
-        return {
-            transform:
-                "translate3d(0,0,80px) scale(1)",
-            opacity: 1,
-            zIndex: 30,
-        };
+const GetDesktopOffset = (
+    Index,
+    ActiveIndex,
+    Total,
+) => {
+    let Offset = Index - ActiveIndex;
+
+    if (Offset > Total / 2) {
+        Offset -= Total;
     }
 
-    if (Position === "left") {
-        return {
-            transform:
-                "translate3d(0,0,-30px) scale(0.79) rotateY(10deg)",
-            opacity: 0.68,
-            zIndex: 20,
-        };
+    if (Offset < -Total / 2) {
+        Offset += Total;
     }
 
-    if (Position === "right") {
-        return {
-            transform:
-                "translate3d(0,0,-30px) scale(0.79) rotateY(-10deg)",
-            opacity: 0.68,
-            zIndex: 20,
-        };
-    }
-
-    return {
-        transform:
-            "translate3d(0,0,-90px) scale(0.62)",
-        opacity: 0,
-        zIndex: 5,
-    };
+    return Offset;
 };
 
 /* =========================================================
-   CAROUSEL
+   TESTIMONIALS
 ========================================================= */
 
 const Testimonials = () => {
-    /*
-     * Start from the middle copy.
-     *
-     * 0 1 2 | 3 4 5 | 6 7 8
-     *         ↑
-     *       starts here
-     */
-    const [TrackIndex, SetTrackIndex] = useState(
-        TestimonialsData.length,
-    );
+    const [ActiveIndex, SetActiveIndex] =
+        useState(0);
 
-    const [IsAnimating, SetIsAnimating] =
+    const [IsPaused, SetIsPaused] =
         useState(false);
-
-    const [TransitionEnabled, SetTransitionEnabled] =
-        useState(true);
-
-    const GetActiveRealIndex = (Index) => {
-        return (
-            ((Index % TestimonialsData.length) +
-                TestimonialsData.length) %
-            TestimonialsData.length
-        );
-    };
-
-    const ActiveIndex =
-        GetActiveRealIndex(TrackIndex);
-
-    /* =====================================================
-       MOVE NEXT
-    ===================================================== */
-
-    const MoveNext = () => {
-        if (IsAnimating) {
-            return;
-        }
-
-        SetIsAnimating(true);
-        SetTransitionEnabled(true);
-
-        SetTrackIndex((Current) => Current + 1);
-
-        window.setTimeout(() => {
-            SetTrackIndex((Current) => {
-                if (
-                    Current >=
-                    TestimonialsData.length * 2
-                ) {
-                    return TestimonialsData.length;
-                }
-
-                return Current;
-            });
-
-            SetTransitionEnabled(false);
-
-            window.requestAnimationFrame(() => {
-                window.requestAnimationFrame(() => {
-                    SetTransitionEnabled(true);
-                    SetIsAnimating(false);
-                });
-            });
-        }, 930);
-    };
-
-    /* =====================================================
-       MOVE PREVIOUS
-    ===================================================== */
-
-    const MovePrevious = () => {
-        if (IsAnimating) {
-            return;
-        }
-
-        SetIsAnimating(true);
-        SetTransitionEnabled(true);
-
-        SetTrackIndex((Current) => Current - 1);
-
-        window.setTimeout(() => {
-            SetTrackIndex((Current) => {
-                if (Current <= 1) {
-                    return (
-                        TestimonialsData.length * 2 -
-                        1
-                    );
-                }
-
-                return Current;
-            });
-
-            SetTransitionEnabled(false);
-
-            window.requestAnimationFrame(() => {
-                window.requestAnimationFrame(() => {
-                    SetTransitionEnabled(true);
-                    SetIsAnimating(false);
-                });
-            });
-        }, 930);
-    };
 
     /* =====================================================
        AUTO PLAY
-       ~3.3s HOLD + movement
     ===================================================== */
 
     useEffect(() => {
-        if (IsAnimating) {
+        if (IsPaused) {
             return undefined;
         }
 
-        const Timer = window.setTimeout(() => {
-            MoveNext();
-        }, 3600);
+        const Timer = window.setInterval(() => {
+            SetActiveIndex(
+                (Current) =>
+                    (Current + 1) %
+                    TestimonialsData.length,
+            );
+        }, 4600);
 
-        return () => window.clearTimeout(Timer);
-    }, [TrackIndex, IsAnimating]);
+        return () => {
+            window.clearInterval(Timer);
+        };
+    }, [IsPaused]);
 
     /* =====================================================
-       CARD POSITIONS
+       ACTIVE
     ===================================================== */
 
-    const VisibleCardData = CarouselItems.map(
-        (Testimonial, Index) => {
-            const RelativeIndex =
-                Index - TrackIndex;
+    const ActiveTestimonial =
+        TestimonialsData[ActiveIndex];
 
-            let Position = "hidden";
-
-            if (RelativeIndex === 0) {
-                Position = "center";
-            }
-
-            if (RelativeIndex === -1) {
-                Position = "left";
-            }
-
-            if (RelativeIndex === 1) {
-                Position = "right";
-            }
-
-            if (RelativeIndex === -2) {
-                Position = "farLeft";
-            }
-
-            if (RelativeIndex === 2) {
-                Position = "farRight";
-            }
-
-            return {
-                Testimonial,
-                Index,
-                Position,
-            };
-        },
+    const ActiveTheme = GetTheme(
+        ActiveTestimonial.theme,
     );
 
     /* =====================================================
-       RENDER
+       DESKTOP CARDS
     ===================================================== */
+
+    const DesktopCards = useMemo(() => {
+        return TestimonialsData.map(
+            (Testimonial, Index) => {
+                const Offset = GetDesktopOffset(
+                    Index,
+                    ActiveIndex,
+                    TestimonialsData.length,
+                );
+
+                return {
+                    Testimonial,
+                    Index,
+                    Offset,
+                };
+            },
+        );
+    }, [ActiveIndex]);
 
     return (
         <section
             id="testimonials"
-            className="relative h-[100vh] min-h-[620px] max-h-[820px] w-full overflow-hidden bg-[#061633] text-white"
+            className="relative w-full overflow-hidden bg-[#061633] text-white"
+            onMouseEnter={() =>
+                SetIsPaused(true)
+            }
+            onMouseLeave={() =>
+                SetIsPaused(false)
+            }
         >
-            {/* =====================================================
-                BACKGROUND
-            ===================================================== */}
+            {/* =================================================
+                BACKGROUND ATMOSPHERE
+            ================================================= */}
 
-            <div className="pointer-events-none absolute inset-0">
-                {/* Main atmosphere */}
-                <div className="absolute left-1/2 top-[60%] h-[330px] w-[920px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-blue-500/[0.035] blur-[125px]" />
+            <div className="pointer-events-none absolute inset-0 overflow-hidden">
+                {/* Main glow */}
+                <motion.div
+                    className="absolute left-1/2 top-[48%] h-[420px] w-[1050px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-blue-500/[0.045] blur-[140px]"
+                    animate={{
+                        scale: [0.96, 1.04, 0.96],
+                    }}
+                    transition={{
+                        duration: 9,
+                        repeat: Infinity,
+                        ease: "easeInOut",
+                    }}
+                />
 
                 {/* Cyan */}
-                <div className="absolute left-[5%] top-[36%] h-[190px] w-[240px] rounded-full bg-cyan-400/[0.018] blur-[90px]" />
+                <motion.div
+                    className="absolute left-[-5%] top-[36%] h-[220px] w-[260px] rounded-full bg-cyan-400/[0.025] blur-[100px]"
+                    animate={{
+                        x: [0, 28, 0],
+                        y: [0, -18, 0],
+                    }}
+                    transition={{
+                        duration: 11,
+                        repeat: Infinity,
+                        ease: "easeInOut",
+                    }}
+                />
 
                 {/* Violet */}
-                <div className="absolute right-[5%] top-[28%] h-[200px] w-[250px] rounded-full bg-violet-500/[0.02] blur-[100px]" />
+                <motion.div
+                    className="absolute right-[-5%] top-[24%] h-[240px] w-[280px] rounded-full bg-violet-500/[0.025] blur-[110px]"
+                    animate={{
+                        x: [0, -24, 0],
+                        y: [0, 20, 0],
+                    }}
+                    transition={{
+                        duration: 13,
+                        repeat: Infinity,
+                        ease: "easeInOut",
+                    }}
+                />
 
-                {/* Floor glow */}
-                <div className="absolute bottom-[5%] left-1/2 h-[90px] w-[72%] -translate-x-1/2 rounded-[50%] bg-blue-500/[0.05] blur-[70px]" />
+                {/* Floor */}
+                <div className="absolute bottom-[-5%] left-1/2 h-[110px] w-[72%] -translate-x-1/2 rounded-[50%] bg-cyan-400/[0.04] blur-[80px]" />
 
                 {/* Grid */}
-                <div className="absolute inset-0 opacity-[0.012] [background-image:linear-gradient(rgba(255,255,255,0.08)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.08)_1px,transparent_1px)] [background-size:64px_64px]" />
+                <div className="absolute inset-0 opacity-[0.012] [background-image:linear-gradient(rgba(255,255,255,0.08)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.08)_1px,transparent_1px)] [background-size:72px_72px]" />
 
-                {/* Edges */}
-                <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-cyan-300/14 to-transparent" />
+                {/* Edge lines */}
+                <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-cyan-300/15 to-transparent" />
 
-                <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-blue-400/12 to-transparent" />
+                <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-blue-300/10 to-transparent" />
 
                 {/* Orbit */}
-                <div className="testimonial-bg-orbit absolute left-1/2 top-[62%] h-[470px] w-[780px] -translate-x-1/2 -translate-y-1/2 rounded-[50%] border border-cyan-300/[0.018]" />
+                <motion.div
+                    className="absolute left-1/2 top-[57%] h-[430px] w-[760px] -translate-x-1/2 -translate-y-1/2 rounded-[50%] border border-cyan-300/[0.018]"
+                    animate={{
+                        rotate: 360,
+                    }}
+                    transition={{
+                        duration: 24,
+                        repeat: Infinity,
+                        ease: "linear",
+                    }}
+                />
 
-                <div className="testimonial-bg-orbit-reverse absolute left-1/2 top-[62%] h-[390px] w-[650px] -translate-x-1/2 -translate-y-1/2 rounded-[50%] border border-violet-300/[0.014]" />
-
-                {/* Ambient sweep */}
-                <div className="testimonial-section-scan absolute left-[-20%] top-[20%] h-[180px] w-[18%] rotate-[14deg] bg-gradient-to-r from-transparent via-cyan-300/[0.016] to-transparent blur-lg" />
+                <motion.div
+                    className="absolute left-1/2 top-[57%] h-[350px] w-[620px] -translate-x-1/2 -translate-y-1/2 rounded-[50%] border border-violet-300/[0.012]"
+                    animate={{
+                        rotate: -360,
+                    }}
+                    transition={{
+                        duration: 29,
+                        repeat: Infinity,
+                        ease: "linear",
+                    }}
+                />
             </div>
 
-            {/* =====================================================
+            {/* =================================================
                 CONTENT
-            ===================================================== */}
+            ================================================= */}
 
-            <div className="relative mx-auto flex h-full max-w-[1400px] flex-col px-6 py-7 lg:px-8">
+            <div className="relative z-10 mx-auto w-full max-w-[1400px] px-6 py-12 sm:px-8 sm:py-14 lg:px-8 lg:py-16">
                 {/* =================================================
                     HEADER
                 ================================================= */}
 
-                <div className="relative z-50 flex shrink-0 items-end justify-between gap-5">
-                    <div className="max-w-[650px]">
-                        {/* Badge */}
+                <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+                    <div className="max-w-[720px]">
                         <div className="inline-flex items-center gap-2 rounded-full border border-cyan-300/15 bg-cyan-300/[0.035] px-3 py-1.5">
-                            <span className="h-[5px] w-[5px] rounded-full bg-cyan-300 shadow-[0_0_8px_rgba(25,211,255,0.75)]" />
+                            <span className="relative flex h-[5px] w-[5px]">
+                                <span className="absolute inset-0 animate-ping rounded-full bg-cyan-300 opacity-25" />
 
-                            <span className="text-[8px] font-semibold uppercase tracking-[0.18em] text-cyan-100/65">
+                                <span className="relative h-[5px] w-[5px] rounded-full bg-cyan-300 shadow-[0_0_8px_rgba(25,211,255,0.7)]" />
+                            </span>
+
+                            <span className="text-[7px] font-semibold uppercase tracking-[0.18em] text-cyan-100/65">
                                 Clients Love Us
                             </span>
                         </div>
 
-                        <h2 className="mt-4 text-[31px] font-semibold leading-[1.04] tracking-[-0.04em] text-white sm:text-[37px]">
+                        <h2 className="mt-4 text-[31px] font-semibold leading-[1.02] tracking-[-0.045em] text-white sm:text-[39px] lg:text-[43px]">
                             What Our Clients Say
                         </h2>
 
-                        <p className="mt-2 max-w-[620px] text-[12px] font-medium leading-[1.6] text-blue-100/58 sm:text-[13px]">
-                            Real people. Real results. Intelligent systems
-                            working quietly in the background.
+                        <p className="mt-3 max-w-[670px] text-[12px] font-medium leading-[1.7] text-blue-100/55 sm:text-[13px]">
+                            Real people. Real outcomes. Intelligent systems
+                            quietly removing repetitive work behind the scenes.
                         </p>
                     </div>
 
-                    {/* Online status */}
-                    <div className="hidden items-center gap-3 rounded-full border border-blue-300/10 bg-blue-300/[0.025] px-3.5 py-2 shadow-[0_8px_20px_rgba(0,0,0,0.18)] sm:flex">
+                    <div className="hidden items-center gap-3 rounded-full border border-blue-300/10 bg-blue-300/[0.025] px-4 py-2.5 shadow-[0_10px_28px_rgba(0,0,0,0.2)] lg:flex">
                         <span className="relative flex h-1.5 w-1.5">
-                            <span className="absolute inset-0 animate-ping rounded-full bg-emerald-300 opacity-30" />
+                            <span className="absolute inset-0 animate-ping rounded-full bg-emerald-300 opacity-25" />
 
-                            <span className="relative h-1.5 w-1.5 rounded-full bg-emerald-300 shadow-[0_0_8px_rgba(52,211,153,0.72)]" />
+                            <span className="relative h-1.5 w-1.5 rounded-full bg-emerald-300 shadow-[0_0_7px_rgba(52,211,153,0.72)]" />
                         </span>
 
-                        <span className="text-[7px] font-semibold uppercase tracking-[0.15em] text-blue-100/38">
+                        <span className="text-[7px] font-semibold uppercase tracking-[0.15em] text-blue-100/35">
                             Testimonial engine online
                         </span>
 
@@ -875,80 +1385,158 @@ const Testimonials = () => {
                 </div>
 
                 {/* =================================================
-                    CAROUSEL STAGE
+                    DESKTOP EXPERIENCE
                 ================================================= */}
 
-                <div className="relative min-h-0 flex-1">
-                    <div className="testimonial-carousel-stage absolute inset-x-0 top-1/2 h-[390px] -translate-y-1/2 overflow-hidden">
-                        {/* =================================================
-                            TRACK
-                        ================================================= */}
+                <div className="mt-10 hidden lg:block">
+                    <div className="relative mx-auto h-[420px] max-w-[1160px]">
+                        {DesktopCards.map(
+                            ({
+                                Testimonial,
+                                Offset,
+                            }) => {
+                                const IsCenter =
+                                    Offset === 0;
 
-                        <div
-                            className={[
-                                "testimonial-carousel-track absolute left-1/2 top-1/2 flex h-[350px] w-max items-stretch gap-7",
-                                TransitionEnabled
-                                    ? "transition-transform duration-[900ms] ease-[cubic-bezier(0.16,1,0.3,1)]"
-                                    : "",
-                            ].join(" ")}
-                            style={{
-                                transform: `translate3d(calc(-${TrackIndex * CARD_STEP + CARD_HALF}px), -50%, 0)`,
+                                if (
+                                    Math.abs(Offset) >
+                                    1
+                                ) {
+                                    return null;
+                                }
+
+                                return (
+                                    <motion.div
+                                        key={
+                                            Testimonial.id
+                                        }
+                                        className="absolute left-1/2 top-1/2 h-[370px] w-[690px] -translate-x-1/2 -translate-y-1/2"
+                                        animate={{
+                                            x:
+                                                Offset ===
+                                                    0
+                                                    ? 0
+                                                    : Offset >
+                                                        0
+                                                        ? 330
+                                                        : -330,
+                                            y:
+                                                Offset ===
+                                                    0
+                                                    ? 0
+                                                    : 5,
+                                            opacity:
+                                                IsCenter
+                                                    ? 1
+                                                    : 0.5,
+                                        }}
+                                        transition={{
+                                            duration: 0.9,
+                                            ease: [
+                                                0.16,
+                                                1,
+                                                0.3,
+                                                1,
+                                            ],
+                                        }}
+                                        style={{
+                                            zIndex:
+                                                IsCenter
+                                                    ? 30
+                                                    : 10,
+                                        }}
+                                    >
+                                        <TestimonialCard
+                                            testimonial={
+                                                Testimonial
+                                            }
+                                            isCenter={
+                                                IsCenter
+                                            }
+                                            desktopCompact
+                                        />
+                                    </motion.div>
+                                );
+                            },
+                        )}
+                    </div>
+                </div>
+
+                {/* =================================================
+                    TABLET
+                ================================================= */}
+
+                <div className="mt-9 block lg:hidden">
+                    <div className="mx-auto w-full max-w-[820px]">
+                        <motion.div
+                            key={
+                                ActiveTestimonial.id
+                            }
+                            initial={{
+                                opacity: 0,
+                                y: 16,
+                                scale: 0.985,
                             }}
+                            animate={{
+                                opacity: 1,
+                                y: 0,
+                                scale: 1,
+                            }}
+                            transition={{
+                                duration: 0.65,
+                                ease: [
+                                    0.16,
+                                    1,
+                                    0.3,
+                                    1,
+                                ],
+                            }}
+                            className="hidden md:block"
                         >
-                            {VisibleCardData.map(
-                                ({
-                                    Testimonial,
-                                    Index,
-                                    Position,
-                                }) => {
-                                    const IsCenter =
-                                        Position ===
-                                        "center";
+                            <div className="h-[500px]">
+                                <TestimonialCard
+                                    testimonial={
+                                        ActiveTestimonial
+                                    }
+                                    isCenter
+                                />
+                            </div>
+                        </motion.div>
 
-                                    return (
-                                        <div
-                                            key={`${Testimonial.id}-${Index}`}
-                                            className={[
-                                                "testimonial-carousel-item relative h-[350px] w-[570px] shrink-0 [transform-style:preserve-3d]",
-                                                Position ===
-                                                    "center"
-                                                    ? "testimonial-card-center"
-                                                    : "",
-                                                Position ===
-                                                    "left"
-                                                    ? "testimonial-card-left"
-                                                    : "",
-                                                Position ===
-                                                    "right"
-                                                    ? "testimonial-card-right"
-                                                    : "",
-                                                Position ===
-                                                    "farLeft"
-                                                    ? "testimonial-card-far-left"
-                                                    : "",
-                                                Position ===
-                                                    "farRight"
-                                                    ? "testimonial-card-far-right"
-                                                    : "",
-                                                Position ===
-                                                    "hidden"
-                                                    ? "pointer-events-none opacity-0"
-                                                    : "",
-                                            ].join(" ")}
-                                        >
-                                            <TestimonialCard
-                                                testimonial={
-                                                    Testimonial
-                                                }
-                                                isCenter={
-                                                    IsCenter
-                                                }
-                                            />
-                                        </div>
-                                    );
-                                },
-                            )}
-                        </div>
+                        {/* PHONE */}
+
+                        <motion.div
+                            key={`mobile-${ActiveTestimonial.id}`}
+                            initial={{
+                                opacity: 0,
+                                y: 18,
+                                scale: 0.98,
+                            }}
+                            animate={{
+                                opacity: 1,
+                                y: 0,
+                                scale: 1,
+                            }}
+                            transition={{
+                                duration: 0.6,
+                                ease: [
+                                    0.16,
+                                    1,
+                                    0.3,
+                                    1,
+                                ],
+                            }}
+                            className="block md:hidden"
+                        >
+                            <div className="h-auto min-h-[650px]">
+                                <TestimonialCard
+                                    testimonial={
+                                        ActiveTestimonial
+                                    }
+                                    isCenter
+                                />
+                            </div>
+                        </motion.div>
                     </div>
                 </div>
 
@@ -956,14 +1544,26 @@ const Testimonials = () => {
                     CONTROLS
                 ================================================= */}
 
-                <div className="relative z-50 flex shrink-0 items-center justify-center gap-4 pt-1">
-                    {/* Previous */}
+                <div className="relative z-50 mt-8 flex items-center justify-center gap-4">
                     <button
                         type="button"
-                        onClick={MovePrevious}
-                        disabled={IsAnimating}
+                        onClick={() => {
+                            SetIsPaused(true);
+
+                            SetActiveIndex(
+                                (Current) =>
+                                    (Current -
+                                        1 +
+                                        TestimonialsData.length) %
+                                    TestimonialsData.length,
+                            );
+
+                            window.setTimeout(() => {
+                                SetIsPaused(false);
+                            }, 900);
+                        }}
                         aria-label="Previous testimonial"
-                        className="group flex h-9 w-9 items-center justify-center rounded-full disabled:pointer-events-none disabled:opacity-40"
+                        className="flex h-10 w-10 items-center justify-center rounded-full"
                     >
                         <PremiumIconBadge
                             icon={ArrowLeft}
@@ -974,82 +1574,69 @@ const Testimonials = () => {
                     {/* Dots */}
                     <div className="flex items-center gap-1.5">
                         {TestimonialsData.map(
-                            (Testimonial, Index) => (
+                            (
+                                Testimonial,
+                                Index,
+                            ) => (
                                 <button
-                                    key={Testimonial.id}
+                                    key={
+                                        Testimonial.id
+                                    }
                                     type="button"
-                                    disabled={IsAnimating}
                                     aria-label={`Show testimonial ${Testimonial.number}`}
                                     onClick={() => {
-                                        if (
-                                            IsAnimating ||
-                                            Index ===
-                                            ActiveIndex
-                                        ) {
-                                            return;
-                                        }
-
-                                        const Difference =
-                                            Index -
-                                            ActiveIndex;
-
-                                        if (
-                                            Difference > 0
-                                        ) {
-                                            for (
-                                                let Step = 0;
-                                                Step <
-                                                Difference;
-                                                Step += 1
-                                            ) {
-                                                window.setTimeout(
-                                                    () => {
-                                                        MoveNext();
-                                                    },
-                                                    Step *
-                                                    1000,
-                                                );
-                                            }
-
-                                            return;
-                                        }
-
-                                        for (
-                                            let Step = 0;
-                                            Step <
-                                            Math.abs(
-                                                Difference,
-                                            );
-                                            Step += 1
-                                        ) {
-                                            window.setTimeout(
-                                                () => {
-                                                    MovePrevious();
-                                                },
-                                                Step *
-                                                1000,
-                                            );
-                                        }
+                                        SetActiveIndex(
+                                            Index,
+                                        );
                                     }}
-                                    className={[
-                                        "h-[4px] rounded-full transition-all duration-500",
-                                        ActiveIndex ===
-                                            Index
-                                            ? "w-9 bg-gradient-to-r from-cyan-300 via-blue-400 to-violet-400 shadow-[0_0_10px_rgba(25,211,255,0.55)]"
-                                            : "w-2 bg-blue-300/15 hover:bg-blue-300/35",
-                                    ].join(" ")}
-                                />
+                                    className="group relative h-[5px] rounded-full"
+                                >
+                                    <motion.span
+                                        animate={{
+                                            width:
+                                                ActiveIndex ===
+                                                    Index
+                                                    ? 34
+                                                    : 7,
+                                            opacity:
+                                                ActiveIndex ===
+                                                    Index
+                                                    ? 1
+                                                    : 0.3,
+                                        }}
+                                        transition={{
+                                            duration: 0.3,
+                                        }}
+                                        className={[
+                                            "block h-[5px] rounded-full bg-gradient-to-r",
+                                            ActiveIndex ===
+                                                Index
+                                                ? ActiveTheme.accentGradient
+                                                : "from-blue-300/30 via-blue-300/20 to-violet-300/20",
+                                        ].join(" ")}
+                                    />
+                                </button>
                             ),
                         )}
                     </div>
 
-                    {/* Next */}
                     <button
                         type="button"
-                        onClick={MoveNext}
-                        disabled={IsAnimating}
+                        onClick={() => {
+                            SetIsPaused(true);
+
+                            SetActiveIndex(
+                                (Current) =>
+                                    (Current + 1) %
+                                    TestimonialsData.length,
+                            );
+
+                            window.setTimeout(() => {
+                                SetIsPaused(false);
+                            }, 900);
+                        }}
                         aria-label="Next testimonial"
-                        className="group flex h-9 w-9 items-center justify-center rounded-full disabled:pointer-events-none disabled:opacity-40"
+                        className="flex h-10 w-10 items-center justify-center rounded-full"
                     >
                         <PremiumIconBadge
                             icon={ArrowRight}
@@ -1057,388 +1644,46 @@ const Testimonials = () => {
                         />
                     </button>
                 </div>
+
+                {/* =================================================
+                    LIVE STATUS
+                ================================================= */}
+
+                <div className="mt-5 flex items-center justify-center gap-2">
+                    <span className="relative flex h-1.5 w-1.5">
+                        <span className="absolute inset-0 animate-ping rounded-full bg-emerald-300 opacity-25" />
+
+                        <span className="relative h-1.5 w-1.5 rounded-full bg-emerald-300 shadow-[0_0_7px_rgba(52,211,153,0.7)]" />
+                    </span>
+
+                    <span className="text-[6px] font-semibold uppercase tracking-[0.15em] text-blue-100/28">
+                        {IsPaused
+                            ? "Testimonials paused"
+                            : "Auto rotating client stories"}
+                    </span>
+                </div>
             </div>
 
-            {/* =====================================================
-                ANIMATIONS
-            ===================================================== */}
+            {/* =================================================
+                RESPONSIVE REFINEMENTS
+            ================================================= */}
 
             <style>{`
-                .testimonial-carousel-stage {
-                    perspective: 1800px;
-                    transform-style: preserve-3d;
-                }
-
-                .testimonial-carousel-track {
-                    transform-style: preserve-3d;
-                    will-change: transform;
-                }
-
-                .testimonial-carousel-item {
-                    transition:
-                        transform 900ms cubic-bezier(0.16,1,0.3,1),
-                        opacity 900ms cubic-bezier(0.16,1,0.3,1),
-                        filter 900ms cubic-bezier(0.16,1,0.3,1);
-                    will-change: transform, opacity;
-                }
-
-                /*
-                 * CENTER
-                 */
-                .testimonial-card-center {
-                    z-index: 30;
-                    transform:
-                        translate3d(0, 0, 80px)
-                        scale(1);
-                    opacity: 1;
-                    filter: none;
-                }
-
-                /*
-                 * LEFT
-                 */
-                .testimonial-card-left {
-                    z-index: 20;
-                    transform:
-                        translate3d(0, 0, -35px)
-                        rotateY(10deg)
-                        scale(0.80);
-                    opacity: 0.66;
-                    filter: brightness(0.78);
-                }
-
-                /*
-                 * RIGHT
-                 */
-                .testimonial-card-right {
-                    z-index: 20;
-                    transform:
-                        translate3d(0, 0, -35px)
-                        rotateY(-10deg)
-                        scale(0.80);
-                    opacity: 0.66;
-                    filter: brightness(0.78);
-                }
-
-                .testimonial-card-far-left {
-                    z-index: 5;
-                    transform:
-                        translate3d(0, 0, -100px)
-                        rotateY(15deg)
-                        scale(0.62);
-                    opacity: 0;
-                }
-
-                .testimonial-card-far-right {
-                    z-index: 5;
-                    transform:
-                        translate3d(0, 0, -100px)
-                        rotateY(-15deg)
-                        scale(0.62);
-                    opacity: 0;
-                }
-
-                .testimonial-card-center
-                    .testimonial-center-card
-                    .testimonial-center-shell {
-                    animation:
-                        testimonialCenterFloat
-                        6s
-                        ease-in-out
-                        infinite;
-                }
-
-                .testimonial-card-scan {
-                    animation:
-                        testimonialCardScan
-                        4.2s
-                        ease-in-out
-                        infinite;
-                }
-
-                .testimonial-progress {
-                    animation:
-                        testimonialProgress
-                        3.5s
-                        ease-in-out
-                        infinite;
-                }
-
-                .testimonial-connector-dot {
-                    animation:
-                        testimonialConnectorFlow
-                        2.1s
-                        linear
-                        infinite;
-                }
-
-                .testimonial-orbit {
-                    animation:
-                        testimonialOrbit
-                        9s
-                        linear
-                        infinite;
-                }
-
-                .testimonial-orbit-reverse {
-                    animation:
-                        testimonialOrbitReverse
-                        7s
-                        linear
-                        infinite;
-                }
-
-                .testimonial-identity-scan {
-                    animation:
-                        testimonialIdentityScan
-                        2.8s
-                        ease-in-out
-                        infinite;
-                }
-
-                .testimonial-bg-orbit {
-                    animation:
-                        testimonialBackgroundOrbit
-                        18s
-                        linear
-                        infinite;
-                }
-
-                .testimonial-bg-orbit-reverse {
-                    animation:
-                        testimonialBackgroundOrbitReverse
-                        23s
-                        linear
-                        infinite;
-                }
-
-                .testimonial-section-scan {
-                    animation:
-                        testimonialSectionScan
-                        9s
-                        ease-in-out
-                        infinite;
-                }
-
-                @keyframes testimonialCenterFloat {
-                    0%,
-                    100% {
-                        transform:
-                            translateY(0)
-                            rotateX(1deg)
-                            rotateY(-0.5deg);
-                    }
-
-                    50% {
-                        transform:
-                            translateY(-3px)
-                            rotateX(1.5deg)
-                            rotateY(0.5deg);
+                @media (min-width: 640px) and (max-width: 1023px) {
+                    #testimonials {
+                        min-height: 760px;
                     }
                 }
 
-                @keyframes testimonialCardScan {
-                    0%,
-                    100% {
-                        transform: translateY(0);
-                        opacity: 0.15;
-                    }
-
-                    50% {
-                        transform: translateY(325px);
-                        opacity: 0.62;
+                @media (max-width: 639px) {
+                    #testimonials {
+                        min-height: 0;
                     }
                 }
 
-                @keyframes testimonialProgress {
-                    0% {
-                        width: 20%;
-                        opacity: 0.45;
-                    }
-
-                    50% {
-                        width: 72%;
-                        opacity: 1;
-                    }
-
-                    100% {
-                        width: 92%;
-                        opacity: 0.68;
-                    }
-                }
-
-                @keyframes testimonialConnectorFlow {
-                    0% {
-                        transform: translateX(-10px);
-                        opacity: 0;
-                    }
-
-                    20% {
-                        opacity: 1;
-                    }
-
-                    80% {
-                        opacity: 1;
-                    }
-
-                    100% {
-                        transform: translateX(28px);
-                        opacity: 0;
-                    }
-                }
-
-                @keyframes testimonialOrbit {
-                    from {
-                        transform:
-                            rotateX(68deg)
-                            rotateZ(0deg);
-                    }
-
-                    to {
-                        transform:
-                            rotateX(68deg)
-                            rotateZ(360deg);
-                    }
-                }
-
-                @keyframes testimonialOrbitReverse {
-                    from {
-                        transform:
-                            rotateX(68deg)
-                            rotateZ(360deg);
-                    }
-
-                    to {
-                        transform:
-                            rotateX(68deg)
-                            rotateZ(0deg);
-                    }
-                }
-
-                @keyframes testimonialIdentityScan {
-                    0%,
-                    100% {
-                        transform: translateY(-120%);
-                        opacity: 0;
-                    }
-
-                    35% {
-                        opacity: 0.4;
-                    }
-
-                    60% {
-                        opacity: 0.7;
-                    }
-
-                    100% {
-                        transform: translateY(120%);
-                        opacity: 0;
-                    }
-                }
-
-                @keyframes testimonialBackgroundOrbit {
-                    from {
-                        transform:
-                            translate(-50%,-50%)
-                            rotateX(68deg)
-                            rotateZ(0deg);
-                    }
-
-                    to {
-                        transform:
-                            translate(-50%,-50%)
-                            rotateX(68deg)
-                            rotateZ(360deg);
-                    }
-                }
-
-                @keyframes testimonialBackgroundOrbitReverse {
-                    from {
-                        transform:
-                            translate(-50%,-50%)
-                            rotateX(68deg)
-                            rotateZ(360deg);
-                    }
-
-                    to {
-                        transform:
-                            translate(-50%,-50%)
-                            rotateX(68deg)
-                            rotateZ(0deg);
-                    }
-                }
-
-                @keyframes testimonialSectionScan {
-                    0%,
-                    100% {
-                        transform:
-                            translateX(0)
-                            rotate(14deg);
-                        opacity: 0;
-                    }
-
-                    25% {
-                        opacity: 0.3;
-                    }
-
-                    65% {
-                        transform:
-                            translateX(660%)
-                            rotate(14deg);
-                        opacity: 0.5;
-                    }
-
-                    85% {
-                        opacity: 0;
-                    }
-                }
-
-                @media (max-width: 1100px) {
-                    .testimonial-carousel-stage {
-                        transform:
-                            scale(0.88);
-                        transform-origin: center center;
-                    }
-                }
-
-                @media (max-width: 1023px) {
-                    .testimonial-card-left,
-                    .testimonial-card-right,
-                    .testimonial-card-far-left,
-                    .testimonial-card-far-right {
-                        opacity: 0;
-                        pointer-events: none;
-                    }
-
-                    .testimonial-card-center {
-                        transform:
-                            translate3d(0,0,30px)
-                            scale(0.92);
-                    }
-                }
-
-                @media (max-width: 700px) {
-                    .testimonial-carousel-stage {
-                        transform:
-                            scale(0.62);
-                        transform-origin: center center;
-                    }
-                }
-
-                @media (prefers-reduced-motion: reduce) {
-                    .testimonial-carousel-item,
-                    .testimonial-center-shell,
-                    .testimonial-card-scan,
-                    .testimonial-progress,
-                    .testimonial-connector-dot,
-                    .testimonial-orbit,
-                    .testimonial-orbit-reverse,
-                    .testimonial-identity-scan,
-                    .testimonial-bg-orbit,
-                    .testimonial-bg-orbit-reverse,
-                    .testimonial-section-scan {
-                        animation: none !important;
-                        transition: none !important;
+                @media (max-width: 420px) {
+                    #testimonials {
+                        overflow: hidden;
                     }
                 }
             `}</style>

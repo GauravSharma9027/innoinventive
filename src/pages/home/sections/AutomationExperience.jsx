@@ -417,7 +417,8 @@ const AnimatedNumber = ({
 
         AnimationFrame = requestAnimationFrame(Animate);
 
-        return () => cancelAnimationFrame(AnimationFrame);
+        return () =>
+            cancelAnimationFrame(AnimationFrame);
     }, [value, duration, resetKey]);
 
     return (
@@ -432,9 +433,13 @@ const IntegrationNode = ({ integration }) => {
     const Icon = integration.icon;
 
     return (
-        <div className={`absolute z-30 ${integration.positionClass}`}>
+        <div
+            className={`absolute z-30 ${integration.positionClass}`}
+        >
             <div className="integration-card-group">
-                <div className={`integration-card integration-card-${integration.side}`}>
+                <div
+                    className={`integration-card integration-card-${integration.side}`}
+                >
                     <span className="integration-card-depth integration-card-depth-back" />
 
                     <span className="integration-card-depth integration-card-depth-side" />
@@ -469,120 +474,577 @@ const IntegrationNode = ({ integration }) => {
 
 const IntegrationConnections = () => {
     return (
-        <svg
-            viewBox="0 0 1440 390"
-            preserveAspectRatio="none"
-            className="pointer-events-none absolute inset-0 z-10 h-full w-full overflow-visible"
-        >
-            <defs>
-                <filter
-                    id="AutomationConnectionGlow"
-                    x="-50%"
-                    y="-50%"
-                    width="200%"
-                    height="200%"
-                >
-                    <feGaussianBlur
-                        stdDeviation="1.6"
-                        result="blur"
-                    />
+        <>
+            {/* =================================================
+                DESKTOP / TABLET CONNECTIONS
+                Existing Version Preserved
+            ================================================= */}
+            <svg
+                viewBox="0 0 1440 390"
+                preserveAspectRatio="none"
+                className="integration-connections-desktop pointer-events-none absolute inset-0 z-10 h-full w-full overflow-visible"
+            >
+                <defs>
+                    <filter
+                        id="AutomationConnectionGlow"
+                        x="-50%"
+                        y="-50%"
+                        width="200%"
+                        height="200%"
+                    >
+                        <feGaussianBlur
+                            stdDeviation="1.6"
+                            result="blur"
+                        />
 
-                    <feMerge>
-                        <feMergeNode in="blur" />
-                        <feMergeNode in="SourceGraphic" />
-                    </feMerge>
-                </filter>
+                        <feMerge>
+                            <feMergeNode in="blur" />
+                            <feMergeNode in="SourceGraphic" />
+                        </feMerge>
+                    </filter>
 
-                <linearGradient
-                    id="AutomationConnectionLeft"
-                    x1="0%"
-                    y1="0%"
-                    x2="100%"
-                    y2="0%"
-                >
-                    <stop offset="0%" stopColor="#19D3FF" stopOpacity="0.12" />
-                    <stop offset="40%" stopColor="#19D3FF" stopOpacity="0.50" />
-                    <stop offset="76%" stopColor="#19D3FF" stopOpacity="0.78" />
-                    <stop offset="100%" stopColor="#1677FF" stopOpacity="0.26" />
-                </linearGradient>
+                    <linearGradient
+                        id="AutomationConnectionLeft"
+                        x1="0%"
+                        y1="0%"
+                        x2="100%"
+                        y2="0%"
+                    >
+                        <stop
+                            offset="0%"
+                            stopColor="#19D3FF"
+                            stopOpacity="0.12"
+                        />
 
-                <linearGradient
-                    id="AutomationConnectionRight"
-                    x1="100%"
-                    y1="0%"
-                    x2="0%"
-                    y2="0%"
-                >
-                    <stop offset="0%" stopColor="#19D3FF" stopOpacity="0.12" />
-                    <stop offset="40%" stopColor="#19D3FF" stopOpacity="0.50" />
-                    <stop offset="76%" stopColor="#19D3FF" stopOpacity="0.78" />
-                    <stop offset="100%" stopColor="#1677FF" stopOpacity="0.26" />
-                </linearGradient>
-            </defs>
+                        <stop
+                            offset="40%"
+                            stopColor="#19D3FF"
+                            stopOpacity="0.50"
+                        />
 
-            {IntegrationData.map((Integration) => (
-                <g key={`connection-${Integration.id}`}>
+                        <stop
+                            offset="76%"
+                            stopColor="#19D3FF"
+                            stopOpacity="0.78"
+                        />
+
+                        <stop
+                            offset="100%"
+                            stopColor="#1677FF"
+                            stopOpacity="0.26"
+                        />
+                    </linearGradient>
+
+                    <linearGradient
+                        id="AutomationConnectionRight"
+                        x1="100%"
+                        y1="0%"
+                        x2="0%"
+                        y2="0%"
+                    >
+                        <stop
+                            offset="0%"
+                            stopColor="#19D3FF"
+                            stopOpacity="0.12"
+                        />
+
+                        <stop
+                            offset="40%"
+                            stopColor="#19D3FF"
+                            stopOpacity="0.50"
+                        />
+
+                        <stop
+                            offset="76%"
+                            stopColor="#19D3FF"
+                            stopOpacity="0.78"
+                        />
+
+                        <stop
+                            offset="100%"
+                            stopColor="#1677FF"
+                            stopOpacity="0.26"
+                        />
+                    </linearGradient>
+                </defs>
+
+                {IntegrationData.map(
+                    (Integration) => (
+                        <g
+                            key={`connection-${Integration.id}`}
+                        >
+                            <path
+                                d={
+                                    Integration.connectionPath
+                                }
+                                fill="none"
+                                stroke="#19D3FF"
+                                strokeOpacity="0.08"
+                                strokeWidth="4"
+                                strokeLinecap="round"
+                                filter="url(#AutomationConnectionGlow)"
+                            />
+
+                            <path
+                                d={
+                                    Integration.connectionPath
+                                }
+                                fill="none"
+                                stroke={
+                                    Integration.side ===
+                                        "left"
+                                        ? "url(#AutomationConnectionLeft)"
+                                        : "url(#AutomationConnectionRight)"
+                                }
+                                strokeWidth="1"
+                                strokeDasharray="1 7"
+                                strokeLinecap="round"
+                                opacity="0.72"
+                            />
+
+                            <path
+                                d={
+                                    Integration.connectionPath
+                                }
+                                fill="none"
+                                stroke="#19D3FF"
+                                strokeWidth="2"
+                                strokeDasharray="1 22 5 22"
+                                strokeLinecap="round"
+                                opacity="0.78"
+                                filter="url(#AutomationConnectionGlow)"
+                            >
+                                <animate
+                                    attributeName="stroke-dashoffset"
+                                    from="0"
+                                    to="-46"
+                                    dur="2.8s"
+                                    repeatCount="indefinite"
+                                />
+                            </path>
+
+                            <circle
+                                cx={Integration.startX}
+                                cy={Integration.startY}
+                                r="2.2"
+                                fill="#19D3FF"
+                                opacity="0.75"
+                            />
+
+                            <circle
+                                cx={Integration.endX}
+                                cy={Integration.endY}
+                                r="2.1"
+                                fill="#19D3FF"
+                                opacity="0.65"
+                            />
+                        </g>
+                    ),
+                )}
+            </svg>
+
+            {/* =================================================
+                PHONE / TABLET CONNECTIONS
+                Top -> Dashboard -> Bottom
+            ================================================= */}
+            <svg
+                viewBox="0 0 390 530"
+                preserveAspectRatio="none"
+                className="integration-connections-mobile pointer-events-none absolute inset-0 z-10 h-full w-full overflow-visible"
+            >
+                <defs>
+                    <filter
+                        id="AutomationMobileConnectionGlow"
+                        x="-50%"
+                        y="-50%"
+                        width="200%"
+                        height="200%"
+                    >
+                        <feGaussianBlur
+                            stdDeviation="1.4"
+                            result="blur"
+                        />
+
+                        <feMerge>
+                            <feMergeNode in="blur" />
+                            <feMergeNode in="SourceGraphic" />
+                        </feMerge>
+                    </filter>
+
+                    <linearGradient
+                        id="AutomationMobileConnectionGradient"
+                        x1="0%"
+                        y1="0%"
+                        x2="0%"
+                        y2="100%"
+                    >
+                        <stop
+                            offset="0%"
+                            stopColor="#19D3FF"
+                            stopOpacity="0.18"
+                        />
+
+                        <stop
+                            offset="45%"
+                            stopColor="#19D3FF"
+                            stopOpacity="0.78"
+                        />
+
+                        <stop
+                            offset="100%"
+                            stopColor="#7C3CFF"
+                            stopOpacity="0.28"
+                        />
+                    </linearGradient>
+                </defs>
+
+                {/* =================================================
+                    TOP -> DASHBOARD
+                ================================================= */}
+                <g>
+                    {/* CRM */}
                     <path
-                        d={Integration.connectionPath}
+                        d="M52 30 C52 54 65 80 85 106"
                         fill="none"
                         stroke="#19D3FF"
                         strokeOpacity="0.08"
                         strokeWidth="4"
                         strokeLinecap="round"
-                        filter="url(#AutomationConnectionGlow)"
+                        filter="url(#AutomationMobileConnectionGlow)"
                     />
 
                     <path
-                        d={Integration.connectionPath}
+                        d="M52 30 C52 54 65 80 85 106"
                         fill="none"
-                        stroke={
-                            Integration.side === "left"
-                                ? "url(#AutomationConnectionLeft)"
-                                : "url(#AutomationConnectionRight)"
-                        }
+                        stroke="url(#AutomationMobileConnectionGradient)"
                         strokeWidth="1"
                         strokeDasharray="1 7"
                         strokeLinecap="round"
-                        opacity="0.72"
+                        opacity="0.78"
                     />
 
                     <path
-                        d={Integration.connectionPath}
+                        d="M52 30 C52 54 65 80 85 106"
                         fill="none"
                         stroke="#19D3FF"
                         strokeWidth="2"
-                        strokeDasharray="1 22 5 22"
+                        strokeDasharray="1 20 5 20"
                         strokeLinecap="round"
                         opacity="0.78"
-                        filter="url(#AutomationConnectionGlow)"
+                        filter="url(#AutomationMobileConnectionGlow)"
                     >
                         <animate
                             attributeName="stroke-dashoffset"
                             from="0"
-                            to="-46"
+                            to="-42"
+                            dur="2.8s"
+                            repeatCount="indefinite"
+                        />
+                    </path>
+
+                    {/* Gmail */}
+                    <path
+                        d="M195 30 C195 55 195 81 195 106"
+                        fill="none"
+                        stroke="#19D3FF"
+                        strokeOpacity="0.08"
+                        strokeWidth="4"
+                        strokeLinecap="round"
+                        filter="url(#AutomationMobileConnectionGlow)"
+                    />
+
+                    <path
+                        d="M195 30 C195 55 195 81 195 106"
+                        fill="none"
+                        stroke="url(#AutomationMobileConnectionGradient)"
+                        strokeWidth="1"
+                        strokeDasharray="1 6"
+                        strokeLinecap="round"
+                        opacity="0.9"
+                    />
+
+                    <path
+                        d="M195 30 C195 55 195 81 195 106"
+                        fill="none"
+                        stroke="#19D3FF"
+                        strokeWidth="2"
+                        strokeDasharray="1 12 4 12"
+                        strokeLinecap="round"
+                        opacity="0.9"
+                        filter="url(#AutomationMobileConnectionGlow)"
+                    >
+                        <animate
+                            attributeName="stroke-dashoffset"
+                            from="0"
+                            to="-42"
+                            dur="2.8s"
+                            repeatCount="indefinite"
+                        />
+                    </path>
+
+                    {/* Slack */}
+                    <path
+                        d="M338 30 C338 54 325 80 305 106"
+                        fill="none"
+                        stroke="#19D3FF"
+                        strokeOpacity="0.08"
+                        strokeWidth="4"
+                        strokeLinecap="round"
+                        filter="url(#AutomationMobileConnectionGlow)"
+                    />
+
+                    <path
+                        d="M338 30 C338 54 325 80 305 106"
+                        fill="none"
+                        stroke="url(#AutomationMobileConnectionGradient)"
+                        strokeWidth="1"
+                        strokeDasharray="1 7"
+                        strokeLinecap="round"
+                        opacity="0.78"
+                    />
+
+                    <path
+                        d="M338 30 C338 54 325 80 305 106"
+                        fill="none"
+                        stroke="#19D3FF"
+                        strokeWidth="2"
+                        strokeDasharray="1 20 5 20"
+                        strokeLinecap="round"
+                        opacity="0.78"
+                        filter="url(#AutomationMobileConnectionGlow)"
+                    >
+                        <animate
+                            attributeName="stroke-dashoffset"
+                            from="0"
+                            to="-42"
                             dur="2.8s"
                             repeatCount="indefinite"
                         />
                     </path>
 
                     <circle
-                        cx={Integration.startX}
-                        cy={Integration.startY}
+                        cx="52"
+                        cy="30"
                         r="2.2"
                         fill="#19D3FF"
                         opacity="0.75"
                     />
 
                     <circle
-                        cx={Integration.endX}
-                        cy={Integration.endY}
+                        cx="195"
+                        cy="30"
+                        r="2.2"
+                        fill="#19D3FF"
+                        opacity="0.75"
+                    />
+
+                    <circle
+                        cx="338"
+                        cy="30"
+                        r="2.2"
+                        fill="#19D3FF"
+                        opacity="0.75"
+                    />
+
+                    <circle
+                        cx="85"
+                        cy="106"
+                        r="2.5"
+                        fill="#19D3FF"
+                        opacity="0.70"
+                    />
+
+                    <circle
+                        cx="195"
+                        cy="106"
+                        r="2.5"
+                        fill="#19D3FF"
+                        opacity="0.70"
+                    />
+
+                    <circle
+                        cx="305"
+                        cy="106"
+                        r="2.5"
+                        fill="#19D3FF"
+                        opacity="0.70"
+                    />
+                </g>
+
+                {/* =================================================
+                    DASHBOARD -> BOTTOM
+                ================================================= */}
+                <g>
+                    {/* Notion */}
+                    <path
+                        d="M85 426 C65 452 52 476 52 501"
+                        fill="none"
+                        stroke="#19D3FF"
+                        strokeOpacity="0.08"
+                        strokeWidth="4"
+                        strokeLinecap="round"
+                        filter="url(#AutomationMobileConnectionGlow)"
+                    />
+
+                    <path
+                        d="M85 426 C65 452 52 476 52 501"
+                        fill="none"
+                        stroke="url(#AutomationMobileConnectionGradient)"
+                        strokeWidth="1"
+                        strokeDasharray="1 7"
+                        strokeLinecap="round"
+                        opacity="0.78"
+                    />
+
+                    <path
+                        d="M85 426 C65 452 52 476 52 501"
+                        fill="none"
+                        stroke="#19D3FF"
+                        strokeWidth="2"
+                        strokeDasharray="1 20 5 20"
+                        strokeLinecap="round"
+                        opacity="0.78"
+                        filter="url(#AutomationMobileConnectionGlow)"
+                    >
+                        <animate
+                            attributeName="stroke-dashoffset"
+                            from="0"
+                            to="42"
+                            dur="2.8s"
+                            repeatCount="indefinite"
+                        />
+                    </path>
+
+                    {/* HubSpot */}
+                    <path
+                        d="M195 426 C195 452 195 478 195 501"
+                        fill="none"
+                        stroke="#19D3FF"
+                        strokeOpacity="0.08"
+                        strokeWidth="4"
+                        strokeLinecap="round"
+                        filter="url(#AutomationMobileConnectionGlow)"
+                    />
+
+                    <path
+                        d="M195 426 C195 452 195 478 195 501"
+                        fill="none"
+                        stroke="url(#AutomationMobileConnectionGradient)"
+                        strokeWidth="1"
+                        strokeDasharray="1 6"
+                        strokeLinecap="round"
+                        opacity="0.9"
+                    />
+
+                    <path
+                        d="M195 426 C195 452 195 478 195 501"
+                        fill="none"
+                        stroke="#19D3FF"
+                        strokeWidth="2"
+                        strokeDasharray="1 12 4 12"
+                        strokeLinecap="round"
+                        opacity="0.9"
+                        filter="url(#AutomationMobileConnectionGlow)"
+                    >
+                        <animate
+                            attributeName="stroke-dashoffset"
+                            from="0"
+                            to="42"
+                            dur="2.8s"
+                            repeatCount="indefinite"
+                        />
+                    </path>
+
+                    {/* Google Sheets */}
+                    <path
+                        d="M305 426 C325 452 338 476 338 501"
+                        fill="none"
+                        stroke="#19D3FF"
+                        strokeOpacity="0.08"
+                        strokeWidth="4"
+                        strokeLinecap="round"
+                        filter="url(#AutomationMobileConnectionGlow)"
+                    />
+
+                    <path
+                        d="M305 426 C325 452 338 476 338 501"
+                        fill="none"
+                        stroke="url(#AutomationMobileConnectionGradient)"
+                        strokeWidth="1"
+                        strokeDasharray="1 7"
+                        strokeLinecap="round"
+                        opacity="0.78"
+                    />
+
+                    <path
+                        d="M305 426 C325 452 338 476 338 501"
+                        fill="none"
+                        stroke="#19D3FF"
+                        strokeWidth="2"
+                        strokeDasharray="1 20 5 20"
+                        strokeLinecap="round"
+                        opacity="0.78"
+                        filter="url(#AutomationMobileConnectionGlow)"
+                    >
+                        <animate
+                            attributeName="stroke-dashoffset"
+                            from="0"
+                            to="42"
+                            dur="2.8s"
+                            repeatCount="indefinite"
+                        />
+                    </path>
+
+                    <circle
+                        cx="85"
+                        cy="426"
+                        r="2.5"
+                        fill="#19D3FF"
+                        opacity="0.65"
+                    />
+
+                    <circle
+                        cx="195"
+                        cy="426"
+                        r="2.5"
+                        fill="#19D3FF"
+                        opacity="0.65"
+                    />
+
+                    <circle
+                        cx="305"
+                        cy="426"
+                        r="2.5"
+                        fill="#19D3FF"
+                        opacity="0.65"
+                    />
+
+                    <circle
+                        cx="52"
+                        cy="501"
+                        r="2.1"
+                        fill="#19D3FF"
+                        opacity="0.65"
+                    />
+
+                    <circle
+                        cx="195"
+                        cy="501"
+                        r="2.1"
+                        fill="#19D3FF"
+                        opacity="0.65"
+                    />
+
+                    <circle
+                        cx="338"
+                        cy="501"
                         r="2.1"
                         fill="#19D3FF"
                         opacity="0.65"
                     />
                 </g>
-            ))}
-        </svg>
+            </svg>
+        </>
     );
 };
 
@@ -603,56 +1065,61 @@ const DashboardSidebar = ({
                     />
                 </div>
 
-                <span className="text-[7px] font-semibold text-cyan-300">
+                <span className="dashboard-brand-label text-[7px] font-semibold text-cyan-300">
                     InnoInventive
                 </span>
             </div>
 
             <div className="mt-5 space-y-2">
-                {WorkflowViews.map((Item, Index) => {
-                    const SidebarIcon = Item.icon;
-                    const IsActive = ActiveViewId === Item.id;
+                {WorkflowViews.map(
+                    (Item, Index) => {
+                        const SidebarIcon = Item.icon;
+                        const IsActive =
+                            ActiveViewId === Item.id;
 
-                    return (
-                        <button
-                            key={Item.id}
-                            type="button"
-                            onClick={() => OnSelectView(Index)}
-                            className={`dashboard-nav-item group relative flex w-full items-center gap-2 rounded-lg px-2 py-2 text-left text-[7px] ${IsActive
-                                    ? "dashboard-nav-active text-white"
-                                    : "text-blue-100/50"
-                                }`}
-                        >
-                            {IsActive && (
-                                <>
-                                    <span className="absolute inset-0 rounded-lg border border-cyan-300/20 bg-gradient-to-r from-cyan-400/[0.10] via-blue-500/[0.07] to-violet-500/[0.08] shadow-[inset_0_1px_0_rgba(255,255,255,0.08),0_6px_18px_rgba(22,119,255,0.10)]" />
-
-                                    <span className="absolute -left-[1px] top-1/2 h-5 w-[2px] -translate-y-1/2 rounded-full bg-gradient-to-b from-cyan-300 via-blue-500 to-violet-500 shadow-[0_0_9px_rgba(25,211,255,0.8)]" />
-                                </>
-                            )}
-
-                            <span
-                                className={`relative z-10 flex h-5 w-5 items-center justify-center rounded-md border ${IsActive
-                                        ? "border-cyan-300/20 bg-[#102E5A] text-cyan-300 shadow-[inset_0_0_12px_rgba(25,211,255,0.08)]"
-                                        : "border-blue-300/[0.06] bg-[#071A38]/60 text-blue-100/45"
+                        return (
+                            <button
+                                key={Item.id}
+                                type="button"
+                                onClick={() =>
+                                    OnSelectView(Index)
+                                }
+                                className={`dashboard-nav-item group relative flex w-full items-center gap-2 rounded-lg px-2 py-2 text-left text-[7px] ${IsActive
+                                        ? "dashboard-nav-active text-white"
+                                        : "text-blue-100/50"
                                     }`}
                             >
-                                <SidebarIcon
-                                    size={10}
-                                    strokeWidth={1.7}
-                                />
-                            </span>
+                                {IsActive && (
+                                    <>
+                                        <span className="absolute inset-0 rounded-lg border border-cyan-300/20 bg-gradient-to-r from-cyan-400/[0.10] via-blue-500/[0.07] to-violet-500/[0.08] shadow-[inset_0_1px_0_rgba(255,255,255,0.08),0_6px_18px_rgba(22,119,255,0.10)]" />
 
-                            <span className="relative z-10 flex-1 truncate">
-                                {Item.label}
-                            </span>
+                                        <span className="absolute -left-[1px] top-1/2 h-5 w-[2px] -translate-y-1/2 rounded-full bg-gradient-to-b from-cyan-300 via-blue-500 to-violet-500 shadow-[0_0_9px_rgba(25,211,255,0.8)]" />
+                                    </>
+                                )}
 
-                            {IsActive && (
-                                <span className="relative z-10 h-1.5 w-1.5 rounded-full bg-cyan-300 shadow-[0_0_8px_rgba(25,211,255,0.9)]" />
-                            )}
-                        </button>
-                    );
-                })}
+                                <span
+                                    className={`relative z-10 flex h-5 w-5 items-center justify-center rounded-md border ${IsActive
+                                            ? "border-cyan-300/20 bg-[#102E5A] text-cyan-300 shadow-[inset_0_0_12px_rgba(25,211,255,0.08)]"
+                                            : "border-blue-300/[0.06] bg-[#071A38]/60 text-blue-100/45"
+                                        }`}
+                                >
+                                    <SidebarIcon
+                                        size={10}
+                                        strokeWidth={1.7}
+                                    />
+                                </span>
+
+                                <span className="dashboard-nav-label relative z-10 flex-1 truncate">
+                                    {Item.label}
+                                </span>
+
+                                {IsActive && (
+                                    <span className="dashboard-nav-status-dot relative z-10 h-1.5 w-1.5 rounded-full bg-cyan-300 shadow-[0_0_8px_rgba(25,211,255,0.9)]" />
+                                )}
+                            </button>
+                        );
+                    },
+                )}
             </div>
         </aside>
     );
@@ -682,55 +1149,58 @@ const WorkflowPanel = ({
             </div>
 
             <div className="mt-4 space-y-2">
-                {ActiveView.steps.map((Step, Index) => {
-                    const StepIcon = Step.icon;
+                {ActiveView.steps.map(
+                    (Step, Index) => {
+                        const StepIcon = Step.icon;
 
-                    return (
-                        <div
-                            key={`${AnimationCycle}-${Step.id}`}
-                            className="dashboard-flow-card group relative overflow-hidden rounded-[9px] border border-cyan-300/[0.08] bg-[linear-gradient(145deg,rgba(8,34,72,0.86),rgba(4,19,43,0.92))] px-2.5 py-2 shadow-[0_8px_15px_rgba(0,0,0,0.12),inset_0_1px_0_rgba(255,255,255,0.05)] [transform-style:preserve-3d]"
-                            style={{
-                                animationDelay: `${Index * 120}ms`,
-                            }}
-                        >
-                            <span className="dashboard-flow-depth absolute inset-x-1 bottom-[-3px] h-2 rounded-full bg-[#020B20]/80 blur-[2px]" />
+                        return (
+                            <div
+                                key={`${AnimationCycle}-${Step.id}`}
+                                className="dashboard-flow-card group relative overflow-hidden rounded-[9px] border border-cyan-300/[0.08] bg-[linear-gradient(145deg,rgba(8,34,72,0.86),rgba(4,19,43,0.92))] px-2.5 py-2 shadow-[0_8px_15px_rgba(0,0,0,0.12),inset_0_1px_0_rgba(255,255,255,0.05)] [transform-style:preserve-3d]"
+                                style={{
+                                    animationDelay: `${Index * 120}ms`,
+                                }}
+                            >
+                                <span className="dashboard-flow-depth absolute inset-x-1 bottom-[-3px] h-2 rounded-full bg-[#020B20]/80 blur-[2px]" />
 
-                            <span className="pointer-events-none absolute inset-x-4 top-0 h-px bg-gradient-to-r from-transparent via-cyan-200/20 to-transparent" />
+                                <span className="pointer-events-none absolute inset-x-4 top-0 h-px bg-gradient-to-r from-transparent via-cyan-200/20 to-transparent" />
 
-                            <span className="pointer-events-none absolute -left-[70%] top-[-70%] h-[220%] w-[22%] rotate-[20deg] bg-gradient-to-r from-transparent via-white/[0.035] to-transparent" />
+                                <span className="pointer-events-none absolute -left-[70%] top-[-70%] h-[220%] w-[22%] rotate-[20deg] bg-gradient-to-r from-transparent via-white/[0.035] to-transparent" />
 
-                            <div className="relative flex items-center gap-2.5 [transform:translateZ(10px)]">
-                                <div className="workflow-step-icon relative flex h-7 w-7 shrink-0 items-center justify-center rounded-lg border border-cyan-300/10 bg-[linear-gradient(145deg,#103466,#071A38)] text-cyan-300 shadow-[inset_0_1px_0_rgba(255,255,255,0.09),0_7px_12px_rgba(0,0,0,0.2)]">
-                                    <span className="absolute inset-[2px] rounded-md border border-white/[0.025]" />
+                                <div className="relative flex items-center gap-2.5 [transform:translateZ(10px)]">
+                                    <div className="workflow-step-icon relative flex h-7 w-7 shrink-0 items-center justify-center rounded-lg border border-cyan-300/10 bg-[linear-gradient(145deg,#103466,#071A38)] text-cyan-300 shadow-[inset_0_1px_0_rgba(255,255,255,0.09),0_7px_12px_rgba(0,0,0,0.2)]">
+                                        <span className="absolute inset-[2px] rounded-md border border-white/[0.025]" />
 
-                                    <StepIcon
-                                        size={12}
-                                        strokeWidth={1.7}
-                                    />
+                                        <StepIcon
+                                            size={12}
+                                            strokeWidth={1.7}
+                                        />
+                                    </div>
+
+                                    <div className="min-w-0 flex-1">
+                                        <p className="truncate text-[7px] font-medium text-white">
+                                            {Step.id}.{" "}
+                                            {Step.title}
+                                        </p>
+
+                                        <p className="mt-0.5 truncate text-[6px] text-blue-100/45">
+                                            {Step.subtitle}
+                                        </p>
+                                    </div>
+
+                                    <div className="relative flex h-5 w-5 items-center justify-center rounded-full border border-emerald-300/15 bg-emerald-400/[0.06]">
+                                        <CheckCircle2
+                                            size={10}
+                                            className="text-emerald-300 drop-shadow-[0_0_7px_rgba(74,222,128,0.7)]"
+                                        />
+                                    </div>
                                 </div>
 
-                                <div className="min-w-0 flex-1">
-                                    <p className="truncate text-[7px] font-medium text-white">
-                                        {Step.id}. {Step.title}
-                                    </p>
-
-                                    <p className="mt-0.5 truncate text-[6px] text-blue-100/45">
-                                        {Step.subtitle}
-                                    </p>
-                                </div>
-
-                                <div className="relative flex h-5 w-5 items-center justify-center rounded-full border border-emerald-300/15 bg-emerald-400/[0.06]">
-                                    <CheckCircle2
-                                        size={10}
-                                        className="text-emerald-300 drop-shadow-[0_0_7px_rgba(74,222,128,0.7)]"
-                                    />
-                                </div>
+                                <span className="pointer-events-none absolute bottom-0 left-[9%] h-px w-[82%] bg-gradient-to-r from-transparent via-cyan-300/10 to-transparent" />
                             </div>
-
-                            <span className="pointer-events-none absolute bottom-0 left-[9%] h-px w-[82%] bg-gradient-to-r from-transparent via-cyan-300/10 to-transparent" />
-                        </div>
-                    );
-                })}
+                        );
+                    },
+                )}
             </div>
         </main>
     );
@@ -747,52 +1217,68 @@ const ImpactPanel = ({
             </h3>
 
             <div className="mt-4 space-y-5">
-                {ActiveView.metrics.map((Metric, Index) => (
-                    <div
-                        key={`${AnimationCycle}-${Metric.id}`}
-                        className="dashboard-metric-item"
-                        style={{
-                            animationDelay: `${Index * 100}ms`,
-                        }}
-                    >
-                        <p className="text-[6px] text-blue-100/40">
-                            {Metric.label}
-                        </p>
+                {ActiveView.metrics.map(
+                    (Metric, Index) => (
+                        <div
+                            key={`${AnimationCycle}-${Metric.id}`}
+                            className="dashboard-metric-item"
+                            style={{
+                                animationDelay: `${Index * 100}ms`,
+                            }}
+                        >
+                            <p className="text-[6px] text-blue-100/40">
+                                {Metric.label}
+                            </p>
 
-                        <div className="mt-1 flex items-center justify-between gap-1">
-                            <span className="text-[11px] font-semibold tracking-[-0.02em] text-white">
-                                <AnimatedNumber
-                                    value={Metric.value}
-                                    decimals={Metric.decimals}
-                                    suffix={Metric.suffix}
-                                    resetKey={AnimationCycle}
-                                />
-                            </span>
+                            <div className="mt-1 flex items-center justify-between gap-1">
+                                <span className="text-[11px] font-semibold tracking-[-0.02em] text-white">
+                                    <AnimatedNumber
+                                        value={Metric.value}
+                                        decimals={
+                                            Metric.decimals
+                                        }
+                                        suffix={
+                                            Metric.suffix
+                                        }
+                                        resetKey={
+                                            AnimationCycle
+                                        }
+                                    />
+                                </span>
 
-                            <span className="text-[6px] font-medium text-emerald-300">
-                                +{Metric.progress}%
-                            </span>
-                        </div>
+                                <span className="text-[6px] font-medium text-emerald-300">
+                                    +
+                                    {
+                                        Metric.progress
+                                    }
+                                    %
+                                </span>
+                            </div>
 
-                        <div className="dashboard-progress-shell relative mt-2 h-[5px] overflow-hidden rounded-full border border-blue-300/[0.06] bg-[#020B20]/80">
-                            <div
-                                key={`${AnimationCycle}-${Metric.id}-bar`}
-                                className="dashboard-progress-bar relative h-full rounded-full bg-gradient-to-r from-cyan-400 via-blue-500 to-violet-500"
-                                style={{
-                                    "--progress-width": `${Metric.progress}%`,
-                                }}
-                            >
-                                <span className="absolute inset-y-0 right-0 w-4 bg-white/25 blur-[3px]" />
-                                <span className="absolute inset-x-0 top-0 h-px bg-white/20" />
+                            <div className="dashboard-progress-shell relative mt-2 h-[5px] overflow-hidden rounded-full border border-blue-300/[0.06] bg-[#020B20]/80">
+                                <div
+                                    key={`${AnimationCycle}-${Metric.id}-bar`}
+                                    className="dashboard-progress-bar relative h-full rounded-full bg-gradient-to-r from-cyan-400 via-blue-500 to-violet-500"
+                                    style={{
+                                        "--progress-width": `${Metric.progress}%`,
+                                    }}
+                                >
+                                    <span className="absolute inset-y-0 right-0 w-4 bg-white/25 blur-[3px]" />
+
+                                    <span className="absolute inset-x-0 top-0 h-px bg-white/20" />
+                                </div>
+                            </div>
+
+                            <div className="mt-1.5 flex justify-between text-[5px] text-blue-100/25">
+                                <span>0</span>
+
+                                <span>
+                                    {Metric.progress}%
+                                </span>
                             </div>
                         </div>
-
-                        <div className="mt-1.5 flex justify-between text-[5px] text-blue-100/25">
-                            <span>0</span>
-                            <span>{Metric.progress}%</span>
-                        </div>
-                    </div>
-                ))}
+                    ),
+                )}
             </div>
         </aside>
     );
@@ -801,31 +1287,20 @@ const ImpactPanel = ({
 const DashboardPlatform = () => {
     return (
         <div className="dashboard-platform absolute left-1/2 top-[302px] z-10 h-[86px] w-[390px] -translate-x-1/2 [perspective:1200px]">
-
-            {/* Vertical holographic neck */}
             <div className="absolute left-1/2 top-[-18px] h-[48px] w-[34px] -translate-x-1/2 rounded-[50%] bg-gradient-to-b from-cyan-300/[0.18] via-blue-400/[0.10] to-transparent blur-[2px]" />
 
             <div className="absolute left-1/2 top-[-16px] h-[48px] w-[12px] -translate-x-1/2 rounded-full bg-gradient-to-b from-cyan-200/30 via-blue-400/20 to-transparent blur-[3px]" />
 
-            {/* Deep shadow */}
             <div className="absolute left-1/2 top-[72px] h-[20px] w-[280px] -translate-x-1/2 rounded-full bg-black/55 blur-[15px]" />
 
-            {/* Lower 3D base */}
             <div className="absolute left-1/2 top-[57px] h-[42px] w-[310px] -translate-x-1/2 rounded-[50%] border border-blue-300/25 bg-[linear-gradient(180deg,rgba(15,48,98,0.95),rgba(3,16,38,0.98))] shadow-[0_16px_35px_rgba(0,0,0,0.46),0_0_32px_rgba(22,119,255,0.16)] [transform:rotateX(68deg)]" />
 
-            {/* Elevated cyan ring */}
             <div className="absolute left-1/2 top-[43px] h-[42px] w-[275px] -translate-x-1/2 rounded-[50%] border border-cyan-300/55 bg-cyan-300/[0.025] shadow-[0_0_28px_rgba(25,211,255,0.18)] [transform:rotateX(68deg)_translateZ(12px)]" />
 
-            {/* Inner violet ring */}
-            <div className="absolute left-1/2 top-[34px] h-[29px] w-[188px] -translate-x-1/2 rounded-[50%] border border-violet-300/40 shadow-[0_0_22px_rgba(124,60,255,0.12)] [transform:rotateX(68deg)_translateZ(18px)]" />
-
-            {/* Holographic core */}
             <div className="dashboard-core-glow absolute left-1/2 top-[24px] h-[34px] w-[116px] -translate-x-1/2 rounded-[50%] border border-cyan-200/55 bg-gradient-to-r from-cyan-300/[0.05] via-cyan-200/[0.18] to-violet-400/[0.07] shadow-[0_0_32px_rgba(25,211,255,0.28)] [transform:rotateX(68deg)_translateZ(28px)]" />
 
-            {/* Core beam */}
             <div className="absolute left-1/2 top-[8px] h-[48px] w-[2px] -translate-x-1/2 rounded-full bg-gradient-to-b from-cyan-200/60 via-blue-400/20 to-transparent blur-[1px]" />
 
-            {/* Floating light slices */}
             <div className="dashboard-platform-slice absolute left-1/2 top-[31px] h-[2px] w-[150px] -translate-x-1/2 rounded-full bg-gradient-to-r from-transparent via-cyan-200/70 to-transparent blur-[1px]" />
 
             <div className="dashboard-platform-slice-delayed absolute left-1/2 top-[48px] h-[1px] w-[210px] -translate-x-1/2 rounded-full bg-gradient-to-r from-transparent via-blue-300/50 to-transparent blur-[1px]" />
@@ -848,18 +1323,19 @@ const AutomationDashboard = () => {
         WorkflowViews[ActiveViewIndex];
 
     useEffect(() => {
-        const AutoSwitchTimer = window.setInterval(() => {
-            SetActiveViewIndex(
-                (PreviousIndex) =>
-                    (PreviousIndex + 1) %
-                    WorkflowViews.length,
-            );
+        const AutoSwitchTimer =
+            window.setInterval(() => {
+                SetActiveViewIndex(
+                    (PreviousIndex) =>
+                        (PreviousIndex + 1) %
+                        WorkflowViews.length,
+                );
 
-            SetAnimationCycle(
-                (PreviousCycle) =>
-                    PreviousCycle + 1,
-            );
-        }, 3000);
+                SetAnimationCycle(
+                    (PreviousCycle) =>
+                        PreviousCycle + 1,
+                );
+            }, 3000);
 
         return () =>
             window.clearInterval(
@@ -877,20 +1353,14 @@ const AutomationDashboard = () => {
     };
 
     return (
-        <div className="dashboard-perspective relative z-20 mx-auto w-full max-w-[620px]">
-
-            {/* Ambient depth */}
+        <div className="dashboard-perspective automation-dashboard-host relative z-20 mx-auto w-full max-w-[620px]">
             <div className="absolute left-1/2 top-1/2 h-[340px] w-[545px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-blue-500/[0.09] blur-[82px]" />
 
-            {/* Back extrusion */}
             <div className="dashboard-depth absolute inset-x-[4%] bottom-[-28px] top-[7%] rounded-[21px] border border-blue-400/[0.08] bg-[#020B20]/90 shadow-[0_45px_70px_rgba(0,0,0,0.58)]" />
 
-            {/* Secondary extrusion */}
             <div className="dashboard-side-depth absolute inset-x-[1.5%] bottom-[-12px] top-[3%] rounded-[20px] border border-cyan-300/[0.08] bg-[#04132B]/90" />
 
-            {/* Main console */}
             <div className="dashboard-shell group relative overflow-hidden rounded-[20px] border border-cyan-300/45 bg-[linear-gradient(145deg,rgba(12,42,87,0.99),rgba(4,20,47,0.99))] shadow-[0_30px_70px_rgba(0,0,0,0.46),0_0_65px_rgba(22,119,255,0.19),inset_0_1px_0_rgba(255,255,255,0.13)] [transform-style:preserve-3d]">
-
                 <div className="absolute inset-x-10 top-0 z-30 h-px bg-gradient-to-r from-transparent via-cyan-100/80 to-transparent" />
 
                 <div className="absolute inset-x-[18%] top-[2px] z-30 h-px bg-gradient-to-r from-transparent via-blue-400/20 to-transparent blur-[1px]" />
@@ -930,7 +1400,7 @@ const AutomationDashboard = () => {
 
 const AutomationExperience = () => {
     return (
-        <section className="relative left-1/2 min-h-[720px] w-screen max-w-none -translate-x-1/2 overflow-hidden bg-[#061633] text-white">
+        <section className="automation-experience-section relative left-1/2 min-h-[720px] w-screen max-w-none -translate-x-1/2 overflow-hidden bg-[#061633] text-white sm:pb-14">
             <style>
                 {`
                     @keyframes ExperienceWaveMove {
@@ -1161,6 +1631,36 @@ const AutomationExperience = () => {
                         }
                     }
 
+                    @keyframes IntegrationMobileFloatOne {
+                        0%, 100% {
+                            transform: translate3d(0, 0, 0);
+                        }
+
+                        50% {
+                            transform: translate3d(0, -5px, 0);
+                        }
+                    }
+
+                    @keyframes IntegrationMobileFloatTwo {
+                        0%, 100% {
+                            transform: translate3d(0, 0, 0);
+                        }
+
+                        50% {
+                            transform: translate3d(0, -7px, 0);
+                        }
+                    }
+
+                    @keyframes IntegrationMobileFloatThree {
+                        0%, 100% {
+                            transform: translate3d(0, 0, 0);
+                        }
+
+                        50% {
+                            transform: translate3d(0, -4px, 0);
+                        }
+                    }
+
                     .experience-wave {
                         animation:
                             ExperienceWaveMove
@@ -1218,10 +1718,6 @@ const AutomationExperience = () => {
                             1800px;
                     }
 
-                    /*
-                     * Smooth dashboard hover:
-                     * no competing transform animation here.
-                     */
                     .dashboard-shell {
                         transform:
                             perspective(1800px)
@@ -1482,6 +1978,11 @@ const AutomationExperience = () => {
                             infinite;
                     }
 
+                    .integration-connections-mobile {
+                        display:
+                            none;
+                    }
+
                     .integration-card-group {
                         width:
                             104px;
@@ -1739,6 +2240,102 @@ const AutomationExperience = () => {
                             68%;
                     }
 
+                    /*
+                     * =================================================
+                     * LAPTOP / DESKTOP ONLY
+                     * 1024px+
+                     *
+                     * 1. Disable full-scene 3D floating animation
+                     *    to keep laptop rendering sharp.
+                     *
+                     * 2. Add individual floating animation to
+                     *    integration cards.
+                     *
+                     * Tablet and Phone remain untouched.
+                     * =================================================
+                     */
+                    @media (min-width:1024px) {
+                        .automation-scene-float {
+                            animation:
+                                none;
+
+                            transform:
+                                none;
+
+                            will-change:
+                                auto;
+                        }
+
+                        .integration-left-top
+                        .integration-card-group {
+                            animation:
+                                IntegrationMobileFloatOne
+                                4.2s
+                                ease-in-out
+                                infinite;
+                        }
+
+                        .integration-left-middle
+                        .integration-card-group {
+                            animation:
+                                IntegrationMobileFloatTwo
+                                4.6s
+                                ease-in-out
+                                infinite;
+
+                            animation-delay:
+                                0.45s;
+                        }
+
+                        .integration-left-bottom
+                        .integration-card-group {
+                            animation:
+                                IntegrationMobileFloatThree
+                                4.4s
+                                ease-in-out
+                                infinite;
+
+                            animation-delay:
+                                0.9s;
+                        }
+
+                        .integration-right-top
+                        .integration-card-group {
+                            animation:
+                                IntegrationMobileFloatTwo
+                                4.5s
+                                ease-in-out
+                                infinite;
+
+                            animation-delay:
+                                0.25s;
+                        }
+
+                        .integration-right-middle
+                        .integration-card-group {
+                            animation:
+                                IntegrationMobileFloatOne
+                                4.3s
+                                ease-in-out
+                                infinite;
+
+                            animation-delay:
+                                0.7s;
+                        }
+
+                        .integration-right-bottom
+                        .integration-card-group {
+                            animation:
+                                IntegrationMobileFloatThree
+                                4.7s
+                                ease-in-out
+                                infinite;
+
+                            animation-delay:
+                                1.1s;
+                        }
+                    }
+
                     @media (max-width:900px) {
                         .integration-card-group {
                             width:
@@ -1782,6 +2379,436 @@ const AutomationExperience = () => {
                         .integration-right-bottom {
                             right:
                                 12px;
+                        }
+                    }
+
+                    /*
+                     * TABLET ONLY
+                     * 640px - 1023px
+                     *
+                     * Phone and Laptop remain untouched.
+                     */
+                    @media (min-width:640px) and (max-width:1023px) {
+                        .integration-connections-desktop {
+                            display:
+                                none;
+                        }
+
+                        .integration-connections-mobile {
+                            display:
+                                block;
+                        }
+
+                        .automation-scene-container {
+                            height:
+                                530px;
+                        }
+
+                        .automation-dashboard-positioner {
+                            top:
+                                20%;
+
+                            width:
+                                100%;
+
+                            padding-left:
+                                32px;
+
+                            padding-right:
+                                32px;
+                        }
+
+                        .automation-dashboard-positioner
+                        > .automation-dashboard-host {
+                            width:
+                                100%;
+                        }
+
+                        .integration-left-top {
+                            left:
+                                5% !important;
+
+                            right:
+                                auto !important;
+
+                            top:
+                                1% !important;
+
+                            bottom:
+                                auto !important;
+                        }
+
+                        .integration-left-middle {
+                            left:
+                                50% !important;
+
+                            right:
+                                auto !important;
+
+                            top:
+                                1% !important;
+
+                            bottom:
+                                auto !important;
+
+                            transform:
+                                translateX(-50%);
+                        }
+
+                        .integration-left-bottom {
+                            left:
+                                auto !important;
+
+                            right:
+                                5% !important;
+
+                            top:
+                                1% !important;
+
+                            bottom:
+                                auto !important;
+                        }
+
+                        .integration-right-top {
+                            left:
+                                5% !important;
+
+                            right:
+                                auto !important;
+
+                            top:
+                                auto !important;
+
+                            bottom:
+                                1% !important;
+                        }
+
+                        .integration-right-middle {
+                            left:
+                                50% !important;
+
+                            right:
+                                auto !important;
+
+                            top:
+                                auto !important;
+
+                            bottom:
+                                1% !important;
+
+                            transform:
+                                translateX(-50%);
+                        }
+
+                        .integration-right-bottom {
+                            left:
+                                auto !important;
+
+                            right:
+                                5% !important;
+
+                            top:
+                                auto !important;
+
+                            bottom:
+                                1% !important;
+                        }
+                    }
+
+                    /*
+                     * PHONE ONLY
+                     * <= 639px
+                     *
+                     * Tablet and Laptop remain untouched.
+                     */
+                    @media (max-width:639px) {
+                        .integration-connections-desktop {
+                            display:
+                                none;
+                        }
+
+                        .integration-connections-mobile {
+                            display:
+                                block;
+                        }
+
+                        .automation-experience-section {
+                            padding-bottom:
+                                50px;
+                        }
+
+                        .automation-scene-container {
+                            height:
+                                530px;
+                        }
+
+                        .automation-dashboard-positioner {
+                            top:
+                                20%;
+
+                            width:
+                                100%;
+
+                            padding-left:
+                                24px;
+
+                            padding-right:
+                                24px;
+                        }
+
+                        .automation-dashboard-positioner
+                        > .automation-dashboard-host {
+                            width:
+                                100%;
+                        }
+
+                        .dashboard-impact-panel {
+                            display:
+                                none;
+                        }
+
+                        .dashboard-shell
+                        > .grid {
+                            grid-template-columns:
+                                52px
+                                minmax(0,1fr);
+
+                            min-height:
+                                320px;
+                        }
+
+                        .dashboard-side-panel {
+                            display:
+                                flex;
+
+                            flex-direction:
+                                column;
+
+                            align-items:
+                                center;
+
+                            padding:
+                                10px 6px;
+                        }
+
+                        .dashboard-side-panel
+                        > div:first-child {
+                            width:
+                                100%;
+
+                            justify-content:
+                                center;
+
+                            padding-bottom:
+                                9px;
+                        }
+
+                        .dashboard-brand-label {
+                            display:
+                                none;
+                        }
+
+                        .dashboard-nav-label {
+                            display:
+                                none;
+                        }
+
+                        .dashboard-nav-status-dot {
+                            display:
+                                none;
+                        }
+
+                        .dashboard-nav-item {
+                            justify-content:
+                                center;
+
+                            gap:
+                                0;
+
+                            padding:
+                                7px 4px;
+                        }
+
+                        .dashboard-nav-item:hover {
+                            transform:
+                                translateZ(8px);
+                        }
+
+                        .dashboard-workflow-panel {
+                            border-right:
+                                0;
+
+                            padding:
+                                12px 10px;
+                        }
+
+                        .integration-left-top {
+                            left:
+                                5% !important;
+
+                            right:
+                                auto !important;
+
+                            top:
+                                1% !important;
+
+                            bottom:
+                                auto !important;
+                        }
+
+                        .integration-left-middle {
+                            left:
+                                50% !important;
+
+                            right:
+                                auto !important;
+
+                            top:
+                                1% !important;
+
+                            bottom:
+                                auto !important;
+
+                            transform:
+                                translateX(-50%);
+                        }
+
+                        .integration-left-bottom {
+                            left:
+                                auto !important;
+
+                            right:
+                                5% !important;
+
+                            top:
+                                1% !important;
+
+                            bottom:
+                                auto !important;
+                        }
+
+                        .integration-right-top {
+                            left:
+                                5% !important;
+
+                            right:
+                                auto !important;
+
+                            top:
+                                auto !important;
+
+                            bottom:
+                                1% !important;
+                        }
+
+                        .integration-right-middle {
+                            left:
+                                50% !important;
+
+                            right:
+                                auto !important;
+
+                            top:
+                                auto !important;
+
+                            bottom:
+                                1% !important;
+
+                            transform:
+                                translateX(-50%);
+                        }
+
+                        .integration-right-bottom {
+                            left:
+                                auto !important;
+
+                            right:
+                                5% !important;
+
+                            top:
+                                auto !important;
+
+                            bottom:
+                                1% !important;
+                        }
+
+                        .integration-left-top
+                        .integration-card-group {
+                            animation:
+                                IntegrationMobileFloatOne
+                                4.2s
+                                ease-in-out
+                                infinite;
+                        }
+
+                        .integration-left-middle
+                        .integration-card-group {
+                            animation:
+                                IntegrationMobileFloatTwo
+                                4.6s
+                                ease-in-out
+                                infinite;
+
+                            animation-delay:
+                                0.45s;
+                        }
+
+                        .integration-left-bottom
+                        .integration-card-group {
+                            animation:
+                                IntegrationMobileFloatThree
+                                4.4s
+                                ease-in-out
+                                infinite;
+
+                            animation-delay:
+                                0.9s;
+                        }
+
+                        .integration-right-top
+                        .integration-card-group {
+                            animation:
+                                IntegrationMobileFloatTwo
+                                4.5s
+                                ease-in-out
+                                infinite;
+
+                            animation-delay:
+                                0.25s;
+                        }
+
+                        .integration-right-middle
+                        .integration-card-group {
+                            animation:
+                                IntegrationMobileFloatOne
+                                4.3s
+                                ease-in-out
+                                infinite;
+
+                            animation-delay:
+                                0.7s;
+                        }
+
+                        .integration-right-bottom
+                        .integration-card-group {
+                            animation:
+                                IntegrationMobileFloatThree
+                                4.7s
+                                ease-in-out
+                                infinite;
+
+                            animation-delay:
+                                1.1s;
+                        }
+
+                        .dashboard-platform {
+                            display:
+                                none;
+                        }
+
+                        .dashboard-platform-ambient {
+                            display:
+                                none;
                         }
                     }
                 `}
@@ -1859,7 +2886,7 @@ const AutomationExperience = () => {
             </div>
 
             {/* Heading */}
-            <div className="relative mx-auto max-w-[1400px] px-6 pt-12 text-center lg:px-8">
+            <div className="relative max-w-[1400px] px-6 pt-12 text-center">
                 <div className="inline-flex items-center gap-2 rounded-full border border-violet-300/15 bg-[#0A1F4A]/60 px-3.5 py-1.5 text-[10px] font-medium text-cyan-300 shadow-[0_0_20px_rgba(25,211,255,0.06)] backdrop-blur-md">
                     <span className="flex h-4 w-4 items-center justify-center rounded-full bg-gradient-to-br from-violet-500/35 to-cyan-400/20">
                         <Zap
@@ -1889,19 +2916,20 @@ const AutomationExperience = () => {
             </div>
 
             {/* Increased gap between description and dashboard */}
-            <div className="relative mt-10 h-[390px] w-full max-w-none px-0">
-
+            <div className="automation-scene-container relative mt-10 h-[390px] w-full max-w-none px-0">
                 <div className="automation-scene-float absolute inset-0">
                     <IntegrationConnections />
 
-                    {IntegrationData.map((Integration) => (
-                        <IntegrationNode
-                            key={Integration.id}
-                            integration={Integration}
-                        />
-                    ))}
+                    {IntegrationData.map(
+                        (Integration) => (
+                            <IntegrationNode
+                                key={Integration.id}
+                                integration={Integration}
+                            />
+                        ),
+                    )}
 
-                    <div className="absolute left-1/2 top-[3%] z-20 w-[68%] -translate-x-1/2">
+                    <div className="automation-dashboard-positioner absolute left-1/2 top-[3%] z-20 w-[68%] -translate-x-1/2">
                         <AutomationDashboard />
                     </div>
 
@@ -1910,7 +2938,7 @@ const AutomationExperience = () => {
                 </div>
 
                 {/* Platform ambient glow */}
-                <div className="pointer-events-none absolute left-1/2 top-[296px] h-[85px] w-[390px] -translate-x-1/2 rounded-full bg-cyan-400/[0.08] blur-[48px]" />
+                <div className="dashboard-platform-ambient pointer-events-none absolute left-1/2 top-[296px] h-[85px] w-[390px] -translate-x-1/2 rounded-full bg-cyan-400/[0.08] blur-[48px]" />
 
                 {/* Ambient particles */}
                 <span className="experience-particle absolute left-[25%] top-[43%] h-1.5 w-1.5 rounded-full bg-cyan-300 shadow-[0_0_10px_rgba(25,211,255,0.9)]" />
