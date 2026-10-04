@@ -379,9 +379,9 @@ const ServicesHeroVisual = () => {
 
             <div className="pointer-events-none absolute inset-[22%] rounded-full border border-violet-300/[0.03] [transform:rotateX(65deg)_rotateZ(-18deg)]" />
 
-            <div className="absolute inset-0 flex justify-center px-2 py-0 sm:px-4 sm:py-12 lg:py-0">
+            <div className="services-visual-stage absolute inset-0 flex justify-center px-2 py-0 sm:px-4 sm:py-12 lg:py-0">
                 <div className="relative flex w-[min(78%,520px)] flex-col space-y-14">
-                    <div className="relative h-[200px] w-full sm:h-[235px] lg:h-[150px]">
+                    <div className="pb-12 lg:pb-0 relative h-[200px] w-full sm:h-[235px] lg:h-[150px]">
                         <div className="relative h-full w-full overflow-visible">
                             <DataGateway type="input" />
                             <DataGateway type="output" />
@@ -415,8 +415,9 @@ const ServicesHero = () => {
                 <div className="absolute inset-y-0 left-0 w-[40%] bg-[radial-gradient(circle_at_10%_50%,rgba(22,119,255,0.04),transparent_55%)]" />
             </div>
 
-            <div className="relative mx-auto grid h-full max-w-[1400px] gap-8 overflow-hidden px-6 py-12 lg:grid-cols-[0.86fr_1.14fr] lg:gap-8 lg:px-8">
+            <div className="relative mx-auto pb-34 lg:pb-0 grid h-[85vh] max-w-[1400px] gap-8 overflow-hidden px-6 py-1 lg:py-12 lg:grid-cols-[0.86fr_1.14fr] lg:gap-8 lg:px-8">
                 {/* LEFT CONTENT */}
+
                 <div className="relative z-50 max-w-[580px] pt-5">
                     <div className="flex items-center gap-3">
                         <span className="h-px w-10 bg-gradient-to-r from-cyan-300 via-blue-400 to-transparent sm:w-11" />
@@ -426,7 +427,7 @@ const ServicesHero = () => {
                         </span>
                     </div>
 
-                    <h1 className="mt-5 tracking-[-0.055em]">
+                    <h1 className="services-hero-heading mt-5 tracking-[-0.055em]">
                         <span className="block text-[clamp(31px,4.15vw,67px)] font-semibold leading-[0.98] text-white">
                             {ServicesHeroContent.headingPrimary}
                         </span>
@@ -436,7 +437,7 @@ const ServicesHero = () => {
                         </span>
                     </h1>
 
-                    <p className="mt-[5%] max-w-[510px] text-[clamp(8px,1.63vw,12px)] leading-[1.78] text-white/72">
+                    <p className="services-hero-description mt-[5%] max-w-[510px] text-[clamp(8px,1.63vw,12px)] leading-[1.78] text-white/72">
                         {ServicesHeroContent.description}
                     </p>
 
@@ -455,7 +456,7 @@ const ServicesHero = () => {
                                     ].join(" ")}
                                 />
 
-                                <span className="whitespace-nowrap text-[clamp(7px,0.67vw,11px)] font-medium text-white/66">
+                                <span className="services-hero-feature-text whitespace-nowrap text-[clamp(7px,0.67vw,11px)] font-medium text-white/66">
                                     {Feature}
                                 </span>
                             </div>
@@ -473,7 +474,8 @@ const ServicesHero = () => {
                 </div>
 
                 {/* RIGHT VISUAL */}
-                <div className="relative z-30 flex h-full min-h-0">
+
+                <div className="services-right-visual relative z-30 flex h-full min-h-0">
                     <ServicesHeroVisual />
                 </div>
             </div>
@@ -1487,10 +1489,6 @@ const ServicesHero = () => {
                     animation-delay: -1.2s;
                 }
 
-                /* =================================
-                   ACTIVE ROW GLOW
-                ================================= */
-
                 #services-hero .operations-row-glow {
                     position: absolute;
                     inset: 0;
@@ -1532,10 +1530,6 @@ const ServicesHero = () => {
                     animation-delay: -1.2s;
                 }
 
-                /* =================================
-                   STATUS DOT
-                ================================= */
-
                 #services-hero .operations-status-dot {
                     background:
                         rgba(25,211,255,0.42);
@@ -1563,10 +1557,6 @@ const ServicesHero = () => {
                     animation-delay: -1.2s;
                 }
 
-                /* =================================
-                   ROW LABEL
-                ================================= */
-
                 #services-hero .operations-row-label {
                     color: rgba(255,255,255,0.27);
 
@@ -1588,10 +1578,6 @@ const ServicesHero = () => {
                 #services-hero .operations-row-2 .operations-row-label {
                     animation-delay: -1.2s;
                 }
-
-                /* =================================
-                   ROW VALUE
-                ================================= */
 
                 #services-hero .operations-row-value {
                     color: rgba(255,255,255,0.34);
@@ -1904,24 +1890,186 @@ const ServicesHero = () => {
                 ================================= */
 
                 @media (max-width: 1023px) {
+                    /*
+                       Tablet + Phone:
+                       The right visual breaks out of
+                       the parent container and becomes
+                       full viewport width.
+                    */
+
+                    #services-hero {
+                        height: auto;
+                        min-height: 85svh;
+                        overflow: visible;
+                    }
+
+                    /*
+                       Full 100vw right-side section.
+                       No left/right outer gap.
+                    */
+
+                    #services-hero .services-right-visual {
+                        position: relative;
+                        left: 50%;
+                        width: 100vw;
+                        max-width: 100vw;
+                        margin-left: -50vw;
+                        margin-top: -16px;
+                        padding-left: 0;
+                        padding-right: 0;
+                        transform: none;
+                    }
+
+                    /*
+                       Remove desktop width restriction.
+                    */
+
                     #services-hero .services-visual {
-                        transform:
-                            scale(0.90);
-                        transform-origin:
-                            center;
+                        width: 100%;
+                        max-width: none;
+                        transform: none;
+                        transform-origin: center;
+                    }
+
+                    /*
+                       Full-width stage with internal px-6.
+                    */
+
+                    #services-hero .services-visual-stage {
+                        width: 100%;
+                        max-width: none;
+                        padding-left: 24px;
+                        padding-right: 24px;
+                        padding-top: 0;
+                        padding-bottom: 32px;
+                    }
+
+                    /*
+                       Remove the 78% width restriction
+                       from the internal visual wrapper.
+                    */
+
+                    #services-hero
+                        .services-visual-stage
+                        > div {
+                        width: 100%;
+                        max-width: none;
                     }
                 }
 
-                @media (max-width: 767px) {
-                    #services-hero {
-                        height: 75vh;
+                /* =================================
+                   TABLET
+                   768px - 1023px
+                ================================= */
+
+                @media (min-width: 768px) and (max-width: 1023px) {
+                    /*
+                       Heading matched with previous
+                       responsive sections.
+                    */
+
+                    #services-hero .services-hero-heading {
+                        font-size: 52px;
+                        line-height: 1;
                     }
 
-                    #services-hero .services-visual {
-                        transform:
-                            scale(0.70);
-                        transform-origin:
-                            center;
+                    /*
+                       Description enlarged.
+                    */
+
+                    #services-hero .services-hero-description {
+                        font-size: 18px;
+                        line-height: 1.65;
+                    }
+
+                    /*
+                       Feature labels enlarged.
+                    */
+
+                    #services-hero .services-hero-feature-text {
+                        font-size: 18px;
+                        line-height: 1.4;
+                    }
+
+                    /*
+                       Keep visual close to
+                       the left content.
+                    */
+
+                    #services-hero .services-right-visual {
+                        margin-top: -22px;
+                    }
+
+                    /*
+                       Reduce vertical gap.
+                    */
+
+                    #services-hero > .relative.mx-auto {
+                        row-gap: 12px;
+                    }
+                }
+
+                /* =================================
+                   PHONE
+                   0px - 767px
+                ================================= */
+
+                @media (max-width: 767px) {
+                    /*
+                       Heading matched with
+                       previous sections.
+                    */
+
+                    #services-hero .services-hero-heading {
+                        font-size: 36px;
+                        line-height: 1.02;
+                    }
+
+                    /*
+                       Description enlarged.
+                    */
+
+                    #services-hero .services-hero-description {
+                        font-size: 14px;
+                        line-height: 1.68;
+                    }
+
+                    /*
+                       Feature labels enlarged.
+                    */
+
+                    #services-hero .services-hero-feature-text {
+                        font-size: 14px;
+                        line-height: 1.45;
+                    }
+
+                    /*
+                       Move visual upward.
+                    */
+
+                    #services-hero .services-right-visual {
+                        margin-top: -30px;
+                    }
+
+                    /*
+                       Remove extra vertical gap
+                       between hero rows.
+                    */
+
+                    #services-hero > .relative.mx-auto {
+                        row-gap: 6px;
+                    }
+
+                    /*
+                       Keep 24px internal breathing room
+                       while outer section touches
+                       viewport edges.
+                    */
+
+                    #services-hero .services-visual-stage {
+                        padding-left: 24px;
+                        padding-right: 24px;
+                        padding-bottom: 28px;
                     }
                 }
 

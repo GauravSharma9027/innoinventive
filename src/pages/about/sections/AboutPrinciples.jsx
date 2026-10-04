@@ -118,7 +118,7 @@ const PrincipleCardReactor = ({ icon: Icon }) => {
 
             <span className="principle-reactor-pulse absolute h-[62px] w-[62px] rounded-full border border-cyan-300/[0.05]" />
 
-            <div className="relative z-20">
+            <div className="principle-card-icon relative z-20">
                 <PremiumIconBadge
                     icon={Icon}
                     size="default"
@@ -145,12 +145,12 @@ const PrincipleTelemetry = ({ principle }) => {
                         <span className="relative h-1 w-1 rounded-full bg-cyan-300" />
                     </span>
 
-                    <span className="truncate text-[4.5px] font-medium uppercase tracking-[0.13em] text-white/28">
+                    <span className="principle-card-telemetry-label truncate text-[4.5px] font-medium uppercase tracking-[0.13em] text-white/28">
                         AUTOMATION LAYER
                     </span>
                 </div>
 
-                <span className="shrink-0 text-[4.5px] font-semibold uppercase tracking-[0.11em] text-cyan-200/40">
+                <span className="principle-card-system-label shrink-0 text-[4.5px] font-semibold uppercase tracking-[0.11em] text-cyan-200/40">
                     {principle.systemLabel}
                 </span>
             </div>
@@ -173,11 +173,11 @@ const PrincipleTelemetry = ({ principle }) => {
             </div>
 
             <div className="mt-1.5 flex items-center justify-between">
-                <span className="font-mono text-[4px] uppercase tracking-[0.12em] text-white/18">
+                <span className="principle-card-pulse font-mono text-[4px] uppercase tracking-[0.12em] text-white/18">
                     {principle.pulse}
                 </span>
 
-                <span className="font-mono text-[4px] text-cyan-300/35">
+                <span className="principle-card-system-value font-mono text-[4px] text-cyan-300/35">
                     {principle.systemValue}
                 </span>
             </div>
@@ -212,10 +212,13 @@ const PrincipleCard = ({ principle, index }) => {
 
                 <span className="pointer-events-none absolute right-[8%] top-[8%] h-[65px] w-[65px] rounded-full bg-cyan-300/[0.04] blur-[28px]" />
 
-                {/* Header */}
+                {/* =================================================
+                    HEADER
+                ================================================= */}
+
                 <div className="relative z-30 flex items-center justify-between">
                     <div className="flex items-center gap-2.5">
-                        <span className="font-mono text-[8px] font-semibold tracking-[0.16em] text-cyan-300/80">
+                        <span className="principle-card-number font-mono text-[8px] font-semibold tracking-[0.16em] text-cyan-300/80">
                             {principle.number}
                         </span>
 
@@ -229,27 +232,33 @@ const PrincipleCard = ({ principle, index }) => {
                             <span className="relative h-1 w-1 rounded-full bg-emerald-300 shadow-[0_0_5px_rgba(52,211,153,0.7)]" />
                         </span>
 
-                        <span className="text-[4.5px] font-semibold uppercase tracking-[0.12em] text-emerald-100/52">
+                        <span className="principle-card-status text-[4.5px] font-semibold uppercase tracking-[0.12em] text-emerald-100/52">
                             {principle.status}
                         </span>
                     </div>
                 </div>
 
-                {/* Reactor */}
+                {/* =================================================
+                    REACTOR
+                ================================================= */}
+
                 <div className="relative z-20 mt-2.5 flex justify-center">
                     <PrincipleCardReactor icon={PrincipleIcon} />
                 </div>
 
-                {/* Title */}
+                {/* =================================================
+                    TITLE
+                ================================================= */}
+
                 <div className="relative z-20 -mt-1 text-center">
-                    <h3 className="mx-auto max-w-[185px] text-[14px] font-semibold leading-[1.12] tracking-[-0.025em] text-white sm:text-[15px]">
+                    <h3 className="principle-card-title mx-auto max-w-[185px] text-[14px] font-semibold leading-[1.12] tracking-[-0.025em] text-white sm:text-[15px]">
                         {principle.title}
                     </h3>
 
                     <div className="mt-1.5 flex items-center justify-center gap-2">
                         <span className="h-px w-3 bg-cyan-300/18" />
 
-                        <span className="text-[5px] font-semibold uppercase tracking-[0.15em] text-cyan-100/25">
+                        <span className="principle-card-intelligent-label text-[5px] font-semibold uppercase tracking-[0.15em] text-cyan-100/25">
                             Intelligent principle
                         </span>
 
@@ -257,7 +266,10 @@ const PrincipleCard = ({ principle, index }) => {
                     </div>
                 </div>
 
-                {/* Telemetry */}
+                {/* =================================================
+                    TELEMETRY
+                ================================================= */}
+
                 <PrincipleTelemetry principle={principle} />
 
                 {/* Sweep */}
@@ -296,17 +308,17 @@ const AboutPrinciples = () => {
             ================================================= */}
 
             <div className="relative z-20 mx-auto w-full max-w-[1400px] px-6 py-14 lg:px-8 lg:py-16">
-
                 {/* =================================================
                     ROW 1
                     LOCKED
                 ================================================= */}
 
                 <div className="grid items-start gap-10 lg:grid-cols-[0.72fr_1.28fr] xl:gap-14">
+                    {/* =================================================
+                        LEFT HEADING
+                    ================================================= */}
 
-                    {/* LEFT HEADING */}
-
-                    <div className="max-w-[390px]">
+                    <div className="principles-copy w-full max-w-none lg:max-w-[390px]">
                         <div className="inline-flex items-center gap-3">
                             <span className="font-mono text-[13px] font-medium tracking-[0.12em] text-cyan-300">
                                 {PrinciplesContent.sectionNumber}
@@ -319,10 +331,12 @@ const AboutPrinciples = () => {
                             </span>
                         </div>
 
-                        <h2 className="mt-5 text-[32px] font-semibold leading-[1.02] tracking-[-0.045em] sm:text-[38px] lg:text-[42px]">
-                            {PrinciplesContent.headingPrimary}{" "}
-                            <span className="bg-gradient-to-r from-cyan-300 via-blue-400 to-violet-400 bg-clip-text text-transparent">
-                                {PrinciplesContent.headingAccent}
+                        <h2 className="principles-heading mt-5 text-[36px] font-semibold leading-[1.02] tracking-[-0.045em] sm:text-[38px] lg:text-[42px]">
+                            <span className="principles-heading-first whitespace-nowrap">
+                                {PrinciplesContent.headingPrimary}{" "}
+                                <span className="bg-gradient-to-r from-cyan-300 via-blue-400 to-violet-400 bg-clip-text text-transparent">
+                                    {PrinciplesContent.headingAccent}
+                                </span>
                             </span>
 
                             <span className="block">
@@ -330,7 +344,7 @@ const AboutPrinciples = () => {
                             </span>
                         </h2>
 
-                        <p className="mt-4 max-w-[360px] text-[11px] leading-[1.75] text-blue-100/55 sm:text-[12px]">
+                        <p className="principles-description mt-4 w-full max-w-none text-[14px] leading-[1.7] text-blue-100/55 sm:text-[12px] lg:max-w-[360px] lg:text-[12px]">
                             {PrinciplesContent.description}
                         </p>
 
@@ -343,7 +357,9 @@ const AboutPrinciples = () => {
                         </div>
                     </div>
 
-                    {/* RIGHT THREE CARDS */}
+                    {/* =================================================
+                        RIGHT THREE CARDS
+                    ================================================= */}
 
                     <div className="relative">
                         <div className="grid items-stretch gap-4 sm:grid-cols-[1fr_46px_1fr_46px_1fr]">
@@ -534,7 +550,112 @@ const AboutPrinciples = () => {
                 }
 
                 /* =================================
-                   ROW 1 ANIMATION KEYFRAMES
+                   TABLET
+                ================================= */
+
+                @media (min-width: 768px) and (max-width: 1023px) {
+                    .principles-copy {
+                        width: 100%;
+                        max-width: none;
+                    }
+
+                    .principles-heading {
+                        font-size: 52px;
+                        line-height: 1;
+                    }
+
+                    .principles-description {
+                        width: 100%;
+                        max-width: 100%;
+                        font-size: 18px;
+                        line-height: 1.65;
+                    }
+                }
+
+                /* =================================
+                   PHONE
+                ================================= */
+
+                @media (max-width: 767px) {
+                    .principles-copy {
+                        width: 100%;
+                        max-width: none;
+                    }
+
+                    .principles-heading {
+                        width: 100%;
+                        font-size: 36px;
+                        line-height: 1.02;
+                    }
+
+                    .principles-heading-first {
+                        display: inline-block;
+                        white-space: nowrap;
+                    }
+
+                    .principles-heading > span:last-child {
+                        display: block;
+                    }
+
+                    .principles-description {
+                        width: 100%;
+                        max-width: 100%;
+                        font-size: 14px;
+                        line-height: 1.68;
+                    }
+
+                    /*
+                     * Card internal typography
+                     * remains the same layout, only content
+                     * becomes more readable.
+                     */
+
+                    .principle-card-number {
+                        font-size: 10px;
+                    }
+
+                    .principle-card-status {
+                        font-size: 7px;
+                    }
+
+                    .principle-card-title {
+                        font-size: 18px;
+                        line-height: 1.08;
+                    }
+
+                    .principle-card-intelligent-label {
+                        font-size: 7px;
+                    }
+
+                    .principle-card-telemetry-label {
+                        font-size: 7px;
+                    }
+
+                    .principle-card-system-label {
+                        font-size: 7px;
+                    }
+
+                    .principle-card-pulse {
+                        font-size: 6px;
+                    }
+
+                    .principle-card-system-value {
+                        font-size: 6px;
+                    }
+
+                    /*
+                     * Slight icon enlargement
+                     * without changing overall card design.
+                     */
+
+                    .principle-card-icon {
+                        transform: scale(1.15);
+                        transform-origin: center;
+                    }
+                }
+
+                /* =================================
+                   REDUCED MOTION
                 ================================= */
 
                 @media (prefers-reduced-motion: reduce) {

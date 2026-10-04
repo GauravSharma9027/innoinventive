@@ -1,14 +1,8 @@
-import {
-    ArrowRight,
-    BrainCircuit,
-    Globe2,
-    Network,
-    Sparkles,
-} from "lucide-react";
-import { useEffect, useState } from "react";
+import { ArrowRight, BrainCircuit, Globe2, Network, Sparkles } from "lucide-react"
+import { useEffect, useState } from "react"
 
-import HeroActionButton from "../../../components/UI/HeroActionButton";
-import PremiumIconBadge from "../../../components/UI/PremiumIconBadge";
+import HeroActionButton from "../../../components/UI/HeroActionButton"
+import PremiumIconBadge from "../../../components/UI/PremiumIconBadge"
 
 /* =========================================================
    ABOUT HERO CONTENT
@@ -18,13 +12,12 @@ const AboutHeroContent = {
     badge: "About Us",
     headingPrimary: "We Are",
     headingAccent: "InnoInventive",
-    subheading:
-        "Building intelligent digital solutions for a smarter tomorrow.",
+    subheading: "Building intelligent digital solutions for a smarter tomorrow.",
     description:
         "We are a technology-driven team, focused on creating intelligent systems that automate business processes, streamline operations and help brands grow in the digital era.",
     primaryButton: "Our Journey",
     secondaryButton: "Explore Our Approach",
-};
+}
 
 /* =========================================================
    VIDEO SLIDES
@@ -37,8 +30,7 @@ const AboutVideoSlides = [
         label: "Global Intelligence",
         eyebrow: "Connected systems",
         title: "Digital Intelligence",
-        description:
-            "Connected data, intelligent workflows and technology working as one system.",
+        description: "Connected data, intelligent workflows and technology working as one system.",
         status: "SYSTEM ONLINE",
         systemCode: "01",
         accentIcon: Globe2,
@@ -49,32 +41,25 @@ const AboutVideoSlides = [
         label: "System Architecture",
         eyebrow: "Intelligent infrastructure",
         title: "Connected Automation",
-        description:
-            "A smarter digital layer designed to connect data, platforms and business operations.",
+        description: "A smarter digital layer designed to connect data, platforms and business operations.",
         status: "NETWORK ACTIVE",
         systemCode: "02",
         accentIcon: Network,
     },
-];
+]
 
 /* =========================================================
    VIDEO LAYER
 ========================================================= */
 
-const AboutVideoLayer = ({
-    slide,
-    index,
-    activeIndex,
-}) => {
-    const IsActive = activeIndex === index;
+const AboutVideoLayer = ({ slide, index, activeIndex }) => {
+    const IsActive = activeIndex === index
 
     return (
         <div
             className={[
                 "absolute inset-0 transition-all duration-[1400ms] ease-[cubic-bezier(0.16,1,0.3,1)]",
-                IsActive
-                    ? "scale-[1] opacity-100"
-                    : "pointer-events-none scale-[1.035] opacity-0",
+                IsActive ? "scale-[1] opacity-100" : "pointer-events-none scale-[1.035] opacity-0",
             ].join(" ")}
             aria-hidden={!IsActive}
         >
@@ -87,19 +72,14 @@ const AboutVideoLayer = ({
                 tabIndex={-1}
             />
         </div>
-    );
-};
+    )
+}
 
 /* =========================================================
    PREMIUM NUMBER CARD
 ========================================================= */
 
-const AboutVideoNumberCard = ({
-    number,
-    active,
-    onClick,
-    label,
-}) => {
+const AboutVideoNumberCard = ({ number, active, onClick, label }) => {
     return (
         <button
             type="button"
@@ -108,18 +88,14 @@ const AboutVideoNumberCard = ({
             aria-pressed={active}
             className={[
                 "about-video-number-card group relative [perspective:800px] transition-all duration-500",
-                active
-                    ? "h-[32px] w-[32px] scale-[1.12]"
-                    : "h-[28px] w-[30px] scale-[0.92]",
+                active ? "h-[32px] w-[32px] scale-[1.12]" : "h-[28px] w-[30px] scale-[0.92]",
             ].join(" ")}
         >
             {/* Rear depth */}
             <span
                 className={[
                     "absolute inset-x-[3px] bottom-[-3px] h-[calc(100%-2px)] rounded-[10px] bg-[#020B20] shadow-[0_7px_15px_rgba(0,0,0,0.42)] transition-all duration-500",
-                    active
-                        ? "translate-y-[2px]"
-                        : "translate-y-0",
+                    active ? "translate-y-[2px]" : "translate-y-0",
                 ].join(" ")}
             />
 
@@ -127,9 +103,7 @@ const AboutVideoNumberCard = ({
             <span
                 className={[
                     "absolute -inset-2 rounded-[14px] blur-xl transition-all duration-500",
-                    active
-                        ? "bg-cyan-400/[0.12]"
-                        : "bg-cyan-400/[0.035] group-hover:bg-cyan-400/[0.08]",
+                    active ? "bg-cyan-400/[0.12]" : "bg-cyan-400/[0.035] group-hover:bg-cyan-400/[0.08]",
                 ].join(" ")}
             />
 
@@ -149,9 +123,7 @@ const AboutVideoNumberCard = ({
                 <span
                     className={[
                         "pointer-events-none absolute inset-1.5 rounded-[8px] shadow-[inset_0_0_15px_rgba(25,211,255,0.05)] transition-opacity duration-500",
-                        active
-                            ? "bg-cyan-300/[0.055] opacity-100"
-                            : "bg-cyan-300/[0.015] opacity-60",
+                        active ? "bg-cyan-300/[0.055] opacity-100" : "bg-cyan-300/[0.015] opacity-60",
                     ].join(" ")}
                 />
 
@@ -159,9 +131,7 @@ const AboutVideoNumberCard = ({
                 <span
                     className={[
                         "relative z-10 font-mono font-semibold tracking-[0.12em] transition-all duration-500",
-                        active
-                            ? "text-[11px] text-cyan-100 drop-shadow-[0_0_7px_rgba(25,211,255,0.35)]"
-                            : "text-[8px]",
+                        active ? "text-[11px] text-cyan-100 drop-shadow-[0_0_7px_rgba(25,211,255,0.35)]" : "text-[8px]",
                     ].join(" ")}
                 >
                     {number}
@@ -171,52 +141,39 @@ const AboutVideoNumberCard = ({
                 <span
                     className={[
                         "absolute bottom-[3px] left-1/2 -translate-x-1/2 rounded-full bg-gradient-to-r from-cyan-400 via-blue-500 to-violet-500 blur-[0.5px] transition-all duration-500",
-                        active
-                            ? "h-[2px] w-5 opacity-100"
-                            : "h-[2px] w-1.5 opacity-25",
+                        active ? "h-[2px] w-5 opacity-100" : "h-[2px] w-1.5 opacity-25",
                     ].join(" ")}
                 />
             </span>
         </button>
-    );
-};
+    )
+}
 
 /* =========================================================
    PREMIUM MEDIA CONSOLE
 ========================================================= */
 
 const AboutMediaConsole = () => {
-    const [ActiveVideoIndex, setActiveVideoIndex] =
-        useState(0);
+    const [ActiveVideoIndex, setActiveVideoIndex] = useState(0)
 
     useEffect(() => {
         if (AboutVideoSlides.length <= 1) {
-            return undefined;
+            return undefined
         }
 
-        const RotationTimer = window.setInterval(
-            () => {
-                setActiveVideoIndex(
-                    (CurrentIndex) =>
-                        (CurrentIndex + 1) %
-                        AboutVideoSlides.length,
-                );
-            },
-            12000,
-        );
+        const RotationTimer = window.setInterval(() => {
+            setActiveVideoIndex((CurrentIndex) => (CurrentIndex + 1) % AboutVideoSlides.length)
+        }, 12000)
 
         return () => {
-            window.clearInterval(
-                RotationTimer,
-            );
-        };
-    }, []);
+            window.clearInterval(RotationTimer)
+        }
+    }, [])
 
-    const ActiveSlide =
-        AboutVideoSlides[ActiveVideoIndex];
+    const ActiveSlide = AboutVideoSlides[ActiveVideoIndex]
 
     return (
-        <div className="about-media-system relative mx-auto w-full max-w-[570px]">
+        <div className="about-media-system relative w-screen lg:w-full lg:max-w-[570px]">
             {/* =================================================
                 ATMOSPHERE
             ================================================= */}
@@ -254,18 +211,9 @@ const AboutMediaConsole = () => {
                         ================================================= */}
 
                         <div className="relative aspect-[16/9] w-full overflow-hidden">
-                            {AboutVideoSlides.map(
-                                (slide, index) => (
-                                    <AboutVideoLayer
-                                        key={slide.id}
-                                        slide={slide}
-                                        index={index}
-                                        activeIndex={
-                                            ActiveVideoIndex
-                                        }
-                                    />
-                                ),
-                            )}
+                            {AboutVideoSlides.map((slide, index) => (
+                                <AboutVideoLayer key={slide.id} slide={slide} index={index} activeIndex={ActiveVideoIndex} />
+                            ))}
 
                             {/* Video overlays */}
                             <div className="pointer-events-none absolute inset-0 z-10 bg-gradient-to-r from-[#061633]/40 via-transparent to-[#061633]/08" />
@@ -295,23 +243,12 @@ const AboutMediaConsole = () => {
 
                             <div className="absolute left-4 top-4 z-30">
                                 <div className="flex items-center gap-2.5 rounded-[14px] border border-cyan-300/[0.08] bg-[#061633]/40 px-2 py-1.5 backdrop-blur-xl shadow-[inset_0_1px_0_rgba(255,255,255,0.08),0_10px_25px_rgba(0,0,0,0.20)]">
-                                    <PremiumIconBadge
-                                        icon={
-                                            ActiveSlide.accentIcon
-                                        }
-                                        size="default"
-                                    />
+                                    <PremiumIconBadge icon={ActiveSlide.accentIcon} size="default" />
 
                                     <div className="pr-1">
-                                        <span className="block text-[6px] font-semibold uppercase tracking-[0.13em] text-cyan-100/40">
-                                            Current system
-                                        </span>
+                                        <span className="block text-[6px] font-semibold uppercase tracking-[0.13em] text-cyan-100/40">Current system</span>
 
-                                        <span className="mt-0.5 block text-[8px] font-semibold text-white/72">
-                                            {
-                                                ActiveSlide.label
-                                            }
-                                        </span>
+                                        <span className="mt-0.5 block text-[8px] font-semibold text-white/72">{ActiveSlide.label}</span>
                                     </div>
                                 </div>
                             </div>
@@ -324,10 +261,7 @@ const AboutMediaConsole = () => {
                                 <span className="absolute -inset-12 rounded-full bg-cyan-300/[0.035] blur-3xl" />
 
                                 <div className="about-media-core relative">
-                                    <PremiumIconBadge
-                                        icon={Sparkles}
-                                        size="large"
-                                    />
+                                    <PremiumIconBadge icon={Sparkles} size="large" />
                                 </div>
                             </div>
 
@@ -343,9 +277,7 @@ const AboutMediaConsole = () => {
                                         <span className="relative h-1.5 w-1.5 rounded-full bg-emerald-300 shadow-[0_0_7px_rgba(52,211,153,0.65)]" />
                                     </span>
 
-                                    <span className="text-[6px] font-semibold uppercase tracking-[0.13em] text-emerald-100/60">
-                                        Live Node
-                                    </span>
+                                    <span className="text-[6px] font-semibold uppercase tracking-[0.13em] text-emerald-100/60">Live Node</span>
                                 </div>
                             </div>
                         </div>
@@ -358,14 +290,10 @@ const AboutMediaConsole = () => {
                             <div className="flex items-center gap-3">
                                 {/* System label */}
                                 <div className="flex shrink-0 items-center gap-2">
-                                    <span className="text-[6px] font-semibold uppercase tracking-[0.16em] text-white/25">
-                                        SYSTEM
-                                    </span>
+                                    <span className="text-[6px] font-semibold uppercase tracking-[0.16em] text-white/25">SYSTEM</span>
 
                                     <span className="rounded-md border border-cyan-300/10 bg-cyan-300/[0.025] px-1.5 py-1 text-[7px] font-semibold tracking-[0.12em] text-cyan-300/70">
-                                        {
-                                            ActiveSlide.systemCode
-                                        }
+                                        {ActiveSlide.systemCode}
                                     </span>
                                 </div>
 
@@ -373,54 +301,25 @@ const AboutMediaConsole = () => {
                                 <div className="relative min-w-0 flex-1">
                                     <div className="h-[3px] w-full overflow-hidden rounded-full bg-white/[0.07]">
                                         <div
-                                            key={
-                                                ActiveVideoIndex
-                                            }
+                                            key={ActiveVideoIndex}
                                             className="about-controller-progress h-full rounded-full bg-gradient-to-r from-cyan-300 via-blue-400 to-violet-400 shadow-[0_0_10px_rgba(25,211,255,0.32)]"
                                         />
                                     </div>
                                 </div>
 
-                                {/* =================================================
-                                    PREMIUM NUMBER CARDS
-                                ================================================= */}
-
+                                {/* Premium Number Cards */}
                                 <div className="flex shrink-0 items-center gap-1.5">
-                                    {AboutVideoSlides.map(
-                                        (
-                                            slide,
-                                            index,
-                                        ) => (
-                                            <AboutVideoNumberCard
-                                                key={
-                                                    slide.id
-                                                }
-                                                number={String(
-                                                    index +
-                                                    1,
-                                                ).padStart(
-                                                    2,
-                                                    "0",
-                                                )}
-                                                label={
-                                                    slide.title
-                                                }
-                                                active={
-                                                    ActiveVideoIndex ===
-                                                    index
-                                                }
-                                                onClick={() =>
-                                                    setActiveVideoIndex(
-                                                        index,
-                                                    )
-                                                }
-                                            />
-                                        ),
-                                    )}
+                                    {AboutVideoSlides.map((slide, index) => (
+                                        <AboutVideoNumberCard
+                                            key={slide.id}
+                                            number={String(index + 1).padStart(2, "0")}
+                                            label={slide.title}
+                                            active={ActiveVideoIndex === index}
+                                            onClick={() => setActiveVideoIndex(index)}
+                                        />
+                                    ))}
                                 </div>
                             </div>
-
-                         
                         </div>
                     </div>
                 </div>
@@ -436,8 +335,8 @@ const AboutMediaConsole = () => {
 
             <span className="about-media-particle-three pointer-events-none absolute bottom-[17%] right-[12%] h-1 w-1 rounded-full bg-cyan-300 shadow-[0_0_8px_rgba(25,211,255,0.75)]" />
         </div>
-    );
-};
+    )
+}
 
 /* =========================================================
    ABOUT HERO
@@ -445,10 +344,7 @@ const AboutMediaConsole = () => {
 
 const AboutHero = () => {
     return (
-        <section
-            id="about-hero"
-            className="relative h-[calc(100svh-92px)] w-full overflow-hidden bg-[#061633] text-white"
-        >
+        <section id="about-hero" className="relative h-full lg:h-[calc(100svh-92px)] w-full overflow-hidden bg-[#061633] text-white">
             {/* =================================================
                 BACKGROUND
             ================================================= */}
@@ -467,13 +363,13 @@ const AboutHero = () => {
                 MASTER CONTAINER
             ================================================= */}
 
-            <div className="relative z-20 mx-auto flex h-[85vh] w-full max-w-[1400px] items-center px-6 lg:px-8">
-                <div className="grid w-full min-w-0  gap-5 lg:grid-cols-[0.9fr_1.1fr] xl:gap-8">
+            <div className="relative z-20  h-fit w-full max-w-[1400px]  lg:h-[85vh] flex lg:items-center px-6 pb-25 lg:pb-0 lg:px-8">
+                <div className="grid w-full min-w-0 grid-cols-1 items-start content-start gap-16 lg:grid-cols-[minmax(0,610px)_minmax(0,1fr)]">
                     {/* =================================================
-                        LEFT
-                    ================================================= */}
+        LEFT
+    ================================================= */}
 
-                    <div className="min-w-0 max-w-[610px] pt-5">
+                    <div className="min-w-0 h-fit max-w-[610px] py-5 lg:h-full">
                         <div className="inline-flex items-center gap-3">
                             <span className="text-[10px] font-semibold uppercase tracking-[0.18em] text-cyan-300 sm:text-[11px] lg:text-[12px]">
                                 {AboutHeroContent.badge}
@@ -482,47 +378,29 @@ const AboutHero = () => {
                             <span className="h-px w-11 bg-gradient-to-r from-cyan-300 via-blue-400 to-transparent" />
                         </div>
 
-                        <h1 className="mt-4 text-[38px] font-semibold leading-[0.96] tracking-[-0.045em] sm:text-[48px] lg:text-[54px] xl:text-[60px]">
+                        <h1 className="mt-4 text-5xl font-semibold leading-[0.96] tracking-[-0.045em] sm:text-[48px] lg:text-[54px] xl:text-[60px]">
                             {AboutHeroContent.headingPrimary}{" "}
-                            <span className="bg-gradient-to-r from-cyan-300 via-blue-400 to-violet-400 bg-clip-text text-transparent">
-                                {AboutHeroContent.headingAccent}
-                            </span>
+                            <span className="bg-gradient-to-r from-cyan-300 via-blue-400 to-violet-400 bg-clip-text text-transparent">{AboutHeroContent.headingAccent}</span>
                         </h1>
 
                         <p className="mt-5 max-w-[570px] text-[18px] font-medium leading-[1.28] tracking-[-0.02em] text-blue-100/90 sm:text-[21px] lg:text-[24px]">
                             {AboutHeroContent.subheading}
                         </p>
 
-                        <p className="mt-4 max-w-[550px] text-[11px] leading-5 text-white/48 sm:text-[12px] sm:leading-6 lg:text-[13px]">
-                            {AboutHeroContent.description}
-                        </p>
+                        <p className="mt-4 max-w-[550px] text-[11px] leading-5 text-white/48 sm:text-[12px] sm:leading-6 lg:text-[13px]">{AboutHeroContent.description}</p>
 
-                        <div className="mt-7 flex flex-wrap items-center gap-3">
-                            <HeroActionButton
-                                label={
-                                    AboutHeroContent.primaryButton
-                                }
-                                icon={ArrowRight}
-                                to="/about#journey"
-                                variant="primary"
-                            />
+                        <div className="mt-7 flex flex-wrap items-center gap-5">
+                            <HeroActionButton label={AboutHeroContent.primaryButton} icon={ArrowRight} to="/about#journey" variant="primary" />
 
-                            <HeroActionButton
-                                label={
-                                    AboutHeroContent.secondaryButton
-                                }
-                                icon={ArrowRight}
-                                to="/about#approach"
-                                variant="secondary"
-                            />
+                            <HeroActionButton label={AboutHeroContent.secondaryButton} icon={ArrowRight} to="/about#approach" variant="secondary" />
                         </div>
                     </div>
 
                     {/* =================================================
-                        RIGHT
-                    ================================================= */}
+        RIGHT
+    ================================================= */}
 
-                    <div className="flex h-full min-h-0 w-full min-w-0 items-center justify-center">
+                    <div className="flex h-fit min-h-0 w-full min-w-0 justify-start lg:h-full lg:items-center">
                         <AboutMediaConsole />
                     </div>
                 </div>
@@ -716,6 +594,13 @@ const AboutHero = () => {
                     }
                 }
 
+                /*
+                 * =================================================
+                 * TABLET / LAPTOP
+                 * UNCHANGED
+                 * =================================================
+                 */
+
                 @media (max-width: 1199px) {
                     .about-media-system {
                         transform: scale(0.9);
@@ -746,12 +631,35 @@ const AboutHero = () => {
                     }
                 }
 
+                /*
+                 * =================================================
+                 * PHONE ONLY
+                 * =================================================
+                 */
+
                 @media (max-width: 767px) {
                     .about-media-system {
-                        transform: scale(0.7);
+                        /*
+                         * Parent already has px-6.
+                         * Keep exactly 24px / 24px viewport spacing.
+                         */
+                        width: calc(100vw - 48px);
+                        max-width: none;
+
+                        /*
+                         * Remove the previous mobile scale
+                         * so the video card uses its full width.
+                         */
+                        transform: scale(1);
                         transform-origin: center top;
-                        margin-top: -25px;
-                        margin-bottom: -100px;
+
+                        /*
+                         * Reduce extra top spacing.
+                         * Bottom spacing remains compatible
+                         * with the existing mobile layout.
+                         */
+                        margin-top: -55px;
+                        
                     }
 
                     .about-media-ring-one,
@@ -774,7 +682,7 @@ const AboutHero = () => {
                 }
             `}</style>
         </section>
-    );
-};
+    )
+}
 
-export default AboutHero;
+export default AboutHero

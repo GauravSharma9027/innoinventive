@@ -1,18 +1,22 @@
 // AboutTeam.jsx
-// InnoInventive About Page - Premium Team Section
-// Version 2: subtle 3D nexus + scroll-responsive depth
+// InnoInventive About Page - Premium Editorial Team Section
+// Version 5: Luxury Editorial Team Cards
+// ============================================================
 
 import { useEffect, useRef, useState } from "react";
 import {
     ArrowRight,
     ArrowUpRight,
     BrainCircuit,
+    CheckCircle2,
     Code2,
     Cpu,
     Network,
+    ShieldCheck,
     Sparkles,
     Workflow,
 } from "lucide-react";
+import { motion } from "framer-motion";
 
 import PremiumButton from "../../../components/UI/PremiumButton";
 import PremiumIconBadge from "../../../components/UI/PremiumIconBadge";
@@ -48,7 +52,10 @@ const TeamMembers = [
         icon: BrainCircuit,
         expertise: "STRATEGY",
         signal: "DIRECTION",
-        status: "ONLINE",
+        status: "AVAILABLE",
+        teamLabel: "PRODUCT",
+        image:
+            "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=1200&q=90",
         accent: "cyan",
     },
     {
@@ -62,7 +69,10 @@ const TeamMembers = [
         icon: Code2,
         expertise: "ENGINEERING",
         signal: "BUILD",
-        status: "ONLINE",
+        status: "AVAILABLE",
+        teamLabel: "ENGINEERING",
+        image:
+            "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=1200&q=90",
         accent: "blue",
     },
     {
@@ -76,202 +86,426 @@ const TeamMembers = [
         icon: Workflow,
         expertise: "AUTOMATION",
         signal: "INTELLIGENCE",
-        status: "ONLINE",
+        status: "AVAILABLE",
+        teamLabel: "AI SYSTEMS",
+        image:
+            "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=1200&q=90",
         accent: "violet",
     },
 ];
 
 /* =========================================================
-   TEAM MEMBER POD
+   ACCENT MAP
 ========================================================= */
 
-const TeamMemberPod = ({ member, index, scrollDepth }) => {
+const TeamAccentMap = {
+    cyan: {
+        text: "text-cyan-300",
+        border: "border-cyan-300/22",
+        hoverBorder: "group-hover:border-cyan-300/42",
+        glow: "bg-cyan-300/[0.07]",
+        chip: "border-cyan-300/12 bg-cyan-300/[0.035]",
+        gradient:
+            "from-cyan-300 via-blue-400 to-cyan-200",
+    },
+
+    blue: {
+        text: "text-blue-300",
+        border: "border-blue-300/22",
+        hoverBorder: "group-hover:border-blue-300/42",
+        glow: "bg-blue-400/[0.07]",
+        chip: "border-blue-300/12 bg-blue-300/[0.035]",
+        gradient:
+            "from-blue-300 via-cyan-300 to-violet-300",
+    },
+
+    violet: {
+        text: "text-violet-300",
+        border: "border-violet-300/22",
+        hoverBorder: "group-hover:border-violet-300/42",
+        glow: "bg-violet-300/[0.07]",
+        chip: "border-violet-300/12 bg-violet-300/[0.035]",
+        gradient:
+            "from-cyan-300 via-blue-400 to-violet-400",
+    },
+};
+
+/* =========================================================
+   TEAM MEMBER CARD
+========================================================= */
+
+const TeamMemberPod = ({
+    member,
+    index,
+    scrollDepth,
+}) => {
     const MemberIcon = member.icon;
 
-    const AccentMap = {
-        cyan: {
-            border: "group-hover:border-cyan-300/30",
-            text: "text-cyan-300",
-            gradient: "from-cyan-300 via-blue-400 to-cyan-200",
-            glow: "bg-cyan-300/[0.055]",
-        },
-        blue: {
-            border: "group-hover:border-blue-300/32",
-            text: "text-blue-300",
-            gradient: "from-blue-300 via-cyan-300 to-violet-300",
-            glow: "bg-blue-400/[0.065]",
-        },
-        violet: {
-            border: "group-hover:border-violet-300/30",
-            text: "text-violet-300",
-            gradient: "from-cyan-300 via-blue-400 to-violet-400",
-            glow: "bg-violet-300/[0.055]",
-        },
-    };
+    const CurrentAccent =
+        TeamAccentMap[member.accent] ||
+        TeamAccentMap.cyan;
 
-    const CurrentAccent = AccentMap[member.accent] || AccentMap.cyan;
+    const ParallaxValues = [
+        1.15,
+        -1.7,
+        1.35,
+    ];
 
-    const ParallaxValues = [1.15, -1.7, 1.35];
-    const RotateValues = [-0.6, 0.8, -0.45];
-    const TranslateY = scrollDepth * ParallaxValues[index];
-    const RotateY = scrollDepth * RotateValues[index];
+    const RotateValues = [
+        -0.45,
+        0.6,
+        -0.35,
+    ];
+
+    const TranslateY =
+        scrollDepth *
+        ParallaxValues[index];
+
+    const RotateY =
+        scrollDepth *
+        RotateValues[index];
 
     return (
-        <article
-            className="team-member-pod group relative min-w-0 [perspective:1600px]"
+        <motion.article
+            className="team-member-pod group relative min-w-0"
             style={{
                 transform: `translate3d(0, ${TranslateY}px, 0) rotateX(${RotateY}deg)`,
             }}
+            whileHover={{
+                y: -8,
+            }}
+            transition={{
+                duration: 0.45,
+                ease: [
+                    0.16,
+                    1,
+                    0.3,
+                    1,
+                ],
+            }}
         >
-            <div className="absolute inset-x-2 bottom-[-10px] top-3 rounded-[25px] border border-blue-400/[0.05] bg-[#020B20]/95 shadow-[0_22px_42px_rgba(0,0,0,0.42)] transition-all duration-500 group-hover:translate-y-[5px]" />
-
-            <span
-                className={[
-                    "pointer-events-none absolute -inset-5 rounded-[30px] blur-3xl opacity-0 transition-all duration-500 group-hover:opacity-100",
-                    CurrentAccent.glow,
-                ].join(" ")}
-            />
+            {/* =================================================
+                REAR OFFSET PANEL
+            ================================================= */}
 
             <div
                 className={[
-                    "relative min-h-[315px] overflow-hidden rounded-[23px] border border-white/[0.075] p-5",
-                    "bg-[linear-gradient(145deg,rgba(11,44,92,0.96),rgba(2,15,38,0.99))]",
-                    "shadow-[inset_0_1px_0_rgba(255,255,255,0.11),inset_0_-22px_34px_rgba(0,0,0,0.25),0_24px_48px_rgba(0,0,0,0.32)]",
-                    "transition-all duration-500",
-                    "group-hover:-translate-y-2 group-hover:rotate-[1deg]",
+                    "pointer-events-none absolute inset-0 translate-x-2 translate-y-3 rounded-[24px] border bg-[#020B20]/85",
                     CurrentAccent.border,
                 ].join(" ")}
+            />
+
+            <div className="pointer-events-none absolute inset-0 translate-x-1 translate-y-1 rounded-[24px] border border-white/[0.035] bg-[#061226]/80" />
+
+            {/* =================================================
+                AMBIENT GLOW
+            ================================================= */}
+
+            <motion.div
+                className={[
+                    "pointer-events-none absolute -inset-5 rounded-[30px] blur-3xl",
+                    CurrentAccent.glow,
+                ].join(" ")}
+                animate={{
+                    opacity: [
+                        0.16,
+                        0.32,
+                        0.16,
+                    ],
+                    scale: [
+                        0.96,
+                        1.03,
+                        0.96,
+                    ],
+                }}
+                transition={{
+                    duration: 5.5,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                    delay:
+                        index * 0.5,
+                }}
+            />
+
+            {/* =================================================
+                MAIN EDITORIAL CARD
+            ================================================= */}
+
+            <div
+                className={[
+                    "relative overflow-hidden rounded-[24px] border border-white/[0.08]",
+                    "bg-[linear-gradient(145deg,rgba(9,29,61,0.98),rgba(2,12,29,0.995))]",
+                    "shadow-[0_28px_60px_rgba(0,0,0,0.34),inset_0_1px_0_rgba(255,255,255,0.09)]",
+                    "transition-all duration-500",
+                    CurrentAccent.hoverBorder,
+                ].join(" ")}
             >
-                <div className="pointer-events-none absolute inset-0 opacity-[0.022] [background-image:linear-gradient(rgba(255,255,255,0.10)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.10)_1px,transparent_1px)] [background-size:22px_22px]" />
+                {/* =================================================
+                    EDITORIAL IMAGE AREA
+                ================================================= */}
 
-                <span className="pointer-events-none absolute inset-x-6 top-0 h-px bg-gradient-to-r from-transparent via-white/35 to-transparent" />
+                <div className="relative h-[220px] overflow-hidden">
+                    {/* Image */}
+                    <motion.img
+                        src={member.image}
+                        alt={member.name}
+                        className="h-full w-full object-cover grayscale-[0.15]"
+                        initial={{
+                            scale: 1.02,
+                        }}
+                        animate={{
+                            scale: [
+                                1.02,
+                                1.045,
+                                1.02,
+                            ],
+                        }}
+                        whileHover={{
+                            scale: 1.09,
+                        }}
+                        transition={{
+                            duration: 7,
+                            repeat: Infinity,
+                            ease: "easeInOut",
+                        }}
+                    />
 
-                <span className="pointer-events-none absolute right-[-12%] top-[-10%] h-[100px] w-[100px] rounded-full bg-blue-400/[0.055] blur-[45px]" />
+                    {/* Dark treatment */}
+                    <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#020B20] via-[#020B20]/20 to-transparent" />
 
-                <div className="relative z-20 flex items-center justify-between">
-                    <div className="flex items-center gap-2.5">
+                    {/* Side gradient */}
+                    <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-[#061633]/35 via-transparent to-[#061633]/10" />
+
+                    {/* Accent wash */}
+                    <div
+                        className={[
+                            "pointer-events-none absolute inset-0 opacity-30 mix-blend-screen",
+                            CurrentAccent.glow,
+                        ].join(" ")}
+                    />
+
+                    {/* =================================================
+                        LARGE EDITORIAL NUMBER
+                    ================================================= */}
+
+                    <div className="absolute left-4 top-3 z-20">
                         <span
                             className={[
-                                "font-mono text-[8px] font-semibold tracking-[0.16em]",
-                                CurrentAccent.text,
+                                "font-mono text-[46px] font-semibold leading-none tracking-[-0.08em]",
+                                "text-white/[0.16]",
+                                "transition-all duration-500 group-hover:text-white/[0.27]",
                             ].join(" ")}
                         >
                             {member.number}
                         </span>
-
-                        <span className="h-px w-8 bg-gradient-to-r from-cyan-300/55 to-transparent" />
                     </div>
 
-                    <div className="flex items-center gap-1.5 rounded-full border border-emerald-300/10 bg-emerald-300/[0.025] px-2 py-1">
-                        <span className="relative flex h-1 w-1">
-                            <span className="absolute inset-0 animate-ping rounded-full bg-emerald-300/35" />
-                            <span className="relative h-1 w-1 rounded-full bg-emerald-300 shadow-[0_0_6px_rgba(52,211,153,0.7)]" />
-                        </span>
+                    {/* =================================================
+                        TOP STATUS
+                    ================================================= */}
 
-                        <span className="text-[4.5px] font-semibold uppercase tracking-[0.12em] text-emerald-100/50">
-                            {member.status}
-                        </span>
-                    </div>
-                </div>
+                    <div className="absolute right-4 top-4 z-20">
+                        <div className="flex items-center gap-1.5 rounded-full border border-white/[0.09] bg-[#061633]/60 px-2.5 py-1.5 backdrop-blur-xl">
+                            <span className="relative flex h-1.5 w-1.5">
+                                <span className="absolute inset-0 animate-ping rounded-full bg-emerald-300/35" />
 
-                <div className="relative z-20 mt-5 flex justify-center">
-                    <div className="relative flex h-[108px] w-[108px] items-center justify-center">
-                        <span className="absolute -inset-5 rounded-full bg-blue-400/[0.035] blur-2xl" />
+                                <span className="relative h-1.5 w-1.5 rounded-full bg-emerald-300 shadow-[0_0_7px_rgba(52,211,153,0.72)]" />
+                            </span>
 
-                        <span className="team-member-orbit-one absolute inset-0 rounded-full border border-cyan-300/[0.12] [transform:rotateX(68deg)]" />
-                        <span className="team-member-orbit-two absolute inset-[11px] rounded-full border border-blue-300/[0.10] [transform:rotateX(68deg)_rotateZ(24deg)]" />
-                        <span className="team-member-orbit-three absolute inset-[22px] rounded-full border border-violet-300/[0.08] border-dashed [transform:rotateX(70deg)_rotateZ(-24deg)]" />
-
-                        <div className="relative flex h-[72px] w-[72px] items-center justify-center rounded-full border border-blue-300/[0.17] bg-[radial-gradient(circle_at_35%_25%,rgba(22,119,255,0.20),rgba(5,25,56,0.97)_60%)] shadow-[inset_0_1px_0_rgba(255,255,255,0.12),inset_0_-12px_20px_rgba(0,0,0,0.25),0_14px_28px_rgba(0,0,0,0.32),0_0_28px_rgba(22,119,255,0.09)]">
-                            <span className="absolute inset-[7px] rounded-full border border-white/[0.035]" />
-
-                            <span className="team-member-scan pointer-events-none absolute left-1/2 top-0 h-[70%] w-px -translate-x-1/2 bg-gradient-to-b from-transparent via-blue-200/50 to-transparent" />
-
-                            <span className="relative z-20 text-[18px] font-semibold tracking-[-0.04em] text-white">
-                                {member.initials}
+                            <span className="text-[5px] font-semibold uppercase tracking-[0.14em] text-emerald-100/55">
+                                {member.status}
                             </span>
                         </div>
+                    </div>
 
-                        <div className="absolute -right-1 bottom-1">
+                    {/* =================================================
+                        IMAGE FRAME
+                    ================================================= */}
+
+                    <span className="pointer-events-none absolute left-4 right-4 top-4 h-[1px] bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+
+                    <span className="pointer-events-none absolute bottom-4 left-4 h-4 w-4 border-b border-l border-white/20" />
+
+                    <span className="pointer-events-none absolute bottom-4 right-4 h-4 w-4 border-b border-r border-white/20" />
+
+                    {/* =================================================
+                        FLOATING ICON
+                    ================================================= */}
+
+                    <div className="absolute bottom-4 right-4 z-30">
+                        <div className="rounded-[13px] border border-white/[0.12] bg-[#061633]/75 p-1.5 shadow-[0_10px_24px_rgba(0,0,0,0.32)] backdrop-blur-xl">
                             <PremiumIconBadge
                                 icon={MemberIcon}
                                 size="default"
                             />
                         </div>
                     </div>
+
+                    {/* =================================================
+                        HORIZONTAL SCAN
+                    ================================================= */}
+
+                    <motion.span
+                        className="pointer-events-none absolute left-[-20%] top-0 z-30 h-full w-[16%] rotate-[8deg] bg-gradient-to-r from-transparent via-white/[0.12] to-transparent blur-md"
+                        animate={{
+                            x: [
+                                "0%",
+                                "780%",
+                            ],
+                        }}
+                        transition={{
+                            duration: 6.5,
+                            repeat: Infinity,
+                            ease: "easeInOut",
+                            delay:
+                                index * 1.1,
+                            repeatDelay: 1.3,
+                        }}
+                    />
                 </div>
 
-                <div className="relative z-20 mt-2 text-center">
-                    <h3 className="text-[17px] font-semibold tracking-[-0.03em] text-white">
-                        {member.name}
-                    </h3>
+                {/* =================================================
+                    CONTENT
+                ================================================= */}
 
-                    <p
+                <div className="relative p-5">
+                    {/* Accent line */}
+                    <motion.span
                         className={[
-                            "mt-1 text-[7px] font-semibold uppercase tracking-[0.16em]",
-                            CurrentAccent.text,
+                            "absolute left-5 right-5 top-0 h-px bg-gradient-to-r opacity-80",
+                            CurrentAccent.gradient,
                         ].join(" ")}
-                    >
-                        {member.role}
-                    </p>
-                </div>
+                        animate={{
+                            opacity: [
+                                0.35,
+                                0.9,
+                                0.35,
+                            ],
+                        }}
+                        transition={{
+                            duration: 3.5,
+                            repeat: Infinity,
+                            ease: "easeInOut",
+                        }}
+                    />
 
-                <p className="relative z-20 mx-auto mt-3 max-w-[245px] text-center text-[8px] leading-[1.7] text-white/37">
-                    {member.description}
-                </p>
+                    {/* Team label */}
+                    <div className="flex items-center justify-between gap-3">
+                        <span className="text-[5px] font-semibold uppercase tracking-[0.18em] text-white/24">
+                            {member.teamLabel}
+                        </span>
 
-                <div className="relative z-20 mt-4">
-                    <div className="flex items-center justify-between">
-                        <div className="flex items-center gap-1.5">
-                            <span className="relative flex h-1 w-1">
-                                <span className="absolute inset-0 animate-ping rounded-full bg-cyan-300/35" />
-                                <span className="relative h-1 w-1 rounded-full bg-cyan-300" />
-                            </span>
-
-                            <span className="text-[4.5px] font-medium uppercase tracking-[0.13em] text-white/22">
-                                SYSTEM CONTRIBUTION
-                            </span>
-                        </div>
-
-                        <span
-                            className={[
-                                "font-mono text-[4.5px] tracking-[0.11em]",
-                                CurrentAccent.text,
-                            ].join(" ")}
-                        >
-                            {member.expertise}
+                        <span className="font-mono text-[5px] tracking-[0.13em] text-white/16">
+                            NODE / {member.number}
                         </span>
                     </div>
 
-                    <div className="relative mt-2 h-[3px] overflow-hidden rounded-full bg-white/[0.045]">
+                    {/* Name */}
+                    <h3 className="mt-2 text-[19px] font-semibold leading-[1.02] tracking-[-0.04em] text-white">
+                        {member.name}
+                    </h3>
+
+                    {/* Role */}
+                    <div className="mt-2 flex items-center gap-2">
                         <span
                             className={[
-                                "absolute inset-y-0 left-0 w-[68%] rounded-full bg-gradient-to-r shadow-[0_0_9px_rgba(25,211,255,0.18)] transition-all duration-700 group-hover:w-[92%]",
+                                "h-px w-5 bg-gradient-to-r",
                                 CurrentAccent.gradient,
                             ].join(" ")}
                         />
 
-                        <span className="absolute left-[25%] top-1/2 h-1 w-1 -translate-y-1/2 rounded-full bg-cyan-300/25" />
-                        <span className="absolute left-[50%] top-1/2 h-1 w-1 -translate-y-1/2 rounded-full bg-blue-300/25" />
-                        <span className="absolute left-[76%] top-1/2 h-1 w-1 -translate-y-1/2 rounded-full bg-violet-300/20" />
+                        <p
+                            className={[
+                                "text-[7px] font-semibold uppercase tracking-[0.17em]",
+                                CurrentAccent.text,
+                            ].join(" ")}
+                        >
+                            {member.role}
+                        </p>
                     </div>
 
-                    <div className="mt-1.5 flex items-center justify-between">
-                        <span className="font-mono text-[4px] uppercase tracking-[0.12em] text-white/15">
-                            {member.signal}
-                        </span>
+                    {/* Description */}
+                    <p className="mt-3 max-w-[270px] text-[8px] leading-[1.7] text-blue-100/38">
+                        {member.description}
+                    </p>
 
-                        <ArrowUpRight
-                            size={8}
-                            strokeWidth={1.5}
-                            className="text-white/25 transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-cyan-300/70"
-                        />
+                    {/* =================================================
+                        SKILL ROW
+                    ================================================= */}
+
+                    <div className="mt-4 flex items-center justify-between gap-3">
+                        <div
+                            className={[
+                                "flex items-center gap-2 rounded-full border px-2.5 py-1.5",
+                                CurrentAccent.chip,
+                            ].join(" ")}
+                        >
+                            <Sparkles
+                                size={8}
+                                className={
+                                    CurrentAccent.text
+                                }
+                            />
+
+                            <span className="text-[5px] font-semibold uppercase tracking-[0.13em] text-blue-100/34">
+                                {member.expertise}
+                            </span>
+                        </div>
+
+                        <div className="flex items-center gap-1.5">
+                            <CheckCircle2
+                                size={9}
+                                className="text-emerald-300/60"
+                            />
+
+                            <span className="text-[5px] font-semibold uppercase tracking-[0.12em] text-emerald-100/38">
+                                Verified
+                            </span>
+                        </div>
+                    </div>
+
+                    {/* =================================================
+                        FOOTER SIGNAL
+                    ================================================= */}
+
+                    <div className="mt-5 flex items-center justify-between border-t border-white/[0.05] pt-3">
+                        <div className="flex items-center gap-2">
+                            <Network
+                                size={9}
+                                className="text-blue-300/45"
+                            />
+
+                            <span className="font-mono text-[5px] uppercase tracking-[0.14em] text-white/17">
+                                {member.signal}
+                            </span>
+                        </div>
+
+                        <div
+                            className={[
+                                "flex items-center gap-1.5",
+                                CurrentAccent.text,
+                            ].join(" ")}
+                        >
+                            <span className="text-[5px] font-semibold uppercase tracking-[0.12em]">
+                                Explore
+                            </span>
+
+                            <ArrowUpRight
+                                size={9}
+                                strokeWidth={1.6}
+                                className="transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+                            />
+                        </div>
                     </div>
                 </div>
 
-                <span className="team-card-sweep pointer-events-none absolute left-[-32%] top-[-20%] z-30 h-[150%] w-[22%] rotate-[20deg] bg-gradient-to-r from-transparent via-white/[0.075] to-transparent opacity-0" />
+                {/* =================================================
+                    HOVER EDGE
+                ================================================= */}
+
+                <span className="pointer-events-none absolute bottom-0 left-0 h-[2px] w-0 bg-gradient-to-r from-cyan-300 via-blue-400 to-violet-400 transition-all duration-700 group-hover:w-full" />
             </div>
-        </article>
+        </motion.article>
     );
 };
 
@@ -279,9 +513,15 @@ const TeamMemberPod = ({ member, index, scrollDepth }) => {
    CENTER 3D NEXUS
 ========================================================= */
 
-const TeamNexus = ({ scrollProgress }) => {
-    const Rotation = -12 + scrollProgress * 24;
-    const Lift = scrollProgress * -8;
+const TeamNexus = ({
+    scrollProgress,
+}) => {
+    const Rotation =
+        -12 +
+        scrollProgress * 24;
+
+    const Lift =
+        scrollProgress * -8;
 
     return (
         <div
@@ -291,14 +531,19 @@ const TeamNexus = ({ scrollProgress }) => {
             }}
         >
             <div className="absolute inset-0 rounded-full border border-blue-400/[0.07] [transform:rotateX(68deg)]" />
+
             <div className="absolute inset-[10%] rounded-full border border-cyan-300/[0.08] [transform:rotateX(68deg)_rotateZ(28deg)]" />
+
             <div className="absolute inset-[23%] rounded-full border border-violet-300/[0.07] border-dashed [transform:rotateX(68deg)_rotateZ(-24deg)]" />
 
             <div className="absolute left-1/2 top-1/2 h-[76px] w-[76px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-blue-300/[0.10] bg-blue-500/[0.025] shadow-[0_0_50px_rgba(22,119,255,0.08)] backdrop-blur-sm" />
 
             <span className="absolute left-[8%] top-[42%] h-1.5 w-1.5 rounded-full bg-cyan-300/60 shadow-[0_0_12px_rgba(25,211,255,0.8)]" />
+
             <span className="absolute right-[7%] top-[30%] h-1.5 w-1.5 rounded-full bg-blue-300/55 shadow-[0_0_12px_rgba(22,119,255,0.8)]" />
+
             <span className="absolute bottom-[17%] left-[22%] h-1 w-1 rounded-full bg-violet-300/50 shadow-[0_0_10px_rgba(124,60,255,0.75)]" />
+
             <span className="absolute bottom-[20%] right-[20%] h-1 w-1 rounded-full bg-cyan-200/50 shadow-[0_0_10px_rgba(25,211,255,0.75)]" />
         </div>
     );
@@ -312,6 +557,7 @@ const TeamConnection = () => {
     return (
         <div className="relative hidden min-w-[65px] items-center justify-center lg:flex">
             <span className="absolute left-0 right-0 h-px bg-gradient-to-r from-cyan-300/10 via-blue-300/45 to-violet-300/10" />
+
             <span className="absolute left-0 right-0 h-[6px] rounded-full bg-blue-300/[0.025] blur-[5px]" />
 
             <span className="relative z-10 flex h-5 w-5 items-center justify-center rounded-full border border-blue-300/15 bg-[#061633] shadow-[0_0_18px_rgba(22,119,255,0.10)]">
@@ -332,39 +578,80 @@ const TeamConnection = () => {
 ========================================================= */
 
 const AboutTeam = () => {
-    const SectionReference = useRef(null);
-    const [ScrollProgress, SetScrollProgress] = useState(0);
+    const SectionReference =
+        useRef(null);
+
+    const [
+        ScrollProgress,
+        SetScrollProgress,
+    ] = useState(0);
 
     useEffect(() => {
         const UpdateScroll = () => {
-            const Element = SectionReference.current;
+            const Element =
+                SectionReference.current;
 
             if (!Element) {
                 return;
             }
 
-            const Rectangle = Element.getBoundingClientRect();
-            const ViewportHeight = window.innerHeight || 1;
-            const Travel = Math.max(Rectangle.height - ViewportHeight, 1);
-            const Progress = Math.min(
+            const Rectangle =
+                Element.getBoundingClientRect();
+
+            const ViewportHeight =
+                window.innerHeight || 1;
+
+            const Travel = Math.max(
+                Rectangle.height -
+                ViewportHeight,
                 1,
-                Math.max(0, -Rectangle.top / Travel),
             );
 
-            SetScrollProgress(Progress);
+            const Progress = Math.min(
+                1,
+                Math.max(
+                    0,
+                    -Rectangle.top /
+                    Travel,
+                ),
+            );
+
+            SetScrollProgress(
+                Progress,
+            );
         };
 
         UpdateScroll();
-        window.addEventListener("scroll", UpdateScroll, { passive: true });
-        window.addEventListener("resize", UpdateScroll);
+
+        window.addEventListener(
+            "scroll",
+            UpdateScroll,
+            {
+                passive: true,
+            },
+        );
+
+        window.addEventListener(
+            "resize",
+            UpdateScroll,
+        );
 
         return () => {
-            window.removeEventListener("scroll", UpdateScroll);
-            window.removeEventListener("resize", UpdateScroll);
+            window.removeEventListener(
+                "scroll",
+                UpdateScroll,
+            );
+
+            window.removeEventListener(
+                "resize",
+                UpdateScroll,
+            );
         };
     }, []);
 
-    const NexusOpacity = 0.25 + ScrollProgress * 0.55;
+    const NexusOpacity =
+        0.25 +
+        ScrollProgress * 0.55;
 
     return (
         <section
@@ -372,7 +659,10 @@ const AboutTeam = () => {
             id="team"
             className="relative w-full overflow-hidden bg-[#061633] text-white"
         >
-            {/* Background */}
+            {/* =================================================
+                BACKGROUND
+            ================================================= */}
+
             <div className="pointer-events-none absolute inset-0">
                 <div className="absolute left-[-8%] top-[16%] h-[280px] w-[280px] rounded-full bg-cyan-400/[0.012] blur-[120px]" />
 
@@ -381,38 +671,61 @@ const AboutTeam = () => {
                 <div className="absolute inset-0 opacity-[0.004] [background-image:linear-gradient(rgba(255,255,255,0.07)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.07)_1px,transparent_1px)] [background-size:72px_72px]" />
             </div>
 
+            {/* =================================================
+                MASTER CONTAINER
+            ================================================= */}
+
             <div className="relative z-20 mx-auto flex min-h-[calc(100svh-92px)] w-full max-w-[1400px] flex-col justify-center px-6 py-14 lg:px-8 lg:py-16">
-                {/* FIRST ROW */}
-                <div className="grid items-end gap-8 lg:grid-cols-[0.72fr_1.28fr]">
+                {/* =================================================
+                    FIRST ROW
+                ================================================= */}
+
+                <div className="grid items-end gap-8  lg:grid-cols-[0.72fr_1.28fr]">
+                    {/* LEFT */}
+
                     <div className="max-w-[390px]">
                         <div className="inline-flex items-center gap-3">
                             <span className="font-mono text-[13px] font-medium tracking-[0.12em] text-cyan-300">
-                                {TeamContent.sectionNumber}
+                                {
+                                    TeamContent.sectionNumber
+                                }
                             </span>
 
                             <span className="h-px w-10 bg-gradient-to-r from-cyan-300 via-blue-400 to-transparent" />
 
                             <span className="text-[9px] font-semibold uppercase tracking-[0.18em] text-blue-100/65 sm:text-[10px]">
-                                {TeamContent.eyebrow}
+                                {
+                                    TeamContent.eyebrow
+                                }
                             </span>
                         </div>
 
-                        <h2 className="mt-5 text-[32px] font-semibold leading-[1.03] tracking-[-0.045em] sm:text-[38px] lg:text-[43px]">
-                            {TeamContent.headingPrimary}{" "}
+                        <h2 className="team-heading mt-5 text-[36px] font-semibold leading-[1.02] tracking-[-0.045em] sm:text-[38px] lg:text-[42px]">
+                            {
+                                TeamContent.headingPrimary
+                            }{" "}
                             <span className="bg-gradient-to-r from-cyan-300 via-blue-400 to-violet-400 bg-clip-text text-transparent">
-                                {TeamContent.headingAccent}
+                                {
+                                    TeamContent.headingAccent
+                                }
                             </span>
                         </h2>
                     </div>
 
+                    {/* RIGHT */}
+
                     <div className="flex flex-col items-start justify-end lg:items-end lg:text-right">
                         <p className="max-w-[560px] text-[10px] leading-[1.8] text-blue-100/46 sm:text-[11px]">
-                            {TeamContent.description}
+                            {
+                                TeamContent.description
+                            }
                         </p>
 
                         <div className="mt-5">
                             <PremiumButton
-                                label={TeamContent.buttonLabel}
+                                label={
+                                    TeamContent.buttonLabel
+                                }
                                 to="/contact"
                                 icon={ArrowRight}
                             />
@@ -421,52 +734,84 @@ const AboutTeam = () => {
                 </div>
 
                 {/* Divider */}
+
                 <div className="mt-8 h-px w-full bg-gradient-to-r from-transparent via-blue-300/[0.12] to-transparent" />
 
-                {/* SECOND ROW */}
+                {/* =================================================
+                    SECOND ROW
+                ================================================= */}
+
                 <div className="relative mt-9">
-                    <TeamNexus scrollProgress={ScrollProgress} />
+                    <TeamNexus
+                        scrollProgress={
+                            ScrollProgress
+                        }
+                    />
 
                     <div
                         className="pointer-events-none absolute left-1/2 top-1/2 z-0 hidden h-[320px] w-[320px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-blue-500/[0.045] blur-[90px] lg:block"
-                        style={{ opacity: NexusOpacity }}
+                        style={{
+                            opacity:
+                                NexusOpacity,
+                        }}
                     />
 
                     <div className="pointer-events-none absolute left-[4%] right-[4%] top-1/2 hidden h-px -translate-y-1/2 bg-gradient-to-r from-transparent via-blue-300/20 to-transparent lg:block" />
 
-                    <div className="relative z-10 grid items-stretch gap-6 lg:grid-cols-[1fr_65px_1fr_65px_1fr]">
+                    <div className="relative z-10 grid items-stretch gap-6 space-y-5 sm:grid-cols-2 lg:grid-cols-[1fr_65px_1fr_65px_1fr]">
                         <TeamMemberPod
-                            member={TeamMembers[0]}
+                            member={
+                                TeamMembers[0]
+                            }
                             index={0}
-                            scrollDepth={ScrollProgress * 8}
+                            scrollDepth={
+                                ScrollProgress *
+                                8
+                            }
                         />
 
                         <TeamConnection />
 
                         <TeamMemberPod
-                            member={TeamMembers[1]}
+                            member={
+                                TeamMembers[1]
+                            }
                             index={1}
-                            scrollDepth={ScrollProgress * 8}
+                            scrollDepth={
+                                ScrollProgress *
+                                8
+                            }
                         />
 
                         <TeamConnection />
 
                         <TeamMemberPod
-                            member={TeamMembers[2]}
+                            member={
+                                TeamMembers[2]
+                            }
                             index={2}
-                            scrollDepth={ScrollProgress * 8}
+                            scrollDepth={
+                                ScrollProgress *
+                                8
+                            }
                         />
                     </div>
 
                     {/* Mobile connector */}
+
                     <div className="flex flex-col items-center gap-1 py-4 lg:hidden">
                         <span className="h-7 w-px bg-gradient-to-b from-transparent via-blue-300/35 to-transparent" />
+
                         <span className="h-1.5 w-1.5 rounded-full bg-blue-300 shadow-[0_0_8px_rgba(22,119,255,0.8)]" />
+
                         <span className="h-7 w-px bg-gradient-to-b from-blue-300/35 to-transparent" />
                     </div>
                 </div>
 
-                {/* FOOTER */}
+                {/* =================================================
+                    FOOTER
+                ================================================= */}
+
                 <div className="mt-7 flex items-center justify-between gap-5 border-t border-white/[0.05] pt-4">
                     <div className="flex items-center gap-2">
                         <Sparkles
@@ -476,7 +821,9 @@ const AboutTeam = () => {
                         />
 
                         <span className="text-[6px] font-semibold uppercase tracking-[0.17em] text-white/22">
-                            {TeamContent.footerText}
+                            {
+                                TeamContent.footerText
+                            }
                         </span>
                     </div>
 
@@ -494,51 +841,17 @@ const AboutTeam = () => {
                 </div>
             </div>
 
+            {/* =================================================
+                ANIMATIONS
+            ================================================= */}
+
             <style>{`
                 .team-member-pod {
-                    transition: transform 700ms cubic-bezier(0.22, 1, 0.36, 1);
+                    transition:
+                        transform
+                        700ms
+                        cubic-bezier(0.22,1,0.36,1);
                     will-change: transform;
-                }
-
-                .team-member-orbit-one {
-                    animation:
-                        teamOrbitOne
-                        10s
-                        linear
-                        infinite;
-                }
-
-                .team-member-orbit-two {
-                    animation:
-                        teamOrbitTwo
-                        14s
-                        linear
-                        infinite
-                        reverse;
-                }
-
-                .team-member-orbit-three {
-                    animation:
-                        teamOrbitThree
-                        17s
-                        linear
-                        infinite;
-                }
-
-                .team-member-scan {
-                    animation:
-                        teamScan
-                        3.6s
-                        ease-in-out
-                        infinite;
-                }
-
-                .team-card-sweep {
-                    animation:
-                        teamCardSweep
-                        6s
-                        ease-in-out
-                        infinite;
                 }
 
                 .team-connection-pulse {
@@ -549,92 +862,35 @@ const AboutTeam = () => {
                         infinite;
                 }
 
-                @keyframes teamOrbitOne {
-                    from {
-                        transform: rotateX(68deg) rotateZ(0deg);
-                    }
-                    to {
-                        transform: rotateX(68deg) rotateZ(360deg);
-                    }
-                }
-
-                @keyframes teamOrbitTwo {
-                    from {
-                        transform: rotateX(68deg) rotateZ(24deg);
-                    }
-                    to {
-                        transform: rotateX(68deg) rotateZ(-336deg);
-                    }
-                }
-
-                @keyframes teamOrbitThree {
-                    from {
-                        transform: rotateX(70deg) rotateZ(-24deg);
-                    }
-                    to {
-                        transform: rotateX(70deg) rotateZ(336deg);
-                    }
-                }
-
-                @keyframes teamScan {
-                    0%,
-                    100% {
-                        opacity: 0;
-                        transform: translateX(-50%) translateY(-8%);
-                    }
-                    45% {
-                        opacity: 0.75;
-                    }
-                    60% {
-                        opacity: 1;
-                    }
-                    80% {
-                        opacity: 0.25;
-                        transform: translateX(-50%) translateY(75%);
-                    }
-                }
-
-                @keyframes teamCardSweep {
-                    0%,
-                    55%,
-                    100% {
-                        left: -32%;
-                        opacity: 0;
-                    }
-                    64% {
-                        left: 45%;
-                        opacity: 0.8;
-                    }
-                    76% {
-                        left: 115%;
-                        opacity: 0;
-                    }
-                }
-
                 @keyframes teamConnectionPulse {
                     0% {
                         left: 0;
                         opacity: 0;
                     }
+
                     12% {
                         opacity: 1;
                     }
+
                     86% {
                         opacity: 1;
                     }
+
                     100% {
                         left: 100%;
                         opacity: 0;
                     }
                 }
 
+                @media (min-width: 768px) and (max-width: 1023px) {
+                    .team-heading {
+                        font-size: 52px;
+                        line-height: 1;
+                    }
+                }
+
                 @media (prefers-reduced-motion: reduce) {
                     .team-member-pod,
-                    .team-member-orbit-one,
-                    .team-member-orbit-two,
-                    .team-member-orbit-three,
-                    .team-member-scan,
-                    .team-card-sweep,
                     .team-connection-pulse {
                         animation: none !important;
                         transition: none !important;

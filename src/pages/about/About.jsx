@@ -10,7 +10,7 @@ import CTASection from '../../components/commonSection/CTASection'
 
 const About = () => {
     return (
-        <div>
+        <div className="overflow-hidden">
             <AboutHero/>
             <AboutPrinciples/>
             <AboutImpact/>

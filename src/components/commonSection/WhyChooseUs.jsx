@@ -123,11 +123,11 @@ const WhyChooseUsCard = ({
                     </div>
 
                     <div className="mt-5">
-                        <h3 className="text-[15px] font-semibold leading-[1.08] tracking-[-0.035em] text-white">
+                        <h3 className="text-xl lg:text-[15px] font-semibold leading-[1.08] tracking-[-0.035em] text-white">
                             {title}
                         </h3>
 
-                        <p className="mt-3 text-[11px] leading-[1.65] text-white/40">
+                        <p className="mt-3 text-sm lg:text-[11px] leading-[1.65] text-white/40">
                             {description}
                         </p>
                     </div>
@@ -175,12 +175,12 @@ const WhyChooseUs = () => {
                         <div className="flex items-center gap-3">
                             <span className="h-px w-7 bg-cyan-300" />
 
-                            <span className="text-[8px] font-semibold uppercase tracking-[0.25em] text-cyan-300">
+                            <span className="text-[10px] font-semibold uppercase tracking-[0.25em] text-cyan-300">
                                 WHY CHOOSE US
                             </span>
                         </div>
 
-                        <h2 className="mt-4 max-w-[680px] text-[clamp(34px,4vw,54px)] font-semibold leading-[0.92] tracking-[-0.06em] text-white">
+                        <h2 className="mt-4 max-w-[680px] text-4xl  lg:text-[clamp(34px,4vw,54px)] font-semibold leading-[0.92] tracking-[-0.06em] text-white">
                             Built with purpose.
                             <span className="block bg-gradient-to-r from-cyan-300 via-blue-400 to-violet-400 bg-clip-text text-transparent">
                                 Engineered for growth.
@@ -188,7 +188,7 @@ const WhyChooseUs = () => {
                         </h2>
                     </div>
 
-                    <p className="max-w-[360px] text-[11px] leading-[1.7] text-white/40 lg:pb-1">
+                    <p className="max-w-[360px] text-sm lg:text-[11px] leading-[1.7] text-white/40 lg:pb-1">
                         We combine strategy, engineering and automation to
                         build digital systems designed around how your business
                         actually works.

@@ -338,7 +338,7 @@ const FAQ = () => {
                             </span>
                         </div>
 
-                        <h2 className="mt-4 text-[30px] font-semibold leading-[1.02] tracking-[-0.045em] sm:text-[36px] lg:text-[42px]">
+                        <h2 className="mt-4 text-4xl lg:text-[30px] font-semibold leading-[1.02] tracking-[-0.045em] sm:text-[36px] lg:text-[42px]">
                             {FAQContent.headingPrimary}{" "}
                             <span className="bg-gradient-to-r from-cyan-300 via-blue-400 to-violet-400 bg-clip-text text-transparent">
                                 {FAQContent.headingAccent}
@@ -349,7 +349,7 @@ const FAQ = () => {
                     {/* RIGHT */}
 
                     <div className="flex flex-col items-start lg:items-end lg:text-right">
-                        <p className="max-w-[590px] text-[9px] leading-[1.8] text-blue-100/40 sm:text-[10px]">
+                        <p className="max-w-[590px] text-sm lg:text-[9px] leading-[1.8] text-blue-100/40 sm:text-[10px]">
                             {FAQContent.description}
                         </p>
 
@@ -389,11 +389,11 @@ const FAQ = () => {
                 {/* FOOTER */}
 
                 <div className="mt-4 flex items-center justify-between border-t border-white/[0.05] pt-3">
-                    <span className="text-[5px] font-semibold uppercase tracking-[0.18em] text-white/18">
+                    <span className="text-[8px] font-semibold uppercase tracking-[0.18em] text-white/50">
                         {FAQContent.footerText}
                     </span>
 
-                    <span className="font-mono text-[5px] uppercase tracking-[0.14em] text-white/12">
+                    <span className="font-mono text-[10px] uppercase tracking-[0.14em] text-white/50">
                         01 → 02 → 03 → 04 → 05
                     </span>
                 </div>

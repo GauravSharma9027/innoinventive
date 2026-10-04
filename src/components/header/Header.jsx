@@ -57,7 +57,7 @@ const Header = () => {
     };
 
     return (
-        <header className="absolute left-0 top-0 z-50 w-full bg-[#050B18]">
+        <header className="absolute left-0 top-0 z-[999] w-full bg-[#050B18]">
             <div className="mx-auto flex h-[96px] max-w-[1400px] items-center justify-between px-6 lg:px-8">
 
                 {/* Brand */}

@@ -298,7 +298,7 @@ const Hero = () => {
                         </div>
 
                         {/* Heading */}
-                        <h1 className="max-w-[600px] text-6xl lg:text-[clamp(42px,4.5vw,72px)] font-bold leading-[1.02] tracking-[-0.04em]">
+                        <h1 className="max-w-[600px] text-5xl lg:text-[clamp(42px,4.5vw,72px)] font-bold leading-[1.02] tracking-[-0.04em]">
                             We{" "}
                             <span className="bg-gradient-to-r from-cyan-300 via-blue-500 to-violet-500 bg-clip-text text-transparent">
                                 Automate

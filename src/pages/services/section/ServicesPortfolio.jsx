@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 
 import {
     ArrowDown,
@@ -9,19 +9,30 @@ import {
     Phone,
     X,
 } from "lucide-react";
-import { useEffect, useRef, useState } from "react";
+import {
+    useEffect,
+    useRef,
+    useState,
+} from "react";
 
 import HeroActionButton from "../../../components/UI/HeroActionButton";
 import PremiumIconBadge from "../../../components/UI/PremiumIconBadge";
 
 const ServicesPortfolioTitle = ({ title }) => {
-    const TitleWords = title.trim().split(" ");
-    const AccentWord = TitleWords.length > 1 ? TitleWords.pop() : "";
-    const PrimaryTitle = TitleWords.join(" ");
+    const TitleWords =
+        title.trim().split(" ");
+
+    const AccentWord =
+        TitleWords.length > 1
+            ? TitleWords.pop()
+            : "";
+
+    const PrimaryTitle =
+        TitleWords.join(" ");
 
     if (!AccentWord) {
         return (
-            <h2 className="text-[clamp(28px,2vw,32px)] font-semibold leading-[0.98] tracking-[-0.055em] text-white">
+            <h2 className="services-portfolio-title-single text-[clamp(28px,2vw,32px)] font-semibold leading-[0.98] tracking-[-0.055em] text-white">
                 {title}
             </h2>
         );
@@ -29,11 +40,11 @@ const ServicesPortfolioTitle = ({ title }) => {
 
     return (
         <h2 className="tracking-[-0.055em]">
-            <span className="block text-[clamp(28px,2vw,32px)] font-semibold leading-[0.98] text-white">
+            <span className="services-portfolio-title-primary block text-[clamp(28px,2vw,32px)] font-semibold leading-[0.98] text-white">
                 {PrimaryTitle}
             </span>
 
-            <span className="mt-1 block bg-gradient-to-r from-cyan-300 via-blue-400 to-violet-400 bg-clip-text text-[clamp(28px,2vw,32px)] font-semibold leading-[0.98] text-transparent">
+            <span className="services-portfolio-title-accent mt-1 block bg-gradient-to-r from-cyan-300 via-blue-400 to-violet-400 bg-clip-text text-[clamp(28px,2vw,32px)] font-semibold leading-[0.98] text-transparent">
                 {AccentWord}
             </span>
         </h2>
@@ -289,7 +300,7 @@ const ServiceGrid = ({
     services,
 }) => {
     return (
-        <div className="service-portfolio-grid relative h-full overflow-hidden p-1">
+        <div className="service-portfolio-grid relative h-full min-h-0 overflow-y-auto overflow-x-hidden p-1">
             <div className="grid grid-cols-1 gap-2.5 sm:grid-cols-2">
                 {services.map(
                     (
@@ -303,17 +314,7 @@ const ServiceGrid = ({
                                 animationDelay: `${index * 65}ms`,
                             }}
                         >
-                            {/* BACK DEPTH */}
-
-                            {/* <span className="max-w-50 pointer-events-none absolute inset-x-1 bottom-[-6px] top-[6px] rounded-[18px] border border-blue-400/[0.055] bg-[#020B20]/92 shadow-[0_17px_32px_rgba(0,0,0,0.32)]" /> */}
-
-                            {/* OUTER GLOW */}
-
-                            {/* <span className="max-w-50 pointer-events-none absolute -inset-2 rounded-[23px] bg-cyan-400/[0.018] blur-xl transition-all duration-500 group-hover:bg-cyan-400/[0.06]" /> */}
-
-                            {/* MAIN CARD */}
-
-                            <div className="service-card-surface relative h-full min-h-[72px] rounded-[17px] border border-cyan-300/[0.13] bg-[linear-gradient(145deg,rgba(12,48,98,0.84),rgba(3,19,45,0.95))] p-5  shadow-[inset_0_1px_0_rgba(255,255,255,0.11),inset_0_-14px_24px_rgba(0,5,20,0.22),0_18px_34px_rgba(0,0,0,0.25)] backdrop-blur-xl [transform-style:preserve-3d]">
+                            <div className="service-card-surface relative h-full min-h-[72px] rounded-[17px] border border-cyan-300/[0.13] bg-[linear-gradient(145deg,rgba(12,48,98,0.84),rgba(3,19,45,0.95))] p-5 shadow-[inset_0_1px_0_rgba(255,255,255,0.11),inset_0_-14px_24px_rgba(0,5,20,0.22),0_18px_34px_rgba(0,0,0,0.25)] backdrop-blur-xl [transform-style:preserve-3d]">
                                 <div className="pointer-events-none absolute inset-0 opacity-[0.022] [background-image:linear-gradient(rgba(255,255,255,0.12)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.12)_1px,transparent_1px)] [background-size:20px_20px]" />
 
                                 <span className="pointer-events-none absolute inset-[4px] rounded-[13px] border border-white/[0.025]" />
@@ -326,11 +327,11 @@ const ServiceGrid = ({
 
                                 <div className="relative z-10 flex h-full items-end">
                                     <div className="min-w-0">
-                                        <span className="mb-2 block font-mono text-[5px] uppercase tracking-[0.17em] text-cyan-200/28 transition-colors duration-500 group-hover:text-cyan-200/48">
+                                        <span className="service-card-label mb-2 block font-mono text-[5px] uppercase tracking-[0.17em] text-cyan-200/28 transition-colors duration-500 group-hover:text-cyan-200/48">
                                             SERVICE
                                         </span>
 
-                                        <span className="block max-w-[88%] text-[12px] font-semibold leading-[1.25] tracking-[-0.018em] text-white/80 transition-colors duration-500 group-hover:text-white sm:text-[13px]">
+                                        <span className="service-card-title block max-w-[88%] text-[12px] font-semibold leading-[1.25] tracking-[-0.018em] text-white/80 transition-colors duration-500 group-hover:text-white sm:text-[13px]">
                                             {service}
                                         </span>
                                     </div>
@@ -357,12 +358,12 @@ const ServiceMenu = ({
     onClose,
 }) => {
     return (
-        <div className="fixed inset-0 z-[9999] flex h-[100dvh] w-screen items-center justify-center overflow-hidden bg-[#020914]/[0.78] px-4 backdrop-blur-md sm:px-6">
+        <div className="service-menu-overlay fixed inset-0 z-[9999] flex h-[100dvh] w-screen items-center justify-center overflow-hidden bg-[#020914]/[0.78] px-6 backdrop-blur-md ">
             <div className="service-menu-panel relative z-[10000] h-[min(72vh,680px)] w-[min(65vw,880px)] max-h-[86dvh] overflow-hidden rounded-[28px] border border-cyan-300/[0.10] bg-[#061633]/96 shadow-[0_35px_90px_rgba(0,0,0,0.52),inset_0_1px_0_rgba(255,255,255,0.08)] backdrop-blur-3xl [transform-style:preserve-3d]">
                 <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_12%_10%,rgba(25,211,255,0.06),transparent_24%),radial-gradient(circle_at_86%_85%,rgba(124,60,255,0.045),transparent_24%)]" />
 
                 <div className="relative flex h-full flex-col">
-                    <div className="flex shrink-0 items-center justify-between border-b border-white/[0.08] px-5 py-4 sm:px-7">
+                    <div className="service-menu-header flex shrink-0 items-center justify-between border-b border-white/[0.08] px-5 py-4 sm:px-7">
                         <div>
                             <span className="block font-mono text-[7px] uppercase tracking-[0.22em] text-cyan-300/60">
                                 SERVICES
@@ -373,32 +374,40 @@ const ServiceMenu = ({
                             </span>
                         </div>
 
-                       <button
-    type="button"
-    onClick={onClose}
-    className="group flex h-9 w-9 items-center justify-center rounded-full border border-white/[0.10] bg-[#0C3062]/[0.32] text-white/65 transition-all duration-300 hover:border-cyan-200/25 hover:bg-[#0C3062]/[0.50] hover:text-white"
-    aria-label="Close service selector"
->
-    <PremiumIconBadge
-        icon={X}
-        size="default"
-    />
-</button>
+                        <button
+                            type="button"
+                            onClick={onClose}
+                            className="group flex h-9 w-9 items-center justify-center rounded-full border border-white/[0.10] bg-[#0C3062]/[0.32] text-white/65 transition-all duration-300 hover:border-cyan-200/25 hover:bg-[#0C3062]/[0.50] hover:text-white"
+                            aria-label="Close service selector"
+                        >
+                            <PremiumIconBadge
+                                icon={X}
+                                size="default"
+                            />
+                        </button>
                     </div>
 
                     <div className="service-menu-scroll relative flex-1 overflow-y-auto p-4 sm:p-5">
                         <div className="space-y-2.5">
                             {services.map(
-                                (service, index) => {
+                                (
+                                    service,
+                                    index,
+                                ) => {
                                     const IsActive =
-                                        index === activeIndex;
+                                        index ===
+                                        activeIndex;
 
                                     return (
                                         <button
-                                            key={service.id}
+                                            key={
+                                                service.id
+                                            }
                                             type="button"
                                             onClick={() =>
-                                                onSelect(index)
+                                                onSelect(
+                                                    index,
+                                                )
                                             }
                                             className={[
                                                 "group relative flex min-h-[76px] w-full items-center gap-4 overflow-hidden rounded-[18px] border p-2 text-left [perspective:1200px] transition-all duration-500",
@@ -407,12 +416,6 @@ const ServiceMenu = ({
                                                     : "border-white/[0.05] bg-[#0C3062]/[0.20] hover:border-cyan-200/[0.18] hover:bg-[#0C3062]/[0.34]",
                                             ].join(" ")}
                                         >
-                                            {/*
-                                                Service image stays INSIDE the
-                                                service item. The wrapper is
-                                                clipped so the image can never
-                                                render outside the modal row.
-                                            */}
                                             <span className="relative z-10 h-[56px] w-[92px] shrink-0 overflow-hidden rounded-[12px] border border-white/[0.05] bg-[#061633]/70 shadow-[inset_0_1px_0_rgba(255,255,255,0.06)]">
                                                 <span
                                                     className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-[1.035]"
@@ -425,18 +428,24 @@ const ServiceMenu = ({
                                             </span>
 
                                             <div className="relative z-10 min-w-0 flex-1">
-                                                <span className="block truncate text-[13px] font-semibold text-white/85">
-                                                    {service.title}
+                                                <span className="service-menu-item-title block truncate text-[13px] font-semibold text-white/85">
+                                                    {
+                                                        service.title
+                                                    }
                                                 </span>
 
-                                                <span className="mt-1 block truncate text-[9px] text-white/32">
-                                                    {service.subtitle}
+                                                <span className="service-menu-item-subtitle mt-1 block truncate text-[9px] text-white/32">
+                                                    {
+                                                        service.subtitle
+                                                    }
                                                 </span>
                                             </div>
 
                                             <div className="relative z-10 mr-1 flex h-9 w-9 shrink-0 items-center justify-center">
                                                 <PremiumIconBadge
-                                                    icon={ArrowUpRight}
+                                                    icon={
+                                                        ArrowUpRight
+                                                    }
                                                     size="default"
                                                 />
                                             </div>
@@ -502,6 +511,28 @@ const ServicesPortfolio = () => {
     const PrepareLockTimerRef =
         useRef(null);
 
+    /*
+     * TABLET / PHONE TOUCH STATE
+     */
+
+    const TouchStartYRef =
+        useRef(0);
+
+    const TouchStartXRef =
+        useRef(0);
+
+    const TouchTrackingRef =
+        useRef(false);
+
+    /*
+     * Important:
+     * If touch begins inside capability list,
+     * parent service-snap must NOT consume it.
+     */
+
+    const TouchStartedInsideCapabilitiesRef =
+        useRef(false);
+
     const TotalServices =
         ServicesPortfolioData.length;
 
@@ -529,12 +560,10 @@ const ServicesPortfolio = () => {
             }
 
             PreviousBodyOverflowRef.current =
-                document.body
-                    .style.overflow;
+                document.body.style.overflow;
 
             PreviousHtmlOverflowRef.current =
-                document.documentElement
-                    .style.overflow;
+                document.documentElement.style.overflow;
 
             document.body.style.overflow =
                 "hidden";
@@ -621,6 +650,10 @@ const ServicesPortfolio = () => {
         return true;
     };
 
+    /* =========================================================
+       ORIGINAL DESKTOP ENTRY
+    ========================================================= */
+
     const EnterSectionExperience =
         (Direction) => {
             const SectionElement =
@@ -693,6 +726,89 @@ const ServicesPortfolio = () => {
                 );
         };
 
+    /* =========================================================
+       RESPONSIVE ENTRY
+    ========================================================= */
+
+    const EnterResponsiveSectionExperience =
+        (Direction) => {
+            const SectionElement =
+                SectionRef.current;
+
+            if (
+                !SectionElement ||
+                IsSectionLockedRef.current ||
+                IsPreparingLockRef.current
+            ) {
+                return;
+            }
+
+            const Rect =
+                SectionElement.getBoundingClientRect();
+
+            const ViewportHeight =
+                window.innerHeight;
+
+            const IsEnteringFromTop =
+                Direction > 0 &&
+                Rect.top >
+                -ViewportHeight *
+                0.12 &&
+                Rect.top <
+                ViewportHeight *
+                0.84;
+
+            const IsEnteringFromBottom =
+                Direction < 0 &&
+                Rect.bottom >
+                ViewportHeight *
+                0.16 &&
+                Rect.bottom <
+                ViewportHeight *
+                1.12;
+
+            if (
+                !IsEnteringFromTop &&
+                !IsEnteringFromBottom
+            ) {
+                return;
+            }
+
+            IsPreparingLockRef.current =
+                true;
+
+            const TargetScrollTop =
+                window.scrollY +
+                Rect.top;
+
+            window.scrollTo({
+                top:
+                    TargetScrollTop,
+                behavior:
+                    "smooth",
+            });
+
+            if (
+                PrepareLockTimerRef.current
+            ) {
+                window.clearTimeout(
+                    PrepareLockTimerRef.current,
+                );
+            }
+
+            PrepareLockTimerRef.current =
+                window.setTimeout(
+                    () => {
+                        LockDocumentScroll();
+                    },
+                    420,
+                );
+        };
+
+    /* =========================================================
+       ORIGINAL DESKTOP EXIT
+    ========================================================= */
+
     const LeaveSectionExperience =
         (Direction) => {
             const SectionElement =
@@ -747,6 +863,11 @@ const ServicesPortfolio = () => {
             }
         };
 
+    /* =========================================================
+       LAPTOP / DESKTOP WHEEL
+       ORIGINAL SYSTEM PRESERVED
+    ========================================================= */
+
     useEffect(() => {
         const HandleWheel =
             (event) => {
@@ -794,6 +915,31 @@ const ServicesPortfolio = () => {
                     !SectionElement
                 ) {
                     return;
+                }
+
+                /*
+                 * IMPORTANT:
+                 * Tablet/phone wheel inside the
+                 * capabilities list belongs to
+                 * the inner list, not the parent slider.
+                 */
+
+                if (
+                    window.innerWidth <
+                    1024
+                ) {
+                    const Target =
+                        event.target;
+
+                    if (
+                        Target instanceof
+                        Element &&
+                        Target.closest(
+                            ".service-portfolio-grid",
+                        )
+                    ) {
+                        return;
+                    }
                 }
 
                 const Rect =
@@ -844,9 +990,18 @@ const ServicesPortfolio = () => {
                     ) {
                         event.preventDefault();
 
-                        EnterSectionExperience(
-                            Direction,
-                        );
+                        if (
+                            window.innerWidth <
+                            1024
+                        ) {
+                            EnterResponsiveSectionExperience(
+                                Direction,
+                            );
+                        } else {
+                            EnterSectionExperience(
+                                Direction,
+                            );
+                        }
 
                         return;
                     }
@@ -918,6 +1073,474 @@ const ServicesPortfolio = () => {
             );
         };
     }, [TotalServices]);
+
+    /* =========================================================
+       TABLET + PHONE TOUCH SNAP
+    ========================================================= */
+
+    useEffect(() => {
+        const HandleTouchStart =
+            (event) => {
+                if (
+                    window.innerWidth >=
+                    1024
+                ) {
+                    return;
+                }
+
+                if (
+                    IsMenuOpenRef.current
+                ) {
+                    TouchTrackingRef.current =
+                        false;
+
+                    TouchStartedInsideCapabilitiesRef.current =
+                        false;
+
+                    return;
+                }
+
+                const Target =
+                    event.target;
+
+                /*
+                 * CRITICAL:
+                 * Touch started inside capability
+                 * cards => let native inner scroll
+                 * handle the gesture.
+                 */
+
+                if (
+                    Target instanceof
+                    Element &&
+                    Target.closest(
+                        ".service-portfolio-grid",
+                    )
+                ) {
+                    TouchTrackingRef.current =
+                        false;
+
+                    TouchStartedInsideCapabilitiesRef.current =
+                        true;
+
+                    return;
+                }
+
+                TouchStartedInsideCapabilitiesRef.current =
+                    false;
+
+                const Touch =
+                    event.touches[0];
+
+                if (!Touch) {
+                    return;
+                }
+
+                const SectionElement =
+                    SectionRef.current;
+
+                if (
+                    !SectionElement
+                ) {
+                    return;
+                }
+
+                const Rect =
+                    SectionElement.getBoundingClientRect();
+
+                const ViewportHeight =
+                    window.innerHeight;
+
+                const SectionIsVisible =
+                    Rect.top <
+                    ViewportHeight *
+                    0.98 &&
+                    Rect.bottom >
+                    ViewportHeight *
+                    0.02;
+
+                if (
+                    !SectionIsVisible
+                ) {
+                    TouchTrackingRef.current =
+                        false;
+
+                    return;
+                }
+
+                TouchStartYRef.current =
+                    Touch.clientY;
+
+                TouchStartXRef.current =
+                    Touch.clientX;
+
+                TouchTrackingRef.current =
+                    true;
+            };
+
+        const HandleTouchMove =
+            (event) => {
+                if (
+                    window.innerWidth >=
+                    1024
+                ) {
+                    return;
+                }
+
+                /*
+                 * Inner capability scrolling:
+                 * NEVER consume the gesture here.
+                 */
+
+                if (
+                    TouchStartedInsideCapabilitiesRef.current
+                ) {
+                    return;
+                }
+
+                if (
+                    !TouchTrackingRef.current ||
+                    IsMenuOpenRef.current
+                ) {
+                    return;
+                }
+
+                const Target =
+                    event.target;
+
+                if (
+                    Target instanceof
+                    Element &&
+                    Target.closest(
+                        ".service-portfolio-grid",
+                    )
+                ) {
+                    return;
+                }
+
+                if (
+                    IsSectionLockedRef.current
+                ) {
+                    event.preventDefault();
+
+                    return;
+                }
+
+                const Touch =
+                    event.touches[0];
+
+                if (!Touch) {
+                    return;
+                }
+
+                const DeltaY =
+                    TouchStartYRef.current -
+                    Touch.clientY;
+
+                const DeltaX =
+                    TouchStartXRef.current -
+                    Touch.clientX;
+
+                if (
+                    Math.abs(
+                        DeltaY,
+                    ) <=
+                    Math.abs(
+                        DeltaX,
+                    )
+                ) {
+                    return;
+                }
+
+                if (
+                    Math.abs(
+                        DeltaY,
+                    ) < 18
+                ) {
+                    return;
+                }
+
+                const SectionElement =
+                    SectionRef.current;
+
+                if (
+                    !SectionElement
+                ) {
+                    return;
+                }
+
+                const Rect =
+                    SectionElement.getBoundingClientRect();
+
+                const ViewportHeight =
+                    window.innerHeight;
+
+                const Direction =
+                    DeltaY > 0
+                        ? 1
+                        : -1;
+
+                const IsApproachingDown =
+                    Direction > 0 &&
+                    Rect.top >
+                    -ViewportHeight *
+                    0.12 &&
+                    Rect.top <
+                    ViewportHeight *
+                    0.84;
+
+                const IsApproachingUp =
+                    Direction < 0 &&
+                    Rect.bottom >
+                    ViewportHeight *
+                    0.16 &&
+                    Rect.bottom <
+                    ViewportHeight *
+                    1.12;
+
+                if (
+                    IsApproachingDown ||
+                    IsApproachingUp
+                ) {
+                    event.preventDefault();
+                }
+            };
+
+        const HandleTouchEnd =
+            (event) => {
+                if (
+                    window.innerWidth >=
+                    1024
+                ) {
+                    TouchTrackingRef.current =
+                        false;
+
+                    return;
+                }
+
+                /*
+                 * If gesture began inside the
+                 * capabilities list, don't send
+                 * it to the service slider.
+                 */
+
+                if (
+                    TouchStartedInsideCapabilitiesRef.current
+                ) {
+                    TouchStartedInsideCapabilitiesRef.current =
+                        false;
+
+                    TouchTrackingRef.current =
+                        false;
+
+                    return;
+                }
+
+                if (
+                    !TouchTrackingRef.current
+                ) {
+                    return;
+                }
+
+                TouchTrackingRef.current =
+                    false;
+
+                if (
+                    IsMenuOpenRef.current
+                ) {
+                    return;
+                }
+
+                const ChangedTouch =
+                    event.changedTouches?.[0];
+
+                if (
+                    !ChangedTouch
+                ) {
+                    return;
+                }
+
+                const DeltaY =
+                    TouchStartYRef.current -
+                    ChangedTouch.clientY;
+
+                const DeltaX =
+                    TouchStartXRef.current -
+                    ChangedTouch.clientX;
+
+                if (
+                    Math.abs(
+                        DeltaY,
+                    ) <=
+                    Math.abs(
+                        DeltaX,
+                    )
+                ) {
+                    return;
+                }
+
+                if (
+                    Math.abs(
+                        DeltaY,
+                    ) < 48
+                ) {
+                    return;
+                }
+
+                const Direction =
+                    DeltaY > 0
+                        ? 1
+                        : -1;
+
+                const SectionElement =
+                    SectionRef.current;
+
+                if (
+                    !SectionElement
+                ) {
+                    return;
+                }
+
+                /*
+                 * Already inside locked portfolio.
+                 */
+
+                if (
+                    IsSectionLockedRef.current
+                ) {
+                    event.preventDefault();
+
+                    const CurrentIndex =
+                        ActiveIndexRef.current;
+
+                    const IsAtFirstSlide =
+                        CurrentIndex ===
+                        0;
+
+                    const IsAtLastSlide =
+                        CurrentIndex ===
+                        TotalServices - 1;
+
+                    if (
+                        Direction > 0 &&
+                        IsAtLastSlide
+                    ) {
+                        LeaveSectionExperience(
+                            1,
+                        );
+
+                        return;
+                    }
+
+                    if (
+                        Direction < 0 &&
+                        IsAtFirstSlide
+                    ) {
+                        LeaveSectionExperience(
+                            -1,
+                        );
+
+                        return;
+                    }
+
+                    if (
+                        IsTransitionLockedRef.current
+                    ) {
+                        return;
+                    }
+
+                    ChangeSlide(
+                        Direction,
+                    );
+
+                    return;
+                }
+
+                const Rect =
+                    SectionElement.getBoundingClientRect();
+
+                const ViewportHeight =
+                    window.innerHeight;
+
+                const IsEnteringFromTop =
+                    Direction > 0 &&
+                    Rect.top >
+                    -ViewportHeight *
+                    0.12 &&
+                    Rect.top <
+                    ViewportHeight *
+                    0.84;
+
+                const IsEnteringFromBottom =
+                    Direction < 0 &&
+                    Rect.bottom >
+                    ViewportHeight *
+                    0.16 &&
+                    Rect.bottom <
+                    ViewportHeight *
+                    1.12;
+
+                if (
+                    IsEnteringFromTop ||
+                    IsEnteringFromBottom
+                ) {
+                    EnterResponsiveSectionExperience(
+                        Direction,
+                    );
+                }
+            };
+
+        window.addEventListener(
+            "touchstart",
+            HandleTouchStart,
+            {
+                passive: true,
+                capture: true,
+            },
+        );
+
+        window.addEventListener(
+            "touchmove",
+            HandleTouchMove,
+            {
+                passive: false,
+                capture: true,
+            },
+        );
+
+        window.addEventListener(
+            "touchend",
+            HandleTouchEnd,
+            {
+                passive: false,
+                capture: true,
+            },
+        );
+
+        return () => {
+            window.removeEventListener(
+                "touchstart",
+                HandleTouchStart,
+                true,
+            );
+
+            window.removeEventListener(
+                "touchmove",
+                HandleTouchMove,
+                true,
+            );
+
+            window.removeEventListener(
+                "touchend",
+                HandleTouchEnd,
+                true,
+            );
+        };
+    }, [TotalServices]);
+
+    /* =========================================================
+       KEYBOARD
+    ========================================================= */
 
     useEffect(() => {
         const HandleKeyDown =
@@ -1008,6 +1631,10 @@ const ServicesPortfolio = () => {
         };
     }, [TotalServices]);
 
+    /* =========================================================
+       CLEANUP
+    ========================================================= */
+
     useEffect(() => {
         return () => {
             UnlockDocumentScroll();
@@ -1043,9 +1670,7 @@ const ServicesPortfolio = () => {
                 return;
             }
 
-            ChangeSlide(
-                1,
-            );
+            ChangeSlide(1);
         };
 
     const GoToPreviousService =
@@ -1061,9 +1686,7 @@ const ServicesPortfolio = () => {
                 return;
             }
 
-            ChangeSlide(
-                -1,
-            );
+            ChangeSlide(-1);
         };
 
     const HandleServiceSelect =
@@ -1128,19 +1751,11 @@ const ServicesPortfolio = () => {
                 <div className="absolute inset-0 opacity-[0.025] [background-image:linear-gradient(rgba(255,255,255,0.07)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.07)_1px,transparent_1px)] [background-size:72px_72px]" />
             </div>
 
-            {/* ===============================================
-                80VW / 70VH FOREGROUND
-            =============================================== */}
-
-            <div className="relative z-20 mx-auto flex h-full w-[94vw] py-13 justify-center lg:w-[65vw]">
-                <div className="relative h-[70vh] w-full max-w-none">
-                    {/* FOREGROUND DEPTH */}
-
+            <div className="services-portfolio-shell relative z-20 mx-auto flex h-full w-[94vw] justify-center py-13 lg:w-[65vw]">
+                <div className="pt-5 services-portfolio-foreground relative h-[70vh] w-full max-w-none">
                     <span className="pointer-events-none absolute inset-x-3 bottom-[-10px] top-3 rounded-[34px] border border-blue-400/[0.055] bg-[#020B20]/90 shadow-[0_30px_55px_rgba(0,0,0,0.42)]" />
 
                     <span className="pointer-events-none absolute -inset-4 rounded-[38px] bg-cyan-400/[0.018] blur-2xl" />
-
-                    {/* MAIN FOREGROUND CARD */}
 
                     <div className="relative h-full overflow-hidden rounded-[30px] border border-cyan-300/[0.13] bg-[linear-gradient(145deg,rgba(12,48,98,0.82),rgba(3,19,45,0.96))] shadow-[inset_0_1px_0_rgba(255,255,255,0.12),inset_0_-25px_35px_rgba(0,5,20,0.24),0_35px_90px_rgba(0,0,0,0.42)] backdrop-blur-2xl [transform-style:preserve-3d]">
                         <div className="pointer-events-none absolute inset-0 opacity-[0.018] [background-image:linear-gradient(rgba(255,255,255,0.10)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.10)_1px,transparent_1px)] [background-size:32px_32px]" />
@@ -1154,7 +1769,7 @@ const ServicesPortfolio = () => {
                                 ActiveService.id
                             }
                             className={[
-                                "relative grid h-full lg:grid-cols-[0.88fr_1.12fr]",
+                                "service-portfolio-slide relative grid h-full lg:grid-cols-[0.88fr_1.12fr]",
                                 slideDirection ===
                                     "down"
                                     ? "service-foreground-enter-down"
@@ -1167,7 +1782,7 @@ const ServicesPortfolio = () => {
                                 LEFT CONTENT
                             ================================= */}
 
-                            <div className="relative flex min-h-0 flex-col justify-between border-b border-cyan-300/[0.06] p-6 sm:p-8 lg:border-b-0 lg:border-r lg:p-9 xl:p-10">
+                            <div className="service-portfolio-left relative flex min-h-0 flex-col justify-between border-b border-cyan-300/[0.06] p-6 sm:p-8 lg:border-b-0 lg:border-r lg:p-9 xl:p-10">
                                 <div className="min-h-0">
                                     <div className="flex items-center gap-3">
                                         <span className="h-px w-9 bg-gradient-to-r from-cyan-300 to-transparent" />
@@ -1185,13 +1800,13 @@ const ServicesPortfolio = () => {
                                             }
                                         />
 
-                                        <p className="mt-4 max-w-[470px] text-[clamp(11px,1vw,15px)] font-medium leading-[1.45] text-cyan-50/66">
+                                        <p className="services-portfolio-subtitle mt-4 max-w-[470px] text-[clamp(11px,1vw,15px)] font-medium leading-[1.45] text-cyan-50/66">
                                             {
                                                 ActiveService.subtitle
                                             }
                                         </p>
 
-                                        <p className="mt-5 max-w-[500px] text-[10px] leading-[1.72] text-blue-100/48 sm:text-[11px]">
+                                        <p className="services-portfolio-description mt-5 max-w-[500px] text-[10px] leading-[1.72] text-blue-100/48 sm:text-[11px]">
                                             {
                                                 ActiveService.description
                                             }
@@ -1199,7 +1814,7 @@ const ServicesPortfolio = () => {
                                     </div>
                                 </div>
 
-                                <div className="mt-5 flex shrink-0 flex-wrap items-center gap-2.5 lg:mt-4">
+                                <div className="service-portfolio-actions mt-5 flex shrink-0 flex-wrap items-center gap-2.5 lg:mt-4">
                                     <HeroActionButton
                                         label="See Similar Builds"
                                         icon={
@@ -1208,7 +1823,11 @@ const ServicesPortfolio = () => {
                                         to="/services"
                                         variant="secondary"
                                     />
-                                    <a href="tel:+919027535618" >
+
+                                    <a
+                                        href="tel:+919027535618"
+                                        aria-label="Call us"
+                                    >
                                         <PremiumIconBadge
                                             icon={
                                                 Phone
@@ -1223,10 +1842,10 @@ const ServicesPortfolio = () => {
                                 RIGHT SERVICES
                             ================================= */}
 
-                            <div className="relative flex min-h-0 flex-col p-5 sm:p-6 lg:p-7 xl:p-8">
+                            <div className="service-portfolio-capabilities relative flex min-h-0 flex-col p-5 sm:p-6 lg:p-7 xl:p-8">
                                 <div className="mb-3 flex shrink-0 items-center justify-between">
                                     <div>
-                                        <span className="font-mono text-[10px] uppercase tracking-[0.20em] text-cyan-200/50">
+                                        <span className="service-capabilities-label font-mono text-[10px] uppercase tracking-[0.20em] text-cyan-200/50">
                                             AVAILABLE
                                             CAPABILITIES
                                         </span>
@@ -1234,7 +1853,7 @@ const ServicesPortfolio = () => {
                                         <div className="mt-1 h-px w-16 bg-gradient-to-r from-cyan-300/40 to-transparent" />
                                     </div>
 
-                                    <span className="font-mono text-[9px] text-blue-100/25">
+                                    <span className="service-module-count font-mono text-[9px] text-blue-100/25">
                                         {String(
                                             ActiveService
                                                 .services
@@ -1247,7 +1866,7 @@ const ServicesPortfolio = () => {
                                     </span>
                                 </div>
 
-                                <div className="min-h-0 flex-1">
+                                <div className="service-capabilities-body min-h-0 flex-1">
                                     <ServiceGrid
                                         services={
                                             ActiveService.services
@@ -1262,9 +1881,7 @@ const ServicesPortfolio = () => {
                         BOTTOM NAVIGATION
                     ========================================= */}
 
-                    <div className="px-10 absolute bottom-[-60px] left-0 right-0 z-40 flex items-center gap-5">
-                        {/* SEE ALL SERVICES */}
-
+                    <div className="absolute bottom-[-60px] left-0 right-0 z-40 flex items-center gap-5 px-10">
                         <button
                             type="button"
                             onClick={() =>
@@ -1272,19 +1889,12 @@ const ServicesPortfolio = () => {
                                     true,
                                 )
                             }
-                        // className="service-nav-premium group flex h-[48px] shrink-0 items-center justify-center gap-2.5 rounded-full border border-cyan-300/[0.12] bg-[linear-gradient(145deg,rgba(12,48,98,0.82),rgba(3,19,45,0.94))] px-4 text-[9px] font-semibold text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.10),0_14px_30px_rgba(0,0,0,0.30)] backdrop-blur-xl transition-all duration-400 hover:border-cyan-200/[0.25] hover:bg-[#0C3062]/[0.72] sm:px-5"
                         >
                             <PremiumIconBadge
                                 icon={Filter}
                                 size="default"
                             />
-
-                            {/* <span>
-                                See All the Services
-                            </span> */}
                         </button>
-
-                        {/* CURRENT SERVICE */}
 
                         <div className="flex h-[48px] min-w-0 flex-1 items-center justify-between rounded-full border border-cyan-300/[0.08] bg-[#061633]/94 px-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.06),0_12px_30px_rgba(0,0,0,0.26)] backdrop-blur-xl sm:px-5">
                             <span className="truncate pr-3 text-[10px] font-semibold text-white sm:text-[11px]">
@@ -1310,9 +1920,8 @@ const ServicesPortfolio = () => {
                                 )}
                             </span>
                         </div>
-                        <div className="flex gap-2">
-                            {/* PREVIOUS */}
 
+                        <div className="flex gap-2">
                             <button
                                 type="button"
                                 onClick={
@@ -1332,8 +1941,6 @@ const ServicesPortfolio = () => {
                                     size="default"
                                 />
                             </button>
-
-                            {/* NEXT */}
 
                             <button
                                 type="button"
@@ -1395,8 +2002,7 @@ const ServicesPortfolio = () => {
 
             <style>{`
                 #services-portfolio {
-                    isolation:
-                        isolate;
+                    isolation: isolate;
                 }
 
                 /* =============================================
@@ -1405,8 +2011,7 @@ const ServicesPortfolio = () => {
 
                 #services-portfolio
                 .service-background-track {
-                    will-change:
-                        transform;
+                    will-change: transform;
 
                     transition:
                         transform
@@ -1619,7 +2224,7 @@ const ServicesPortfolio = () => {
                 }
 
                 /* =============================================
-                   PREMIUM CAPABILITY CARDS
+                   CAPABILITY CARDS
                 ============================================= */
 
                 #services-portfolio
@@ -1658,12 +2263,6 @@ const ServicesPortfolio = () => {
                     will-change:
                         transform;
                 }
-
-                /*
-                 * IMPORTANT:
-                 * NO Y-AXIS movement.
-                 * Hover pushes card toward viewer.
-                 */
 
                 #services-portfolio
                 .service-card:hover
@@ -1746,21 +2345,6 @@ const ServicesPortfolio = () => {
                 }
 
                 #services-portfolio
-                .service-nav-premium:active {
-                    transform:
-                        translate3d(
-                            0,
-                            2px,
-                            0
-                        )
-                        scale(0.94);
-
-                    box-shadow:
-                        inset 0 2px 7px rgba(0,0,0,0.34),
-                        0 5px 12px rgba(0,0,0,0.24);
-                }
-
-                #services-portfolio
                 .service-arrow-button {
                     transform-style:
                         preserve-3d;
@@ -1787,11 +2371,9 @@ const ServicesPortfolio = () => {
                             2px,
                             0
                         )
-                        scale(0.91);
-
-                    box-shadow:
-                        inset 0 2px 7px rgba(0,0,0,0.38),
-                        0 5px 11px rgba(0,0,0,0.22);
+                        scale(
+                            0.91
+                        );
                 }
 
                 /* =============================================
@@ -1885,7 +2467,8 @@ const ServicesPortfolio = () => {
                 }
 
                 /* =============================================
-                   RESPONSIVE
+                   ORIGINAL DESKTOP RESPONSIVE
+                   KEPT
                 ============================================= */
 
                 @media (max-width: 1023px) {
@@ -1901,16 +2484,514 @@ const ServicesPortfolio = () => {
                     }
                 }
 
-                @media (max-width: 767px) {
-                    #services-portfolio {
-                        height:
-                            100vh;
+                /* =============================================
+                   TABLET + PHONE
+                ============================================= */
+
+                @media (max-width: 1023px) {
+                    /*
+                     * Bigger foreground card.
+                     * This removes the bottom dead space.
+                     */
+
+                    #services-portfolio
+                    .services-portfolio-shell {
+                        width:
+                            90vw;
                     }
 
                     #services-portfolio
-                    .service-portfolio-grid {
+                    .services-portfolio-foreground {
+                        width:
+                            90vw;
+
+                        height:
+                            88svh;
+
+                        min-height:
+                            620px;
+
                         max-height:
-                            250px;
+                            none;
+                    }
+
+                    /*
+                     * Mobile/tablet layout:
+                     * left content + scrollable capabilities.
+                     */
+
+                    #services-portfolio
+                    .service-portfolio-slide {
+                        grid-template-rows:
+                            auto
+                            minmax(
+                                0,
+                                1fr
+                            );
+                    }
+
+                    #services-portfolio
+                    .service-portfolio-left {
+                        justify-content:
+                            flex-start;
+                    }
+
+                    /*
+                     * Buttons have real top spacing.
+                     */
+
+                    #services-portfolio
+                    .service-portfolio-actions {
+                        margin-top:
+                            24px;
+                    }
+
+                    /*
+                     * Capability panel stays inside card.
+                     */
+
+                    #services-portfolio
+                    .service-portfolio-capabilities {
+                        min-height:
+                            0;
+
+                        overflow:
+                            hidden;
+                    }
+
+                    #services-portfolio
+                    .service-capabilities-body {
+                        min-height:
+                            0;
+
+                        height:
+                            100%;
+
+                        flex:
+                            1 1 0%;
+
+                        overflow:
+                            hidden;
+                    }
+
+                    /*
+                     * ONLY this area scrolls internally.
+                     */
+
+                    #services-portfolio
+                    .service-portfolio-grid {
+                        height:
+                            100%;
+
+                        min-height:
+                            0;
+
+                        max-height:
+                            none;
+
+                        overflow-y:
+                            auto;
+
+                        overflow-x:
+                            hidden;
+
+                        overscroll-behavior:
+                            contain;
+
+                        -webkit-overflow-scrolling:
+                            touch;
+
+                        touch-action:
+                            pan-y;
+
+                        padding-right:
+                            5px;
+                    }
+
+                    /*
+                     * Typography.
+                     */
+
+                    #services-portfolio
+                    .services-portfolio-title-primary,
+                    #services-portfolio
+                    .services-portfolio-title-accent,
+                    #services-portfolio
+                    .services-portfolio-title-single {
+                        font-size:
+                            52px;
+
+                        line-height:
+                            1;
+                    }
+
+                    #services-portfolio
+                    .services-portfolio-subtitle {
+                        font-size:
+                            18px;
+
+                        line-height:
+                            1.65;
+                    }
+
+                    #services-portfolio
+                    .services-portfolio-description {
+                        font-size:
+                            18px;
+
+                        line-height:
+                            1.65;
+                    }
+
+                    /*
+                     * Taller cards.
+                     */
+
+                    #services-portfolio
+                    .service-card {
+                        min-height:
+                            112px;
+                    }
+
+                    #services-portfolio
+                    .service-card-surface {
+                        min-height:
+                            112px;
+
+                        padding:
+                            19px;
+                    }
+
+                    #services-portfolio
+                    .service-card-label {
+                        font-size:
+                            10px;
+                    }
+
+                    #services-portfolio
+                    .service-card-title {
+                        font-size:
+                            18px;
+
+                        line-height:
+                            1.35;
+                    }
+
+                    #services-portfolio
+                    .service-capabilities-label {
+                        font-size:
+                            12px;
+                    }
+
+                    #services-portfolio
+                    .service-module-count {
+                        font-size:
+                            11px;
+                    }
+
+                    /*
+                     * Full-width modal.
+                     */
+
+
+                    #services-portfolio
+                    .service-menu-panel {
+                        width:
+                            100vw;
+
+                        max-width:
+                            100vw;
+
+                        height:
+                            82dvh;
+
+                        max-height:
+                            90dvh;
+
+                        border-radius:
+                            24px;
+                    }
+
+                    /*
+                     * px-8 inside modal.
+                     */
+
+                    #services-portfolio
+                    .service-menu-header {
+                        padding-left:
+                            32px;
+
+                        padding-right:
+                            32px;
+                    }
+
+                    #services-portfolio
+                    .service-menu-scroll {
+                        padding-left:
+                            32px;
+
+                        padding-right:
+                            32px;
+
+                        overscroll-behavior:
+                            contain;
+                    }
+
+                    #services-portfolio
+                    .service-menu-panel {
+                        touch-action:
+                            pan-y;
+                    }
+                }
+
+                /* =============================================
+                   TABLET
+                ============================================= */
+
+                @media (min-width: 768px) and (max-width: 1023px) {
+                    #services-portfolio
+                    .services-portfolio-shell {
+                        padding-top:
+                            12px;
+
+                        padding-bottom:
+                            70px;
+                    }
+
+                    #services-portfolio
+                    .services-portfolio-foreground {
+                        width:
+                            90vw;
+
+                        height:
+                            88svh;
+
+                        min-height:
+                            650px;
+                    }
+
+                    #services-portfolio
+                    .service-portfolio-actions {
+                        margin-top:
+                            24px;
+                    }
+
+                    #services-portfolio
+                    .service-card {
+                        min-height:
+                            118px;
+                    }
+
+                    #services-portfolio
+                    .service-card-surface {
+                        min-height:
+                            118px;
+
+                        padding:
+                            20px;
+                    }
+
+                    #services-portfolio
+                    .service-menu-panel {
+                        height:
+                            84dvh;
+                    }
+                }
+
+                /* =============================================
+                   PHONE
+                ============================================= */
+
+                @media (max-width: 767px) {
+                    #services-portfolio {
+                        height:
+                            100svh;
+                    }
+
+                    #services-portfolio
+                    .services-portfolio-shell {
+                        width:
+                            90vw;
+
+                        padding-top:
+                            8px;
+
+                        padding-bottom:
+                            62px;
+                    }
+
+                    #services-portfolio
+                    .services-portfolio-foreground {
+                        width:
+                            90vw;
+
+                        height:
+                            88svh;
+
+                        min-height:
+                            640px;
+
+                        max-height:
+                            none;
+                    }
+
+                    /*
+                     * Phone heading.
+                     */
+
+                    #services-portfolio
+                    .services-portfolio-title-primary,
+                    #services-portfolio
+                    .services-portfolio-title-accent,
+                    #services-portfolio
+                    .services-portfolio-title-single {
+                        font-size:
+                            36px;
+
+                        line-height:
+                            1.02;
+                    }
+
+                    #services-portfolio
+                    .services-portfolio-subtitle {
+                        font-size:
+                            14px;
+
+                        line-height:
+                            1.68;
+                    }
+
+                    #services-portfolio
+                    .services-portfolio-description {
+                        font-size:
+                            14px;
+
+                        line-height:
+                            1.68;
+                    }
+
+                    /*
+                     * Action buttons get enough top gap.
+                     */
+
+                    #services-portfolio
+                    .service-portfolio-actions {
+                        margin-top:
+                            22px;
+                    }
+
+                    /*
+                     * Capability cards are taller.
+                     */
+
+                    #services-portfolio
+                    .service-card {
+                        min-height:
+                            108px;
+                    }
+
+                    #services-portfolio
+                    .service-card-surface {
+                        min-height:
+                            108px;
+
+                        padding:
+                            17px;
+                    }
+
+                    #services-portfolio
+                    .service-card-label {
+                        font-size:
+                            8px;
+                    }
+
+                    #services-portfolio
+                    .service-card-title {
+                        font-size:
+                            14px;
+
+                        line-height:
+                            1.40;
+                    }
+
+                    #services-portfolio
+                    .service-capabilities-label {
+                        font-size:
+                            10px;
+                    }
+
+                    #services-portfolio
+                    .service-module-count {
+                        font-size:
+                            9px;
+                    }
+
+                    /*
+                     * Full-width modal.
+                     */
+
+                    #services-portfolio
+                    .service-menu-panel {
+                        width:
+                            100vw;
+
+                        max-width:
+                            100vw;
+
+                        height:
+                            85dvh;
+
+                        max-height:
+                            92dvh;
+
+                        border-radius:
+                            22px;
+                    }
+
+                    /*
+                     * Modal px-8.
+                     */
+
+                    #services-portfolio
+                    .service-menu-header {
+                        padding-left:
+                            32px;
+
+                        padding-right:
+                            32px;
+
+                        padding-top:
+                            16px;
+
+                        padding-bottom:
+                            16px;
+                    }
+
+                    #services-portfolio
+                    .service-menu-scroll {
+                        padding-left:
+                            32px;
+
+                        padding-right:
+                            32px;
+
+                        padding-top:
+                            18px;
+
+                        padding-bottom:
+                            26px;
+                    }
+
+                    #services-portfolio
+                    .service-menu-item-title {
+                        font-size:
+                            14px;
+                    }
+
+                    #services-portfolio
+                    .service-menu-item-subtitle {
+                        font-size:
+                            10px;
                     }
 
                     #services-portfolio
@@ -1949,6 +3030,15 @@ const ServicesPortfolio = () => {
                             scale(
                                 1.01
                             );
+                    }
+
+                    #services-portfolio
+                    .service-arrow-button {
+                        height:
+                            44px;
+
+                        width:
+                            44px;
                     }
                 }
 

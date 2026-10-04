@@ -1,6 +1,12 @@
 // AboutVision.jsx
 // InnoInventive About Page - Vision Section
 //
+// Responsive refinement:
+// - Laptop/Desktop remains unchanged.
+// - Tablet + Phone heading/description enlarged.
+// - Tablet + Phone capability-card typography enlarged 2x.
+// - Tablet + Phone vertical clipping fixed.
+//
 // No cards.
 // No central 3D engine.
 // No images.
@@ -80,8 +86,14 @@ const VisionCapabilities = [
    CAPABILITY ITEM
 ========================================================= */
 
-const VisionCapability = ({ capability, index, isActive, reference }) => {
-    const CapabilityIcon = capability.icon;
+const VisionCapability = ({
+    capability,
+    index,
+    isActive,
+    reference,
+}) => {
+    const CapabilityIcon =
+        capability.icon;
 
     const AccentStyles = {
         cyan: {
@@ -91,6 +103,7 @@ const VisionCapability = ({ capability, index, isActive, reference }) => {
             progress:
                 "from-cyan-300 via-blue-400 to-cyan-200",
         },
+
         blue: {
             text: "text-blue-300",
             line: "from-blue-300/65",
@@ -98,6 +111,7 @@ const VisionCapability = ({ capability, index, isActive, reference }) => {
             progress:
                 "from-blue-300 via-cyan-300 to-violet-300",
         },
+
         violet: {
             text: "text-violet-300",
             line: "from-violet-300/65",
@@ -118,7 +132,9 @@ const VisionCapability = ({ capability, index, isActive, reference }) => {
             className={[
                 "vision-capability group relative",
                 "transition-all duration-700 ease-out",
-                isActive ? "-translate-y-1" : "translate-y-0",
+                isActive
+                    ? "-translate-y-1"
+                    : "translate-y-0",
             ].join(" ")}
             style={{
                 transitionDelay: `${index * 100}ms`,
@@ -126,12 +142,15 @@ const VisionCapability = ({ capability, index, isActive, reference }) => {
         >
             <div className="flex items-start gap-4 sm:gap-5">
                 {/* Number */}
+
                 <div className="pt-1">
                     <span
                         className={[
-                            "font-mono text-[10px] font-bold tracking-[0.16em] drop-shadow-[0_0_8px_rgba(25,211,255,0.28)]",
+                            "vision-capability-number font-mono text-[10px] font-bold tracking-[0.16em] drop-shadow-[0_0_8px_rgba(25,211,255,0.28)]",
                             CurrentStyle.text,
-                            isActive ? "opacity-100" : "opacity-80",
+                            isActive
+                                ? "opacity-100"
+                                : "opacity-80",
                         ].join(" ")}
                     >
                         {capability.number}
@@ -139,6 +158,7 @@ const VisionCapability = ({ capability, index, isActive, reference }) => {
                 </div>
 
                 {/* Icon */}
+
                 <div className="relative shrink-0">
                     <PremiumIconBadge
                         icon={CapabilityIcon}
@@ -155,11 +175,12 @@ const VisionCapability = ({ capability, index, isActive, reference }) => {
                 </div>
 
                 {/* Main content */}
+
                 <div className="min-w-0 flex-1">
                     <div className="flex flex-wrap items-center gap-2.5">
                         <span
                             className={[
-                                "text-[7px] font-bold uppercase tracking-[0.18em] drop-shadow-[0_0_7px_rgba(25,211,255,0.16)]",
+                                "vision-capability-label text-[7px] font-bold uppercase tracking-[0.18em] drop-shadow-[0_0_7px_rgba(25,211,255,0.16)]",
                                 CurrentStyle.text,
                             ].join(" ")}
                         >
@@ -173,26 +194,29 @@ const VisionCapability = ({ capability, index, isActive, reference }) => {
                             ].join(" ")}
                         />
 
-                        <span className="font-mono text-[6px] font-semibold uppercase tracking-[0.14em] text-white/38">
+                        <span className="vision-capability-status font-mono text-[6px] font-semibold uppercase tracking-[0.14em] text-white/38">
                             {capability.status}
                         </span>
                     </div>
 
-                    <h3 className="mt-1.5 text-[16px] font-semibold tracking-[-0.025em] text-white sm:text-[18px]">
+                    <h3 className="vision-capability-title mt-1.5 text-12 font-semibold tracking-[-0.025em] text-white sm:text-[18px]">
                         {capability.title}
                     </h3>
 
-                    <p className="mt-1.5 max-w-[520px] text-[8px] leading-[1.75] text-white/34 sm:text-[9px]">
+                    <p className="vision-capability-description mt-1.5 max-w-[520px] text-[8px] leading-[1.75] text-white/34 sm:text-[9px]">
                         {capability.description}
                     </p>
 
                     {/* System line */}
+
                     <div className="mt-3 max-w-[500px]">
                         <div className="relative h-[3px] overflow-hidden rounded-full bg-white/[0.045]">
                             <span
                                 className={[
                                     "absolute inset-y-0 left-0 rounded-full bg-gradient-to-r shadow-[0_0_10px_rgba(25,211,255,0.22)] transition-all duration-700",
-                                    isActive ? "w-[92%]" : "w-[64%]",
+                                    isActive
+                                        ? "w-[92%]"
+                                        : "w-[64%]",
                                     CurrentStyle.progress,
                                 ].join(" ")}
                             />
@@ -205,7 +229,7 @@ const VisionCapability = ({ capability, index, isActive, reference }) => {
                         </div>
 
                         <div className="mt-1.5 flex items-center justify-between">
-                            <span className="font-mono text-[5.5px] font-semibold uppercase tracking-[0.15em] text-white/32">
+                            <span className="vision-capability-system-label font-mono text-[5.5px] font-semibold uppercase tracking-[0.15em] text-white/32">
                                 SYSTEM LAYER
                             </span>
 
@@ -216,7 +240,7 @@ const VisionCapability = ({ capability, index, isActive, reference }) => {
                                     <span className="relative h-1 w-1 rounded-full bg-cyan-300 shadow-[0_0_7px_rgba(25,211,255,0.70)]" />
                                 </span>
 
-                                <span className="font-mono text-[5.5px] font-bold uppercase tracking-[0.14em] text-cyan-200/65 drop-shadow-[0_0_7px_rgba(25,211,255,0.22)]">
+                                <span className="vision-capability-active-label font-mono text-[5.5px] font-bold uppercase tracking-[0.14em] text-cyan-200/65 drop-shadow-[0_0_7px_rgba(25,211,255,0.22)]">
                                     ACTIVE
                                 </span>
                             </div>
@@ -225,6 +249,7 @@ const VisionCapability = ({ capability, index, isActive, reference }) => {
                 </div>
 
                 {/* Right-side mark */}
+
                 <div className="hidden shrink-0 pt-2 sm:block">
                     <span className="relative flex h-8 w-8 items-center justify-center">
                         <span className="absolute inset-0 rounded-full border border-white/[0.045]" />
@@ -232,9 +257,11 @@ const VisionCapability = ({ capability, index, isActive, reference }) => {
                         <span
                             className={[
                                 "absolute inset-[4px] rounded-full border",
-                                capability.accent === "violet"
+                                capability.accent ===
+                                    "violet"
                                     ? "border-violet-300/15"
-                                    : capability.accent === "blue"
+                                    : capability.accent ===
+                                        "blue"
                                         ? "border-blue-300/15"
                                         : "border-cyan-300/15",
                             ].join(" ")}
@@ -251,9 +278,11 @@ const VisionCapability = ({ capability, index, isActive, reference }) => {
             </div>
 
             {/* Divider */}
-            {index < VisionCapabilities.length - 1 && (
-                <div className="mt-5 ml-[44px] h-px bg-gradient-to-r from-white/[0.08] via-cyan-300/[0.07] to-transparent sm:ml-[46px]" />
-            )}
+
+            {index <
+                VisionCapabilities.length - 1 && (
+                    <div className="mt-5 ml-[44px] h-px bg-gradient-to-r from-white/[0.08] via-cyan-300/[0.07] to-transparent sm:ml-[46px]" />
+                )}
         </div>
     );
 };
@@ -263,58 +292,90 @@ const VisionCapability = ({ capability, index, isActive, reference }) => {
 ========================================================= */
 
 const AboutVision = () => {
-    const CapabilityReferences = useRef([]);
-    const [ActiveIndex, SetActiveIndex] = useState(0);
+    const CapabilityReferences =
+        useRef([]);
+
+    const [
+        ActiveIndex,
+        SetActiveIndex,
+    ] = useState(0);
 
     useEffect(() => {
-        const Elements = CapabilityReferences.current.filter(Boolean);
+        const Elements =
+            CapabilityReferences.current.filter(
+                Boolean,
+            );
 
         if (!Elements.length) {
             return undefined;
         }
 
-        const Observer = new IntersectionObserver(
-            (Entries) => {
-                const VisibleEntries = Entries.filter(
-                    (Entry) => Entry.isIntersecting,
-                );
+        const Observer =
+            new IntersectionObserver(
+                (Entries) => {
+                    const VisibleEntries =
+                        Entries.filter(
+                            (Entry) =>
+                                Entry.isIntersecting,
+                        );
 
-                if (!VisibleEntries.length) {
-                    return;
-                }
+                    if (
+                        !VisibleEntries.length
+                    ) {
+                        return;
+                    }
 
-                const MostVisible = VisibleEntries.reduce(
-                    (Current, Entry) =>
-                        Entry.intersectionRatio > Current.intersectionRatio
-                            ? Entry
-                            : Current,
-                );
+                    const MostVisible =
+                        VisibleEntries.reduce(
+                            (
+                                Current,
+                                Entry,
+                            ) =>
+                                Entry.intersectionRatio >
+                                    Current.intersectionRatio
+                                    ? Entry
+                                    : Current,
+                        );
 
-                const NextIndex = Number(
-                    MostVisible.target.dataset.index,
-                );
+                    const NextIndex =
+                        Number(
+                            MostVisible.target.dataset
+                                .index,
+                        );
 
-                if (Number.isFinite(NextIndex)) {
-                    SetActiveIndex(NextIndex);
-                }
-            },
-            {
-                threshold: [0.25, 0.5, 0.75],
-                rootMargin: "-10% 0px -20% 0px",
-            },
-        );
+                    if (
+                        Number.isFinite(
+                            NextIndex,
+                        )
+                    ) {
+                        SetActiveIndex(
+                            NextIndex,
+                        );
+                    }
+                },
+                {
+                    threshold: [
+                        0.25,
+                        0.5,
+                        0.75,
+                    ],
+                    rootMargin:
+                        "-10% 0px -20% 0px",
+                },
+            );
 
         Elements.forEach((Element) => {
             Observer.observe(Element);
         });
 
-        return () => Observer.disconnect();
+        return () =>
+            Observer.disconnect();
     }, []);
 
     return (
         <section
             id="vision"
-            className="relative w-full overflow-hidden bg-[#061633] text-white"
+            className="vision-section relative w-full overflow-hidden bg-[#061633] text-white"
         >
             {/* =====================================================
                 ATMOSPHERE
@@ -332,43 +393,57 @@ const AboutVision = () => {
                 VIEWPORT CONTAINER
             ===================================================== */}
 
-            <div className="relative z-20 mx-auto flex min-h-[calc(100svh-92px)] w-full max-w-[1400px] flex-col justify-center px-6 py-0 lg:px-8 lg:pb-16">
+            <div className=" relative z-20 mx-auto flex min-h-[calc(100svh-92px)] w-full max-w-[1400px] flex-col justify-center px-6 py-0 lg:px-8 lg:pb-16">
                 {/* =================================================
                     ROW 1 — TEXT
                 ================================================= */}
 
                 <div className="grid items-end gap-8 lg:grid-cols-[0.80fr_1.20fr]">
                     {/* Left */}
+
                     <div className="max-w-[560px]">
                         <div className="inline-flex items-center gap-3">
                             <span className="font-mono text-[13px] font-medium tracking-[0.12em] text-cyan-300">
-                                {VisionContent.sectionNumber}
+                                {
+                                    VisionContent.sectionNumber
+                                }
                             </span>
 
                             <span className="h-px w-10 bg-gradient-to-r from-cyan-300 via-blue-400 to-transparent" />
 
                             <span className="text-[9px] font-semibold uppercase tracking-[0.18em] text-blue-100/65 sm:text-[10px]">
-                                {VisionContent.eyebrow}
+                                {
+                                    VisionContent.eyebrow
+                                }
                             </span>
                         </div>
 
-                        <h2 className="mt-5 text-[31px] font-semibold leading-[1.03] tracking-[-0.045em] sm:text-[39px] lg:text-[47px]">
-                            {VisionContent.headingPrimary}{" "}
+                        <h2 className="vision-heading mt-5 text-[31px] font-semibold leading-[1.03] tracking-[-0.045em] sm:text-[39px] lg:text-[47px]">
+                            {
+                                VisionContent.headingPrimary
+                            }{" "}
                             <span className="bg-gradient-to-r from-cyan-300 via-blue-400 to-violet-400 bg-clip-text text-transparent">
-                                {VisionContent.headingAccent}
+                                {
+                                    VisionContent.headingAccent
+                                }
                             </span>
                         </h2>
                     </div>
 
                     {/* Right */}
+
                     <div className="flex flex-col items-start lg:items-end lg:text-right">
-                        <p className="max-w-[650px] text-[10px] leading-[1.8] text-blue-100/48 sm:text-[11px]">
-                            {VisionContent.description}
+                        <p className="vision-description max-w-[650px] text-[10px] leading-[1.8] text-blue-100/48 sm:text-[11px]">
+                            {
+                                VisionContent.description
+                            }
                         </p>
 
                         <div className="mt-5 flex flex-wrap items-center gap-3">
                             <PremiumButton
-                                label={VisionContent.buttonLabel}
+                                label={
+                                    VisionContent.buttonLabel
+                                }
                                 to="/contact"
                                 icon={ArrowRight}
                             />
@@ -398,38 +473,71 @@ const AboutVision = () => {
                     ROW 2 — CAPABILITIES
                 ================================================= */}
 
-                <div className="relative mt-8 grid gap-6 md:grid-cols-[1fr_54px_1fr_54px_1fr] md:items-start lg:grid-cols-[1fr_72px_1fr_72px_1fr]">
-                    {VisionCapabilities.map((Capability, Index) => (
-                        <div key={Capability.id} className="contents">
-                            <VisionCapability
-                                capability={Capability}
-                                index={Index}
-                                isActive={ActiveIndex === Index}
-                                reference={(Element) => {
-                                    CapabilityReferences.current[Index] = Element;
-                                }}
-                            />
+                <div className="vision-capabilities relative mt-8 grid gap-6 md:grid-cols-[1fr_54px_1fr_54px_1fr] md:items-start lg:grid-cols-[1fr_72px_1fr_72px_1fr]">
+                    {VisionCapabilities.map(
+                        (
+                            Capability,
+                            Index,
+                        ) => (
+                            <div
+                                key={
+                                    Capability.id
+                                }
+                                className="contents"
+                            >
+                                <VisionCapability
+                                    capability={
+                                        Capability
+                                    }
+                                    index={Index}
+                                    isActive={
+                                        ActiveIndex ===
+                                        Index
+                                    }
+                                    reference={(
+                                        Element,
+                                    ) => {
+                                        CapabilityReferences.current[
+                                            Index
+                                        ] =
+                                            Element;
+                                    }}
+                                />
 
-                            {Index < VisionCapabilities.length - 1 && (
-                                <div
-                                    className={[
-                                        "vision-flow-connector relative hidden h-[58px] items-center md:flex",
-                                        ActiveIndex === Index || ActiveIndex === Index + 1
-                                            ? "vision-flow-connector-active"
-                                            : "",
-                                    ].join(" ")}
-                                    aria-hidden="true"
-                                >
-                                    <span className="absolute left-0 right-0 h-px bg-gradient-to-r from-cyan-300/10 via-cyan-300/35 to-violet-300/10" />
-                                    <span className="absolute left-0 right-0 h-[5px] rounded-full bg-cyan-300/[0.025] blur-[5px]" />
-                                    <span className="absolute left-0 h-1 w-1 rounded-full bg-cyan-300/50" />
-                                    <span className="absolute left-1/2 h-1 w-1 -translate-x-1/2 rounded-full bg-blue-300/45" />
-                                    <span className="absolute right-0 h-1 w-1 rounded-full bg-violet-300/40" />
-                                    <span className={`vision-flow-signal vision-flow-signal-${Index}`} />
-                                </div>
-                            )}
-                        </div>
-                    ))}
+                                {Index <
+                                    VisionCapabilities.length -
+                                    1 && (
+                                        <div
+                                            className={[
+                                                "vision-flow-connector relative hidden h-[58px] items-center md:flex",
+                                                ActiveIndex ===
+                                                    Index ||
+                                                    ActiveIndex ===
+                                                    Index +
+                                                    1
+                                                    ? "vision-flow-connector-active"
+                                                    : "",
+                                            ].join(" ")}
+                                            aria-hidden="true"
+                                        >
+                                            <span className="absolute left-0 right-0 h-px bg-gradient-to-r from-cyan-300/10 via-cyan-300/35 to-violet-300/10" />
+
+                                            <span className="absolute left-0 right-0 h-[5px] rounded-full bg-cyan-300/[0.025] blur-[5px]" />
+
+                                            <span className="absolute left-0 h-1 w-1 rounded-full bg-cyan-300/50" />
+
+                                            <span className="absolute left-1/2 h-1 w-1 -translate-x-1/2 rounded-full bg-blue-300/45" />
+
+                                            <span className="absolute right-0 h-1 w-1 rounded-full bg-violet-300/40" />
+
+                                            <span
+                                                className={`vision-flow-signal vision-flow-signal-${Index}`}
+                                            />
+                                        </div>
+                                    )}
+                            </div>
+                        ),
+                    )}
                 </div>
 
                 {/* =================================================
@@ -446,7 +554,9 @@ const AboutVision = () => {
                             />
 
                             <span className="text-[8px] font-bold uppercase tracking-[0.20em] text-cyan-100/65 drop-shadow-[0_0_9px_rgba(25,211,255,0.14)]">
-                                {VisionContent.footerText}
+                                {
+                                    VisionContent.footerText
+                                }
                             </span>
                         </div>
 
@@ -492,7 +602,9 @@ const AboutVision = () => {
 
                 .vision-flow-connector {
                     opacity: 0.58;
-                    transition: opacity 500ms ease, transform 500ms ease;
+                    transition:
+                        opacity 500ms ease,
+                        transform 500ms ease;
                 }
 
                 .vision-flow-connector-active {
@@ -510,15 +622,30 @@ const AboutVision = () => {
                     margin-top: -2.5px;
                     border-radius: 999px;
                     background: white;
-                    box-shadow: 0 0 10px rgba(25,211,255,0.95);
+                    box-shadow:
+                        0 0 10px
+                        rgba(
+                            25,
+                            211,
+                            255,
+                            0.95
+                        );
                 }
 
                 .vision-flow-signal-0 {
-                    animation: visionFlowSignal 2.4s linear infinite;
+                    animation:
+                        visionFlowSignal
+                        2.4s
+                        linear
+                        infinite;
                 }
 
                 .vision-flow-signal-1 {
-                    animation: visionFlowSignal 2.4s linear infinite;
+                    animation:
+                        visionFlowSignal
+                        2.4s
+                        linear
+                        infinite;
                     animation-delay: 0.8s;
                 }
 
@@ -544,11 +671,136 @@ const AboutVision = () => {
                     }
                 }
 
-                @media (max-width: 767px) {
-                    .vision-flow-connector {
-                        display: none;
+                /* =================================================
+                   TABLET ONLY
+                   768px - 1023px
+                   Laptop/Desktop remains untouched.
+                ================================================= */
+
+                @media (min-width: 768px) and (max-width: 1023px) {
+                    .vision-section {
+                        overflow: visible;
+                    }
+
+                    .vision-viewport {
+                        min-height: 0;
+                        justify-content: flex-start;
+                        padding-top: 48px;
+                        padding-bottom: 56px;
+                    }
+
+                    .vision-heading {
+                        font-size: 52px;
+                        line-height: 1;
+                    }
+
+                    .vision-description {
+                        font-size: 18px;
+                        line-height: 1.65;
+                    }
+
+                    .vision-capability-number {
+                        font-size: 20px;
+                    }
+
+                    .vision-capability-label {
+                        font-size: 14px;
+                    }
+
+                    .vision-capability-status {
+                        font-size: 12px;
+                    }
+
+                    .vision-capability-title {
+                        font-size: 36px;
+                        line-height: 1.06;
+                    }
+
+                    .vision-capability-description {
+                        font-size: 18px;
+                        line-height: 1.68;
+                    }
+
+                    .vision-capability-system-label,
+                    .vision-capability-active-label {
+                        font-size: 11px;
+                    }
+
+                    .vision-capabilities {
+                        overflow: visible;
                     }
                 }
+
+                /* =================================================
+                   PHONE ONLY
+                   0px - 767px
+                ================================================= */
+
+                @media (max-width: 767px) {
+                    .vision-section {
+                        overflow: visible;
+                    }
+
+                    .vision-viewport {
+                        min-height: 0;
+                        justify-content: flex-start;
+                        padding-top: 40px;
+                        padding-bottom: 48px;
+                    }
+
+                    .vision-heading {
+                        font-size: 36px;
+                        line-height: 1.02;
+                    }
+
+                    .vision-description {
+                        font-size: 14px;
+                        line-height: 1.68;
+                    }
+
+                    .vision-capability-number {
+                        font-size: 20px;
+                    }
+
+                    .vision-capability-label {
+                        font-size: 14px;
+                    }
+
+                    .vision-capability-status {
+                        font-size: 12px;
+                    }
+
+                    .vision-capability-title {
+                        font-size: 22px;
+                        line-height: 1.06;
+                    }
+
+                    .vision-capability-description {
+                        font-size: 14px;
+                        line-height: 1.7;
+                    }
+
+                    .vision-capability-system-label,
+                    .vision-capability-active-label {
+                        font-size: 11px;
+                    }
+
+                    .vision-capabilities {
+                        overflow: visible;
+                    }
+
+                    .vision-capability {
+                        transform: none;
+                    }
+
+                    .vision-capability:hover {
+                        transform: none;
+                    }
+                }
+
+                /* =================================================
+                   REDUCED MOTION
+                ================================================= */
 
                 @media (prefers-reduced-motion: reduce) {
                     .vision-capability,
