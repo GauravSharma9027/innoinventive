@@ -39,14 +39,14 @@ const ProjectsHero = () => {
     return (
         <section
             id="projects-hero"
-            className="relative min-h-[85vh] w-full overflow-hidden bg-[#061633] text-white lg:h-[85vh] lg:min-h-0"
+            className="relative lg:min-h-[85vh] w-full overflow-hidden bg-[#061633] text-white lg:h-[85vh] lg:min-h-0"
         >
             {/* =================================================
                 BACKGROUND IMAGE
             ================================================= */}
 
             <div
-                className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+                className=" absolute inset-0 bg-cover bg-top-right lg:bg-center bg-no-repeat"
                 style={{
                     backgroundImage: `url("${ProjectsHeroBackground}")`,
                 }}
@@ -85,7 +85,7 @@ const ProjectsHero = () => {
                         </div>
 
                         {/* Heading */}
-                        <h1 className="mt-5 max-w-[670px] text-[clamp(42px,5.3vw,72px)] font-semibold leading-[0.94] tracking-[-0.065em] text-white">
+                        <h1 className="mt-5 max-w-[670px] text-5xl lg:text-[clamp(42px,5.3vw,72px)] font-semibold leading-[0.94] tracking-[-0.065em] text-white">
                             {ProjectsHeroContent.headingPrimary}
 
                             <span className="mt-1 block bg-gradient-to-r from-cyan-300 via-blue-400 to-violet-400 bg-clip-text text-transparent">
@@ -94,7 +94,7 @@ const ProjectsHero = () => {
                         </h1>
 
                         {/* Description */}
-                        <p className="mt-6 max-w-[510px] text-[13px] leading-[1.8] text-white/58 sm:text-[14px]">
+                        <p className="mt-6 max-w-[510px] lg:text-[13px] leading-[1.8] text-white/58">
                             {ProjectsHeroContent.description}
                         </p>
 

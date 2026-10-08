@@ -287,7 +287,7 @@ const ContactHero = () => {
                             delay: 0.18,
                             ease: [0.16, 1, 0.3, 1],
                         }}
-                        className="mt-6 max-w-[570px] text-[12px] leading-[1.8] text-white/48 sm:text-[13px]"
+                        className="mt-6 max-w-[570px] text-[16px] leading-[1.8] text-white/48 sm:text-[13px]"
                     >
                         {ContactHeroContent.description}
                     </motion.p>
@@ -391,13 +391,13 @@ const ContactHero = () => {
                                         </div>
 
                                         <div className="min-w-0">
-                                            <p className="truncate text-[12px] font-semibold text-white/68">
+                                            <p className="truncate text-lg font-semibold text-white/68">
                                                 {
                                                     Item.title
                                                 }
                                             </p>
 
-                                            <p className="mt-0.5 truncate text-[10px] leading-[1.3] text-white/30">
+                                            <p className="mt-0.5 truncate text-sm leading-[1.3] text-white/30">
                                                 {
                                                     Item.description
                                                 }
@@ -722,20 +722,6 @@ const ContactHero = () => {
                         }}
                         className="pointer-events-none absolute right-[7%] top-[10%] z-10 sm:right-[9%] sm:top-[8%] lg:right-[8%] lg:top-[9%]"
                     >
-                        {/* <div className="flex flex-col items-end">
-                            <p className="max-w-[125px] text-right text-[9px] font-medium leading-[1.35] tracking-[0.01em] text-white sm:max-w-[145px] sm:text-[10px] lg:text-[11px]">
-                                Drop us a message
-                                <span className="block">
-                                    we&apos;re all ears!
-                                </span>
-                            </p>
-
-                            <CornerDownLeft
-                                size={42}
-                                strokeWidth={1.5}
-                                className="mr-[24px] mt-2 rotate-[8deg] text-white/90 sm:mr-[30px] lg:mr-[34px]"
-                            />
-                        </div> */}
                     </motion.div>
                 </div>
             </div>

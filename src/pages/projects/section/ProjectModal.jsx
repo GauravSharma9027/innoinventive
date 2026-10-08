@@ -131,7 +131,7 @@ const ProjectModal = ({
 
     return (
         <div
-            className="fixed inset-0 z-[9999] flex h-[100dvh] w-full items-center justify-center overflow-hidden bg-[#020814]/80 px-3 py-3 backdrop-blur-md sm:px-5 sm:py-5"
+            className="fixed inset-0 z-[9999] flex h-[100dvh] w-full items-center justify-center overflow-hidden bg-[#020814]/80 px-6 py-3 backdrop-blur-md sm:px-5 sm:py-5"
             onMouseDown={(Event) => {
                 if (
                     Event.target ===
@@ -157,7 +157,7 @@ const ProjectModal = ({
                 MODAL SHELL
             ================================================= */}
 
-            <div className="relative flex h-full max-h-[90dvh] w-full max-w-[60vw] flex-col overflow-hidden rounded-[24px] border border-cyan-300/[0.13] bg-[linear-gradient(145deg,rgba(7,27,58,0.985),rgba(2,13,31,0.995))] shadow-[0_40px_120px_rgba(0,0,0,0.58),0_0_60px_rgba(25,211,255,0.055),inset_0_1px_0_rgba(255,255,255,0.07)]">
+            <div className="relative flex h-full max-h-[90dvh] w-full lg:max-w-[60vw] flex-col overflow-hidden rounded-[24px] border border-cyan-300/[0.13] bg-[linear-gradient(145deg,rgba(7,27,58,0.985),rgba(2,13,31,0.995))] shadow-[0_40px_120px_rgba(0,0,0,0.58),0_0_60px_rgba(25,211,255,0.055),inset_0_1px_0_rgba(255,255,255,0.07)]">
 
                 {/* Top reflection */}
                 <span className="pointer-events-none absolute left-[12%] right-[12%] top-0 z-30 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
@@ -220,7 +220,7 @@ const ProjectModal = ({
                                     <div className="pointer-events-none absolute inset-0 rounded-[13px] ring-1 ring-inset ring-cyan-300/[0.07]" />
 
                                     <div className="absolute bottom-3 left-3">
-                                        <span className="inline-flex items-center gap-2 rounded-full border border-cyan-200/15 bg-[#061633]/78 px-2.5 py-1 text-[7px] font-semibold uppercase tracking-[0.13em] text-cyan-100/80 shadow-[0_8px_18px_rgba(0,0,0,0.22)] backdrop-blur-xl">
+                                        <span className="inline-flex items-center gap-2 rounded-full border border-cyan-200/15 bg-[#061633]/78 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.13em] text-cyan-100/80 shadow-[0_8px_18px_rgba(0,0,0,0.22)] backdrop-blur-xl">
                                             <span className="h-1.5 w-1.5 rounded-full bg-cyan-300 shadow-[0_0_8px_rgba(25,211,255,0.85)]" />
 
                                             {project.category}
@@ -284,16 +284,16 @@ const ProjectModal = ({
                         <section className="mt-5 flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
 
                             <div className="max-w-[720px]">
-                                <p className="text-[7px] font-semibold uppercase tracking-[0.2em] text-cyan-300/65">
+                                <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-cyan-300/65">
                                     {project.shortLabel ||
                                         "SELECTED PROJECT"}
                                 </p>
 
-                                <h2 className="mt-2 text-[clamp(24px,3.5vw,38px)] font-semibold leading-[0.98] tracking-[-0.055em] text-white">
+                                <h2 className="mt-2 text-2xl lg:text-[clamp(24px,3.5vw,38px)] font-semibold leading-[0.98] tracking-[-0.055em] text-white">
                                     {project.title}
                                 </h2>
 
-                                <p className="mt-3 max-w-[680px] text-[11px] leading-[1.8] text-white/42 sm:text-[12px]">
+                                <p className="mt-3 max-w-[680px] leading-[1.8] text-white/42">
                                     {project.description}
                                 </p>
                             </div>
@@ -331,7 +331,7 @@ const ProjectModal = ({
                                             }
                                             target="_blank"
                                             rel="noreferrer"
-                                            className="group inline-flex items-center gap-2 text-[10px] font-semibold text-white/58 transition-colors duration-300 hover:text-cyan-300"
+                                            className="group inline-flex items-center gap-2 text-[14px] font-semibold text-white/58 transition-colors duration-300 hover:text-cyan-300"
                                         >
                                             <GitBranch
                                                 size={15}
@@ -359,7 +359,7 @@ const ProjectModal = ({
                                             }
                                             target="_blank"
                                             rel="noreferrer"
-                                            className="group inline-flex items-center gap-2 text-[10px] font-semibold text-white/58 transition-colors duration-300 hover:text-cyan-300"
+                                            className="group inline-flex items-center gap-2 text-[14px] font-semibold text-white/58 transition-colors duration-300 hover:text-cyan-300"
                                         >
                                             <ExternalLink
                                                 size={15}
@@ -516,11 +516,11 @@ const ProjectModal = ({
                                         />
 
                                         <div>
-                                            <p className="text-[7px] font-semibold uppercase tracking-[0.18em] text-cyan-300/55">
+                                            <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-cyan-300/55">
                                                 TECHNOLOGY STACK
                                             </p>
 
-                                            <h3 className="mt-1 text-[15px] font-semibold tracking-[-0.03em] text-white">
+                                            <h3 className="mt-1 text-[18px] font-semibold tracking-[-0.03em] text-white">
                                                 Built with
                                             </h3>
                                         </div>
@@ -537,7 +537,7 @@ const ProjectModal = ({
                                                     }
                                                     className="inline-flex items-center gap-2 rounded-[9px] border border-white/[0.08] bg-[linear-gradient(145deg,rgba(13,42,83,0.90),rgba(4,20,43,0.98))] px-2.5 py-1.5 text-[8px] font-medium text-white/52] shadow-[inset_0_1px_0_rgba(255,255,255,0.04)]"
                                                 >
-                                                    <span className="h-1.5 w-1.5 rounded-full bg-cyan-300/70 shadow-[0_0_7px_rgba(25,211,255,0.55)]" />
+                                                    <span className="h-1.5 w-1.5 text-sm text-white rounded-full bg-cyan-300/70 shadow-[0_0_7px_rgba(25,211,255,0.55)]" />
 
                                                     {Technology}
                                                 </span>
@@ -571,11 +571,11 @@ const ProjectModal = ({
 
                         <div className="mt-3 flex flex-col gap-4 rounded-[18px] border border-white/[0.075] bg-[#071A38]/72 p-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.04),0_15px_35px_rgba(0,0,0,0.20)] sm:flex-row sm:items-center sm:justify-between sm:p-5">
                             <div>
-                                <p className="text-[7px] font-semibold uppercase tracking-[0.18em] text-white/25">
+                                <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-white/25">
                                     WANT SOMETHING SIMILAR?
                                 </p>
 
-                                <p className="mt-1 text-[11px] text-white/52">
+                                <p className="mt-1 text-[16px] text-white/52">
                                     Let&apos;s build a system around your
                                     business.
                                 </p>
@@ -642,11 +642,11 @@ const ProjectMetaCard = ({
                 />
 
                 <div className="min-w-0">
-                    <p className="text-[6px] font-semibold uppercase tracking-[0.18em] text-white/22">
+                    <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-white/22">
                         {label}
                     </p>
 
-                    <p className="mt-1 truncate text-[9px] font-medium text-white/62">
+                    <p className="mt-1 truncate text-[14px] font-medium text-white/62">
                         {value}
                     </p>
                 </div>
@@ -666,15 +666,15 @@ const ProjectInfoCard = ({
 }) => {
     return (
         <section className="rounded-[18px] border border-white/[0.075] bg-[linear-gradient(145deg,rgba(10,35,72,0.80),rgba(3,18,41,0.95))] p-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.04),0_15px_35px_rgba(0,0,0,0.17)] sm:p-5">
-            <p className="text-[7px] font-semibold uppercase tracking-[0.18em] text-cyan-300/55">
+            <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-cyan-300/55">
                 {eyebrow}
             </p>
 
-            <h3 className="mt-2 text-[15px] font-semibold tracking-[-0.03em] text-white">
+            <h3 className="mt-2 text-[18px] font-semibold tracking-[-0.03em] text-white">
                 {title}
             </h3>
 
-            <p className="mt-3 text-[10px] leading-[1.8] text-white/40">
+            <p className="mt-3 text-[16px] leading-[1.8] text-white/40">
                 {description}
             </p>
         </section>

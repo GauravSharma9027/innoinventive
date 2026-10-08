@@ -95,7 +95,7 @@ const ProjectCard = ({
                     ================================================= */}
 
                     <div className="relative m-2 overflow-hidden rounded-[11px] border border-white/[0.08] bg-[#04152E] p-[1px] shadow-[inset_0_1px_0_rgba(255,255,255,0.05),0_10px_22px_rgba(0,0,0,0.22)]">
-                        <div className="relative h-[158px] overflow-hidden rounded-[10px]">
+                        <div className="relative h-60 lg:h-[158px] overflow-hidden rounded-[10px]">
                             <img
                                 src={ProjectData.image}
                                 alt={ProjectData.title}
@@ -155,7 +155,7 @@ const ProjectCard = ({
                             Laptop/Desktop: one line
                         ================================================= */}
 
-                        <h3 className="truncate text-[17px] font-semibold leading-[1.08] tracking-[-0.04em] text-white">
+                        <h3 className="truncate text-[24px] font-semibold leading-[1.08] tracking-[-0.04em] text-white">
                             {ProjectData.title}
                         </h3>
 
@@ -164,7 +164,7 @@ const ProjectCard = ({
                             Laptop/Desktop: two lines
                         ================================================= */}
 
-                        <p className="mt-2 line-clamp-2 min-h-[33px] text-[10px] leading-[1.65] text-white/42">
+                        <p className="mt-2 line-clamp-2 min-h-[33px] leading-[1.65] text-white/42">
                             {ProjectData.description}
                         </p>
 
@@ -190,7 +190,7 @@ const ProjectCard = ({
                                                     <span className="h-1 w-1 rounded-full bg-cyan-300/65 shadow-[0_0_5px_rgba(25,211,255,0.55)]" />
                                                 </span>
 
-                                                <span className="relative z-10 whitespace-nowrap">
+                                                <span className="relative text-xs z-10 whitespace-nowrap">
                                                     {
                                                         Technology
                                                     }
@@ -218,7 +218,7 @@ const ProjectCard = ({
                                     onClick={
                                         HandleOpenModal
                                     }
-                                    className="group/link inline-flex items-center gap-1.5 text-[9px] font-semibold text-cyan-300 transition-colors duration-300 hover:text-cyan-100"
+                                    className="group/link inline-flex items-center gap-1.5 text-[12px] font-semibold text-cyan-300 transition-colors duration-300 hover:text-cyan-100"
                                 >
                                     <span>
                                         {

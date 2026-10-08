@@ -1,9 +1,7 @@
 import {
     ArrowRight,
     Check,
-    Clock3,
     Mail,
-    MapPin,
     Phone,
     RotateCcw,
     Send,
@@ -109,7 +107,7 @@ const ContactFormSection = () => {
     return (
         <section
             id="contact-form"
-            className="relative flex h-[100vh] w-full items-center justify-center overflow-hidden bg-[#020B1A] px-4 py-8 text-white sm:px-6 lg:px-8"
+            className="relative flex min-h-screen h-auto w-full items-center justify-center overflow-hidden bg-[#020B1A] px-4 py-8 text-white sm:px-6 lg:h-[100vh] lg:min-h-0 lg:px-8 lg:py-8"
         >
             {/* =================================================
                 BACKGROUND ATMOSPHERE
@@ -178,7 +176,7 @@ const ContactFormSection = () => {
                     duration: 0.8,
                     ease: [0.16, 1, 0.3, 1],
                 }}
-                className="relative z-10 h-full w-full max-w-[900px] overflow-hidden rounded-[16px] border border-blue-400/40 bg-[linear-gradient(145deg,rgba(6,27,58,0.97),rgba(2,14,31,0.99))] shadow-[0_40px_100px_rgba(0,0,0,0.52),0_18px_40px_rgba(10,70,150,0.12),0_0_50px_rgba(25,103,255,0.07),inset_0_2px_0_rgba(255,255,255,0.075),inset_0_-12px_30px_rgba(0,0,0,0.16)] [transform:perspective(1600px)_rotateX(0.45deg)] [transform-style:preserve-3d] lg:h-[58vh] lg:min-h-[420px] lg:max-h-[560px]"
+                className="relative z-10 h-auto w-full max-w-[900px] overflow-hidden rounded-[16px] border border-blue-400/40 bg-[linear-gradient(145deg,rgba(6,27,58,0.97),rgba(2,14,31,0.99))] shadow-[0_40px_100px_rgba(0,0,0,0.52),0_18px_40px_rgba(10,70,150,0.12),0_0_50px_rgba(25,103,255,0.07),inset_0_2px_0_rgba(255,255,255,0.075),inset_0_-12px_30px_rgba(0,0,0,0.16)] [transform:perspective(1600px)_rotateX(0.45deg)] [transform-style:preserve-3d] lg:h-[58vh] lg:min-h-[420px] lg:max-h-[560px]"
             >
                 {/* Top reflection */}
                 <span className="pointer-events-none absolute left-[7%] right-[7%] top-0 h-px bg-gradient-to-r from-transparent via-cyan-300/35 to-transparent" />
@@ -187,7 +185,7 @@ const ContactFormSection = () => {
                     INNER GRID
                 ================================================= */}
 
-                <div className="grid h-full lg:grid-cols-2">
+                <div className="grid lg:grid-cols-2">
 
                     {/* =================================================
                         LEFT INFORMATION
@@ -329,7 +327,7 @@ const ContactFormSection = () => {
                                 <div className="mt-4">
                                     <label
                                         htmlFor="Message"
-                                        className="mb-2 block text-[10px] font-medium text-white/72"
+                                        className="mb-2 block text-[14px] font-medium text-white/72"
                                     >
                                         Message
 
@@ -359,7 +357,7 @@ const ContactFormSection = () => {
                                     ACTIONS
                                 ========================================= */}
 
-                                <div className="mt-4 grid gap-3 sm:grid-cols-[1fr_176px]">
+                                <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-3">
 
                                     <div className="flex">
                                         <PremiumButton
@@ -426,14 +424,13 @@ const ContactDetail = ({
             </div>
 
             <div className="min-w-0 pt-0.5">
-                <p className="text-[11px] font-medium text-white/75">
+                <p className="text-[12px] font-medium text-white/75">
                     {label}
                 </p>
 
-                <p className="mt-1 break-all text-[11px] font-medium text-white/70 transition-colors duration-300 group-hover:text-cyan-300 sm:text-[12px]">
+                <p className="mt-1 break-all text-[14px] font-medium text-white/70 transition-colors duration-300 group-hover:text-cyan-300 sm:text-[12px]">
                     {value}
                 </p>
-
             </div>
         </motion.a>
     );
@@ -456,7 +453,7 @@ const PremiumInput = ({
         <div>
             <label
                 htmlFor={name}
-                className="mb-2 block text-[10px] font-medium text-white/72"
+                className="mb-2 block text-[14px] font-medium text-white/72"
             >
                 {label}
 
@@ -555,7 +552,7 @@ const PremiumSelect = ({
 
             <label
                 htmlFor={`${name}-trigger`}
-                className="mb-2 block text-[10px] font-medium text-white/72"
+                className="mb-2 block text-[14px] font-medium text-white/72"
             >
                 {label}
 
@@ -831,3 +828,4 @@ const SuccessState = ({
 };
 
 export default ContactFormSection;
+

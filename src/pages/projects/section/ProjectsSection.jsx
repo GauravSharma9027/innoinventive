@@ -232,7 +232,7 @@ const ProjectFilterButton = ({
                 </span>
 
                 {/* Label */}
-                <span className="relative text-[7px] font-semibold uppercase tracking-[0.1em]">
+                <span className="relative text-[14px] font-semibold uppercase tracking-[0.1em]">
                     {filter.label}
                 </span>
 
@@ -288,7 +288,7 @@ const ProjectsSection = () => {
                 ================================================= */}
 
                 <div className="overflow-x-auto pb-1 scrollbar-none">
-                    <div className="flex min-w-max items-center justify-center gap-2 lg:justify-start">
+                    <div className="flex flex-wrap items-center justify-start gap-2 lg:justify-start">
                         {ProjectFilters.map(
                             (Filter) => (
                                 <ProjectFilterButton
