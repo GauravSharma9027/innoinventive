@@ -62,7 +62,7 @@ const ContactAvailability = () => {
                     <div className="hidden h-5 w-px bg-white/[0.08] sm:block" />
 
                     <a
-                        href="mailto:gauravsharma902753@gmail.com"
+                        href="mailto:hello@innoinventive.com"
                         className="group hidden items-center gap-2.5 sm:flex"
                     >
                         <Mail

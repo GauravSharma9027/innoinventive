@@ -18,12 +18,12 @@ import PremiumButton from "../../../components/UI/PremiumButton";
 const FAQContent = {
     sectionNumber: "06",
     eyebrow: "Questions, Answered",
-    headingPrimary: "A few things",
-    headingAccent: "worth knowing.",
+    headingPrimary: "Things you may",
+    headingAccent: "want to know.",
     description:
-        "From high-end websites to intelligent automation, here is how we think about building digital systems that are useful, scalable and ready for what comes next.",
-    footerText: "CLARITY BEFORE COMMITMENT",
-    buttonLabel: "Start a Conversation",
+        "Choosing the right digital solution starts with understanding your options. Here are a few things to know about our services, how we approach projects and what we can build for your business.",
+    footerText: "CLEAR ANSWERS. BETTER DECISIONS.",
+    buttonLabel: "Let's Talk About Your Project",
 };
 
 /* =========================================================
@@ -35,60 +35,60 @@ const FAQItems = [
         id: "build",
         number: "01",
         question:
-            "What does InnoInventive actually build?",
+            "What can InnoInventive build for my business?",
         details: [
-            "High-end websites",
-            "Custom web experiences",
-            "Dashboards",
-            "Business systems",
+            "Business and CMS websites",
+            "Custom web applications",
+            "Mobile applications",
+            "Workflow automation",
         ],
     },
     {
         id: "website",
         number: "02",
         question:
-            "Do you only build websites?",
+            "Can you build a website around my specific needs?",
         details: [
-            "Web applications",
-            "Admin systems",
-            "Custom interfaces",
-            "Connected digital tools",
+            "WordPress, Shopify, Webflow and Wix",
+            "Custom website designs",
+            "Business-specific features",
+            "Easy content management options",
         ],
     },
     {
         id: "automation",
         number: "03",
         question:
-            "Can you add AI and automation to an existing business?",
+            "Can you develop custom web and mobile applications?",
         details: [
-            "Internal workflows",
-            "Business logic",
-            "API integrations",
-            "AI-assisted processes",
+            "Interactive web applications",
+            "Android and iOS app development",
+            "Admin panels and dashboards",
+            "Backend systems and API integrations",
         ],
     },
     {
         id: "performance",
         number: "04",
         question:
-            "How do you approach website performance?",
+            "Can you automate repetitive tasks in my business?",
         details: [
-            "Efficient code",
-            "Responsive layouts",
-            "Optimized assets",
-            "Smooth experience",
+            "n8n workflow automation",
+            "Connect everyday business tools",
+            "Reduce repetitive manual tasks",
+            "Automate steps across connected systems",
         ],
     },
     {
         id: "future",
         number: "05",
         question:
-            "Can the system evolve after the first version?",
+            "Can my website or application be improved later?",
         details: [
-            "Modular interfaces",
-            "Clean structures",
-            "New integrations",
-            "Future automation",
+            "Add new features as needed",
+            "Expand existing functionality",
+            "Connect additional tools and services",
+            "Adapt the solution as your needs change",
         ],
     },
 ];
@@ -334,9 +334,9 @@ const AboutFaq = () => {
                     HEADER
                 ================================================= */}
 
-                <div className="grid items-end gap-7 lg:grid-cols-[0.8fr_1.2fr]">
+                <div className="space-y-5">
                     {/* LEFT */}
-                    <div className="max-w-[470px]">
+                    <div className="">
                         <div className="inline-flex items-center gap-3">
                             <span className="font-mono text-[11px] font-medium tracking-[0.12em] text-cyan-300">
                                 {FAQContent.sectionNumber}
@@ -358,8 +358,8 @@ const AboutFaq = () => {
                     </div>
 
                     {/* RIGHT */}
-                    <div className="flex flex-col items-start lg:items-end lg:text-right">
-                        <p className="max-w-[590px] text-sm leading-[1.8] text-blue-100/40 sm:text-[10px]">
+                    <div className="flex flex-col items-start">
+                        <p className="max-w-[70%] text-sm leading-[1.8] text-blue-100/40 sm:text-[10px]">
                             {FAQContent.description}
                         </p>
 

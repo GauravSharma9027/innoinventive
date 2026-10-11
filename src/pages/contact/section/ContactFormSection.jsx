@@ -30,7 +30,7 @@ const ContactFormContent = {
 
     phone: "+91 90275 35618",
 
-    email: "gauravsharma902753@gmail.com",
+    email: "hello@innoinventive.com",
 };
 
 /* =========================================================

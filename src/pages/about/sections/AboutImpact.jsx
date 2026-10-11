@@ -12,14 +12,18 @@ import PremiumButton from "../../../components/UI/PremiumButton";
    CONTENT
 ========================================================= */
 
+/* =========================================================
+   CONTENT
+========================================================= */
+
 const ImpactContent = {
-    eyebrow: "Built For Impact",
-    headingPrimary: "You've seen how we help",
-    headingAccent: "intelligent systems",
-    headingSecondary: "create measurable momentum.",
+    eyebrow: "Designed Around Your Business",
+    headingPrimary: "Your ideas deserve",
+    headingAccent: "the right technology",
+    headingSecondary: "to move forward.",
     description:
-        "From faster reporting to meaningful operational improvements, our engineering goes beyond code to create systems that deliver measurable business value.",
-    buttonLabel: "Explore Our Growth Systems",
+        "From a business website to a custom application or connected workflow, we turn your requirements into practical digital solutions designed to make everyday work easier and serve your business goals.",
+    buttonLabel: "Explore Our Services",
 };
 
 /* =========================================================
@@ -32,40 +36,40 @@ const GrowthBars = [
         height: 28,
         color: "cyan",
         delay: 0,
-        label: "Signal",
-        detail: "Find the signal",
+        label: "Discover",
+        detail: "Understand your goals",
     },
     {
         id: "structure",
         height: 41,
         color: "blue",
         delay: 130,
-        label: "Structure",
-        detail: "Build the system",
+        label: "Plan",
+        detail: "Choose the right approach",
     },
     {
         id: "motion",
         height: 56,
         color: "cyanBlue",
         delay: 260,
-        label: "Motion",
-        detail: "Automate the flow",
+        label: "Build",
+        detail: "Turn ideas into solutions",
     },
     {
         id: "scale",
         height: 74,
         color: "ice",
         delay: 390,
-        label: "Scale",
-        detail: "Multiply output",
+        label: "Refine",
+        detail: "Test and improve",
     },
     {
         id: "impact",
         height: 89,
         color: "violet",
         delay: 520,
-        label: "Impact",
-        detail: "Measure the result",
+        label: "Launch",
+        detail: "Get ready to go live",
     },
 ];
 

@@ -53,10 +53,10 @@ const QuickContactData = [
     {
         id: "phone",
         label: "Phone",
-        detail: "+91 98765 43210",
+        detail: "+91 9027535618",
         icon: PhoneCall,
         type: "external",
-        value: "tel:+919876543210",
+        value: "tel:+919027535618",
     },
 ];
 

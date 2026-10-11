@@ -10,13 +10,14 @@ import PremiumIconBadge from "../../../components/UI/PremiumIconBadge"
 
 const AboutHeroContent = {
     badge: "About Us",
-    headingPrimary: "We Are",
-    headingAccent: "InnoInventive",
-    subheading: "Building intelligent digital solutions for a smarter tomorrow.",
+    headingPrimary: "We Build",
+    headingAccent: "Digital Solutions",
+    subheading:
+        "Thoughtful websites, useful applications and smarter ways to work.",
     description:
-        "We are a technology-driven team, focused on creating intelligent systems that automate business processes, streamline operations and help brands grow in the digital era.",
-    primaryButton: "Our Journey",
-    secondaryButton: "Explore Our Approach",
+        "At InnoInventive, we create websites, web and mobile applications, and custom software around your business needs. From choosing the right approach to building practical digital experiences, we focus on solutions that are easy to use and ready to grow with your business.",
+    primaryButton: "Our Story",
+    secondaryButton: "Explore Our Services",
 }
 
 /* =========================================================
@@ -27,22 +28,24 @@ const AboutVideoSlides = [
     {
         id: "digital-earth",
         videoId: "xXjIGsv4iRI",
-        label: "Global Intelligence",
-        eyebrow: "Connected systems",
-        title: "Digital Intelligence",
-        description: "Connected data, intelligent workflows and technology working as one system.",
-        status: "SYSTEM ONLINE",
+        label: "Digital Experiences",
+        eyebrow: "Designed around your audience",
+        title: "Websites That Work",
+        description:
+            "Create a stronger online presence with thoughtful design, clear navigation and website experiences built around your visitors.",
+        status: "DESIGN IN MOTION",
         systemCode: "01",
         accentIcon: Globe2,
     },
     {
         id: "digital-hud",
         videoId: "gL-D-RUb1C4",
-        label: "System Architecture",
-        eyebrow: "Intelligent infrastructure",
-        title: "Connected Automation",
-        description: "A smarter digital layer designed to connect data, platforms and business operations.",
-        status: "NETWORK ACTIVE",
+        label: "Connected Solutions",
+        eyebrow: "Built around your workflow",
+        title: "Technology That Connects",
+        description:
+            "Bring your applications, business tools and everyday processes together with custom solutions and practical workflow automation.",
+        status: "WORKFLOW READY",
         systemCode: "02",
         accentIcon: Network,
     },

@@ -33,13 +33,13 @@ import PremiumIconBadge from "../../../components/UI/PremiumIconBadge";
 
 const VisionContent = {
     sectionNumber: "05",
-    eyebrow: "Built For What’s Next",
-    headingPrimary: "Digital experiences should",
-    headingAccent: "look intelligent, feel effortless.",
+    eyebrow: "A Better Digital Future",
+    headingPrimary: "Your next big idea",
+    headingAccent: "starts with the right technology.",
     description:
-        "We combine high-end web development, distinctive UI systems, intelligent automation and performance-focused engineering into one connected digital experience.",
-    footerText: "UI × AI AUTOMATION × PERFORMANCE",
-    buttonLabel: "Build What’s Next",
+        "Whether you need a professional website, a custom web or mobile application, or smarter ways to connect everyday tasks, we help turn your ideas into practical digital experiences built around your business goals.",
+    footerText: "WEB DEVELOPMENT × APPLICATIONS × AUTOMATION",
+    buttonLabel: "Let’s Build Your Idea",
 };
 
 /* =========================================================
@@ -50,10 +50,10 @@ const VisionCapabilities = [
     {
         id: "ui",
         number: "01",
-        label: "UNIQUE UI",
-        title: "Designed to be remembered.",
+        label: "WEB & UI DESIGN",
+        title: "Make your first impression count.",
         description:
-            "Distinctive interfaces, deliberate motion and polished interactions that make your digital product feel unmistakably yours.",
+            "Thoughtful layouts, clear navigation and polished interfaces that reflect your brand and help visitors understand what your business offers.",
         icon: Layers3,
         accent: "cyan",
         status: "EXPERIENCE",
@@ -61,24 +61,24 @@ const VisionCapabilities = [
     {
         id: "automation",
         number: "02",
-        label: "AI AUTOMATION",
-        title: "Built to keep moving.",
+        label: "WORKFLOW AUTOMATION",
+        title: "Make everyday work simpler.",
         description:
-            "Intelligent workflows, connected logic and automation that reduce repetitive work and help systems act with context.",
+            "Connect the tools you use and simplify repetitive tasks with practical workflows built around the way your business operates.",
         icon: Bot,
         accent: "blue",
-        status: "INTELLIGENCE",
+        status: "WORKFLOWS",
     },
     {
         id: "performance",
         number: "03",
-        label: "PERFORMANCE",
-        title: "Engineered to feel fast.",
+        label: "WEB & APP PERFORMANCE",
+        title: "Create a smoother digital experience.",
         description:
-            "Clean architecture, responsive interactions and performance-aware engineering for smooth experiences across devices.",
+            "From clean implementation to smooth interactions, we focus on building websites and applications that feel responsive and work well across devices.",
         icon: Gauge,
         accent: "violet",
-        status: "SPEED",
+        status: "PERFORMANCE",
     },
 ];
 
@@ -398,10 +398,10 @@ const AboutVision = () => {
                     ROW 1 — TEXT
                 ================================================= */}
 
-                <div className="grid items-end gap-8 lg:grid-cols-[0.80fr_1.20fr]">
+                <div className="grid items-end gap-8 ">
                     {/* Left */}
 
-                    <div className="max-w-[560px]">
+                    <div className="">
                         <div className="inline-flex items-center gap-3">
                             <span className="font-mono text-[13px] font-medium tracking-[0.12em] text-cyan-300">
                                 {
@@ -432,8 +432,8 @@ const AboutVision = () => {
 
                     {/* Right */}
 
-                    <div className="flex flex-col items-start lg:items-end lg:text-right">
-                        <p className="vision-description max-w-[650px] text-[10px] leading-[1.8] text-blue-100/48 sm:text-[11px]">
+                    <div className="flex flex-col items-start">
+                        <p className="vision-description max-w-[80vw] text-[10px] leading-[1.8] text-blue-100/48 sm:text-[11px]">
                             {
                                 VisionContent.description
                             }

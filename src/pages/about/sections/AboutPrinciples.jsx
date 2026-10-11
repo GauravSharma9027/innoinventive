@@ -21,55 +21,54 @@ import PremiumIconBadge from "../../../components/UI/PremiumIconBadge";
 
 const PrinciplesContent = {
     sectionNumber: "02",
-    eyebrow: "What We Believe",
+    eyebrow: "What Matters to Us",
     headingPrimary: "Our",
     headingAccent: "Principles",
-    headingSecondary: "Drive Our Work",
+    headingSecondary: "Shape Every Project",
     description:
-        "We don’t just build solutions — we build with purpose. Our core principles guide how we think, work and create value for every business we partner with.",
-    footerText: "Same vision. Different perspective.",
+        "Every business has different needs, and the right solution starts with understanding them. We value clear communication, thoughtful decisions and practical technology to build websites, applications and digital experiences that serve a real purpose.",
+    footerText: "Built with purpose. Shaped around your needs.",
 };
 
 /* =========================================================
    PRINCIPLES DATA
 ========================================================= */
-
 const PrinciplesData = [
     {
         id: "understand",
         number: "01",
-        title: "Understand Before Building",
+        title: "Understand Before We Build",
         description:
-            "We take time to understand your business, challenges and goals — because the right solution starts with the right questions.",
+            "We start by learning about your business, your audience and your goals so we can recommend a solution that fits your actual needs.",
         icon: BrainCircuit,
-        status: "INPUT ANALYZED",
+        status: "GOALS CLARIFIED",
         systemLabel: "DISCOVERY",
-        systemValue: "INTENT",
+        systemValue: "YOUR GOALS",
         pulse: "DISCOVER",
     },
     {
         id: "automate",
         number: "02",
-        title: "Automate What Matters",
+        title: "Put Your Customers First",
         description:
-            "We focus on automating the right processes — the ones that save time, reduce effort and create real impact.",
+            "From clear navigation to useful features, we focus on making websites and applications easy to understand, easy to use and helpful to the people who matter most.",
         icon: Workflow,
-        status: "FLOW ACTIVE",
-        systemLabel: "PROCESS",
-        systemValue: "OPTIMIZE",
-        pulse: "PROCESS",
+        status: "EXPERIENCE DESIGNED",
+        systemLabel: "USER EXPERIENCE",
+        systemValue: "USABILITY",
+        pulse: "DESIGN",
     },
     {
         id: "future",
         number: "03",
-        title: "Build For What Comes Next",
+        title: "Build for What Comes Next",
         description:
-            "We design scalable, future-ready solutions that grow with your business and keep you ahead of the curve.",
+            "Whether you need a business website, a custom application or connected workflows, we aim to build practical solutions that fit today’s needs and can adapt as your business evolves.",
         icon: BarChart3,
-        status: "SYSTEM READY",
-        systemLabel: "ARCHITECTURE",
-        systemValue: "SCALE",
-        pulse: "SCALE",
+        status: "BUILT TO ADAPT",
+        systemLabel: "FLEXIBLE SOLUTIONS",
+        systemValue: "GROWTH",
+        pulse: "BUILD",
     },
 ];
 

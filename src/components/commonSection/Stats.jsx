@@ -517,37 +517,38 @@ import PremiumIconBadge from "../UI/PremiumIconBadge";
 const StatsData = [
     {
         id: 1,
-        target: 500,
-        suffix: "+",
-        label: "Businesses Automated",
+        target: 100,
+        suffix: "%",
+        label: "Client-Focused Approach",
         icon: Zap,
         decimals: 0,
     },
     {
         id: 2,
-        target: 300,
-        suffix: "%",
-        label: "Avg. Productivity Increase",
-        icon: TrendingUp,
+        target: 1,
+        suffix: ":1",
+        label: "Direct Client Communication",
+        icon: UsersRound,
         decimals: 0,
     },
     {
         id: 3,
-        target: 99.9,
-        suffix: "%",
-        label: "System Uptime",
-        icon: ShieldCheck,
-        decimals: 1,
+        target: 5,
+        suffix: "+",
+        label: "Projects Built",
+        icon: TrendingUp,
+        decimals: 0,
     },
     {
         id: 4,
-        target: 50,
+        target: 3,
         suffix: "+",
-        label: "Happy Clients",
-        icon: UsersRound,
+        label: "Solutions to Help Your Business Grow",
+        icon: ShieldCheck,
         decimals: 0,
     },
 ];
+
 
 /* =========================================================
    ANIMATED STAT VALUE

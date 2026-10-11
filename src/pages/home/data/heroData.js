@@ -3,31 +3,47 @@ import { Bot, ChartNoAxesCombined, Database, Gauge, Settings, TrendingUp } from 
 export const HeroAutomationCards = [
     {
         id: "process-automation",
-        title: "Process Automation",
+        title: "CMS Websites",
         icon: Settings,
         position: "left-top",
-        points: ["Save Time", "Reduce Errors", "Increase Efficiency"],
+        points: [
+            "WordPress & Shopify",
+            "Webflow & Wix",
+            "Easy content updates",
+        ],
     },
     {
         id: "ai-integration",
-        title: "AI Integration",
+        title: "Custom Web Builds",
         icon: Bot,
         position: "right-top",
-        points: ["Machine Learning", "Predictive Insights", "Better Decisions"],
+        points: [
+            "React & Next.js",
+            "Angular & Vue.js",
+            "Laravel Development",
+        ],
     },
     {
         id: "smart-analytics",
-        title: "Smart Analytics",
+        title: "Apps & Backend",
         icon: ChartNoAxesCombined,
         position: "left-middle",
-        points: ["Real-time Data", "Business Insights", "Performance Tracking"],
+        points: [
+            "Node.js & Express",
+            "PHP Backend Systems",
+            "React Native & Flutter",
+        ],
     },
     {
         id: "business-growth",
-        title: "Business Growth",
+        title: "Workflow Automation",
         icon: TrendingUp,
         position: "right-middle",
-        points: ["More Revenue", "Better Reach", "Scalable Growth"],
+        points: [
+            "n8n Workflows",
+            "Connect Everyday Tools",
+            "Cut Repetitive Work",
+        ],
     },
 ];
 
@@ -47,26 +63,26 @@ export const HeroFloatingIcons = [
 export const HeroStatistics = [
     {
         id: "automated-businesses",
-        value: "500+",
-        label: "Businesses Automated",
+        value: "4",
+        label: "CMS Platforms",
         icon: Settings,
     },
     {
         id: "productivity-increase",
-        value: "300%",
-        label: "Avg. Productivity Increase",
+        value: "5",
+        label: "Custom Web Technologies",
         icon: TrendingUp,
     },
     {
         id: "system-uptime",
-        value: "99.9%",
-        label: "System Uptime",
+        value: "3",
+        label: "Backend Technologies",
         icon: Gauge,
     },
     {
         id: "happy-clients",
-        value: "50+",
-        label: "Happy Clients",
+        value: "2",
+        label: "Mobile App Frameworks",
         icon: Bot,
     },
 ];

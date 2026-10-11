@@ -3,7 +3,7 @@ import AboutHero from './sections/AboutHero'
 import AboutPrinciples from './sections/AboutPrinciples'
 import AboutImpact from './sections/AboutImpact'
 // import AboutAutomationSystems from './sections/AboutAutomationSystems'
-import AboutTeam from './sections/AboutTeam'
+// import AboutTeam from './sections/AboutTeam'
 import AboutVision from './sections/AboutVision'
 import AboutFaq from './sections/AboutFaq'
 import CTASection from '../../components/commonSection/CTASection'
@@ -15,7 +15,7 @@ const About = () => {
             <AboutPrinciples/>
             <AboutImpact/>
             {/* <AboutAutomationSystems/> */}
-            <AboutTeam/>
+            {/* <AboutTeam/> */}
             <AboutVision/>
             <AboutFaq/>
             <CTASection />
