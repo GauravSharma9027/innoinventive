@@ -16,7 +16,7 @@ import PremiumIconBadge from "../../../components/UI/PremiumIconBadge";
 
 const ProcessData = [
   {
-    id: "Share Your Idea",
+    id: "idea",
     number: "01",
     title: "Share Your Idea",
     description: "Tell us about your business, goals, target audience, and website requirements.",
@@ -24,15 +24,15 @@ const ProcessData = [
     icon: Lightbulb,
   },
   {
-    id: "Design & Planning",
+    id: "analysis",
     number: "02",
-    title: "AI Analysis",
+    title: "Design & Planning",
     description: "We plan the website structure and create a modern design aligned with your brand.",
     // detail: "Smart workflow mapped",
     icon: BrainCircuit,
   },
   {
-    id: "Development",
+    id: "development",
     number: "03",
     title: "Development",
     description: "We bring the design to life with responsive layouts, essential features, and smooth functionality.",
@@ -40,15 +40,15 @@ const ProcessData = [
     icon: Code2,
   },
   {
-    id: "Testing & Review",
+    id: "testing",
     number: "04",
-    title: "Testing",
+    title: "Testing & Review",
     description: "We test the website across devices and browsers, check functionality, and make the agreed revisions.",
     // detail: "Quality checks active",
     icon: TestTube2,
   },
   {
-    id: "Launch",
+    id: "launch",
     number: "05",
     title: "Launch",
     description: "Your website goes live, ready for visitors, customers, and business growth.",
