@@ -15,47 +15,47 @@ import PremiumIconBadge from "../../../components/UI/PremiumIconBadge";
 ========================================================= */
 
 const ProcessData = [
-    {
-        id: "idea",
-        number: "01",
-        title: "Share Your Idea",
-        description: "Tell us what you need.",
-        detail: "Requirements captured",
-        icon: Lightbulb,
-    },
-    {
-        id: "analysis",
-        number: "02",
-        title: "AI Analysis",
-        description: "We suggest the best solution.",
-        detail: "Smart workflow mapped",
-        icon: BrainCircuit,
-    },
-    {
-        id: "development",
-        number: "03",
-        title: "Development",
-        description: "We build it automatically.",
-        detail: "System build running",
-        icon: Code2,
-    },
-    {
-        id: "testing",
-        number: "04",
-        title: "Testing",
-        description: "We ensure quality & performance.",
-        detail: "Quality checks active",
-        icon: TestTube2,
-    },
-    {
-        id: "launch",
-        number: "05",
-        title: "Launch",
-        description: "Your system goes live.",
-        detail: "Ready for deployment",
-        icon: Rocket,
-    },
-];
+  {
+    id: "Share Your Idea",
+    number: "01",
+    title: "Share Your Idea",
+    description: "Tell us about your business, goals, target audience, and website requirements.",
+    // detail: "Requirements captured",
+    icon: Lightbulb,
+  },
+  {
+    id: "Design & Planning",
+    number: "02",
+    title: "AI Analysis",
+    description: "We plan the website structure and create a modern design aligned with your brand.",
+    // detail: "Smart workflow mapped",
+    icon: BrainCircuit,
+  },
+  {
+    id: "Development",
+    number: "03",
+    title: "Development",
+    description: "We bring the design to life with responsive layouts, essential features, and smooth functionality.",
+    // detail: "System build running",
+    icon: Code2,
+  },
+  {
+    id: "Testing & Review",
+    number: "04",
+    title: "Testing",
+    description: "We test the website across devices and browsers, check functionality, and make the agreed revisions.",
+    // detail: "Quality checks active",
+    icon: TestTube2,
+  },
+  {
+    id: "Launch",
+    number: "05",
+    title: "Launch",
+    description: "Your website goes live, ready for visitors, customers, and business growth.",
+    // detail: "Ready for deployment",
+    icon: Rocket,
+  },
+]
 
 /* =========================================================
    PROCESS NODE
@@ -346,240 +346,148 @@ const HowItWorks = () => {
     };
 
     return (
-        <section
-            id="process"
-            className="relative w-full overflow-hidden bg-[#061633] pt-6 text-white"
-        >
-            {/* =====================================================
+      <section id="process" className="relative w-full overflow-hidden bg-[#061633] pt-6 text-white">
+        {/* =====================================================
                 BACKGROUND
             ===================================================== */}
 
-            <div className="pointer-events-none absolute inset-0">
-                {/* Center atmosphere */}
-                <div className="absolute left-1/2 top-1/2 h-[190px] w-[760px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-blue-500/[0.035] blur-[115px]" />
+        <div className="pointer-events-none absolute inset-0">
+          {/* Center atmosphere */}
+          <div className="absolute left-1/2 top-1/2 h-[190px] w-[760px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-blue-500/[0.035] blur-[115px]" />
 
-                {/* Cyan atmosphere */}
-                <div className="absolute left-[6%] top-[12%] h-[120px] w-[190px] rounded-full bg-cyan-400/[0.018] blur-[80px]" />
+          {/* Cyan atmosphere */}
+          <div className="absolute left-[6%] top-[12%] h-[120px] w-[190px] rounded-full bg-cyan-400/[0.018] blur-[80px]" />
 
-                {/* Violet atmosphere */}
-                <div className="absolute right-[5%] top-[12%] h-[130px] w-[190px] rounded-full bg-violet-500/[0.018] blur-[85px]" />
+          {/* Violet atmosphere */}
+          <div className="absolute right-[5%] top-[12%] h-[130px] w-[190px] rounded-full bg-violet-500/[0.018] blur-[85px]" />
 
-                {/* Radial depth */}
-                <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(22,119,255,0.028),transparent_65%)]" />
+          {/* Radial depth */}
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(22,119,255,0.028),transparent_65%)]" />
 
-                {/* Subtle grid */}
-                <div className="absolute inset-0 opacity-[0.015] [background-image:linear-gradient(rgba(255,255,255,0.09)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.09)_1px,transparent_1px)] [background-size:48px_48px]" />
+          {/* Subtle grid */}
+          <div className="absolute inset-0 opacity-[0.015] [background-image:linear-gradient(rgba(255,255,255,0.09)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.09)_1px,transparent_1px)] [background-size:48px_48px]" />
 
-                {/* Top edge */}
-                <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-blue-400/14 to-transparent" />
+          {/* Top edge */}
+          <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-blue-400/14 to-transparent" />
 
-                {/* Bottom edge */}
-                <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-cyan-300/10 to-transparent" />
-            </div>
+          {/* Bottom edge */}
+          <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-cyan-300/10 to-transparent" />
+        </div>
 
-            {/* =====================================================
+        {/* =====================================================
                 CONTENT
             ===================================================== */}
 
-            <div className="relative mx-auto max-w-[1400px] px-6 py-7 lg:px-8">
-                <div className="how-it-works-layout grid grid-cols-1 items-start gap-8 lg:grid-cols-[235px_minmax(0,1fr)] xl:grid-cols-[250px_minmax(0,1fr)] xl:gap-10">
-                    {/* =================================================
+        <div className="relative mx-auto max-w-[1400px] px-6 py-7 lg:px-8">
+          <div className="how-it-works-layout grid grid-cols-1 items-start gap-8 lg:grid-cols-[235px_minmax(0,1fr)] xl:grid-cols-[250px_minmax(0,1fr)] xl:gap-10">
+            {/* =================================================
                         LEFT INTRO
                     ================================================= */}
 
-                    <div className="relative z-20 w-full self-start lg:w-auto">
-                        <h2 className="text-[34px] font-semibold leading-[1.04] tracking-[-0.035em] text-white md:text-[42px] lg:text-[32px]">
-                            How It Works
-                        </h2>
+            <div className="relative z-20 w-full self-start lg:w-auto">
+              <h2 className="text-[34px] font-semibold leading-[1.04] tracking-[-0.035em] text-white md:text-[42px] lg:text-[32px]">How It Works</h2>
 
-                        <p className="mt-1.5 w-full max-w-none text-[13px] font-medium leading-[1.55] text-blue-100/58 md:max-w-[720px] md:text-[14px] lg:max-w-[215px] lg:text-[12px] lg:leading-[1.45]">
-                            From idea to automation — in just a few steps.
-                        </p>
+              <p className="mt-1.5 w-full max-w-none text-[13px] font-medium leading-[1.55] text-blue-100/58 md:max-w-[720px] md:text-[14px] lg:max-w-[215px] lg:text-[12px] lg:leading-[1.45]">
+                From idea to launch in just five simple steps.
+              </p>
 
-                        {/* =================================================
+              {/* =================================================
                             LEFT CURVED ROUTE
                         ================================================= */}
 
-                        <div className="pointer-events-none absolute left-[-2px] top-[70px] hidden h-[72px] w-[218px] lg:block">
-                            <svg
-                                className="absolute inset-0 h-full w-full overflow-visible"
-                                viewBox="0 0 218 72"
-                                fill="none"
-                            >
-                                <defs>
-                                    <linearGradient
-                                        id="HowItWorksIntroCurve"
-                                        x1="0"
-                                        y1="0"
-                                        x2="1"
-                                        y2="1"
-                                    >
-                                        <stop
-                                            offset="0%"
-                                            stopColor="#19D3FF"
-                                            stopOpacity="0.9"
-                                        />
+              <div className="pointer-events-none absolute left-[-2px] top-[70px] hidden h-[72px] w-[218px] lg:block">
+                <svg className="absolute inset-0 h-full w-full overflow-visible" viewBox="0 0 218 72" fill="none">
+                  <defs>
+                    <linearGradient id="HowItWorksIntroCurve" x1="0" y1="0" x2="1" y2="1">
+                      <stop offset="0%" stopColor="#19D3FF" stopOpacity="0.9" />
 
-                                        <stop
-                                            offset="40%"
-                                            stopColor="#1677FF"
-                                            stopOpacity="0.68"
-                                        />
+                      <stop offset="40%" stopColor="#1677FF" stopOpacity="0.68" />
 
-                                        <stop
-                                            offset="78%"
-                                            stopColor="#1677FF"
-                                            stopOpacity="0.28"
-                                        />
+                      <stop offset="78%" stopColor="#1677FF" stopOpacity="0.28" />
 
-                                        <stop
-                                            offset="100%"
-                                            stopColor="#7C3CFF"
-                                            stopOpacity="0.12"
-                                        />
-                                    </linearGradient>
+                      <stop offset="100%" stopColor="#7C3CFF" stopOpacity="0.12" />
+                    </linearGradient>
 
-                                    <filter
-                                        id="HowItWorksIntroGlow"
-                                        x="-30%"
-                                        y="-100%"
-                                        width="160%"
-                                        height="300%"
-                                    >
-                                        <feGaussianBlur
-                                            stdDeviation="2.1"
-                                            result="blur"
-                                        />
+                    <filter id="HowItWorksIntroGlow" x="-30%" y="-100%" width="160%" height="300%">
+                      <feGaussianBlur stdDeviation="2.1" result="blur" />
 
-                                        <feMerge>
-                                            <feMergeNode in="blur" />
-                                            <feMergeNode in="SourceGraphic" />
-                                        </feMerge>
-                                    </filter>
-                                </defs>
+                      <feMerge>
+                        <feMergeNode in="blur" />
+                        <feMergeNode in="SourceGraphic" />
+                      </feMerge>
+                    </filter>
+                  </defs>
 
-                                {/* Main curve */}
-                                <path
-                                    d="M4 8 C25 45 78 62 130 56 C165 52 192 39 214 16"
-                                    stroke="url(#HowItWorksIntroCurve)"
-                                    strokeWidth="1.05"
-                                    filter="url(#HowItWorksIntroGlow)"
-                                />
+                  {/* Main curve */}
+                  <path
+                    d="M4 8 C25 45 78 62 130 56 C165 52 192 39 214 16"
+                    stroke="url(#HowItWorksIntroCurve)"
+                    strokeWidth="1.05"
+                    filter="url(#HowItWorksIntroGlow)"
+                  />
 
-                                {/* Secondary curve */}
-                                <path
-                                    d="M6 12 C29 40 78 54 128 50 C163 46 188 35 208 17"
-                                    stroke="#19D3FF"
-                                    strokeWidth="0.55"
-                                    strokeOpacity="0.10"
-                                />
+                  {/* Secondary curve */}
+                  <path d="M6 12 C29 40 78 54 128 50 C163 46 188 35 208 17" stroke="#19D3FF" strokeWidth="0.55" strokeOpacity="0.10" />
 
-                                {/* Start */}
-                                <circle
-                                    cx="4"
-                                    cy="8"
-                                    r="2.2"
-                                    fill="#19D3FF"
-                                />
+                  {/* Start */}
+                  <circle cx="4" cy="8" r="2.2" fill="#19D3FF" />
 
-                                {/* Moving signal */}
-                                <circle
-                                    cx="4"
-                                    cy="8"
-                                    r="2.3"
-                                    fill="#D9FBFF"
-                                    className="how-it-works-intro-dot"
-                                />
+                  {/* Moving signal */}
+                  <circle cx="4" cy="8" r="2.3" fill="#D9FBFF" className="how-it-works-intro-dot" />
 
-                                {/* End */}
-                                <circle
-                                    cx="214"
-                                    cy="16"
-                                    r="2.6"
-                                    fill="#19D3FF"
-                                    className="how-it-works-end-glow"
-                                />
+                  {/* End */}
+                  <circle cx="214" cy="16" r="2.6" fill="#19D3FF" className="how-it-works-end-glow" />
 
-                                {/* Arrow */}
-                                <path
-                                    d="M207 12.5 L214 16 L207 19.5"
-                                    stroke="#7DEAFF"
-                                    strokeWidth="1"
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                />
-                            </svg>
-                        </div>
-                    </div>
+                  {/* Arrow */}
+                  <path d="M207 12.5 L214 16 L207 19.5" stroke="#7DEAFF" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </div>
+            </div>
 
-                    {/* =================================================
+            {/* =================================================
                         PROCESS
                     ================================================= */}
 
-                    <div className="relative min-w-0 w-full">
-                        <div className="how-it-works-process-grid grid grid-cols-[repeat(5,minmax(0,1fr))_52px] items-start gap-4 xl:gap-5">
-                            {ProcessData.map(
-                                (
-                                    Process,
-                                    Index,
-                                ) => (
-                                    <ProcessItem
-                                        key={
-                                            Process.id
-                                        }
-                                        item={
-                                            Process
-                                        }
-                                        index={
-                                            Index
-                                        }
-                                        isActive={
-                                            ActiveStep ===
-                                            Index
-                                        }
-                                    />
-                                ),
-                            )}
+            <div className="relative min-w-0 w-full">
+              <div className="how-it-works-process-grid grid grid-cols-[repeat(5,minmax(0,1fr))_52px] items-start gap-4 xl:gap-5">
+                {ProcessData.map((Process, Index) => (
+                  <ProcessItem key={Process.id} item={Process} index={Index} isActive={ActiveStep === Index} />
+                ))}
 
-                            {/* =================================================
+                {/* =================================================
                                 RIGHT PREMIUM ARROW
                             ================================================= */}
 
-                            <button
-                                type="button"
-                                onClick={
-                                    HandleNextStep
-                                }
-                                aria-label="Next process step"
-                                className="how-it-works-next-button ml-8 sm:ml-0 group relative mt-[1px] flex h-[52px] w-[52px] items-center justify-center rounded-full border border-cyan-300/20 bg-[radial-gradient(circle_at_34%_28%,rgba(39,146,255,0.30),rgba(8,31,70,0.95)_55%,rgba(3,13,31,0.98))] shadow-[0_12px_28px_rgba(0,0,0,0.40),0_0_28px_rgba(22,119,255,0.11),inset_0_1px_0_rgba(255,255,255,0.15)] transition-all duration-500 hover:-translate-y-1 hover:border-cyan-200/45 hover:shadow-[0_16px_35px_rgba(0,0,0,0.46),0_0_35px_rgba(25,211,255,0.18),inset_0_1px_0_rgba(255,255,255,0.20)]"
-                            >
-                                {/* Rear depth */}
-                                <span className="absolute inset-[4px] translate-y-[5px] rounded-full bg-[#020B20]/90" />
+                <button
+                  type="button"
+                  onClick={HandleNextStep}
+                  aria-label="Next process step"
+                  className="how-it-works-next-button ml-8 sm:ml-0 group relative mt-[1px] flex h-[52px] w-[52px] items-center justify-center rounded-full border border-cyan-300/20 bg-[radial-gradient(circle_at_34%_28%,rgba(39,146,255,0.30),rgba(8,31,70,0.95)_55%,rgba(3,13,31,0.98))] shadow-[0_12px_28px_rgba(0,0,0,0.40),0_0_28px_rgba(22,119,255,0.11),inset_0_1px_0_rgba(255,255,255,0.15)] transition-all duration-500 hover:-translate-y-1 hover:border-cyan-200/45 hover:shadow-[0_16px_35px_rgba(0,0,0,0.46),0_0_35px_rgba(25,211,255,0.18),inset_0_1px_0_rgba(255,255,255,0.20)]"
+                >
+                  {/* Rear depth */}
+                  <span className="absolute inset-[4px] translate-y-[5px] rounded-full bg-[#020B20]/90" />
 
-                                {/* Outer ring */}
-                                <span className="absolute -inset-[5px] rounded-full border border-cyan-300/10 transition-all duration-500 group-hover:border-cyan-300/28 group-hover:shadow-[0_0_20px_rgba(25,211,255,0.13)]" />
+                  {/* Outer ring */}
+                  <span className="absolute -inset-[5px] rounded-full border border-cyan-300/10 transition-all duration-500 group-hover:border-cyan-300/28 group-hover:shadow-[0_0_20px_rgba(25,211,255,0.13)]" />
 
-                                {/* Premium arrow */}
-                                <span className="relative z-10 origin-center scale-[0.80] transition-transform duration-500 group-hover:translate-x-0.5 group-hover:scale-[0.88]">
-                                    <PremiumIconBadge
-                                        icon={ArrowRight}
-                                        size="large"
-                                    />
-                                </span>
+                  {/* Premium arrow */}
+                  <span className="relative z-10 origin-center scale-[0.80] transition-transform duration-500 group-hover:translate-x-0.5 group-hover:scale-[0.88]">
+                    <PremiumIconBadge icon={ArrowRight} size="large" />
+                  </span>
 
-                                {/* Reflection */}
-                                <span className="pointer-events-none absolute left-[18%] top-[9%] h-[24%] w-[48%] rotate-[25deg] rounded-full bg-white/[0.10] blur-[4px]" />
-                            </button>
-                        </div>
-                    </div>
-                </div>
+                  {/* Reflection */}
+                  <span className="pointer-events-none absolute left-[18%] top-[9%] h-[24%] w-[48%] rotate-[25deg] rounded-full bg-white/[0.10] blur-[4px]" />
+                </button>
+              </div>
             </div>
+          </div>
+        </div>
 
-            {/* =====================================================
+        {/* =====================================================
                 ANIMATIONS
             ===================================================== */}
 
-            <style>{`
+        <style>{`
                 /*
                  * Every 3D transform is isolated inside the node,
                  * while the number chip gets its own highest plane.
@@ -1401,8 +1309,8 @@ const HowItWorks = () => {
                     }
                 }
             `}</style>
-        </section>
-    );
+      </section>
+    )
 };
 
 export default HowItWorks;

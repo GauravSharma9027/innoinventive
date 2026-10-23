@@ -295,14 +295,14 @@ const CTASection = () => {
                                     <HeroActionButton
                                         label={CTAContent.primaryButton}
                                         icon={ArrowUpRight}
-                                        to="/contact"
+                                        to="/contact/#contact-form"
                                         variant="primary"
                                     />
 
                                     <HeroActionButton
                                         label={CTAContent.secondaryButton}
                                         icon={PhoneCall}
-                                        to="/contact"
+                                        to={`tel:+919027535618`}
                                         variant="secondary"
                                     />
                                 </div>

@@ -1,5 +1,6 @@
-import { useState } from "react";
-import { ArrowRight, Play, Sparkles } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
+import { ArrowRight, Play, Sparkles, X } from "lucide-react";
 
 import Logo from "../../../assets/Logo.png";
 import HeroActionButton from "../../../components/UI/HeroActionButton";
@@ -45,12 +46,121 @@ const FloatingIcon = ({ icon: Icon, position }) => {
     );
 };
 
+const IgnoreCardClose = () => {};
+
 const HeroVisual = () => {
     const [ActiveCardId, SetActiveCardId] =
         useState(null);
 
-    const [PendingCardId, SetPendingCardId] =
-        useState(null);
+    // Prevent the card underneath the pointer from reopening immediately
+    // when the backdrop is dismissed above it.
+    const SuppressHoverUntilPointerLeavesCardsRef = useRef(false);
+    const ActiveCardData = HeroAutomationCards.find(
+        (CardData) => CardData.id === ActiveCardId,
+    );
+    const ActiveCardIndex = HeroAutomationCards.findIndex(
+        (CardData) => CardData.id === ActiveCardId,
+    );
+    const ActiveCardIcon = ActiveCardData?.icon;
+
+    // Keep the page stationary while a card is expanded. Without this lock,
+    // the document can scroll behind the expanded card; when the card closes,
+    // the hero appears to jump back into place.
+    const IsCardModalOpen = ActiveCardId !== null;
+
+    useEffect(() => {
+        if (!IsCardModalOpen) {
+            return undefined;
+        }
+
+        const RootElement = document.documentElement;
+        const BodyElement = document.body;
+        const ScrollY = window.scrollY;
+
+        const PreviousRootOverflow = RootElement.style.overflow;
+        const PreviousBodyOverflow = BodyElement.style.overflow;
+        const PreviousRootOverscrollBehavior =
+            RootElement.style.overscrollBehavior;
+        const PreviousBodyPaddingRight = BodyElement.style.paddingRight;
+
+        // Compensate for the removed scrollbar so the page does not shift
+        // horizontally when the scroll lock is enabled.
+        const ScrollbarWidth =
+            window.innerWidth - RootElement.clientWidth;
+
+        if (ScrollbarWidth > 0) {
+            const CurrentBodyPaddingRight = Number.parseFloat(
+                window.getComputedStyle(BodyElement).paddingRight,
+            ) || 0;
+
+            BodyElement.style.paddingRight =
+                `${CurrentBodyPaddingRight + ScrollbarWidth}px`;
+        }
+
+        RootElement.style.overflow = "hidden";
+        BodyElement.style.overflow = "hidden";
+        RootElement.style.overscrollBehavior = "none";
+
+        // Explicitly block wheel/touch scrolling while the expanded card is
+        // active. The overflow lock above also covers scrollbar/key scrolling.
+        const PreventPageScroll = (Event) => {
+            Event.preventDefault();
+        };
+
+        const PreventKeyboardScroll = (Event) => {
+            const ScrollKeys = [
+                "ArrowUp",
+                "ArrowDown",
+                "PageUp",
+                "PageDown",
+                "Home",
+                "End",
+                " ",
+            ];
+
+            if (!ScrollKeys.includes(Event.key)) {
+                return;
+            }
+
+            const Target = Event.target;
+            const IsEditableTarget =
+                Target instanceof HTMLElement &&
+                (Target.isContentEditable ||
+                    ["INPUT", "TEXTAREA", "SELECT"].includes(
+                        Target.tagName,
+                    ));
+
+            if (!IsEditableTarget) {
+                Event.preventDefault();
+            }
+        };
+
+        window.addEventListener("wheel", PreventPageScroll, {
+            passive: false,
+        });
+        window.addEventListener("touchmove", PreventPageScroll, {
+            passive: false,
+        });
+        window.addEventListener("keydown", PreventKeyboardScroll, {
+            passive: false,
+        });
+
+        return () => {
+            window.removeEventListener("wheel", PreventPageScroll);
+            window.removeEventListener("touchmove", PreventPageScroll);
+            window.removeEventListener("keydown", PreventKeyboardScroll);
+
+            RootElement.style.overflow = PreviousRootOverflow;
+            BodyElement.style.overflow = PreviousBodyOverflow;
+            RootElement.style.overscrollBehavior =
+                PreviousRootOverscrollBehavior;
+            BodyElement.style.paddingRight = PreviousBodyPaddingRight;
+
+            // Guard against browser-specific scroll movement while the modal
+            // was active, restoring the exact page position on close.
+            window.scrollTo(0, ScrollY);
+        };
+    }, [IsCardModalOpen]);
 
     const CardPositionClasses = {
         "left-top":
@@ -63,35 +173,77 @@ const HeroVisual = () => {
             "right-[0%] top-[57%]",
     };
 
+    // Hover is only the trigger to open the modal. Hovering out does not
+    // close it, and background cards cannot replace an already-open modal.
     const HandleCardOpen = (CardId) => {
-        if (ActiveCardId === null) {
-            SetActiveCardId(CardId);
+        if (
+            ActiveCardId !== null ||
+            SuppressHoverUntilPointerLeavesCardsRef.current
+        ) {
             return;
         }
 
-        if (ActiveCardId === CardId) {
-            return;
-        }
-
-        SetPendingCardId(CardId);
-        SetActiveCardId(null);
+        SetActiveCardId(CardId);
     };
 
-    const HandleCardClose = (CardId) => {
-        if (ActiveCardId !== CardId) {
+    const HandleModalClose = (Event) => {
+        if (ActiveCardId === null) {
             return;
         }
 
-        if (PendingCardId) {
-            const NextCardId = PendingCardId;
-
-            SetPendingCardId(null);
-            SetActiveCardId(NextCardId);
-
-            return;
-        }
+        // Only suppress a hover restart if the dismissal click happened over
+        // one of the compact cards underneath the backdrop.
+        const ClickX = Event?.clientX;
+        const ClickY = Event?.clientY;
+        const DismissedOverBackgroundCard =
+            Number.isFinite(ClickX) && Number.isFinite(ClickY) &&
+            Array.from(
+                document.querySelectorAll("[data-hero-automation-card]"),
+            ).some((CardElement) => {
+                const Bounds = CardElement.getBoundingClientRect();
+                return (
+                    Bounds.width > 0 &&
+                    Bounds.height > 0 &&
+                    ClickX >= Bounds.left &&
+                    ClickX <= Bounds.right &&
+                    ClickY >= Bounds.top &&
+                    ClickY <= Bounds.bottom
+                );
+            });
 
         SetActiveCardId(null);
+        SuppressHoverUntilPointerLeavesCardsRef.current =
+            DismissedOverBackgroundCard;
+
+        if (!DismissedOverBackgroundCard) {
+            return;
+        }
+
+        const ClearHoverSuppressionAfterLeavingCards = (PointerEvent) => {
+            const ElementUnderPointer = document.elementFromPoint(
+                PointerEvent.clientX,
+                PointerEvent.clientY,
+            );
+
+            if (
+                ElementUnderPointer?.closest(
+                    "[data-hero-automation-card]",
+                )
+            ) {
+                return;
+            }
+
+            SuppressHoverUntilPointerLeavesCardsRef.current = false;
+            window.removeEventListener(
+                "pointermove",
+                ClearHoverSuppressionAfterLeavingCards,
+            );
+        };
+
+        window.addEventListener(
+            "pointermove",
+            ClearHoverSuppressionAfterLeavingCards,
+        );
     };
 
     return (
@@ -155,37 +307,27 @@ const HeroVisual = () => {
                     (CardData, CardIndex) => {
                         const IsAnotherCardActive =
                             ActiveCardId !== null &&
-                            ActiveCardId !==
-                            CardData.id;
-
-                        const IsPendingCard =
-                            PendingCardId ===
-                            CardData.id;
+                            ActiveCardId !== CardData.id;
+                        const IsCurrentCardInModal =
+                            ActiveCardId === CardData.id;
 
                         return (
                             <div
                                 key={CardData.id}
-                                className={`relative transition-all duration-500 ${IsAnotherCardActive &&
-                                        !IsPendingCard
-                                        ? "scale-[0.97] opacity-30 blur-[1px]"
-                                        : "scale-100 opacity-100"
-                                    }`}
+                                data-hero-automation-card
+                                className={`relative transition-all duration-500 ${IsCurrentCardInModal
+                                        ? "scale-100 opacity-0"
+                                        : IsAnotherCardActive
+                                            ? "scale-[0.97] opacity-30 blur-[1px]"
+                                            : "scale-100 opacity-100"
+                                    } ${IsCardModalOpen ? "pointer-events-none" : ""}`}
                             >
                                 <AutomationCard
                                     card={CardData}
-                                    typingDelay={
-                                        CardIndex * 350
-                                    }
-                                    isActive={
-                                        ActiveCardId ===
-                                        CardData.id
-                                    }
-                                    onOpen={
-                                        HandleCardOpen
-                                    }
-                                    onClose={
-                                        HandleCardClose
-                                    }
+                                    typingDelay={CardIndex * 350}
+                                    isActive={false}
+                                    onOpen={HandleCardOpen}
+                                    onClose={IgnoreCardClose}
                                 />
                             </div>
                         );
@@ -202,43 +344,133 @@ const HeroVisual = () => {
                     (CardData, CardIndex) => {
                         const IsAnotherCardActive =
                             ActiveCardId !== null &&
-                            ActiveCardId !==
-                            CardData.id;
-
-                        const IsPendingCard =
-                            PendingCardId ===
-                            CardData.id;
+                            ActiveCardId !== CardData.id;
+                        const IsCurrentCardInModal =
+                            ActiveCardId === CardData.id;
 
                         return (
                             <div
                                 key={CardData.id}
-                                className={`absolute ${CardPositionClasses[CardData.position]} transition-all duration-500 ${IsAnotherCardActive &&
-                                        !IsPendingCard
-                                        ? "scale-[0.97] opacity-30 blur-[1px]"
-                                        : "scale-100 opacity-100"
-                                    }`}
+                                data-hero-automation-card
+                                className={`absolute ${CardPositionClasses[CardData.position]} transition-all duration-500 ${IsCurrentCardInModal
+                                        ? "scale-100 opacity-0"
+                                        : IsAnotherCardActive
+                                            ? "scale-[0.97] opacity-30 blur-[1px]"
+                                            : "scale-100 opacity-100"
+                                    } ${IsCardModalOpen ? "pointer-events-none" : ""}`}
                             >
                                 <AutomationCard
                                     card={CardData}
-                                    typingDelay={
-                                        CardIndex * 350
-                                    }
-                                    isActive={
-                                        ActiveCardId ===
-                                        CardData.id
-                                    }
-                                    onOpen={
-                                        HandleCardOpen
-                                    }
-                                    onClose={
-                                        HandleCardClose
-                                    }
+                                    typingDelay={CardIndex * 350}
+                                    isActive={false}
+                                    onOpen={HandleCardOpen}
+                                    onClose={IgnoreCardClose}
                                 />
                             </div>
                         );
                     },
                 )}
             </div>
+
+            {/* =================================================
+                FULL-SCREEN AUTOMATION CARD MODAL
+                Independent, centered markup avoids conflicting with the
+                AutomationCard component's own hover/transform presentation.
+            ================================================= */}
+            {IsCardModalOpen && ActiveCardData && createPortal(
+                <div
+                    className="fixed inset-0 z-[99999] isolate"
+                    role="presentation"
+                >
+                    {/* Full-screen backdrop: only outside clicks close the modal. */}
+                    <button
+                        type="button"
+                        aria-label="Close automation card modal"
+                        onClick={HandleModalClose}
+                        className="absolute inset-0 z-0 h-full w-full cursor-default border-0 bg-[#020817]/80 p-0 backdrop-blur-[6px] transition-opacity duration-200"
+                    />
+
+                    {/* The modal panel is independent from the card grid and centered in the viewport. */}
+                    <div className="absolute inset-0 z-10 flex items-center justify-center p-4 sm:p-6">
+                        <div
+                            role="dialog"
+                            aria-modal="true"
+                            aria-labelledby="hero-automation-modal-title"
+                            className="relative w-[min(92vw,440px)] max-h-[calc(100dvh-32px)] sm:max-h-[min(82dvh,520px)]"
+                        >
+                            {/* Opaque panel keeps the card clearly visible above the blurred backdrop. */}
+                            <div className="relative flex max-h-[calc(100dvh-32px)] flex-col overflow-hidden rounded-[26px] border border-cyan-300/25 bg-gradient-to-br from-[#0B2858] via-[#061633] to-[#041025] p-5 shadow-[0_35px_100px_rgba(22,119,255,0.34),inset_0_1px_0_rgba(255,255,255,0.10)] sm:max-h-[min(82dvh,520px)] sm:p-7">
+                                <span className="pointer-events-none absolute -right-16 -top-16 h-40 w-40 rounded-full bg-cyan-400/10 blur-[60px]" />
+                                <span className="pointer-events-none absolute -bottom-20 -left-16 h-44 w-44 rounded-full bg-violet-500/10 blur-[65px]" />
+                                <span className="pointer-events-none absolute inset-x-10 top-0 h-px bg-gradient-to-r from-transparent via-cyan-300/90 to-transparent" />
+
+                                <div className="relative z-10 flex min-h-0 flex-1 flex-col">
+                                    <div className="flex items-start gap-3 pr-9 sm:gap-4">
+                                        <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl border border-cyan-300/25 bg-gradient-to-br from-[#0D2C5F] to-[#071A3D] text-cyan-300 shadow-[inset_0_1px_0_rgba(255,255,255,0.08),0_0_25px_rgba(25,211,255,0.12)]">
+                                            {ActiveCardIcon && <ActiveCardIcon size={22} strokeWidth={1.8} />}
+                                        </div>
+
+                                        <div className="min-w-0 flex-1">
+                                            <span className="text-[9px] uppercase tracking-[0.22em] text-cyan-300/80">
+                                                Automation Module
+                                            </span>
+                                            <h3
+                                                id="hero-automation-modal-title"
+                                                className="mt-1 break-words text-lg font-semibold leading-snug text-white sm:text-xl"
+                                            >
+                                                {ActiveCardData.title}
+                                            </h3>
+                                        </div>
+
+                                        <span className="mt-1 shrink-0 rounded-full border border-cyan-300/15 bg-cyan-300/[0.06] px-2.5 py-1 text-[9px] uppercase tracking-[0.14em] text-cyan-200/80 sm:px-3">
+                                            Active
+                                        </span>
+                                    </div>
+
+                                    <div className="my-4 h-px shrink-0 bg-gradient-to-r from-cyan-300/25 via-blue-300/10 to-transparent sm:my-5" />
+
+                                    <div className="min-h-0 flex-1 space-y-3 overflow-y-auto overscroll-contain pr-1">
+                                        {(ActiveCardData.points || []).map((Point, PointIndex) => (
+                                            <div
+                                                key={`${ActiveCardData.id}-${PointIndex}`}
+                                                className="flex items-start gap-3 rounded-xl border border-white/[0.06] bg-[#071A38]/80 px-3 py-3 shadow-[inset_0_1px_0_rgba(255,255,255,0.025)] transition-colors duration-200 hover:border-cyan-300/20 hover:bg-cyan-300/[0.04] sm:px-4"
+                                            >
+                                                <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-cyan-300/20 bg-cyan-300/[0.06]">
+                                                    <span className="h-1.5 w-1.5 rounded-full bg-cyan-300 shadow-[0_0_10px_rgba(25,211,255,0.8)]" />
+                                                </span>
+                                                <span className="text-[12px] leading-5 text-blue-50 sm:text-[13px]">
+                                                    {Point}
+                                                </span>
+                                            </div>
+                                        ))}
+                                    </div>
+
+                                    <div className="mt-4 flex shrink-0 items-center justify-between border-t border-blue-300/10 pt-3 sm:mt-5">
+                                        <span className="text-[9px] uppercase tracking-[0.14em] text-blue-200/50">
+                                            InnoInventive
+                                        </span>
+                                        <span className="flex items-center gap-2 text-[9px] text-cyan-300/80">
+                                            <span className="h-1.5 w-1.5 rounded-full bg-cyan-300 shadow-[0_0_9px_rgba(25,211,255,0.8)] animate-pulse" />
+                                            Live
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {/* Premium close badge remains above the modal panel. */}
+                            <button
+                                type="button"
+                                aria-label="Close automation card"
+                                onClick={HandleModalClose}
+                                className="absolute -right-2 -top-2 z-20 flex h-9 w-9 items-center justify-center rounded-xl border border-cyan-300/40 bg-gradient-to-br from-[#12366B] via-[#0A2148] to-[#061633] text-cyan-100 shadow-[inset_0_1px_0_rgba(255,255,255,0.18),0_8px_24px_rgba(0,0,0,0.45),0_0_18px_rgba(25,211,255,0.18)] backdrop-blur-xl transition duration-200 hover:scale-105 hover:border-cyan-200/75 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300 focus-visible:ring-offset-2 focus-visible:ring-offset-[#061633]"
+                            >
+                                <X size={16} strokeWidth={2.4} />
+                            </button>
+                        </div>
+                    </div>
+                </div>,
+                document.body,
+            )}
 
             {/* =================================================
                 MOVING DATA NODES
@@ -317,12 +549,13 @@ const Hero = () => {
                         <div className="mt-7 flex flex-col items-start gap-5 flex-row sm:items-center sm:gap-4">
 
                             <PremiumButton
-                                to="/contact"
+                                to="/contact/#contact-form"
                                 label="Contact Us"
                                 icon={ArrowRight}
                             />
 
-                            <HeroActionButton
+                            <HeroActionButton 
+                            to="/projects/#projects"
                                 label="Watch Demo"
                                 icon={Play}
                                 variant="secondary"

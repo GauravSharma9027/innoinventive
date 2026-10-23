@@ -511,9 +511,10 @@ const Services = () => {
                         <div className="mt-5">
                             <PremiumButton
                                 type="button"
-                                onClick={
-                                    HandleServicesNavigation
-                                }
+                                to="/services"
+                                // onClick={
+                                //     HandleServicesNavigation
+                                // }
                                 label="View All Services"
                                 icon={ArrowUpRight}
                             />

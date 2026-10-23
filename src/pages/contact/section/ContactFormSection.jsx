@@ -52,7 +52,7 @@ const SubjectOptions = [
    CONTACT FORM SECTION
 ========================================================= */
 
-const ContactFormSection = () => {
+const ContactFormSection = ({id}) => {
     const [FormData, SetFormData] = useState({
         FullName: "",
         Email: "",
@@ -106,7 +106,7 @@ const ContactFormSection = () => {
 
     return (
         <section
-            id="contact-form"
+            id={id}
             className="relative flex min-h-screen h-auto w-full items-center justify-center overflow-hidden bg-[#020B1A] px-4 py-8 text-white sm:px-6 lg:h-[100vh] lg:min-h-0 lg:px-8 lg:py-8"
         >
             {/* =================================================

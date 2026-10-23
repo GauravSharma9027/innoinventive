@@ -23,61 +23,46 @@ import PremiumIconBadge from "../../../components/UI/PremiumIconBadge";
 ========================================================= */
 
 const ProjectsData = [
-    {
-        id: "ecommerce",
-        category: "E-commerce",
-        title: "E-commerce Platform",
-        description:
-            "Online store with AI recommendations and automated order workflows.",
-        activity: "AI recommendations active",
-        metric: "32.8K",
-        metricLabel: "Monthly orders",
-        icon: ShoppingBag,
-        accent: "cyan",
-        previewType: "commerce",
-        features: [
-            "AI Recommendations",
-            "Live Inventory",
-            "Smart Checkout",
-        ],
-    },
-    {
-        id: "saas",
-        category: "SaaS",
-        title: "SaaS Dashboard",
-        description:
-            "Automated analytics, reporting and intelligent business insights.",
-        activity: "Reporting automated",
-        metric: "98.7%",
-        metricLabel: "Automation rate",
-        icon: BarChart3,
-        accent: "violet",
-        previewType: "saas",
-        features: [
-            "Live Analytics",
-            "Auto Reporting",
-            "Smart Insights",
-        ],
-    },
-    {
-        id: "crm",
-        category: "CRM",
-        title: "CRM System",
-        description:
-            "Lead management, smart follow-ups and automated customer workflows.",
-        activity: "Lead flow running",
-        metric: "4.8K",
-        metricLabel: "Active leads",
-        icon: UsersRound,
-        accent: "blue",
-        previewType: "crm",
-        features: [
-            "Lead Scoring",
-            "Auto Follow-up",
-            "Pipeline Sync",
-        ],
-    },
-];
+  {
+    id: "ecommerce",
+    category: "E-COMMERCE",
+    title: "E-commerce Website",
+    description: "Modern online stores with secure payments and seamless shopping experiences.",
+    activity: "Ready for online sales",
+    metric: "32.8K",
+    metricLabel: "Monthly orders",
+    icon: ShoppingBag,
+    accent: "cyan",
+    previewType: "commerce",
+    features: ["Responsive Design", "Secure Checkout", "Product Management"],
+  },
+  {
+    id: "saas",
+    category: "BUSINESS WEBSITE",
+    title: "Corporate Website",
+    description: "Professional business websites designed to build trust and generate leads.",
+    activity: "Designed to grow your brand",
+    metric: "98.7%",
+    metricLabel: "Automation rate",
+    icon: BarChart3,
+    accent: "violet",
+    previewType: "saas",
+    features: ["Custom Design", "SEO-Friendly", "Lead Generation"],
+  },
+  {
+    id: "crm",
+    category: "WEB DEVELOPMENT",
+    title: "Custom Web Application",
+    description: "Custom web applications built around your business processes and requirements.",
+    activity: "Built for your workflow",
+    metric: "4.8K",
+    metricLabel: "Active leads",
+    icon: UsersRound,
+    accent: "blue",
+    previewType: "crm",
+    features: ["Custom Features", "API Integration", "Scalable Architecture"],
+  },
+]
 
 /* =========================================================
    ACCENT THEMES
@@ -750,142 +735,113 @@ const FeaturedWork = () => {
     };
 
     return (
-        <section
-            id="case-studies"
-            className="relative w-full overflow-hidden bg-[#061633] text-white"
-        >
-            {/* =====================================================
+      <section id="case-studies" className="relative w-full overflow-hidden bg-[#061633] text-white">
+        {/* =====================================================
                 BACKGROUND
             ===================================================== */}
 
-            <div className="pointer-events-none absolute inset-0">
-                {/* Main atmosphere */}
-                <div className="absolute left-1/2 top-[58%] h-[270px] w-[920px] -translate-x-1/2 rounded-full bg-blue-500/[0.04] blur-[125px]" />
+        <div className="pointer-events-none absolute inset-0">
+          {/* Main atmosphere */}
+          <div className="absolute left-1/2 top-[58%] h-[270px] w-[920px] -translate-x-1/2 rounded-full bg-blue-500/[0.04] blur-[125px]" />
 
-                {/* Cyan */}
-                <div className="absolute left-[6%] top-[48%] h-[190px] w-[250px] rounded-full bg-cyan-400/[0.018] blur-[95px]" />
+          {/* Cyan */}
+          <div className="absolute left-[6%] top-[48%] h-[190px] w-[250px] rounded-full bg-cyan-400/[0.018] blur-[95px]" />
 
-                {/* Violet */}
-                <div className="absolute right-[5%] top-[45%] h-[200px] w-[260px] rounded-full bg-violet-500/[0.022] blur-[100px]" />
+          {/* Violet */}
+          <div className="absolute right-[5%] top-[45%] h-[200px] w-[260px] rounded-full bg-violet-500/[0.022] blur-[100px]" />
 
-                {/* Technical grid */}
-                <div className="absolute inset-0 opacity-[0.016] [background-image:linear-gradient(rgba(255,255,255,0.08)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.08)_1px,transparent_1px)] [background-size:58px_58px]" />
+          {/* Technical grid */}
+          <div className="absolute inset-0 opacity-[0.016] [background-image:linear-gradient(rgba(255,255,255,0.08)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.08)_1px,transparent_1px)] [background-size:58px_58px]" />
 
-                {/* Center energy line */}
-                <div className="absolute inset-x-[12%] top-[32%] h-px bg-gradient-to-r from-transparent via-blue-300/10 to-transparent" />
+          {/* Center energy line */}
+          <div className="absolute inset-x-[12%] top-[32%] h-px bg-gradient-to-r from-transparent via-blue-300/10 to-transparent" />
 
-                {/* Edges */}
-                <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-blue-400/14 to-transparent" />
+          {/* Edges */}
+          <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-blue-400/14 to-transparent" />
 
-                <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-cyan-300/10 to-transparent" />
-            </div>
+          <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-cyan-300/10 to-transparent" />
+        </div>
 
-            {/* =====================================================
+        {/* =====================================================
                 CONTENT
             ===================================================== */}
 
-            <div className="relative mx-auto max-w-[1400px] px-6 py-11 lg:px-8">
-                {/* =================================================
+        <div className="relative mx-auto max-w-[1400px] px-6 py-11 lg:px-8">
+          {/* =================================================
                     TOP INTRO
                 ================================================= */}
 
-                <div className="flex flex-col items-start justify-between gap-5 md:flex-row md:items-end">
-                    <div className="max-w-[780px]">
-                        {/* Label */}
-                        <div className="inline-flex items-center gap-2 rounded-full border border-cyan-300/15 bg-cyan-300/[0.035] px-3 py-1.5 shadow-[inset_0_1px_0_rgba(255,255,255,0.06)]">
-                            <span className="h-[5px] w-[5px] rounded-full bg-cyan-300 shadow-[0_0_7px_rgba(25,211,255,0.7)]" />
+          <div className="flex flex-col items-start justify-between gap-5 md:flex-row md:items-end">
+            <div className="max-w-[780px]">
+              {/* Label */}
+              <div className="inline-flex items-center gap-2 rounded-full border border-cyan-300/15 bg-cyan-300/[0.035] px-3 py-1.5 shadow-[inset_0_1px_0_rgba(255,255,255,0.06)]">
+                <span className="h-[5px] w-[5px] rounded-full bg-cyan-300 shadow-[0_0_7px_rgba(25,211,255,0.7)]" />
 
-                            <span className="text-[8px] font-semibold uppercase tracking-[0.18em] text-cyan-100/65">
-                                Our Portfolio
-                            </span>
-                        </div>
+                <span className="text-[8px] font-semibold uppercase tracking-[0.18em] text-cyan-100/65">Our Portfolio</span>
+              </div>
 
-                        {/* Heading */}
-                        <h2 className="mt-4 text-[34px] font-semibold leading-[1.05] tracking-[-0.04em] text-white sm:text-[40px]">
-                            Featured Work
-                        </h2>
+              {/* Heading */}
+              <h2 className="mt-4 text-[34px] font-semibold leading-[1.05] tracking-[-0.04em] text-white sm:text-[40px]">Featured Work</h2>
 
-                        {/* Description */}
-                        <p className="mt-3 max-w-[620px] text-[12px] font-medium leading-[1.6] text-blue-100/58 sm:text-[13px]">
-                            Real solutions, real automation and measurable
-                            business impact — built around intelligent
-                            digital systems.
-                        </p>
-                    </div>
+              {/* Description */}
+              <p className="mt-3 max-w-[620px] text-[12px] font-medium leading-[1.6] text-blue-100/58 sm:text-[13px]">
+                From business websites to ecommerce platforms, we design and develop digital experiences that help businesses grow.
+              </p>
+            </div>
 
-                    {/* =================================================
+            {/* =================================================
                         EXISTING BUTTON COMPONENT
                     ================================================= */}
 
-                    <div className="shrink-0">
-                        <HeroActionButton
-                            label="View All Projects"
-                            icon={ArrowUpRight}
-                            to="/case-studies"
-                            variant="primary"
-                        />
-                    </div>
-                </div>
+            <div className="shrink-0">
+              <HeroActionButton label="View All Projects" icon={ArrowUpRight} to="/projects/#projects" variant="primary" />
+            </div>
+          </div>
 
-                {/* =================================================
+          {/* =================================================
                     AUTOMATION RAIL
                 ================================================= */}
 
-                <div className="relative mt-7 h-px overflow-hidden bg-gradient-to-r from-transparent via-cyan-300/12 to-transparent">
-                    <span className="featured-work-rail absolute left-[-80px] top-1/2 h-[3px] w-[80px] -translate-y-1/2 rounded-full bg-gradient-to-r from-transparent via-cyan-200 to-transparent shadow-[0_0_14px_rgba(25,211,255,0.8)]" />
-                </div>
+          <div className="relative mt-7 h-px overflow-hidden bg-gradient-to-r from-transparent via-cyan-300/12 to-transparent">
+            <span className="featured-work-rail absolute left-[-80px] top-1/2 h-[3px] w-[80px] -translate-y-1/2 rounded-full bg-gradient-to-r from-transparent via-cyan-200 to-transparent shadow-[0_0_14px_rgba(25,211,255,0.8)]" />
+          </div>
 
-                {/* =================================================
+          {/* =================================================
                     PROJECT GRID
                 ================================================= */}
 
-                <div className="mt-6 grid grid-cols-1 gap-4 lg:grid-cols-3">
-                    {ProjectsData.map(
-                        (Project, Index) => (
-                            <ProjectCard
-                                key={Project.id}
-                                project={Project}
-                                index={Index}
-                                isActive={
-                                    ActiveProject ===
-                                    Index
-                                }
-                            />
-                        ),
-                    )}
-                </div>
+          <div className="mt-6 grid grid-cols-1 gap-4 lg:grid-cols-3">
+            {ProjectsData.map((Project, Index) => (
+              <ProjectCard key={Project.id} project={Project} index={Index} isActive={ActiveProject === Index} />
+            ))}
+          </div>
 
-                {/* =================================================
+          {/* =================================================
                     PROJECT NAVIGATION
                 ================================================= */}
 
-                <div className="mt-5 flex items-center justify-center gap-2">
-                    {ProjectsData.map(
-                        (Project, Index) => (
-                            <button
-                                key={Project.id}
-                                type="button"
-                                aria-label={`Show ${Project.title}`}
-                                onClick={() =>
-                                    SetActiveProject(
-                                        Index,
-                                    )
-                                }
-                                className={`h-[4px] rounded-full transition-all duration-500 ${ActiveProject === Index
-                                        ? "w-8 bg-gradient-to-r from-cyan-300 via-blue-400 to-violet-400 shadow-[0_0_9px_rgba(25,211,255,0.55)]"
-                                        : "w-2 bg-blue-300/15 hover:bg-blue-300/35"
-                                    }`}
-                            />
-                        ),
-                    )}
-                </div>
-            </div>
+          <div className="mt-5 flex items-center justify-center gap-2">
+            {ProjectsData.map((Project, Index) => (
+              <button
+                key={Project.id}
+                type="button"
+                aria-label={`Show ${Project.title}`}
+                onClick={() => SetActiveProject(Index)}
+                className={`h-[4px] rounded-full transition-all duration-500 ${
+                  ActiveProject === Index
+                    ? "w-8 bg-gradient-to-r from-cyan-300 via-blue-400 to-violet-400 shadow-[0_0_9px_rgba(25,211,255,0.55)]"
+                    : "w-2 bg-blue-300/15 hover:bg-blue-300/35"
+                }`}
+              />
+            ))}
+          </div>
+        </div>
 
-            {/* =====================================================
+        {/* =====================================================
                 ANIMATIONS
             ===================================================== */}
 
-            <style>{`
+        <style>{`
                 .featured-project-main {
                     transform-style: preserve-3d;
                 }
@@ -995,8 +951,8 @@ const FeaturedWork = () => {
                     }
                 }
             `}</style>
-        </section>
-    );
+      </section>
+    )
 };
 
 export default FeaturedWork;

@@ -51,14 +51,7 @@ const FooterQuickLinks = [
         label: "Contact Us",
         href: "/contact",
     },
-    {
-        label: "Privacy Policy",
-        href: "/privacy-policy",
-    },
-    {
-        label: "Terms & Conditions",
-        href: "/terms-and-conditions",
-    },
+   
 ];
 
 const FooterServiceLinks = [
@@ -154,36 +147,27 @@ const FooterContactDetails = [
         id: "phone",
         icon: Phone,
         content: "+91 90275 35618",
-    },
-    {
-        id: "hours",
-        icon: Clock3,
-        content: "Mon - Fri: 9:00 AM - 6:00 PM",
-    },
+    }
 ];
 
 const FooterSocialLinkData = [
-    {
-        label: "LinkedIn",
-        href: "#",
-        icon: "in",
-    },
-    {
-        label: "X",
-        href: "#",
-        icon: "𝕏",
-    },
-    {
-        label: "YouTube",
-        href: "#",
-        icon: "▶",
-    },
-    {
-        label: "Instagram",
-        href: "#",
-        icon: "◎",
-    },
-];
+  {
+    label: "LinkedIn",
+    href: "https://www.linkedin.com/company/innoinventive/",
+    icon: "in",
+  },
+  
+  //   {
+  //     label: "YouTube",
+  //     href: "#",
+  //     icon: "▶",
+  //   },
+  //   {
+  //     label: "Instagram",
+  //     href: "#",
+  //     icon: "◎",
+  //   },
+]
 
 /* =========================================================
    SHARED CONTAINER
@@ -236,7 +220,7 @@ function FooterBrandSection() {
                 FEATURE HIGHLIGHTS
             ================================================= */}
 
-            <div className="mt-8 grid w-full grid-cols-2 gap-y-7 sm:grid-cols-4 sm:gap-y-0 lg:mt-9">
+            {/* <div className="mt-8 grid w-full grid-cols-2 gap-y-7 sm:grid-cols-4 sm:gap-y-0 lg:mt-9">
                 {FooterFeatureHighlights.map(
                     (featureHighlight, index) => {
                         const FeatureIcon =
@@ -277,7 +261,7 @@ function FooterBrandSection() {
                         );
                     },
                 )}
-            </div>
+            </div> */}
         </div>
     );
 }
