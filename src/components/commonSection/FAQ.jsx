@@ -18,7 +18,6 @@ import PremiumButton from "../UI/PremiumButton";
 ========================================================= */
 
 const FAQContent = {
-    sectionNumber: "06",
     eyebrow: "Questions, Answered",
     headingPrimary: "A few things",
     headingAccent: "worth knowing.",
@@ -327,10 +326,6 @@ const FAQ = () => {
 
                     <div className="max-w-[470px]">
                         <div className="inline-flex items-center gap-3">
-                            <span className="font-mono text-[11px] font-medium tracking-[0.12em] text-cyan-300">
-                                {FAQContent.sectionNumber}
-                            </span>
-
                             <span className="h-px w-9 bg-gradient-to-r from-cyan-300 via-blue-400 to-transparent" />
 
                             <span className="text-[8px] font-semibold uppercase tracking-[0.18em] text-blue-100/55 sm:text-[9px]">

@@ -7,11 +7,13 @@ import AboutImpact from './sections/AboutImpact'
 import AboutVision from './sections/AboutVision'
 import AboutFaq from './sections/AboutFaq'
 import CTASection from '../../components/commonSection/CTASection'
+import AboutOurJourney from './sections/AboutOurJourney'
 
 const About = () => {
     return (
         <div className="overflow-hidden">
             <AboutHero/>
+            <AboutOurJourney/>
             <AboutPrinciples/>
             <AboutImpact/>
             {/* <AboutAutomationSystems/> */}

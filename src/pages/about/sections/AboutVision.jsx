@@ -32,7 +32,6 @@ import PremiumIconBadge from "../../../components/UI/PremiumIconBadge";
 ========================================================= */
 
 const VisionContent = {
-    sectionNumber: "05",
     eyebrow: "A Better Digital Future",
     headingPrimary: "Your next big idea",
     headingAccent: "starts with the right technology.",
@@ -403,11 +402,7 @@ const AboutVision = () => {
 
                     <div className="">
                         <div className="inline-flex items-center gap-3">
-                            <span className="font-mono text-[13px] font-medium tracking-[0.12em] text-cyan-300">
-                                {
-                                    VisionContent.sectionNumber
-                                }
-                            </span>
+                    
 
                             <span className="h-px w-10 bg-gradient-to-r from-cyan-300 via-blue-400 to-transparent" />
 

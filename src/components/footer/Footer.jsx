@@ -182,45 +182,35 @@ const FooterContainerClasses =
 
 function FooterBrandSection() {
     return (
-        <div className="w-full">
-            {/* =================================================
+      <div className="w-full">
+        {/* =================================================
                 BRAND
             ================================================= */}
 
-            <NavLink
-                to="/"
-                className="group inline-flex items-center gap-0.5 sm:gap-4"
-                aria-label="InnoInventive Home"
-            >
-                <div className="flex h-12 w-12 shrink-0 items-center justify-center sm:h-14 sm:w-14 lg:h-16 lg:w-16">
-                    <img
-                        src={FooterBrandLogo}
-                        alt="InnoInventive"
-                        className="h-full w-full object-contain transition-transform duration-300 group-hover:scale-[1.03]"
-                    />
-                </div>
-                <img
-                    src={FooterLogoText}
-                    alt="InnoInventive"
-                    className="h-20 w-60 object-contain transition-transform duration-300 group-hover:scale-[1.03]"
-                />
-            </NavLink>
+        <NavLink to="/" className="group inline-flex items-center gap-0.5 sm:gap-4" aria-label="InnoInventive Home">
+          <div className="flex h-12 w-12 shrink-0 items-center justify-center sm:h-14 sm:w-14 lg:h-16 lg:w-16">
+            <img
+              src={FooterBrandLogo}
+              alt="InnoInventive"
+              className="h-full w-full object-contain transition-transform duration-300 group-hover:scale-[1.03]"
+            />
+          </div>
+          <img src={FooterLogoText} alt="InnoInventive" className="h-20 w-60 object-contain transition-transform duration-300 group-hover:scale-[1.03]" />
+        </NavLink>
 
-            {/* =================================================
+        {/* =================================================
                 DESCRIPTION
             ================================================= */}
 
-            <p className="mt-7 max-w-[720px] text-[13px] leading-6 text-[#b7c7e3] sm:text-[14px] lg:text-[15px]">
-                We build intelligent digital solutions that
-                automate businesses, streamline operations and
-                create sustainable growth for the future.
-            </p>
+        <p className="mt-7 max-w-[720px] text-[13px] leading-6 text-[#b7c7e3] sm:text-[14px] lg:text-[15px]">
+          We build websites, applications, and digital solutions that automate workflows, simplify business operations, and support sustainable growth
+        </p>
 
-            {/* =================================================
+        {/* =================================================
                 FEATURE HIGHLIGHTS
             ================================================= */}
 
-            {/* <div className="mt-8 grid w-full grid-cols-2 gap-y-7 sm:grid-cols-4 sm:gap-y-0 lg:mt-9">
+        {/* <div className="mt-8 grid w-full grid-cols-2 gap-y-7 sm:grid-cols-4 sm:gap-y-0 lg:mt-9">
                 {FooterFeatureHighlights.map(
                     (featureHighlight, index) => {
                         const FeatureIcon =
@@ -262,8 +252,8 @@ function FooterBrandSection() {
                     },
                 )}
             </div> */}
-        </div>
-    );
+      </div>
+    )
 }
 
 /* =========================================================

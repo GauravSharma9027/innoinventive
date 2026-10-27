@@ -9,15 +9,14 @@ import PremiumIconBadge from "../../../components/UI/PremiumIconBadge"
 ========================================================= */
 
 const AboutHeroContent = {
-    badge: "About Us",
-    headingPrimary: "We Build",
-    headingAccent: "Digital Solutions",
-    subheading:
-        "Thoughtful websites, useful applications and smarter ways to work.",
-    description:
-        "At InnoInventive, we create websites, web and mobile applications, and custom software around your business needs. From choosing the right approach to building practical digital experiences, we focus on solutions that are easy to use and ready to grow with your business.",
-    primaryButton: "Our Story",
-    secondaryButton: "Explore Our Services",
+  badge: "About Us",
+  headingPrimary: "We Build",
+  headingAccent: "Digital Solutions",
+  subheading: "Thoughtful websites, useful applications, smarter workflows, and digital marketing that helps businesses grow.",
+  description:
+    "At InnoInventive, we create websites, web and mobile applications, custom software, and digital marketing strategies built around your business needs. From developing practical digital experiences and streamlining workflows to improving your online visibility, we focus on solutions that are easy to use, effective, and ready to grow with your business.",
+  primaryButton: "Our Story",
+  secondaryButton: "Explore Our Services",
 }
 
 /* =========================================================
@@ -386,7 +385,7 @@ const AboutHero = () => {
                             <span className="bg-gradient-to-r from-cyan-300 via-blue-400 to-violet-400 bg-clip-text text-transparent">{AboutHeroContent.headingAccent}</span>
                         </h1>
 
-                        <p className="mt-5 max-w-[570px] text-[18px] font-medium leading-[1.28] tracking-[-0.02em] text-blue-100/90 sm:text-[21px] lg:text-[24px]">
+                        <p className="mt-5 max-w-[570px] text-[18px] font-medium leading-[1.28] tracking-[-0.02em] text-blue-100/90 sm:text-[21px] lg:text-[20px]">
                             {AboutHeroContent.subheading}
                         </p>
 
@@ -395,7 +394,7 @@ const AboutHero = () => {
                         <div className="mt-7 flex flex-wrap items-center gap-5">
                             <HeroActionButton label={AboutHeroContent.primaryButton} icon={ArrowRight} to="/about#journey" variant="primary" />
 
-                            <HeroActionButton label={AboutHeroContent.secondaryButton} icon={ArrowRight} to="/about#approach" variant="secondary" />
+                            <HeroActionButton label={AboutHeroContent.secondaryButton} icon={ArrowRight} to="/services" variant="secondary" />
                         </div>
                     </div>
 

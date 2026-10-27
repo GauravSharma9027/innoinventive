@@ -98,11 +98,11 @@ const QuickContactItem = ({ item }) => {
             </span>
 
             <span className="relative z-10 min-w-0 text-left">
-                <span className="block truncate text-[9px] font-semibold text-white/80 transition-colors duration-300 group-hover:text-white">
+                <span className="block truncate text-[12px] font-semibold text-white/90 transition-colors duration-300 group-hover:text-white">
                     {item.label}
                 </span>
 
-                <span className="mt-1 block truncate text-[6px] font-medium uppercase tracking-[0.08em] text-blue-100/35 transition-colors duration-300 group-hover:text-cyan-100/55">
+                <span className="mt-1 block truncate text-[9px] font-medium uppercase tracking-[0.08em] text-white/80 transition-colors duration-300 group-hover:text-cyan-100/55">
                     {item.detail}
                 </span>
             </span>

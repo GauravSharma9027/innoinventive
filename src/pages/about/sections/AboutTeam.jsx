@@ -26,7 +26,6 @@ import PremiumIconBadge from "../../../components/UI/PremiumIconBadge";
 ========================================================= */
 
 const TeamContent = {
-    sectionNumber: "04",
     eyebrow: "Meet The Team",
     headingPrimary: "People behind the",
     headingAccent: "intelligent systems.",
@@ -685,11 +684,7 @@ const AboutTeam = () => {
 
                     <div className="max-w-[390px]">
                         <div className="inline-flex items-center gap-3">
-                            <span className="font-mono text-[13px] font-medium tracking-[0.12em] text-cyan-300">
-                                {
-                                    TeamContent.sectionNumber
-                                }
-                            </span>
+                    
 
                             <span className="h-px w-10 bg-gradient-to-r from-cyan-300 via-blue-400 to-transparent" />
 
