@@ -52,187 +52,89 @@ const ServicesPortfolioTitle = ({ title }) => {
 };
 
 const ServicesPortfolioData = [
-    {
-        id: "web-engineering",
-        title: "Web Engineering",
-        subtitle:
-            "Scalable digital products built for real business growth.",
-        description:
-            "Custom web applications, business platforms and high-performance digital experiences engineered around your workflows, users and long-term product goals.",
-        services: [
-            "Custom Web Applications",
-            "Business Platforms",
-            "React / Next.js Development",
-            "Frontend Engineering",
-            "Backend Systems",
-            "Performance Optimization",
-        ],
-        image:
-            "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=2200&q=85",
-    },
-    {
-        id: "mobile-development",
-        title: "Mobile App Development",
-        subtitle:
-            "Mobile experiences designed around your users.",
-        description:
-            "Modern mobile applications with thoughtful UX, reliable APIs and scalable architecture for consumer and business use cases.",
-        services: [
-            "iOS Applications",
-            "Android Applications",
-            "Cross-Platform Apps",
-            "React Native Development",
-            "Mobile UI Engineering",
-            "App Performance",
-        ],
-        image:
-            "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&w=2200&q=85",
-    },
-    {
-        id: "ai-automation",
-        title: "AI & Automation",
-        subtitle:
-            "Turn repetitive work into intelligent systems.",
-        description:
-            "AI-powered workflows, intelligent assistants and business automation systems designed to reduce manual work and increase operational speed.",
-        services: [
-            "AI Automation",
-            "AI Assistants",
-            "Workflow Automation",
-            "LLM Integrations",
-            "Document Intelligence",
-            "Business AI Systems",
-        ],
-        image:
-            "https://images.unsplash.com/photo-1518779578993-ec3579fee39f?auto=format&fit=crop&w=2200&q=85",
-    },
-    {
-        id: "api-integrations",
-        title: "API & Integrations",
-        subtitle:
-            "Connect every moving part of your digital operation.",
-        description:
-            "Reliable API architecture and third-party integrations that allow your applications, internal systems and external services to work together seamlessly.",
-        services: [
-            "REST APIs",
-            "Third-Party Integrations",
-            "Payment Integrations",
-            "Authentication Systems",
-            "Webhook Systems",
-            "Automation APIs",
-        ],
-        image:
-            "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=2200&q=85",
-    },
-    {
-        id: "ecommerce",
-        title: "E-commerce & Platforms",
-        subtitle:
-            "Digital commerce experiences built to convert.",
-        description:
-            "Flexible commerce platforms and custom digital storefronts designed around your products, customers, operational workflows and growth goals.",
-        services: [
-            "Custom E-commerce",
-            "Commerce Platforms",
-            "Product Systems",
-            "Checkout Experiences",
-            "Order Management",
-            "Admin Platforms",
-        ],
-        image:
-            "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=2200&q=85",
-    },
-    {
-        id: "product-design",
-        title: "UI/UX & Product Design",
-        subtitle:
-            "Interfaces that make complex products feel simple.",
-        description:
-            "Strategic product design, interaction systems and polished interfaces that bridge business requirements with clear, intuitive user experiences.",
-        services: [
-            "Product Strategy",
-            "UX Research",
-            "UI Design",
-            "Design Systems",
-            "Interaction Design",
-            "Prototype Development",
-        ],
-        image:
-            "https://images.unsplash.com/photo-1559028012-481c04fa702d?auto=format&fit=crop&w=2200&q=85",
-    },
-    {
-        id: "cloud-devops",
-        title: "Cloud & DevOps",
-        subtitle:
-            "Infrastructure designed for reliability and scale.",
-        description:
-            "Deployment pipelines, cloud architecture and production systems designed to make your applications faster, safer and easier to operate.",
-        services: [
-            "Cloud Architecture",
-            "Docker",
-            "CI/CD Pipelines",
-            "Production Deployment",
-            "Infrastructure Automation",
-            "Monitoring",
-        ],
-        image:
-            "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=2200&q=85",
-    },
-    {
-        id: "data-analytics",
-        title: "Data & Analytics",
-        subtitle:
-            "Transform business data into useful decisions.",
-        description:
-            "Data systems, dashboards and analytics workflows that turn operational information into actionable business intelligence.",
-        services: [
-            "Business Dashboards",
-            "Data Visualization",
-            "Analytics Systems",
-            "Reporting Automation",
-            "Data Pipelines",
-            "KPI Systems",
-        ],
-        image:
-            "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=2200&q=85",
-    },
-    {
-        id: "cybersecurity",
-        title: "Cybersecurity",
-        subtitle:
-            "Protect the systems your business depends on.",
-        description:
-            "Application-focused security, authentication architecture and secure engineering practices built into the development lifecycle.",
-        services: [
-            "Application Security",
-            "Authentication",
-            "Authorization",
-            "Secure API Design",
-            "Security Audits",
-            "Infrastructure Hardening",
-        ],
-        image:
-            "https://images.unsplash.com/photo-1563013544-824ae1b704d3?auto=format&fit=crop&w=2200&q=85",
-    },
-    {
-        id: "iot-systems",
-        title: "IoT & Connected Systems",
-        subtitle:
-            "Connect physical operations with digital intelligence.",
-        description:
-            "Connected-device systems, real-time data flows and software interfaces designed to bring physical operations into your digital ecosystem.",
-        services: [
-            "IoT Dashboards",
-            "Device Integrations",
-            "Real-Time Monitoring",
-            "Connected Workflows",
-            "Data Collection",
-            "Alert Systems",
-        ],
-        image:
-            "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=2200&q=85",
-    },
-];
+  {
+    id: "web-engineering",
+    title: "Web Engineering",
+    subtitle: "Scalable digital products built for real business growth.",
+    description:
+      "Custom web applications, business platforms and high-performance digital experiences engineered around your workflows, users and long-term product goals.",
+    services: [
+      "Custom Web Applications",
+      "Business Platforms",
+      "React / Next.js Development",
+      "Frontend Engineering",
+      "Backend Systems",
+      "Performance Optimization",
+    ],
+    image: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=2200&q=85",
+  },
+  {
+    id: "mobile-development",
+    title: "Mobile App Development",
+    subtitle: "Mobile experiences designed around your users.",
+    description: "Modern mobile applications with thoughtful UX, reliable APIs and scalable architecture for consumer and business use cases.",
+    services: ["iOS Applications", "Android Applications", "Cross-Platform Apps", "React Native Development", "Mobile UI Engineering", "App Performance"],
+    image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&w=2200&q=85",
+  },
+  {
+    id: "ai-automation",
+    title: "AI & Automation",
+    subtitle: "Turn repetitive work into intelligent systems.",
+    description: "AI-powered workflows, intelligent assistants and business automation systems designed to reduce manual work and increase operational speed.",
+    services: ["AI Automation", "AI Assistants", "Workflow Automation", "LLM Integrations", "Document Intelligence", "Business AI Systems"],
+    image: "https://images.unsplash.com/photo-1518779578993-ec3579fee39f?auto=format&fit=crop&w=2200&q=85",
+  },
+  {
+    id: "api-integrations",
+    title: "API & Integrations",
+    subtitle: "Connect every moving part of your digital operation.",
+    description:
+      "Reliable API architecture and third-party integrations that allow your applications, internal systems and external services to work together seamlessly.",
+    services: ["REST APIs", "Third-Party Integrations", "Payment Integrations", "Authentication Systems", "Webhook Systems", "Automation APIs"],
+    image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=2200&q=85",
+  },
+  {
+    id: "ecommerce",
+    title: "E-commerce & Platforms",
+    subtitle: "Digital commerce experiences built to convert.",
+    description: "Flexible commerce platforms and custom digital storefronts designed around your products, customers, operational workflows and growth goals.",
+    services: ["Custom E-commerce", "Commerce Platforms", "Product Systems", "Checkout Experiences", "Order Management", "Admin Platforms"],
+    image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=2200&q=85",
+  },
+  {
+    id: "product-design",
+    title: "UI/UX & Product Design",
+    subtitle: "Interfaces that make complex products feel simple.",
+    description:
+      "Strategic product design, interaction systems and polished interfaces that bridge business requirements with clear, intuitive user experiences.",
+    services: ["Product Strategy", "UX Research", "UI Design", "Design Systems", "Interaction Design", "Prototype Development"],
+    image: "https://images.unsplash.com/photo-1559028012-481c04fa702d?auto=format&fit=crop&w=2200&q=85",
+  },
+  {
+    id: "cloud-devops",
+    title: "Digital Marketing & Growth",
+    subtitle: "Strategies designed to increase visibility, engagement, and conversions.",
+    description:
+      "From SEO and social media marketing to Google Ads and content optimization, we help your business reach the right audience, generate quality leads, and grow online",
+    services: [
+      "Search Engine Optimization(SEO)",
+      "Social media Marketing",
+      "Social media Optimization",
+      "Google Ads & PPC Campaigns",
+      "Content Marketing",
+      "Analysis & Conversion Optimization",
+    ],
+    image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=2200&q=85",
+  },
+  {
+    id: "data-analytics",
+    title: "Data & Analytics",
+    subtitle: "Transform business data into useful decisions.",
+    description: "Data systems, dashboards and analytics workflows that turn operational information into actionable business intelligence.",
+    services: ["Business Dashboards", "Data Visualization", "Analytics Systems", "Reporting Automation", "Data Pipelines", "KPI Systems"],
+    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=2200&q=85",
+  },
+]
 
 /* =========================================================
    BACKGROUND TRACK
@@ -327,7 +229,7 @@ const ServiceGrid = ({
 
                                 <div className="relative z-10 flex h-full items-end">
                                     <div className="min-w-0">
-                                        <span className="service-card-label mb-2 block font-mono text-[5px] uppercase tracking-[0.17em] text-cyan-200/28 transition-colors duration-500 group-hover:text-cyan-200/48">
+                                        <span className="service-card-label mb-2 block font-mono text-[9px] uppercase tracking-[0.17em] text-white/60 transition-colors duration-500 group-hover:text-cyan-200/48">
                                             SERVICE
                                         </span>
 
@@ -465,1542 +367,878 @@ const ServiceMenu = ({
    MAIN COMPONENT
 ========================================================= */
 
-const ServicesPortfolio = () => {
-    const [
-        activeIndex,
-        setActiveIndex,
-    ] = useState(0);
+const ServicesPortfolio = ({ id }) => {
+  const [activeIndex, setActiveIndex] = useState(0)
 
-    const [
-        slideDirection,
-        setSlideDirection,
-    ] = useState("down");
+  const [slideDirection, setSlideDirection] = useState("down")
 
-    const [
-        isServiceMenuOpen,
-        setIsServiceMenuOpen,
-    ] = useState(false);
+  const [isServiceMenuOpen, setIsServiceMenuOpen] = useState(false)
 
-    const SectionRef =
-        useRef(null);
+  const SectionRef = useRef(null)
 
-    const ActiveIndexRef =
-        useRef(0);
+  const ActiveIndexRef = useRef(0)
 
-    const IsMenuOpenRef =
-        useRef(false);
+  const IsMenuOpenRef = useRef(false)
 
-    const IsSectionLockedRef =
-        useRef(false);
+  const IsSectionLockedRef = useRef(false)
 
-    const IsPreparingLockRef =
-        useRef(false);
+  const IsPreparingLockRef = useRef(false)
 
-    const IsTransitionLockedRef =
-        useRef(false);
+  const IsTransitionLockedRef = useRef(false)
 
-    const PreviousBodyOverflowRef =
-        useRef("");
+  const PreviousBodyOverflowRef = useRef("")
 
-    const PreviousHtmlOverflowRef =
-        useRef("");
+  const PreviousHtmlOverflowRef = useRef("")
 
-    const TransitionTimerRef =
-        useRef(null);
+  const TransitionTimerRef = useRef(null)
 
-    const PrepareLockTimerRef =
-        useRef(null);
+  const PrepareLockTimerRef = useRef(null)
 
-    /*
-     * TABLET / PHONE TOUCH STATE
-     */
+  /*
+   * TABLET / PHONE TOUCH STATE
+   */
 
-    const TouchStartYRef =
-        useRef(0);
+  const TouchStartYRef = useRef(0)
 
-    const TouchStartXRef =
-        useRef(0);
+  const TouchStartXRef = useRef(0)
 
-    const TouchTrackingRef =
-        useRef(false);
+  const TouchTrackingRef = useRef(false)
 
-    /*
-     * Important:
-     * If touch begins inside capability list,
-     * parent service-snap must NOT consume it.
-     */
+  /*
+   * Important:
+   * If touch begins inside capability list,
+   * parent service-snap must NOT consume it.
+   */
 
-    const TouchStartedInsideCapabilitiesRef =
-        useRef(false);
+  const TouchStartedInsideCapabilitiesRef = useRef(false)
 
-    const TotalServices =
-        ServicesPortfolioData.length;
+  const TotalServices = ServicesPortfolioData.length
 
-    const ActiveService =
-        ServicesPortfolioData[
-        activeIndex
-        ];
+  const ActiveService = ServicesPortfolioData[activeIndex]
 
-    useEffect(() => {
-        ActiveIndexRef.current =
-            activeIndex;
-    }, [activeIndex]);
+  useEffect(() => {
+    ActiveIndexRef.current = activeIndex
+  }, [activeIndex])
 
-    useEffect(() => {
-        IsMenuOpenRef.current =
-            isServiceMenuOpen;
-    }, [isServiceMenuOpen]);
+  useEffect(() => {
+    IsMenuOpenRef.current = isServiceMenuOpen
+  }, [isServiceMenuOpen])
 
-    const LockDocumentScroll =
-        () => {
-            if (
-                IsSectionLockedRef.current
-            ) {
-                return;
-            }
+  const LockDocumentScroll = () => {
+    if (IsSectionLockedRef.current) {
+      return
+    }
 
-            PreviousBodyOverflowRef.current =
-                document.body.style.overflow;
+    PreviousBodyOverflowRef.current = document.body.style.overflow
 
-            PreviousHtmlOverflowRef.current =
-                document.documentElement.style.overflow;
+    PreviousHtmlOverflowRef.current = document.documentElement.style.overflow
 
-            document.body.style.overflow =
-                "hidden";
+    document.body.style.overflow = "hidden"
 
-            document.documentElement.style.overflow =
-                "hidden";
+    document.documentElement.style.overflow = "hidden"
 
-            IsSectionLockedRef.current =
-                true;
-        };
+    IsSectionLockedRef.current = true
+  }
 
-    const UnlockDocumentScroll =
-        () => {
-            document.body.style.overflow =
-                PreviousBodyOverflowRef.current;
+  const UnlockDocumentScroll = () => {
+    document.body.style.overflow = PreviousBodyOverflowRef.current
 
-            document.documentElement.style.overflow =
-                PreviousHtmlOverflowRef.current;
+    document.documentElement.style.overflow = PreviousHtmlOverflowRef.current
 
-            IsSectionLockedRef.current =
-                false;
+    IsSectionLockedRef.current = false
 
-            IsPreparingLockRef.current =
-                false;
-        };
+    IsPreparingLockRef.current = false
+  }
 
-    const ChangeSlide = (
-        Direction,
-    ) => {
-        if (
-            IsTransitionLockedRef.current
-        ) {
-            return false;
-        }
+  const ChangeSlide = (Direction) => {
+    if (IsTransitionLockedRef.current) {
+      return false
+    }
 
-        const CurrentIndex =
-            ActiveIndexRef.current;
+    const CurrentIndex = ActiveIndexRef.current
 
-        const NextIndex =
-            CurrentIndex +
-            Direction;
+    const NextIndex = CurrentIndex + Direction
 
-        if (
-            NextIndex < 0 ||
-            NextIndex >=
-            TotalServices
-        ) {
-            return false;
-        }
+    if (NextIndex < 0 || NextIndex >= TotalServices) {
+      return false
+    }
 
-        IsTransitionLockedRef.current =
-            true;
+    IsTransitionLockedRef.current = true
 
-        setSlideDirection(
-            Direction > 0
-                ? "down"
-                : "up",
-        );
+    setSlideDirection(Direction > 0 ? "down" : "up")
 
-        ActiveIndexRef.current =
-            NextIndex;
+    ActiveIndexRef.current = NextIndex
 
-        setActiveIndex(
-            NextIndex,
-        );
+    setActiveIndex(NextIndex)
 
-        if (
-            TransitionTimerRef.current
-        ) {
-            window.clearTimeout(
-                TransitionTimerRef.current,
-            );
-        }
+    if (TransitionTimerRef.current) {
+      window.clearTimeout(TransitionTimerRef.current)
+    }
 
-        TransitionTimerRef.current =
-            window.setTimeout(
-                () => {
-                    IsTransitionLockedRef.current =
-                        false;
-                },
-                900,
-            );
+    TransitionTimerRef.current = window.setTimeout(() => {
+      IsTransitionLockedRef.current = false
+    }, 900)
 
-        return true;
-    };
+    return true
+  }
 
-    /* =========================================================
+  /* =========================================================
        ORIGINAL DESKTOP ENTRY
     ========================================================= */
 
-    const EnterSectionExperience =
-        (Direction) => {
-            const SectionElement =
-                SectionRef.current;
+  const EnterSectionExperience = (Direction) => {
+    const SectionElement = SectionRef.current
 
-            if (
-                !SectionElement ||
-                IsSectionLockedRef.current ||
-                IsPreparingLockRef.current
-            ) {
-                return;
-            }
+    if (!SectionElement || IsSectionLockedRef.current || IsPreparingLockRef.current) {
+      return
+    }
 
-            const Rect =
-                SectionElement.getBoundingClientRect();
+    const Rect = SectionElement.getBoundingClientRect()
 
-            const ViewportHeight =
-                window.innerHeight;
+    const ViewportHeight = window.innerHeight
 
-            const IsEnteringFromTop =
-                Direction > 0 &&
-                Rect.top > 0 &&
-                Rect.top <
-                ViewportHeight *
-                0.92;
+    const IsEnteringFromTop = Direction > 0 && Rect.top > 0 && Rect.top < ViewportHeight * 0.92
 
-            const IsEnteringFromBottom =
-                Direction < 0 &&
-                Rect.bottom <
-                ViewportHeight &&
-                Rect.bottom >
-                ViewportHeight *
-                0.08;
+    const IsEnteringFromBottom = Direction < 0 && Rect.bottom < ViewportHeight && Rect.bottom > ViewportHeight * 0.08
 
-            if (
-                !IsEnteringFromTop &&
-                !IsEnteringFromBottom
-            ) {
-                return;
-            }
+    if (!IsEnteringFromTop && !IsEnteringFromBottom) {
+      return
+    }
 
-            IsPreparingLockRef.current =
-                true;
+    IsPreparingLockRef.current = true
 
-            const TargetScrollTop =
-                window.scrollY +
-                Rect.top;
+    const TargetScrollTop = window.scrollY + Rect.top
 
-            window.scrollTo({
-                top:
-                    TargetScrollTop,
-                behavior:
-                    "smooth",
-            });
+    window.scrollTo({
+      top: TargetScrollTop,
+      behavior: "smooth",
+    })
 
-            if (
-                PrepareLockTimerRef.current
-            ) {
-                window.clearTimeout(
-                    PrepareLockTimerRef.current,
-                );
-            }
+    if (PrepareLockTimerRef.current) {
+      window.clearTimeout(PrepareLockTimerRef.current)
+    }
 
-            PrepareLockTimerRef.current =
-                window.setTimeout(
-                    () => {
-                        LockDocumentScroll();
-                    },
-                    420,
-                );
-        };
+    PrepareLockTimerRef.current = window.setTimeout(() => {
+      LockDocumentScroll()
+    }, 420)
+  }
 
-    /* =========================================================
+  /* =========================================================
        RESPONSIVE ENTRY
     ========================================================= */
 
-    const EnterResponsiveSectionExperience =
-        (Direction) => {
-            const SectionElement =
-                SectionRef.current;
+  const EnterResponsiveSectionExperience = (Direction) => {
+    const SectionElement = SectionRef.current
 
-            if (
-                !SectionElement ||
-                IsSectionLockedRef.current ||
-                IsPreparingLockRef.current
-            ) {
-                return;
-            }
+    if (!SectionElement || IsSectionLockedRef.current || IsPreparingLockRef.current) {
+      return
+    }
 
-            const Rect =
-                SectionElement.getBoundingClientRect();
+    const Rect = SectionElement.getBoundingClientRect()
 
-            const ViewportHeight =
-                window.innerHeight;
+    const ViewportHeight = window.innerHeight
 
-            const IsEnteringFromTop =
-                Direction > 0 &&
-                Rect.top >
-                -ViewportHeight *
-                0.12 &&
-                Rect.top <
-                ViewportHeight *
-                0.84;
+    const IsEnteringFromTop = Direction > 0 && Rect.top > -ViewportHeight * 0.12 && Rect.top < ViewportHeight * 0.84
 
-            const IsEnteringFromBottom =
-                Direction < 0 &&
-                Rect.bottom >
-                ViewportHeight *
-                0.16 &&
-                Rect.bottom <
-                ViewportHeight *
-                1.12;
+    const IsEnteringFromBottom = Direction < 0 && Rect.bottom > ViewportHeight * 0.16 && Rect.bottom < ViewportHeight * 1.12
 
-            if (
-                !IsEnteringFromTop &&
-                !IsEnteringFromBottom
-            ) {
-                return;
-            }
+    if (!IsEnteringFromTop && !IsEnteringFromBottom) {
+      return
+    }
 
-            IsPreparingLockRef.current =
-                true;
+    IsPreparingLockRef.current = true
 
-            const TargetScrollTop =
-                window.scrollY +
-                Rect.top;
+    const TargetScrollTop = window.scrollY + Rect.top
 
-            window.scrollTo({
-                top:
-                    TargetScrollTop,
-                behavior:
-                    "smooth",
-            });
+    window.scrollTo({
+      top: TargetScrollTop,
+      behavior: "smooth",
+    })
 
-            if (
-                PrepareLockTimerRef.current
-            ) {
-                window.clearTimeout(
-                    PrepareLockTimerRef.current,
-                );
-            }
+    if (PrepareLockTimerRef.current) {
+      window.clearTimeout(PrepareLockTimerRef.current)
+    }
 
-            PrepareLockTimerRef.current =
-                window.setTimeout(
-                    () => {
-                        LockDocumentScroll();
-                    },
-                    420,
-                );
-        };
+    PrepareLockTimerRef.current = window.setTimeout(() => {
+      LockDocumentScroll()
+    }, 420)
+  }
 
-    /* =========================================================
+  /* =========================================================
        ORIGINAL DESKTOP EXIT
     ========================================================= */
 
-    const LeaveSectionExperience =
-        (Direction) => {
-            const SectionElement =
-                SectionRef.current;
+  const LeaveSectionExperience = (Direction) => {
+    const SectionElement = SectionRef.current
 
-            if (
-                !SectionElement
-            ) {
-                return;
-            }
+    if (!SectionElement) {
+      return
+    }
 
-            const Rect =
-                SectionElement.getBoundingClientRect();
+    const Rect = SectionElement.getBoundingClientRect()
 
-            const SectionTop =
-                window.scrollY +
-                Rect.top;
+    const SectionTop = window.scrollY + Rect.top
 
-            const SectionBottom =
-                SectionTop +
-                SectionElement.offsetHeight;
+    const SectionBottom = SectionTop + SectionElement.offsetHeight
 
-            UnlockDocumentScroll();
+    UnlockDocumentScroll()
 
-            IsTransitionLockedRef.current =
-                false;
+    IsTransitionLockedRef.current = false
 
-            if (
-                Direction > 0
-            ) {
-                window.scrollTo({
-                    top:
-                        SectionBottom +
-                        2,
-                    behavior:
-                        "smooth",
-                });
-            } else {
-                window.scrollTo({
-                    top:
-                        Math.max(
-                            0,
-                            SectionTop -
-                            Math.round(
-                                window.innerHeight *
-                                0.78,
-                            ),
-                        ),
-                    behavior:
-                        "smooth",
-                });
-            }
-        };
+    if (Direction > 0) {
+      window.scrollTo({
+        top: SectionBottom + 2,
+        behavior: "smooth",
+      })
+    } else {
+      window.scrollTo({
+        top: Math.max(0, SectionTop - Math.round(window.innerHeight * 0.78)),
+        behavior: "smooth",
+      })
+    }
+  }
 
-    /* =========================================================
+  /* =========================================================
        LAPTOP / DESKTOP WHEEL
        ORIGINAL SYSTEM PRESERVED
     ========================================================= */
 
-    useEffect(() => {
-        const HandleWheel =
-            (event) => {
-                const DeltaY =
-                    event.deltaY;
+  useEffect(() => {
+    const HandleWheel = (event) => {
+      const DeltaY = event.deltaY
 
-                if (
-                    Math.abs(
-                        DeltaY,
-                    ) < 2
-                ) {
-                    return;
-                }
+      if (Math.abs(DeltaY) < 2) {
+        return
+      }
 
-                const Direction =
-                    DeltaY > 0
-                        ? 1
-                        : -1;
+      const Direction = DeltaY > 0 ? 1 : -1
 
-                if (
-                    IsMenuOpenRef.current
-                ) {
-                    const Target =
-                        event.target;
+      if (IsMenuOpenRef.current) {
+        const Target = event.target
 
-                    if (
-                        Target instanceof
-                        Element &&
-                        Target.closest(
-                            ".service-menu-scroll",
-                        )
-                    ) {
-                        return;
-                    }
+        if (Target instanceof Element && Target.closest(".service-menu-scroll")) {
+          return
+        }
 
-                    event.preventDefault();
+        event.preventDefault()
 
-                    return;
-                }
+        return
+      }
 
-                const SectionElement =
-                    SectionRef.current;
+      const SectionElement = SectionRef.current
 
-                if (
-                    !SectionElement
-                ) {
-                    return;
-                }
+      if (!SectionElement) {
+        return
+      }
 
-                /*
-                 * IMPORTANT:
-                 * Tablet/phone wheel inside the
-                 * capabilities list belongs to
-                 * the inner list, not the parent slider.
-                 */
+      /*
+       * IMPORTANT:
+       * Tablet/phone wheel inside the
+       * capabilities list belongs to
+       * the inner list, not the parent slider.
+       */
 
-                if (
-                    window.innerWidth <
-                    1024
-                ) {
-                    const Target =
-                        event.target;
+      if (window.innerWidth < 1024) {
+        const Target = event.target
 
-                    if (
-                        Target instanceof
-                        Element &&
-                        Target.closest(
-                            ".service-portfolio-grid",
-                        )
-                    ) {
-                        return;
-                    }
-                }
+        if (Target instanceof Element && Target.closest(".service-portfolio-grid")) {
+          return
+        }
+      }
 
-                const Rect =
-                    SectionElement.getBoundingClientRect();
+      const Rect = SectionElement.getBoundingClientRect()
 
-                const ViewportHeight =
-                    window.innerHeight;
+      const ViewportHeight = window.innerHeight
 
-                const SectionIsVisible =
-                    Rect.top <
-                    ViewportHeight *
-                    0.96 &&
-                    Rect.bottom >
-                    ViewportHeight *
-                    0.08;
+      const SectionIsVisible = Rect.top < ViewportHeight * 0.96 && Rect.bottom > ViewportHeight * 0.08
 
-                if (
-                    !SectionIsVisible
-                ) {
-                    return;
-                }
+      if (!SectionIsVisible) {
+        return
+      }
 
-                if (
-                    !IsSectionLockedRef.current
-                ) {
-                    const IsApproachingDown =
-                        Direction >
-                        0 &&
-                        Rect.top >
-                        -20 &&
-                        Rect.top <
-                        ViewportHeight *
-                        0.82;
+      if (!IsSectionLockedRef.current) {
+        const IsApproachingDown = Direction > 0 && Rect.top > -20 && Rect.top < ViewportHeight * 0.82
 
-                    const IsApproachingUp =
-                        Direction <
-                        0 &&
-                        Rect.bottom >
-                        ViewportHeight *
-                        0.18 &&
-                        Rect.bottom <
-                        ViewportHeight +
-                        20;
+        const IsApproachingUp = Direction < 0 && Rect.bottom > ViewportHeight * 0.18 && Rect.bottom < ViewportHeight + 20
 
-                    if (
-                        IsApproachingDown ||
-                        IsApproachingUp
-                    ) {
-                        event.preventDefault();
+        if (IsApproachingDown || IsApproachingUp) {
+          event.preventDefault()
 
-                        if (
-                            window.innerWidth <
-                            1024
-                        ) {
-                            EnterResponsiveSectionExperience(
-                                Direction,
-                            );
-                        } else {
-                            EnterSectionExperience(
-                                Direction,
-                            );
-                        }
+          if (window.innerWidth < 1024) {
+            EnterResponsiveSectionExperience(Direction)
+          } else {
+            EnterSectionExperience(Direction)
+          }
 
-                        return;
-                    }
+          return
+        }
 
-                    return;
-                }
+        return
+      }
 
-                event.preventDefault();
-                event.stopPropagation();
+      event.preventDefault()
+      event.stopPropagation()
 
-                const CurrentIndex =
-                    ActiveIndexRef.current;
+      const CurrentIndex = ActiveIndexRef.current
 
-                const IsAtFirstSlide =
-                    CurrentIndex ===
-                    0;
+      const IsAtFirstSlide = CurrentIndex === 0
 
-                const IsAtLastSlide =
-                    CurrentIndex ===
-                    TotalServices - 1;
+      const IsAtLastSlide = CurrentIndex === TotalServices - 1
 
-                if (
-                    Direction > 0 &&
-                    IsAtLastSlide
-                ) {
-                    LeaveSectionExperience(
-                        1,
-                    );
+      if (Direction > 0 && IsAtLastSlide) {
+        LeaveSectionExperience(1)
 
-                    return;
-                }
+        return
+      }
 
-                if (
-                    Direction < 0 &&
-                    IsAtFirstSlide
-                ) {
-                    LeaveSectionExperience(
-                        -1,
-                    );
+      if (Direction < 0 && IsAtFirstSlide) {
+        LeaveSectionExperience(-1)
 
-                    return;
-                }
+        return
+      }
 
-                if (
-                    IsTransitionLockedRef.current
-                ) {
-                    return;
-                }
+      if (IsTransitionLockedRef.current) {
+        return
+      }
 
-                ChangeSlide(
-                    Direction,
-                );
-            };
+      ChangeSlide(Direction)
+    }
 
-        window.addEventListener(
-            "wheel",
-            HandleWheel,
-            {
-                passive: false,
-                capture: true,
-            },
-        );
+    window.addEventListener("wheel", HandleWheel, {
+      passive: false,
+      capture: true,
+    })
 
-        return () => {
-            window.removeEventListener(
-                "wheel",
-                HandleWheel,
-                true,
-            );
-        };
-    }, [TotalServices]);
+    return () => {
+      window.removeEventListener("wheel", HandleWheel, true)
+    }
+  }, [TotalServices])
 
-    /* =========================================================
+  /* =========================================================
        TABLET + PHONE TOUCH SNAP
     ========================================================= */
 
-    useEffect(() => {
-        const HandleTouchStart =
-            (event) => {
-                if (
-                    window.innerWidth >=
-                    1024
-                ) {
-                    return;
-                }
-
-                if (
-                    IsMenuOpenRef.current
-                ) {
-                    TouchTrackingRef.current =
-                        false;
-
-                    TouchStartedInsideCapabilitiesRef.current =
-                        false;
-
-                    return;
-                }
-
-                const Target =
-                    event.target;
-
-                /*
-                 * CRITICAL:
-                 * Touch started inside capability
-                 * cards => let native inner scroll
-                 * handle the gesture.
-                 */
-
-                if (
-                    Target instanceof
-                    Element &&
-                    Target.closest(
-                        ".service-portfolio-grid",
-                    )
-                ) {
-                    TouchTrackingRef.current =
-                        false;
-
-                    TouchStartedInsideCapabilitiesRef.current =
-                        true;
-
-                    return;
-                }
-
-                TouchStartedInsideCapabilitiesRef.current =
-                    false;
-
-                const Touch =
-                    event.touches[0];
-
-                if (!Touch) {
-                    return;
-                }
-
-                const SectionElement =
-                    SectionRef.current;
-
-                if (
-                    !SectionElement
-                ) {
-                    return;
-                }
-
-                const Rect =
-                    SectionElement.getBoundingClientRect();
-
-                const ViewportHeight =
-                    window.innerHeight;
-
-                const SectionIsVisible =
-                    Rect.top <
-                    ViewportHeight *
-                    0.98 &&
-                    Rect.bottom >
-                    ViewportHeight *
-                    0.02;
-
-                if (
-                    !SectionIsVisible
-                ) {
-                    TouchTrackingRef.current =
-                        false;
-
-                    return;
-                }
-
-                TouchStartYRef.current =
-                    Touch.clientY;
-
-                TouchStartXRef.current =
-                    Touch.clientX;
-
-                TouchTrackingRef.current =
-                    true;
-            };
-
-        const HandleTouchMove =
-            (event) => {
-                if (
-                    window.innerWidth >=
-                    1024
-                ) {
-                    return;
-                }
-
-                /*
-                 * Inner capability scrolling:
-                 * NEVER consume the gesture here.
-                 */
-
-                if (
-                    TouchStartedInsideCapabilitiesRef.current
-                ) {
-                    return;
-                }
-
-                if (
-                    !TouchTrackingRef.current ||
-                    IsMenuOpenRef.current
-                ) {
-                    return;
-                }
-
-                const Target =
-                    event.target;
-
-                if (
-                    Target instanceof
-                    Element &&
-                    Target.closest(
-                        ".service-portfolio-grid",
-                    )
-                ) {
-                    return;
-                }
-
-                if (
-                    IsSectionLockedRef.current
-                ) {
-                    event.preventDefault();
-
-                    return;
-                }
-
-                const Touch =
-                    event.touches[0];
-
-                if (!Touch) {
-                    return;
-                }
-
-                const DeltaY =
-                    TouchStartYRef.current -
-                    Touch.clientY;
-
-                const DeltaX =
-                    TouchStartXRef.current -
-                    Touch.clientX;
-
-                if (
-                    Math.abs(
-                        DeltaY,
-                    ) <=
-                    Math.abs(
-                        DeltaX,
-                    )
-                ) {
-                    return;
-                }
-
-                if (
-                    Math.abs(
-                        DeltaY,
-                    ) < 18
-                ) {
-                    return;
-                }
-
-                const SectionElement =
-                    SectionRef.current;
-
-                if (
-                    !SectionElement
-                ) {
-                    return;
-                }
-
-                const Rect =
-                    SectionElement.getBoundingClientRect();
-
-                const ViewportHeight =
-                    window.innerHeight;
-
-                const Direction =
-                    DeltaY > 0
-                        ? 1
-                        : -1;
-
-                const IsApproachingDown =
-                    Direction > 0 &&
-                    Rect.top >
-                    -ViewportHeight *
-                    0.12 &&
-                    Rect.top <
-                    ViewportHeight *
-                    0.84;
-
-                const IsApproachingUp =
-                    Direction < 0 &&
-                    Rect.bottom >
-                    ViewportHeight *
-                    0.16 &&
-                    Rect.bottom <
-                    ViewportHeight *
-                    1.12;
-
-                if (
-                    IsApproachingDown ||
-                    IsApproachingUp
-                ) {
-                    event.preventDefault();
-                }
-            };
-
-        const HandleTouchEnd =
-            (event) => {
-                if (
-                    window.innerWidth >=
-                    1024
-                ) {
-                    TouchTrackingRef.current =
-                        false;
-
-                    return;
-                }
-
-                /*
-                 * If gesture began inside the
-                 * capabilities list, don't send
-                 * it to the service slider.
-                 */
-
-                if (
-                    TouchStartedInsideCapabilitiesRef.current
-                ) {
-                    TouchStartedInsideCapabilitiesRef.current =
-                        false;
-
-                    TouchTrackingRef.current =
-                        false;
-
-                    return;
-                }
-
-                if (
-                    !TouchTrackingRef.current
-                ) {
-                    return;
-                }
-
-                TouchTrackingRef.current =
-                    false;
-
-                if (
-                    IsMenuOpenRef.current
-                ) {
-                    return;
-                }
-
-                const ChangedTouch =
-                    event.changedTouches?.[0];
-
-                if (
-                    !ChangedTouch
-                ) {
-                    return;
-                }
-
-                const DeltaY =
-                    TouchStartYRef.current -
-                    ChangedTouch.clientY;
-
-                const DeltaX =
-                    TouchStartXRef.current -
-                    ChangedTouch.clientX;
-
-                if (
-                    Math.abs(
-                        DeltaY,
-                    ) <=
-                    Math.abs(
-                        DeltaX,
-                    )
-                ) {
-                    return;
-                }
-
-                if (
-                    Math.abs(
-                        DeltaY,
-                    ) < 48
-                ) {
-                    return;
-                }
-
-                const Direction =
-                    DeltaY > 0
-                        ? 1
-                        : -1;
-
-                const SectionElement =
-                    SectionRef.current;
-
-                if (
-                    !SectionElement
-                ) {
-                    return;
-                }
-
-                /*
-                 * Already inside locked portfolio.
-                 */
-
-                if (
-                    IsSectionLockedRef.current
-                ) {
-                    event.preventDefault();
-
-                    const CurrentIndex =
-                        ActiveIndexRef.current;
-
-                    const IsAtFirstSlide =
-                        CurrentIndex ===
-                        0;
-
-                    const IsAtLastSlide =
-                        CurrentIndex ===
-                        TotalServices - 1;
-
-                    if (
-                        Direction > 0 &&
-                        IsAtLastSlide
-                    ) {
-                        LeaveSectionExperience(
-                            1,
-                        );
-
-                        return;
-                    }
-
-                    if (
-                        Direction < 0 &&
-                        IsAtFirstSlide
-                    ) {
-                        LeaveSectionExperience(
-                            -1,
-                        );
-
-                        return;
-                    }
-
-                    if (
-                        IsTransitionLockedRef.current
-                    ) {
-                        return;
-                    }
-
-                    ChangeSlide(
-                        Direction,
-                    );
-
-                    return;
-                }
-
-                const Rect =
-                    SectionElement.getBoundingClientRect();
-
-                const ViewportHeight =
-                    window.innerHeight;
-
-                const IsEnteringFromTop =
-                    Direction > 0 &&
-                    Rect.top >
-                    -ViewportHeight *
-                    0.12 &&
-                    Rect.top <
-                    ViewportHeight *
-                    0.84;
-
-                const IsEnteringFromBottom =
-                    Direction < 0 &&
-                    Rect.bottom >
-                    ViewportHeight *
-                    0.16 &&
-                    Rect.bottom <
-                    ViewportHeight *
-                    1.12;
-
-                if (
-                    IsEnteringFromTop ||
-                    IsEnteringFromBottom
-                ) {
-                    EnterResponsiveSectionExperience(
-                        Direction,
-                    );
-                }
-            };
-
-        window.addEventListener(
-            "touchstart",
-            HandleTouchStart,
-            {
-                passive: true,
-                capture: true,
-            },
-        );
-
-        window.addEventListener(
-            "touchmove",
-            HandleTouchMove,
-            {
-                passive: false,
-                capture: true,
-            },
-        );
-
-        window.addEventListener(
-            "touchend",
-            HandleTouchEnd,
-            {
-                passive: false,
-                capture: true,
-            },
-        );
-
-        return () => {
-            window.removeEventListener(
-                "touchstart",
-                HandleTouchStart,
-                true,
-            );
-
-            window.removeEventListener(
-                "touchmove",
-                HandleTouchMove,
-                true,
-            );
-
-            window.removeEventListener(
-                "touchend",
-                HandleTouchEnd,
-                true,
-            );
-        };
-    }, [TotalServices]);
-
-    /* =========================================================
+  useEffect(() => {
+    const HandleTouchStart = (event) => {
+      if (window.innerWidth >= 1024) {
+        return
+      }
+
+      if (IsMenuOpenRef.current) {
+        TouchTrackingRef.current = false
+
+        TouchStartedInsideCapabilitiesRef.current = false
+
+        return
+      }
+
+      const Target = event.target
+
+      /*
+       * CRITICAL:
+       * Touch started inside capability
+       * cards => let native inner scroll
+       * handle the gesture.
+       */
+
+      if (Target instanceof Element && Target.closest(".service-portfolio-grid")) {
+        TouchTrackingRef.current = false
+
+        TouchStartedInsideCapabilitiesRef.current = true
+
+        return
+      }
+
+      TouchStartedInsideCapabilitiesRef.current = false
+
+      const Touch = event.touches[0]
+
+      if (!Touch) {
+        return
+      }
+
+      const SectionElement = SectionRef.current
+
+      if (!SectionElement) {
+        return
+      }
+
+      const Rect = SectionElement.getBoundingClientRect()
+
+      const ViewportHeight = window.innerHeight
+
+      const SectionIsVisible = Rect.top < ViewportHeight * 0.98 && Rect.bottom > ViewportHeight * 0.02
+
+      if (!SectionIsVisible) {
+        TouchTrackingRef.current = false
+
+        return
+      }
+
+      TouchStartYRef.current = Touch.clientY
+
+      TouchStartXRef.current = Touch.clientX
+
+      TouchTrackingRef.current = true
+    }
+
+    const HandleTouchMove = (event) => {
+      if (window.innerWidth >= 1024) {
+        return
+      }
+
+      /*
+       * Inner capability scrolling:
+       * NEVER consume the gesture here.
+       */
+
+      if (TouchStartedInsideCapabilitiesRef.current) {
+        return
+      }
+
+      if (!TouchTrackingRef.current || IsMenuOpenRef.current) {
+        return
+      }
+
+      const Target = event.target
+
+      if (Target instanceof Element && Target.closest(".service-portfolio-grid")) {
+        return
+      }
+
+      if (IsSectionLockedRef.current) {
+        event.preventDefault()
+
+        return
+      }
+
+      const Touch = event.touches[0]
+
+      if (!Touch) {
+        return
+      }
+
+      const DeltaY = TouchStartYRef.current - Touch.clientY
+
+      const DeltaX = TouchStartXRef.current - Touch.clientX
+
+      if (Math.abs(DeltaY) <= Math.abs(DeltaX)) {
+        return
+      }
+
+      if (Math.abs(DeltaY) < 18) {
+        return
+      }
+
+      const SectionElement = SectionRef.current
+
+      if (!SectionElement) {
+        return
+      }
+
+      const Rect = SectionElement.getBoundingClientRect()
+
+      const ViewportHeight = window.innerHeight
+
+      const Direction = DeltaY > 0 ? 1 : -1
+
+      const IsApproachingDown = Direction > 0 && Rect.top > -ViewportHeight * 0.12 && Rect.top < ViewportHeight * 0.84
+
+      const IsApproachingUp = Direction < 0 && Rect.bottom > ViewportHeight * 0.16 && Rect.bottom < ViewportHeight * 1.12
+
+      if (IsApproachingDown || IsApproachingUp) {
+        event.preventDefault()
+      }
+    }
+
+    const HandleTouchEnd = (event) => {
+      if (window.innerWidth >= 1024) {
+        TouchTrackingRef.current = false
+
+        return
+      }
+
+      /*
+       * If gesture began inside the
+       * capabilities list, don't send
+       * it to the service slider.
+       */
+
+      if (TouchStartedInsideCapabilitiesRef.current) {
+        TouchStartedInsideCapabilitiesRef.current = false
+
+        TouchTrackingRef.current = false
+
+        return
+      }
+
+      if (!TouchTrackingRef.current) {
+        return
+      }
+
+      TouchTrackingRef.current = false
+
+      if (IsMenuOpenRef.current) {
+        return
+      }
+
+      const ChangedTouch = event.changedTouches?.[0]
+
+      if (!ChangedTouch) {
+        return
+      }
+
+      const DeltaY = TouchStartYRef.current - ChangedTouch.clientY
+
+      const DeltaX = TouchStartXRef.current - ChangedTouch.clientX
+
+      if (Math.abs(DeltaY) <= Math.abs(DeltaX)) {
+        return
+      }
+
+      if (Math.abs(DeltaY) < 48) {
+        return
+      }
+
+      const Direction = DeltaY > 0 ? 1 : -1
+
+      const SectionElement = SectionRef.current
+
+      if (!SectionElement) {
+        return
+      }
+
+      /*
+       * Already inside locked portfolio.
+       */
+
+      if (IsSectionLockedRef.current) {
+        event.preventDefault()
+
+        const CurrentIndex = ActiveIndexRef.current
+
+        const IsAtFirstSlide = CurrentIndex === 0
+
+        const IsAtLastSlide = CurrentIndex === TotalServices - 1
+
+        if (Direction > 0 && IsAtLastSlide) {
+          LeaveSectionExperience(1)
+
+          return
+        }
+
+        if (Direction < 0 && IsAtFirstSlide) {
+          LeaveSectionExperience(-1)
+
+          return
+        }
+
+        if (IsTransitionLockedRef.current) {
+          return
+        }
+
+        ChangeSlide(Direction)
+
+        return
+      }
+
+      const Rect = SectionElement.getBoundingClientRect()
+
+      const ViewportHeight = window.innerHeight
+
+      const IsEnteringFromTop = Direction > 0 && Rect.top > -ViewportHeight * 0.12 && Rect.top < ViewportHeight * 0.84
+
+      const IsEnteringFromBottom = Direction < 0 && Rect.bottom > ViewportHeight * 0.16 && Rect.bottom < ViewportHeight * 1.12
+
+      if (IsEnteringFromTop || IsEnteringFromBottom) {
+        EnterResponsiveSectionExperience(Direction)
+      }
+    }
+
+    window.addEventListener("touchstart", HandleTouchStart, {
+      passive: true,
+      capture: true,
+    })
+
+    window.addEventListener("touchmove", HandleTouchMove, {
+      passive: false,
+      capture: true,
+    })
+
+    window.addEventListener("touchend", HandleTouchEnd, {
+      passive: false,
+      capture: true,
+    })
+
+    return () => {
+      window.removeEventListener("touchstart", HandleTouchStart, true)
+
+      window.removeEventListener("touchmove", HandleTouchMove, true)
+
+      window.removeEventListener("touchend", HandleTouchEnd, true)
+    }
+  }, [TotalServices])
+
+  /* =========================================================
        KEYBOARD
     ========================================================= */
 
-    useEffect(() => {
-        const HandleKeyDown =
-            (event) => {
-                if (
-                    IsMenuOpenRef.current
-                ) {
-                    if (
-                        event.key ===
-                        "Escape"
-                    ) {
-                        setIsServiceMenuOpen(
-                            false,
-                        );
-                    }
+  useEffect(() => {
+    const HandleKeyDown = (event) => {
+      if (IsMenuOpenRef.current) {
+        if (event.key === "Escape") {
+          setIsServiceMenuOpen(false)
+        }
 
-                    return;
-                }
+        return
+      }
 
-                if (
-                    !IsSectionLockedRef.current
-                ) {
-                    return;
-                }
+      if (!IsSectionLockedRef.current) {
+        return
+      }
 
-                if (
-                    event.key ===
-                    "ArrowDown" ||
-                    event.key ===
-                    "PageDown"
-                ) {
-                    event.preventDefault();
+      if (event.key === "ArrowDown" || event.key === "PageDown") {
+        event.preventDefault()
 
-                    if (
-                        ActiveIndexRef.current <
-                        TotalServices - 1
-                    ) {
-                        ChangeSlide(
-                            1,
-                        );
-                    } else {
-                        LeaveSectionExperience(
-                            1,
-                        );
-                    }
-                }
+        if (ActiveIndexRef.current < TotalServices - 1) {
+          ChangeSlide(1)
+        } else {
+          LeaveSectionExperience(1)
+        }
+      }
 
-                if (
-                    event.key ===
-                    "ArrowUp" ||
-                    event.key ===
-                    "PageUp"
-                ) {
-                    event.preventDefault();
+      if (event.key === "ArrowUp" || event.key === "PageUp") {
+        event.preventDefault()
 
-                    if (
-                        ActiveIndexRef.current >
-                        0
-                    ) {
-                        ChangeSlide(
-                            -1,
-                        );
-                    } else {
-                        LeaveSectionExperience(
-                            -1,
-                        );
-                    }
-                }
+        if (ActiveIndexRef.current > 0) {
+          ChangeSlide(-1)
+        } else {
+          LeaveSectionExperience(-1)
+        }
+      }
 
-                if (
-                    event.key ===
-                    "Escape"
-                ) {
-                    UnlockDocumentScroll();
-                }
-            };
+      if (event.key === "Escape") {
+        UnlockDocumentScroll()
+      }
+    }
 
-        window.addEventListener(
-            "keydown",
-            HandleKeyDown,
-        );
+    window.addEventListener("keydown", HandleKeyDown)
 
-        return () => {
-            window.removeEventListener(
-                "keydown",
-                HandleKeyDown,
-            );
-        };
-    }, [TotalServices]);
+    return () => {
+      window.removeEventListener("keydown", HandleKeyDown)
+    }
+  }, [TotalServices])
 
-    /* =========================================================
+  /* =========================================================
        CLEANUP
     ========================================================= */
 
-    useEffect(() => {
-        return () => {
-            UnlockDocumentScroll();
+  useEffect(() => {
+    return () => {
+      UnlockDocumentScroll()
 
-            if (
-                TransitionTimerRef.current
-            ) {
-                window.clearTimeout(
-                    TransitionTimerRef.current,
-                );
-            }
+      if (TransitionTimerRef.current) {
+        window.clearTimeout(TransitionTimerRef.current)
+      }
 
-            if (
-                PrepareLockTimerRef.current
-            ) {
-                window.clearTimeout(
-                    PrepareLockTimerRef.current,
-                );
-            }
-        };
-    }, []);
+      if (PrepareLockTimerRef.current) {
+        window.clearTimeout(PrepareLockTimerRef.current)
+      }
+    }
+  }, [])
 
-    const GoToNextService =
-        () => {
-            if (
-                ActiveIndexRef.current ===
-                TotalServices - 1
-            ) {
-                LeaveSectionExperience(
-                    1,
-                );
+  const GoToNextService = () => {
+    if (ActiveIndexRef.current === TotalServices - 1) {
+      LeaveSectionExperience(1)
 
-                return;
-            }
+      return
+    }
 
-            ChangeSlide(1);
-        };
+    ChangeSlide(1)
+  }
 
-    const GoToPreviousService =
-        () => {
-            if (
-                ActiveIndexRef.current ===
-                0
-            ) {
-                LeaveSectionExperience(
-                    -1,
-                );
+  const GoToPreviousService = () => {
+    if (ActiveIndexRef.current === 0) {
+      LeaveSectionExperience(-1)
 
-                return;
-            }
+      return
+    }
 
-            ChangeSlide(-1);
-        };
+    ChangeSlide(-1)
+  }
 
-    const HandleServiceSelect =
-        (Index) => {
-            const Direction =
-                Index >
-                    ActiveIndexRef.current
-                    ? "down"
-                    : "up";
+  const HandleServiceSelect = (Index) => {
+    const Direction = Index > ActiveIndexRef.current ? "down" : "up"
 
-            IsTransitionLockedRef.current =
-                true;
+    IsTransitionLockedRef.current = true
 
-            setSlideDirection(
-                Direction,
-            );
+    setSlideDirection(Direction)
 
-            ActiveIndexRef.current =
-                Index;
+    ActiveIndexRef.current = Index
 
-            setActiveIndex(
-                Index,
-            );
+    setActiveIndex(Index)
 
-            if (
-                TransitionTimerRef.current
-            ) {
-                window.clearTimeout(
-                    TransitionTimerRef.current,
-                );
-            }
+    if (TransitionTimerRef.current) {
+      window.clearTimeout(TransitionTimerRef.current)
+    }
 
-            TransitionTimerRef.current =
-                window.setTimeout(
-                    () => {
-                        IsTransitionLockedRef.current =
-                            false;
-                    },
-                    900,
-                );
+    TransitionTimerRef.current = window.setTimeout(() => {
+      IsTransitionLockedRef.current = false
+    }, 900)
 
-            setIsServiceMenuOpen(
-                false,
-            );
-        };
+    setIsServiceMenuOpen(false)
+  }
 
-    return (
-        <section
-            ref={SectionRef}
-            id="services-portfolio"
-            className="relative h-[100vh] w-full overflow-hidden bg-[#061633] text-white"
-        >
-            <ServicesPortfolioBackground
-                activeIndex={activeIndex}
-            />
+  return (
+    <section ref={SectionRef} id={id} className="relative h-[100vh] w-full overflow-hidden bg-[#061633] text-white">
+      <ServicesPortfolioBackground activeIndex={activeIndex} />
 
-            <div className="pointer-events-none absolute inset-0 z-10">
-                <div className="absolute left-[-12%] top-[8%] h-[360px] w-[360px] rounded-full bg-cyan-400/[0.025] blur-[130px]" />
+      <div className="pointer-events-none absolute inset-0 z-10">
+        <div className="absolute left-[-12%] top-[8%] h-[360px] w-[360px] rounded-full bg-cyan-400/[0.025] blur-[130px]" />
 
-                <div className="absolute bottom-[-14%] right-[-8%] h-[420px] w-[420px] rounded-full bg-violet-500/[0.022] blur-[150px]" />
+        <div className="absolute bottom-[-14%] right-[-8%] h-[420px] w-[420px] rounded-full bg-violet-500/[0.022] blur-[150px]" />
 
-                <div className="absolute inset-0 opacity-[0.025] [background-image:linear-gradient(rgba(255,255,255,0.07)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.07)_1px,transparent_1px)] [background-size:72px_72px]" />
-            </div>
+        <div className="absolute inset-0 opacity-[0.025] [background-image:linear-gradient(rgba(255,255,255,0.07)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.07)_1px,transparent_1px)] [background-size:72px_72px]" />
+      </div>
 
-            <div className="services-portfolio-shell relative z-20 mx-auto flex h-full w-[94vw] justify-center py-13 lg:w-[65vw]">
-                <div className="pt-5 services-portfolio-foreground relative h-[70vh] w-full max-w-none">
-                    <span className="pointer-events-none absolute inset-x-3 bottom-[-10px] top-3 rounded-[34px] border border-blue-400/[0.055] bg-[#020B20]/90 shadow-[0_30px_55px_rgba(0,0,0,0.42)]" />
+      <div className="services-portfolio-shell relative z-20 mx-auto flex h-full w-[94vw] justify-center py-13 lg:w-[65vw]">
+        <div className="pt-5 services-portfolio-foreground relative h-[70vh] w-full max-w-none">
+          <span className="pointer-events-none absolute inset-x-3 bottom-[-10px] top-3 rounded-[34px] border border-blue-400/[0.055] bg-[#020B20]/90 shadow-[0_30px_55px_rgba(0,0,0,0.42)]" />
 
-                    <span className="pointer-events-none absolute -inset-4 rounded-[38px] bg-cyan-400/[0.018] blur-2xl" />
+          <span className="pointer-events-none absolute -inset-4 rounded-[38px] bg-cyan-400/[0.018] blur-2xl" />
 
-                    <div className="relative h-full overflow-hidden rounded-[30px] border border-cyan-300/[0.13] bg-[linear-gradient(145deg,rgba(12,48,98,0.82),rgba(3,19,45,0.96))] shadow-[inset_0_1px_0_rgba(255,255,255,0.12),inset_0_-25px_35px_rgba(0,5,20,0.24),0_35px_90px_rgba(0,0,0,0.42)] backdrop-blur-2xl [transform-style:preserve-3d]">
-                        <div className="pointer-events-none absolute inset-0 opacity-[0.018] [background-image:linear-gradient(rgba(255,255,255,0.10)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.10)_1px,transparent_1px)] [background-size:32px_32px]" />
+          <div className="relative h-full overflow-hidden rounded-[30px] border border-cyan-300/[0.13] bg-[linear-gradient(145deg,rgba(12,48,98,0.82),rgba(3,19,45,0.96))] shadow-[inset_0_1px_0_rgba(255,255,255,0.12),inset_0_-25px_35px_rgba(0,5,20,0.24),0_35px_90px_rgba(0,0,0,0.42)] backdrop-blur-2xl [transform-style:preserve-3d]">
+            <div className="pointer-events-none absolute inset-0 opacity-[0.018] [background-image:linear-gradient(rgba(255,255,255,0.10)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.10)_1px,transparent_1px)] [background-size:32px_32px]" />
 
-                        <span className="pointer-events-none absolute inset-[6px] rounded-[25px] border border-white/[0.025]" />
+            <span className="pointer-events-none absolute inset-[6px] rounded-[25px] border border-white/[0.025]" />
 
-                        <span className="pointer-events-none absolute inset-x-10 top-0 h-px bg-gradient-to-r from-transparent via-white/25 to-transparent" />
+            <span className="pointer-events-none absolute inset-x-10 top-0 h-px bg-gradient-to-r from-transparent via-white/25 to-transparent" />
 
-                        <div
-                            key={
-                                ActiveService.id
-                            }
-                            className={[
-                                "service-portfolio-slide relative grid h-full lg:grid-cols-[0.88fr_1.12fr]",
-                                slideDirection ===
-                                    "down"
-                                    ? "service-foreground-enter-down"
-                                    : "service-foreground-enter-up",
-                            ].join(
-                                " ",
-                            )}
-                        >
-                            {/* =================================
+            <div
+              key={ActiveService.id}
+              className={[
+                "service-portfolio-slide relative grid h-full lg:grid-cols-[0.88fr_1.12fr]",
+                slideDirection === "down" ? "service-foreground-enter-down" : "service-foreground-enter-up",
+              ].join(" ")}
+            >
+              {/* =================================
                                 LEFT CONTENT
                             ================================= */}
 
-                            <div className="service-portfolio-left relative flex min-h-0 flex-col justify-between border-b border-cyan-300/[0.06] p-6 sm:p-8 lg:border-b-0 lg:border-r lg:p-9 xl:p-10">
-                                <div className="min-h-0">
-                                    <div className="flex items-center gap-3">
-                                        <span className="h-px w-9 bg-gradient-to-r from-cyan-300 to-transparent" />
+              <div className="service-portfolio-left relative flex min-h-0 flex-col justify-between border-b border-cyan-300/[0.06] p-6 sm:p-8 lg:border-b-0 lg:border-r lg:p-9 xl:p-10">
+                <div className="min-h-0">
+                  <div className="flex items-center gap-3">
+                    <span className="h-px w-9 bg-gradient-to-r from-cyan-300 to-transparent" />
 
-                                        <span className="font-mono text-[10px] font-semibold uppercase tracking-[0.22em] text-cyan-200/65">
-                                            SERVICE
-                                            CAPABILITIES
-                                        </span>
-                                    </div>
+                    <span className="font-mono text-[10px] font-semibold uppercase tracking-[0.22em] text-cyan-200/65">SERVICE CAPABILITIES</span>
+                  </div>
 
-                                    <div className="mt-5">
-                                        <ServicesPortfolioTitle
-                                            title={
-                                                ActiveService.title
-                                            }
-                                        />
+                  <div className="mt-5">
+                    <ServicesPortfolioTitle title={ActiveService.title} />
 
-                                        <p className="services-portfolio-subtitle mt-4 max-w-[470px] text-[clamp(11px,1vw,15px)] font-medium leading-[1.45] text-cyan-50/66">
-                                            {
-                                                ActiveService.subtitle
-                                            }
-                                        </p>
+                    <p className="services-portfolio-subtitle mt-4 max-w-[470px] text-[clamp(11px,1vw,15px)] font-medium leading-[1.45] text-cyan-50/66">
+                      {ActiveService.subtitle}
+                    </p>
 
-                                        <p className="services-portfolio-description mt-5 max-w-[500px] text-[10px] leading-[1.72] text-blue-100/48 sm:text-[11px]">
-                                            {
-                                                ActiveService.description
-                                            }
-                                        </p>
-                                    </div>
-                                </div>
+                    <p className="services-portfolio-description mt-5 max-w-[500px] text-[10px] leading-[1.72] text-blue-100/48 sm:text-[11px]">
+                      {ActiveService.description}
+                    </p>
+                  </div>
+                </div>
 
-                                <div className="service-portfolio-actions mt-5 flex shrink-0 flex-wrap items-center gap-2.5 lg:mt-4">
-                                    <HeroActionButton
-                                        label="See Similar Builds"
-                                        icon={
-                                            ArrowUpRight
-                                        }
-                                        to="/services"
-                                        variant="secondary"
-                                    />
+                <div className="service-portfolio-actions mt-5 flex shrink-0 flex-wrap items-center gap-2.5 lg:mt-4">
+                  <HeroActionButton label="See Similar Builds" icon={ArrowUpRight} to="/projects" variant="secondary" />
 
-                                    <a
-                                        href="tel:+919027535618"
-                                        aria-label="Call us"
-                                    >
-                                        <PremiumIconBadge
-                                            icon={
-                                                Phone
-                                            }
-                                            size="default"
-                                        />
-                                    </a>
-                                </div>
-                            </div>
+                  <a href="tel:+919027535618" aria-label="Call us">
+                    <PremiumIconBadge icon={Phone} size="default" />
+                  </a>
+                </div>
+              </div>
 
-                            {/* =================================
+              {/* =================================
                                 RIGHT SERVICES
                             ================================= */}
 
-                            <div className="service-portfolio-capabilities relative flex min-h-0 flex-col p-5 sm:p-6 lg:p-7 xl:p-8">
-                                <div className="mb-3 flex shrink-0 items-center justify-between">
-                                    <div>
-                                        <span className="service-capabilities-label font-mono text-[10px] uppercase tracking-[0.20em] text-cyan-200/50">
-                                            AVAILABLE
-                                            CAPABILITIES
-                                        </span>
+              <div className="service-portfolio-capabilities relative flex min-h-0 flex-col p-5 sm:p-6 lg:p-7 xl:p-8">
+                <div className="mb-3 flex shrink-0 items-center justify-between">
+                  <div>
+                    <span className="service-capabilities-label font-mono text-[10px] uppercase tracking-[0.20em] text-cyan-200/50">
+                      AVAILABLE CAPABILITIES
+                    </span>
 
-                                        <div className="mt-1 h-px w-16 bg-gradient-to-r from-cyan-300/40 to-transparent" />
-                                    </div>
+                    <div className="mt-1 h-px w-16 bg-gradient-to-r from-cyan-300/40 to-transparent" />
+                  </div>
 
-                                    <span className="service-module-count font-mono text-[9px] text-blue-100/25">
-                                        {String(
-                                            ActiveService
-                                                .services
-                                                .length,
-                                        ).padStart(
-                                            2,
-                                            "0",
-                                        )}{" "}
-                                        MODULES
-                                    </span>
-                                </div>
+                  <span className="service-module-count font-mono text-[9px] text-blue-100/25">
+                    {String(ActiveService.services.length).padStart(2, "0")} MODULES
+                  </span>
+                </div>
 
-                                <div className="service-capabilities-body min-h-0 flex-1">
-                                    <ServiceGrid
-                                        services={
-                                            ActiveService.services
-                                        }
-                                    />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                <div className="service-capabilities-body min-h-0 flex-1">
+                  <ServiceGrid services={ActiveService.services} />
+                </div>
+              </div>
+            </div>
+          </div>
 
-                    {/* =========================================
+          {/* =========================================
                         BOTTOM NAVIGATION
                     ========================================= */}
 
-                    <div className="absolute bottom-[-60px] left-0 right-0 z-40 flex items-center gap-5 px-10">
-                        <button
-                            type="button"
-                            onClick={() =>
-                                setIsServiceMenuOpen(
-                                    true,
-                                )
-                            }
-                        >
-                            <PremiumIconBadge
-                                icon={Filter}
-                                size="default"
-                            />
-                        </button>
+          <div className="absolute bottom-[-60px] left-0 right-0 z-40 flex items-center gap-5 px-10">
+            <button type="button" onClick={() => setIsServiceMenuOpen(true)}>
+              <PremiumIconBadge icon={Filter} size="default" />
+            </button>
 
-                        <div className="flex h-[48px] min-w-0 flex-1 items-center justify-between rounded-full border border-cyan-300/[0.08] bg-[#061633]/94 px-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.06),0_12px_30px_rgba(0,0,0,0.26)] backdrop-blur-xl sm:px-5">
-                            <span className="truncate pr-3 text-[10px] font-semibold text-white sm:text-[11px]">
-                                {
-                                    ActiveService.title
-                                }
-                            </span>
+            <div className="flex h-[48px] min-w-0 flex-1 items-center justify-between rounded-full border border-cyan-300/[0.08] bg-[#061633]/94 px-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.06),0_12px_30px_rgba(0,0,0,0.26)] backdrop-blur-xl sm:px-5">
+              <span className="truncate pr-3 text-[10px] font-semibold text-white sm:text-[11px]">{ActiveService.title}</span>
 
-                            <span className="shrink-0 font-mono text-[8px] text-blue-100/35">
-                                {String(
-                                    activeIndex +
-                                    1,
-                                ).padStart(
-                                    2,
-                                    "0",
-                                )}{" "}
-                                /{" "}
-                                {String(
-                                    TotalServices,
-                                ).padStart(
-                                    2,
-                                    "0",
-                                )}
-                            </span>
-                        </div>
-
-                        <div className="flex gap-2">
-                            <button
-                                type="button"
-                                onClick={
-                                    GoToPreviousService
-                                }
-                                disabled={
-                                    activeIndex ===
-                                    0
-                                }
-                                className="service-arrow-button flex h-[48px] w-[48px] shrink-0 items-center justify-center rounded-full border border-cyan-300/[0.08] bg-[#061633]/94 text-white/70 shadow-[inset_0_1px_0_rgba(255,255,255,0.06),0_12px_30px_rgba(0,0,0,0.26)] backdrop-blur-xl transition-all duration-300 hover:border-cyan-200/[0.22] hover:bg-[#0C3062]/[0.72] hover:text-white disabled:pointer-events-none disabled:opacity-25"
-                                aria-label="Previous service"
-                            >
-                                <PremiumIconBadge
-                                    icon={
-                                        ArrowUp
-                                    }
-                                    size="default"
-                                />
-                            </button>
-
-                            <button
-                                type="button"
-                                onClick={
-                                    GoToNextService
-                                }
-                                disabled={
-                                    activeIndex ===
-                                    TotalServices -
-                                    1
-                                }
-                                className="service-arrow-button flex h-[48px] w-[48px] shrink-0 items-center justify-center rounded-full border border-cyan-300/[0.08] bg-[#061633]/94 text-white/70 shadow-[inset_0_1px_0_rgba(255,255,255,0.06),0_12px_30px_rgba(0,0,0,0.26)] backdrop-blur-xl transition-all duration-300 hover:border-cyan-200/[0.22] hover:bg-[#0C3062]/[0.72] hover:text-white disabled:pointer-events-none disabled:opacity-25"
-                                aria-label="Next service"
-                            >
-                                <PremiumIconBadge
-                                    icon={
-                                        ArrowDown
-                                    }
-                                    size="default"
-                                />
-                            </button>
-                        </div>
-                    </div>
-
-                    {isServiceMenuOpen && (
-                        <ServiceMenu
-                            services={
-                                ServicesPortfolioData
-                            }
-                            activeIndex={
-                                activeIndex
-                            }
-                            onSelect={
-                                HandleServiceSelect
-                            }
-                            onClose={() =>
-                                setIsServiceMenuOpen(
-                                    false,
-                                )
-                            }
-                        />
-                    )}
-                </div>
+              <span className="shrink-0 font-mono text-[8px] text-blue-100/35">
+                {String(activeIndex + 1).padStart(2, "0")} / {String(TotalServices).padStart(2, "0")}
+              </span>
             </div>
 
-            <div className="pointer-events-none absolute bottom-3 left-1/2 hidden -translate-x-1/2 items-center gap-2 text-[6px] font-medium uppercase tracking-[0.20em] text-blue-100/20 lg:flex">
-                <ChevronDown
-                    size={9}
-                    strokeWidth={1.4}
-                />
+            <div className="flex gap-2">
+              <button
+                type="button"
+                onClick={GoToPreviousService}
+                disabled={activeIndex === 0}
+                className="service-arrow-button flex h-[48px] w-[48px] shrink-0 items-center justify-center rounded-full border border-cyan-300/[0.08] bg-[#061633]/94 text-white/70 shadow-[inset_0_1px_0_rgba(255,255,255,0.06),0_12px_30px_rgba(0,0,0,0.26)] backdrop-blur-xl transition-all duration-300 hover:border-cyan-200/[0.22] hover:bg-[#0C3062]/[0.72] hover:text-white disabled:pointer-events-none disabled:opacity-25"
+                aria-label="Previous service"
+              >
+                <PremiumIconBadge icon={ArrowUp} size="default" />
+              </button>
 
-                SCROLL TO EXPLORE
-
-                <ChevronDown
-                    size={9}
-                    strokeWidth={1.4}
-                />
+              <button
+                type="button"
+                onClick={GoToNextService}
+                disabled={activeIndex === TotalServices - 1}
+                className="service-arrow-button flex h-[48px] w-[48px] shrink-0 items-center justify-center rounded-full border border-cyan-300/[0.08] bg-[#061633]/94 text-white/70 shadow-[inset_0_1px_0_rgba(255,255,255,0.06),0_12px_30px_rgba(0,0,0,0.26)] backdrop-blur-xl transition-all duration-300 hover:border-cyan-200/[0.22] hover:bg-[#0C3062]/[0.72] hover:text-white disabled:pointer-events-none disabled:opacity-25"
+                aria-label="Next service"
+              >
+                <PremiumIconBadge icon={ArrowDown} size="default" />
+              </button>
             </div>
+          </div>
 
-            <style>{`
+          {isServiceMenuOpen && (
+            <ServiceMenu
+              services={ServicesPortfolioData}
+              activeIndex={activeIndex}
+              onSelect={HandleServiceSelect}
+              onClose={() => setIsServiceMenuOpen(false)}
+            />
+          )}
+        </div>
+      </div>
+
+      <div className="pointer-events-none absolute bottom-3 left-1/2 hidden -translate-x-1/2 items-center gap-2 text-[6px] font-medium uppercase tracking-[0.20em] text-blue-100/20 lg:flex">
+        <ChevronDown size={9} strokeWidth={1.4} />
+        SCROLL TO EXPLORE
+        <ChevronDown size={9} strokeWidth={1.4} />
+      </div>
+
+      <style>{`
                 #services-portfolio {
                     isolation: isolate;
                 }
@@ -3067,8 +2305,8 @@ const ServicesPortfolio = () => {
                     }
                 }
             `}</style>
-        </section>
-    );
-};
+    </section>
+  )
+}
 
 export default ServicesPortfolio;

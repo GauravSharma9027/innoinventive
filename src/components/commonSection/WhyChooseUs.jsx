@@ -10,47 +10,42 @@ import HeroActionButton from "../UI/HeroActionButton";
 import PremiumIconBadge from "../UI/PremiumIconBadge";
 
 const WhyChooseUsData = [
-    {
-        id: "business-first",
-        title: "Business-First Engineering",
-        description:
-            "We build around your business goals, users and real operational needs.",
-        icon: BrainCircuit,
-        accent: "cyan",
-    },
-    {
-        id: "intelligent-automation",
-        title: "Intelligent Automation",
-        description:
-            "We turn repetitive workflows into smarter, connected systems.",
-        icon: Workflow,
-        accent: "blue",
-    },
-    {
-        id: "scalable-systems",
-        title: "Scalable Systems",
-        description:
-            "Clean architecture designed to grow with your users and business.",
-        icon: Layers3,
-        accent: "violet",
-    },
-    {
-        id: "performance",
-        title: "Performance Driven",
-        description:
-            "Fast interfaces and efficient systems built for reliable performance.",
-        icon: Gauge,
-        accent: "cyan",
-    },
-    {
-        id: "long-term",
-        title: "Long-Term Partnership",
-        description:
-            "We build technology that can evolve with your business over time.",
-        icon: Rocket,
-        accent: "violet",
-    },
-];
+  {
+    id: "business-first",
+    title: "Web & App Development",
+    description: "Beautiful websites and powerful applications built around your business goals.",
+    icon: BrainCircuit,
+    accent: "cyan",
+  },
+  {
+    id: "intelligent-automation",
+    title: "Smart Business Automation",
+    description: "Automate repetitive tasks and connect your tools for smoother operations.",
+    icon: Workflow,
+    accent: "blue",
+  },
+  {
+    id: "scalable-systems",
+    title: "Digital Marketing & SEO",
+    description: "Improve online visibility, attract the right audience, and generate qualified leads.",
+    icon: Layers3,
+    accent: "violet",
+  },
+  {
+    id: "performance",
+    title: "Performance-Driven Strategy",
+    description: "Combine great user experiences, targeted campaigns, and data-led decisions.",
+    icon: Gauge,
+    accent: "cyan",
+  },
+  {
+    id: "long-term",
+    title: "A Partner for Long-Term Growth",
+    description: "Get reliable support and scalable solutions that grow with your business.",
+    icon: Rocket,
+    accent: "violet",
+  },
+]
 
 const AccentStyles = {
     cyan: {
@@ -123,11 +118,11 @@ const WhyChooseUsCard = ({
                     </div>
 
                     <div className="mt-5">
-                        <h3 className="text-xl lg:text-[15px] font-semibold leading-[1.08] tracking-[-0.035em] text-white">
+                        <h3 className="text-xl lg:text-[13px] font-semibold leading-[1.08] tracking-[-0.035em] text-white">
                             {title}
                         </h3>
 
-                        <p className="mt-3 text-sm lg:text-[11px] leading-[1.65] text-white/40">
+                        <p className="mt-3 text-sm lg:text-[11px] leading-[1.65] text-white/60">
                             {description}
                         </p>
                     </div>
@@ -155,92 +150,69 @@ const WhyChooseUsCard = ({
 
 const WhyChooseUs = () => {
     return (
-        <section
-            id="why-choose-us"
-            className="relative min-h-screen w-full overflow-hidden bg-[#061633] lg:h-[100vh] lg:min-h-0"
-        >
-            {/* Background Atmosphere */}
-            <div className="pointer-events-none absolute inset-0">
-                <div className="absolute left-[-8%] top-[8%] h-[340px] w-[340px] rounded-full bg-cyan-400/[0.035] blur-[120px]" />
+      <section id="why-choose-us" className="relative min-h-screen w-full overflow-hidden bg-[#061633] lg:h-[100vh] lg:min-h-0">
+        {/* Background Atmosphere */}
+        <div className="pointer-events-none absolute inset-0">
+          <div className="absolute left-[-8%] top-[8%] h-[340px] w-[340px] rounded-full bg-cyan-400/[0.035] blur-[120px]" />
 
-                <div className="absolute bottom-[-8%] right-[-6%] h-[380px] w-[380px] rounded-full bg-violet-500/[0.04] blur-[130px]" />
+          <div className="absolute bottom-[-8%] right-[-6%] h-[380px] w-[380px] rounded-full bg-violet-500/[0.04] blur-[130px]" />
 
-                <div className="absolute left-[42%] top-[38%] h-[220px] w-[220px] rounded-full bg-blue-500/[0.025] blur-[100px]" />
+          <div className="absolute left-[42%] top-[38%] h-[220px] w-[220px] rounded-full bg-blue-500/[0.025] blur-[100px]" />
+        </div>
+
+        <div className="relative mx-auto flex h-full w-full max-w-[1400px] flex-col justify-center px-5 py-14 sm:px-6 sm:py-16 lg:px-8 lg:py-10">
+          {/* Heading */}
+          <div className="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
+            <div>
+              <div className="flex items-center gap-3">
+                <span className="h-px w-7 bg-cyan-300" />
+
+                <span className="text-[10px] font-semibold uppercase tracking-[0.25em] text-cyan-300">WHY CHOOSE US</span>
+              </div>
+
+              <h2 className="mt-4 max-w-[680px] text-4xl  lg:text-[clamp(34px,3vw,54px)] font-semibold leading-[0.92] tracking-[-0.06em] text-white">
+                Your Vision.
+                <span className="block bg-gradient-to-r from-cyan-300 via-blue-400 to-violet-400 bg-clip-text text-transparent">
+                  Our Technology. Your Growth.
+                </span>
+              </h2>
             </div>
 
-            <div className="relative mx-auto flex h-full w-full max-w-[1400px] flex-col justify-center px-5 py-14 sm:px-6 sm:py-16 lg:px-8 lg:py-10">
-                {/* Heading */}
-                <div className="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
-                    <div>
-                        <div className="flex items-center gap-3">
-                            <span className="h-px w-7 bg-cyan-300" />
+            <p className="max-w-[360px] text-sm lg:text-[12px] leading-[1.7] text-white/60 lg:pb-1">
+              We combine creative design, smart engineering, and digital marketing to build websites, applications, and automated systems that help your
+              business stand out, work smarter, and grow online
+            </p>
+          </div>
 
-                            <span className="text-[10px] font-semibold uppercase tracking-[0.25em] text-cyan-300">
-                                WHY CHOOSE US
-                            </span>
-                        </div>
+          {/* Premium Compact Cards */}
+          <div className="mt-9 grid gap-4 sm:grid-cols-2 lg:mt-10 lg:grid-cols-5 lg:gap-4">
+            {WhyChooseUsData.map((Reason, Index) => (
+              <WhyChooseUsCard key={Reason.id} {...Reason} isLast={Index === WhyChooseUsData.length - 1} />
+            ))}
+          </div>
 
-                        <h2 className="mt-4 max-w-[680px] text-4xl  lg:text-[clamp(34px,4vw,54px)] font-semibold leading-[0.92] tracking-[-0.06em] text-white">
-                            Built with purpose.
-                            <span className="block bg-gradient-to-r from-cyan-300 via-blue-400 to-violet-400 bg-clip-text text-transparent">
-                                Engineered for growth.
-                            </span>
-                        </h2>
-                    </div>
+          {/* Flow Legend */}
+          <div className="mt-5 flex items-center justify-center">
+            <div className="flex items-center gap-3 rounded-full border border-white/[0.06] bg-[#071A38]/70 px-4 py-2 backdrop-blur-xl">
+              <span className="h-1.5 w-1.5 rounded-full bg-cyan-300 shadow-[0_0_10px_rgba(25,211,255,0.8)]" />
 
-                    <p className="max-w-[360px] text-sm lg:text-[11px] leading-[1.7] text-white/40 lg:pb-1">
-                        We combine strategy, engineering and automation to
-                        build digital systems designed around how your business
-                        actually works.
-                    </p>
-                </div>
+              <span className="text-[8px] font-semibold uppercase tracking-[0.18em] text-white/60">Strategy → Engineering → Automation → Growth</span>
+            </div>
+          </div>
 
-                {/* Premium Compact Cards */}
-                <div className="mt-9 grid gap-4 sm:grid-cols-2 lg:mt-10 lg:grid-cols-5 lg:gap-4">
-                    {WhyChooseUsData.map((Reason, Index) => (
-                        <WhyChooseUsCard
-                            key={Reason.id}
-                            {...Reason}
-                            isLast={
-                                Index === WhyChooseUsData.length - 1
-                            }
-                        />
-                    ))}
-                </div>
+          {/* CTA */}
+          <div className="mt-4 flex flex-col gap-4 rounded-[20px] border border-white/[0.07] bg-[linear-gradient(145deg,rgba(8,27,57,0.9),rgba(4,19,43,0.95))] px-5 py-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.035),0_18px_50px_rgba(0,0,0,0.2)] backdrop-blur-xl sm:flex-row sm:items-center sm:justify-between sm:px-6">
+            <div>
+              <p className="text-[9px] font-semibold uppercase tracking-[0.2em] text-white/50">THE INNOINVENTIVE APPROACH</p>
 
-                {/* Flow Legend */}
-                <div className="mt-5 flex items-center justify-center">
-                    <div className="flex items-center gap-3 rounded-full border border-white/[0.06] bg-[#071A38]/70 px-4 py-2 backdrop-blur-xl">
-                        <span className="h-1.5 w-1.5 rounded-full bg-cyan-300 shadow-[0_0_10px_rgba(25,211,255,0.8)]" />
-
-                        <span className="text-[7px] font-semibold uppercase tracking-[0.18em] text-white/30">
-                            Strategy → Engineering → Automation → Growth
-                        </span>
-                    </div>
-                </div>
-
-                {/* CTA */}
-                <div className="mt-4 flex flex-col gap-4 rounded-[20px] border border-white/[0.07] bg-[linear-gradient(145deg,rgba(8,27,57,0.9),rgba(4,19,43,0.95))] px-5 py-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.035),0_18px_50px_rgba(0,0,0,0.2)] backdrop-blur-xl sm:flex-row sm:items-center sm:justify-between sm:px-6">
-                    <div>
-                        <p className="text-[7px] font-semibold uppercase tracking-[0.2em] text-white/25">
-                            THE INNOINVENTIVE APPROACH
-                        </p>
-
-                        <p className="mt-1 text-[11px] text-white/50">
-                            Technology designed around your business.
-                        </p>
-                    </div>
-
-                    <HeroActionButton
-                        label="Let's Build"
-                        icon={Rocket}
-                        to="/contact"
-                        variant="primary"
-                    />
-                </div>
+              <p className="mt-1 text-[12px] text-white/80">Technology designed around your business.</p>
             </div>
 
-            <style>{`
+            <HeroActionButton label="Let's Build" icon={Rocket} to="/contact" variant="primary" />
+          </div>
+        </div>
+
+        <style>{`
                 .flow-packet {
                     position: absolute;
                     top: 50%;
@@ -288,8 +260,8 @@ const WhyChooseUs = () => {
                     }
                 }
             `}</style>
-        </section>
-    );
+      </section>
+    )
 };
 
 export default WhyChooseUs;
